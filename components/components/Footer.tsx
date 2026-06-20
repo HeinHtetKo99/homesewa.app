@@ -6,9 +6,9 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
         {/* Left: Branding */}
         <div className="text-center md:text-left">
-          <h3 className="text-xl font-bold mb-2">Home Cleaning India</h3>
+          <h3 className="text-xl font-bold mb-2">Home Cleaning Nepal</h3>
           <p className="text-gray-400 text-sm">
-            Professional home cleaning services in India. Keeping your home and office spotless and hygienic.
+            Professional home cleaning services in Nepal. Keeping your home and office spotless and hygienic.
           </p>
         </div>
 
@@ -30,7 +30,7 @@ export default function Footer() {
 
         {/* Right: Copyright */}
         <div className="text-center md:text-right text-gray-400 text-sm">
-          © {new Date().getFullYear()} Home Cleaning India. All rights reserved.
+          © {new Date().getFullYear()} Home Cleaning Nepal. All rights reserved.
         </div>
       </div>
     </footer>

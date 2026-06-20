@@ -33,7 +33,7 @@ export const CAREER_POSITIONS = [
   "Carpentry",
 ] as const;
 
-/** Preferred Working Area — workForce multipleSelects (Chennai + Other). */
+/** Preferred Working Area — workForce multipleSelects (Kathmandu + Other). */
 export const PREFERRED_WORKING_AREAS = [
   "Adambakkam",
   "Adyar",

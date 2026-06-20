@@ -18,7 +18,7 @@ function formatInTimezone(
   }).format(date);
 }
 
-/** YYYY-MM-DD in Chennai. */
+/** YYYY-MM-DD in Kathmandu. */
 export function getBookingToday(now = new Date()): string {
   return new Intl.DateTimeFormat("en-CA", {
     timeZone: BOOKING_TIMEZONE,
@@ -28,7 +28,7 @@ export function getBookingToday(now = new Date()): string {
   }).format(now);
 }
 
-/** HH:mm (24h) in Chennai, suitable for `<input type="time">`. */
+/** HH:mm (24h) in Kathmandu, suitable for `<input type="time">`. */
 export function getBookingNowTime(now = new Date()): string {
   return formatInTimezone(now, {
     hour: "2-digit",
@@ -37,7 +37,7 @@ export function getBookingNowTime(now = new Date()): string {
   });
 }
 
-/** Parse YYYY-MM-DD + HH:mm as an instant (Chennai is fixed UTC+5:30). */
+/** Parse YYYY-MM-DD + HH:mm as an instant (Kathmandu is fixed UTC+5:30). */
 export function parseBookingDateTime(date: string, time = "00:00"): number {
   return new Date(`${date}T${time}:00+05:30`).getTime();
 }

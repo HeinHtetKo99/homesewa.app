@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "Download App | RocketSingh",
-  description: "Download the RocketSingh app for superfast on demand home services.",
+  title: "Download App | HomeSewa",
+  description: "Download the HomeSewa app for superfast on demand home services.",
 };
 
 const PLAY_STORE_URL =
-  "https://play.google.com/store/apps/details?id=com.pracas.rocketsingh";
+  "https://play.google.com/store/apps/details?id=com.pracas.HomeSewa";
 const APP_STORE_URL = "#";
 
 const storeButtonClass =
@@ -19,7 +19,7 @@ export default function DownloadAppPage() {
       <section className="bg-[#0E4541] text-white py-12 px-6 text-center">
         <h1 className="text-3xl md:text-4xl font-extrabold mb-3">Download App</h1>
         <p className="text-base md:text-lg max-w-2xl mx-auto text-teal-50">
-          Scan the QR code or use the store buttons below to get the RocketSingh app.
+          Scan the QR code or use the store buttons below to get the HomeSewa app.
         </p>
       </section>
 
@@ -27,7 +27,7 @@ export default function DownloadAppPage() {
         <figure className="w-full max-w-[min(78vw,300px)] sm:max-w-[320px] p-4 sm:p-5">
           <Image
             src="/app-download/download-qr.png"
-            alt="Scan to download the RocketSingh app"
+            alt="Scan to download the HomeSewa app"
             width={1024}
             height={1024}
             priority

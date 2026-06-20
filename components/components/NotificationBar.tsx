@@ -11,7 +11,7 @@ export default function NotificationBar() {
   return (
     <div className="bg-[#0E4541] text-white px-6 py-3 flex items-center justify-between">
       <p className="text-sm md:text-base">
-     Announcement: RocketSingh is offering 20% off on all services this month!
+     Announcement: HomeSewa is offering 20% off on all services this month!
       </p>
       <button
         onClick={() => setVisible(false)}

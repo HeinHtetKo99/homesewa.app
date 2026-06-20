@@ -5,10 +5,10 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import ServiceCard from "../components/ServiceCard";
 
-const displayLocation = "Chennai, India";
+const displayLocation = "Kathmandu, Nepal";
 
 const PLAY_STORE_URL =
-  "https://play.google.com/store/apps/details?id=com.pracas.rocketsingh";
+  "https://play.google.com/store/apps/details?id=com.pracasinfosys.sriyog.com";
 
 const heroContent = {
   title: `Professional Home Services in ${displayLocation}`,
@@ -17,8 +17,8 @@ const heroContent = {
 
 const sections = {
   about: {
-    title: "About RocketSingh",
-    desc: "RocketSingh is a leading professional cleaning company in Chennai, India. Any home, office, or commercial cleaning — whether deep cleaning, sanitization, carpet care, or post-construction cleanup — RocketSingh is there for you.",
+    title: "About HomeSewa",
+    desc: "HomeSewa is a leading professional cleaning company in Kathmandu, Nepal. Any home, office, or commercial cleaning — whether deep cleaning, sanitization, carpet care, or post-construction cleanup — HomeSewa is there for you.",
   },
   mission: {
     title: "Our Mission",
@@ -26,11 +26,11 @@ const sections = {
   },
   goals: {
     title: "Our Goals",
-    desc: "RocketSingh focuses on providing the best service possible to make clients' lives convenient and comfortable. Deep cleaning, office sanitization, and regular maintenance are our responsibility.",
+    desc: "HomeSewa focuses on providing the best service possible to make clients' lives convenient and comfortable. Deep cleaning, office sanitization, and regular maintenance are our responsibility.",
   },
   vision: {
     title: "Our Vision",
-    desc: "To redefine home and commercial cleaning by creating a reliable, modern, and accessible service network that brings convenience and quality workmanship to every customer's doorstep in India.",
+    desc: "To redefine home and commercial cleaning by creating a reliable, modern, and accessible service network that brings convenience and quality workmanship to every customer's doorstep in Nepal.",
   },
 };
 
@@ -57,13 +57,13 @@ const expertServices = [
 
 const testimonials = [
   {
-    name: "Rajesh Devan",
+    name: "Rajesh Tuladhar",
     image: "/home/testimonials/1.png",
     feedback:
       "Amazing service! The team is punctual, professional, and pays attention to every detail. Highly recommend.",
   },
   {
-    name: "Sumnitra Patel",
+    name: "Sumnitra Thapa",
     image: "/home/testimonials/2.png",
     feedback:
       "Our office has never been cleaner. Consistent, thorough, and friendly staff. Very satisfied!",
@@ -107,7 +107,7 @@ export default function Home() {
             </h1>
             <p className="text-base sm:text-lg text-teal-900 font-medium">{heroContent.subtitle}</p>
             <p className="text-sm sm:text-base text-gray-900 max-w-md">
-            ROCKETSINGH is created as an on-demand hyperlocal service platform that connects home owners with skilled professionals.
+            HomeSewa is created as an on-demand hyperlocal service platform that connects home owners with skilled professionals.
             </p>
             <div className="hidden md:flex flex-wrap items-center gap-3 pt-3">
               <Link href="/book" className="bg-[#0E4541] text-white font-semibold px-6 sm:px-8 py-2.5 rounded-full shadow-lg hover:bg-teal-900 transition-all duration-300 animate-pulse-soft">
@@ -122,8 +122,8 @@ export default function Home() {
           <div className="w-full md:w-1/2">
             <div className="relative w-full overflow-hidden rounded-3xl shadow-2xl border border-teal-100 bg-gray-50">
               <Image
-                src="/home/hero.png"
-                alt="Rocket Singh — Superfast Service"
+                src="/home/hero.jpg"
+                alt="HomeSewa — Superfast Service"
                 width={1024}
                 height={512}
                 className="w-full h-auto"
@@ -176,7 +176,7 @@ export default function Home() {
       {/* EXPERT SERVICES */}
       <section className="bg-white py-20 px-6 sm:px-12 lg:px-20 text-center">
         <h2 className="text-4xl font-extrabold text-teal-900 mb-4">Our Expert Services</h2>
-        <p className="text-gray-700 text-lg mb-12">Our top services — quick, professional, and trusted across India.</p>
+        <p className="text-gray-700 text-lg mb-12">Our top services — quick, professional, and trusted across Nepal.</p>
         <div className="max-w-7xl mx-auto grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
           {expertServices.map((service) => (
             <ServiceCard key={service.title} image={service.image} title={service.title} desc={service.desc} href={service.href} />
@@ -231,7 +231,7 @@ export default function Home() {
             <div className="relative group">
               <img
                 src="/about/about.png"
-                alt="About RocketSingh"
+                alt="About HomeSewa"
                 className="rounded-3xl shadow-2xl w-full max-w-md object-cover border-8 border-white transition-all duration-700 group-hover:scale-[1.03]"
               />
               <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-teal-900/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
@@ -277,7 +277,7 @@ export default function Home() {
 
       {/* FLOATING CONTACT */}
       {/* <div className={`fixed right-4 bottom-20 flex flex-col items-center gap-3 z-50 transition-transform duration-300 ${isScrolled ? "-translate-y-3" : "translate-y-0"}`}>
-        <a href="https://b.broadpress.org/rocketsingh" target="_blank" rel="noopener noreferrer" className="w-11 h-11 bg-green-500 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
+        <a href="https://b.broadpress.org/HomeSewa" target="_blank" rel="noopener noreferrer" className="w-11 h-11 bg-green-500 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
           <img src="/icons/whatsapp.svg" alt="WhatsApp" className="w-6 h-6" />
         </a>
         <a href="tel:+918190074189" className="w-11 h-11 bg-[#0E4541] rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform">

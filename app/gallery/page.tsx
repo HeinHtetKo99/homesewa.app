@@ -12,14 +12,14 @@ const captionTemplates = [
   "Carpet steam cleaning restoring freshness and removing embedded allergens.",
   "Post-construction cleanup making newly renovated spaces move-in ready.",
   "Hotel and hospitality cleaning meeting international hygiene standards.",
-  "Hospital-grade disinfection for healthcare facilities across Chennai.",
+  "Hospital-grade disinfection for healthcare facilities across Kathmandu.",
   "Garden and outdoor space cleaning keeping landscapes neat and beautiful.",
   "AC cleaning and servicing improving air quality and cooling efficiency.",
   "Sofa and upholstery deep cleaning with fabric-safe professional methods.",
   "Move-in/move-out cleaning ensuring every corner is spotless for new occupants.",
   "Facade and exterior cleaning restoring building aesthetics and curb appeal.",
   "Event venue post-cleanup leaving spaces pristine after celebrations.",
-  "Car interior detailing for luxury and everyday vehicles across India.",
+  "Car interior detailing for luxury and everyday vehicles across Nepal.",
 ];
 
 interface GalleryItem {
@@ -47,7 +47,7 @@ export default function GalleryPage() {
         </span>
         <h1 className="text-4xl font-bold text-teal-800 mt-2">Cleaning Projects</h1>
         <p className="text-gray-600 mt-2 max-w-2xl">
-          View our work quality across homes, offices, hotels, and commercial spaces in India.
+          View our work quality across homes, offices, hotels, and commercial spaces in Nepal.
         </p>
       </div>
 

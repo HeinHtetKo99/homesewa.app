@@ -40,7 +40,7 @@ const OurTeam = () => {
             <div className="flex-1 space-y-5 leading-relaxed">
               <h1 className="text-[1.6em] md:text-[1.9em] font-semibold">About Ramesh</h1>
               <p className="text-[1em]">
-                Ramesh Koirala leads his family legacy of Cleaning Services using latest technologies under RocketSingh as Director, ensuring top-quality cleaning services across Chennai. He focuses on efficiency, customer satisfaction, and eco-friendly solutions for homes and offices.
+                Ramesh Koirala leads his family legacy of Cleaning Services using latest technologies under HomeSewa as Director, ensuring top-quality cleaning services across Kathmandu. He focuses on efficiency, customer satisfaction, and eco-friendly solutions for homes and offices.
               </p>
               <p className="text-[1em]">
                 With years of experience in operations and team management, Ramesh guarantees every cleaning service is executed professionally and reliably.

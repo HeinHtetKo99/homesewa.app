@@ -2,16 +2,16 @@ import FormPageLayout from "../../components/FormPageLayout";
 import BookForm from "../../components/BookForm";
 
 export const metadata = {
-  title: "Book a RocketSingh in Chennai | RocketSingh",
-  description: "Book RocketSingh on demand home services in Chennai, India.",
-  keywords: "RocketSingh booking Chennai, book home service, RocketSingh",
+  title: "Book a HomeSewa in Kathmandu | HomeSewa",
+  description: "Book HomeSewa on demand home services in Kathmandu, Nepal.",
+  keywords: "HomeSewa booking Kathmandu, book home service, HomeSewa",
 };
 
 export default function BookPage() {
   return (
     <FormPageLayout
       breadcrumb="Book"
-      title="Book a Service with RocketSingh"
+      title="Book a Service with HomeSewa"
     >
       <BookForm />
     </FormPageLayout>

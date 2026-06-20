@@ -1,6 +1,6 @@
-export const BOOKING_CITY = "Chennai" as const;
+export const BOOKING_CITY = "Kathmandu" as const;
 
-export const CHENNAI_AREAS = [
+export const Kathmandu_AREAS = [
   "Adambakkam",
   "Adyar",
   "Alandur",

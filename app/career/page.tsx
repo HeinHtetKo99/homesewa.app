@@ -2,17 +2,17 @@ import FormPageLayout from "../../components/FormPageLayout";
 import CareerForm from "../../components/CareerForm";
 
 export const metadata = {
-  title: "Career | RocketSingh",
+  title: "Career | HomeSewa",
   description:
-    "Join RocketSingh — career opportunities in professional cleaning services in Chennai, India.",
-  keywords: "cleaning jobs India, RocketSingh career, Chennai cleaning jobs",
+    "Join HomeSewa — career opportunities in professional cleaning services in Kathmandu, Nepal.",
+  keywords: "cleaning jobs Nepal, HomeSewa career, Kathmandu cleaning jobs",
 };
 
 export default function CareerPage() {
   return (
     <FormPageLayout
       breadcrumb="Career"
-      title="Career Opportunity with RocketSingh"
+      title="Career Opportunity with HomeSewa"
     >
       <CareerForm />
     </FormPageLayout>

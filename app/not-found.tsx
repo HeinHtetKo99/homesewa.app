@@ -62,7 +62,7 @@ export default function NotFound() {
         </div>
 
         <p className="mt-12 text-xs text-gray-400 uppercase tracking-widest">
-          RocketSingh · Chennai, India
+          HomeSewa · Kathmandu, Nepal
         </p>
       </div>
     </div>

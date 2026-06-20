@@ -16,7 +16,7 @@ const png = fs.readFileSync(pngPath);
 const fd = new FormData();
 fd.append("fullName", "Photo upload test");
 fd.append("phone", "9876543220");
-fd.append("city", "Chennai");
+fd.append("city", "Kathmandu");
 fd.append("area", "Adyar");
 fd.append("propertyType", "High-rise apartments");
 fd.append("services", JSON.stringify(["Cleaning & Deep Cleaning"]));
@@ -79,7 +79,7 @@ if (base.includes("localhost") || base.includes("127.0.0.1")) {
   console.log(
     "\nPARTIAL PASS: API upload succeeded; Airtable cannot fetch localhost URLs.",
   );
-  console.log("Test production: node scripts/test-booking-photo.mjs https://rocketsingh.app");
+  console.log("Test production: node scripts/test-booking-photo.mjs https://homesewa.app");
   process.exit(0);
 }
 

@@ -59,14 +59,14 @@ const Footer = () => {
             </div>
 
             <p className="text-[15px] leading-relaxed mb-4">
-              RocketSingh is more than just a name. It represents a mindset, a work ethic, and a commitment to serving local communities with professionalism and reliability.
+              HomeSewa is more than just a name. It represents a mindset, a work ethic, and a commitment to serving local communities with professionalism and reliability.
             </p>
             <p className="text-[15px] leading-relaxed mb-4">
-              Traditionally, a"RocketSingh" is someone who is dependable, punctual, highly skilled, dedicated to his work, and always willing to help people around him. 
+              Traditionally, a"HomeSewa" is someone who is dependable, punctual, highly skilled, dedicated to his work, and always willing to help people around him. 
             </p>
             
             <p className="text-[15px] leading-relaxed mb-4">
-              Inspired by these values, ROCKETSINGH is created as an on-demand hyperlocal service platform that connects home owners with skilled professionals for a wide range of household and commercial services.
+              Inspired by these values, HomeSewa is created as an on-demand hyperlocal service platform that connects home owners with skilled professionals for a wide range of household and commercial services.
             </p>
           
           </div>
@@ -159,7 +159,7 @@ const Footer = () => {
             <a href="#" className="flex items-center hover:opacity-60 transition hover:scale-110">
               <img src={`/icons/x.svg`} className="h-5 w-5 sm:h-6 sm:w-6 cursor-pointer" />
             </a>
-            <a href="https://biratinfo.com/author/rocketsingh" target="_blank" className="flex items-center hover:opacity-60 transition hover:scale-110">
+            <a href="https://biratinfo.com/author/HomeSewa" target="_blank" className="flex items-center hover:opacity-60 transition hover:scale-110">
               <img src={`/icons/biratinfo.svg`} className="h-5 w-5 sm:h-6 sm:w-6 cursor-pointer" />
             </a>
             <a href="#" className="flex items-center hover:opacity-60 transition hover:scale-110">
@@ -179,19 +179,19 @@ const Footer = () => {
           {/* CONTACT BOXES */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
 
-            <a href="mailto:support@rocketsingh.app" className="flex items-center gap-2 border-2 rounded-lg px-7 py-3 w-full sm:w-auto">
+            <a href="mailto:support@HomeSewa.app" className="flex items-center gap-2 border-2 rounded-lg px-7 py-3 w-full sm:w-auto">
               <img src="/icons/email.svg" alt="email" className="h-6 w-6" />
-              <span className="text-sm">support@rocketsingh.app</span>
+              <span className="text-sm">support@HomeSewa.app</span>
             </a>
 
             <a href="tel:+918190074189" className="flex items-center gap-2 border-2 rounded-lg px-7 py-3 w-full sm:w-auto">
               <img src="/icons/phone.svg" alt="phone" className="h-6 w-6" />
-              <span className="text-sm">+91-8190074189</span>
+              <span className="text-sm">+977-9852024365</span>
             </a>
 
             <a href="https://wa.me/918190074189" target="_blank" className="flex items-center gap-2 border-2 rounded-lg px-6 py-3 w-full sm:w-auto">
               <img src="/icons/whatsapp.svg" alt="whatsapp" className="h-6 w-6" />
-              <span className="text-sm">+91-8190074189</span>
+              <span className="text-sm">+977-9852024365</span>
             </a>
           </div>
         </div>
@@ -203,7 +203,7 @@ const Footer = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 lg:mt-12 flex flex-col lg:flex-row justify-center items-center lg:justify-between text-[13px] gap-3 text-center md:text-left font-semibold">
           <p className="flex flex-col md:flex-row gap-4 md:gap-1 items-center">
             <span>All Rights Reserved. © 2018-{currentYear}</span>
-            <span>RocketSingh</span>
+            <span>HomeSewa</span>
             <span>Built With : <a href="https://broadpress.org" target="_blank" className="hover:border-b hover:border-black text-gray-500">BroadPress</a></span>
           </p>
 

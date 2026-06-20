@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ReactNode } from "react";
 
-const BRAND = "RocketSingh";
+const BRAND = "HomeSewa";
 
 export function FormPageTitle({ title }: { title: string }) {
   const suffix = ` ${BRAND}`;

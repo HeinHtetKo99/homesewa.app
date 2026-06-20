@@ -1,4 +1,4 @@
-export const PARTNERSHIP_CITIES = ["Chennai", "Other"] as const;
+export const PARTNERSHIP_CITIES = ["Kathmandu", "Other"] as const;
 
 export const BUSINESS_TYPES = [
   "Landscaping Company",

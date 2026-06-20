@@ -19,33 +19,33 @@ function postContent(intro: string, sections: { heading: string; body: string }[
 export const blogPosts: BlogPost[] = [
   {
     slug: "bathroom-cleaning",
-    title: "Expert Bathroom Cleaning Services in India",
+    title: "Expert Bathroom Cleaning Services in Nepal",
     description:
-      "Bathrooms are one of the most frequently used areas in any home. RocketSingh specializes in professional bathroom cleaning services across India, ensuring sparkling, sanitized spaces every time.",
+      "Bathrooms are one of the most frequently used areas in any home. HomeSewa specializes in professional bathroom cleaning services across Nepal, ensuring sparkling, sanitized spaces every time.",
     image: "/blog/bathroom-cleaning.jpg",
     category: "Residential",
     date: "January 15, 2026",
     readTime: "4 min read",
     content: postContent(
-      "Bathrooms are one of the most frequently used areas in any home. RocketSingh specializes in professional bathroom cleaning services across India, ensuring sparkling, sanitized spaces every time. Our deep cleaning removes soap scum, grime, and harmful bacteria, even in difficult areas like behind toilets and tile grout.",
+      "Bathrooms are one of the most frequently used areas in any home. HomeSewa specializes in professional bathroom cleaning services across Nepal, ensuring sparkling, sanitized spaces every time. Our deep cleaning removes soap scum, grime, and harmful bacteria, even in difficult areas like behind toilets and tile grout.",
       [
         { heading: "Why Professional Bathroom Cleaning Matters", body: "Regular bathroom cleaning prevents mold, mildew, and bacteria buildup that can affect your family's health. Our trained professionals use eco-friendly products safe for children and pets." },
         { heading: "What We Clean", body: "We deep clean tiles, sinks, toilets, showers, mirrors, faucets, and grout lines. Hard water stains and soap scum are removed using specialized techniques and equipment." },
-        { heading: "Book Your Service", body: "Schedule a bathroom cleaning service in Chennai, Bengaluru, or Mumbai through our website or mobile app. Same-day appointments may be available depending on availability." },
+        { heading: "Book Your Service", body: "Schedule a bathroom cleaning service in Kathmandu, Bengaluru, or Mumbai through our website or mobile app. Same-day appointments may be available depending on availability." },
       ]
     ),
   },
   {
     slug: "kitchen-cleaning",
-    title: "Professional Kitchen Cleaning Services in India",
+    title: "Professional Kitchen Cleaning Services in Nepal",
     description:
-      "A clean kitchen is essential for a healthy home. RocketSingh offers expert kitchen cleaning, including countertops, sinks, stovetops, ovens, and floors.",
+      "A clean kitchen is essential for a healthy home. HomeSewa offers expert kitchen cleaning, including countertops, sinks, stovetops, ovens, and floors.",
     image: "/blog/kitchen-cleaning.jpg",
     category: "Residential",
     date: "January 12, 2026",
     readTime: "4 min read",
     content: postContent(
-      "A clean kitchen is essential for a healthy home. RocketSingh offers expert kitchen cleaning across Chennai, Mumbai, and Bengaluru, sanitizing surfaces and removing grease and stubborn stains.",
+      "A clean kitchen is essential for a healthy home. HomeSewa offers expert kitchen cleaning across Kathmandu, Mumbai, and Bengaluru, sanitizing surfaces and removing grease and stubborn stains.",
       [
         { heading: "Deep Kitchen Sanitization", body: "We clean countertops, cabinets, sinks, stovetops, ovens, and floors. Our professionals prevent food contamination and maintain a hygienic cooking environment." },
         { heading: "Eco-Friendly Products", body: "We use environmentally safe cleaning solutions that are effective against grease and bacteria without leaving harmful residues on food preparation surfaces." },
@@ -55,15 +55,15 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "home-cleaning",
-    title: "Reliable Home Cleaning Services in India",
+    title: "Reliable Home Cleaning Services in Nepal",
     description:
-      "Maintaining a clean home can be challenging. RocketSingh provides complete home cleaning services across India, covering bedrooms, living areas, kitchens, bathrooms, floors, windows, and furniture.",
+      "Maintaining a clean home can be challenging. HomeSewa provides complete home cleaning services across Nepal, covering bedrooms, living areas, kitchens, bathrooms, floors, windows, and furniture.",
     image: "/blog/home-cleaning.jpg",
     category: "Residential",
     date: "January 10, 2026",
     readTime: "5 min read",
     content: postContent(
-      "RocketSingh provides complete home cleaning services across India with trained professionals and eco-friendly solutions for a hygienic, fresh, and comfortable home.",
+      "HomeSewa provides complete home cleaning services across Nepal with trained professionals and eco-friendly solutions for a hygienic, fresh, and comfortable home.",
       [
         { heading: "Comprehensive Coverage", body: "Our home cleaning includes bedrooms, living areas, kitchens, bathrooms, floors, windows, and furniture. We tailor services to apartments, houses, and villas." },
         { heading: "Deep vs Regular Cleaning", body: "Regular cleaning maintains daily tidiness while deep cleaning targets hidden grime, allergens, and hard-to-reach areas for a thorough refresh." },
@@ -73,9 +73,9 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "carpet-cleaning",
-    title: "Top Carpet Cleaning Services in India",
+    title: "Top Carpet Cleaning Services in Nepal",
     description:
-      "Carpets can harbor dust, dirt, and allergens. RocketSingh offers professional carpet cleaning in India using vacuuming, stain treatment, steam cleaning, and quick drying methods.",
+      "Carpets can harbor dust, dirt, and allergens. HomeSewa offers professional carpet cleaning in Nepal using vacuuming, stain treatment, steam cleaning, and quick drying methods.",
     image: "/blog/carpet-cleaning.jpg",
     category: "Residential",
     date: "January 8, 2026",
@@ -93,13 +93,13 @@ export const blogPosts: BlogPost[] = [
     slug: "sofa-upholstery-cleaning",
     title: "Professional Sofa & Upholstery Cleaning",
     description:
-      "Your sofas and upholstered furniture accumulate dust, stains, and odors. RocketSingh provides professional sofa and upholstery cleaning in India using deep steam cleaning and fabric-safe solutions.",
+      "Your sofas and upholstered furniture accumulate dust, stains, and odors. HomeSewa provides professional sofa and upholstery cleaning in Nepal using deep steam cleaning and fabric-safe solutions.",
     image: "/blog/sofa-upholstery-cleaning.jpg",
     category: "Residential",
     date: "January 5, 2026",
     readTime: "4 min read",
     content: postContent(
-      "Restore furniture hygiene, protect its lifespan, and maintain a fresh home environment with our professional sofa and upholstery cleaning services across India.",
+      "Restore furniture hygiene, protect its lifespan, and maintain a fresh home environment with our professional sofa and upholstery cleaning services across Nepal.",
       [
         { heading: "Fabric-Safe Methods", body: "We use appropriate cleaning methods for fabric, leather, and microfiber upholstery to avoid damage while achieving deep cleanliness." },
         { heading: "Odor and Stain Removal", body: "Deep steam cleaning removes embedded odors, pet stains, and everyday spills that accumulate over time." },
@@ -109,15 +109,15 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "move-in-out-cleaning",
-    title: "Move-In & Move-Out Cleaning Services in India",
+    title: "Move-In & Move-Out Cleaning Services in Nepal",
     description:
-      "Moving can be stressful. RocketSingh ensures every corner of your home is spotless with move-in and move-out cleaning services across India.",
+      "Moving can be stressful. HomeSewa ensures every corner of your home is spotless with move-in and move-out cleaning services across Nepal.",
     image: "/blog/move-in-move-out-cleaning.jpg",
     category: "Residential",
     date: "January 3, 2026",
     readTime: "5 min read",
     content: postContent(
-      "Deep cleaning, bathroom and kitchen sanitization, and debris removal make relocation seamless and hygienic with RocketSingh's move-in and move-out services.",
+      "Deep cleaning, bathroom and kitchen sanitization, and debris removal make relocation seamless and hygienic with HomeSewa's move-in and move-out services.",
       [
         { heading: "Move-Out Cleaning", body: "Leave your previous property in excellent condition for landlords and new tenants. We clean every room, appliance, and fixture thoroughly." },
         { heading: "Move-In Cleaning", body: "Start fresh in your new home with sanitized bathrooms, kitchens, floors, and closets ready for your belongings." },
@@ -129,7 +129,7 @@ export const blogPosts: BlogPost[] = [
     slug: "sanitization",
     title: "Trusted Disinfection and Sanitization Services",
     description:
-      "Maintain a germ-free environment with RocketSingh's professional disinfection services for homes, offices, and commercial spaces.",
+      "Maintain a germ-free environment with HomeSewa's professional disinfection services for homes, offices, and commercial spaces.",
     image: "/blog/disinfection-sanitization-services.jpg",
     category: "Commercial",
     date: "December 28, 2025",
@@ -138,16 +138,16 @@ export const blogPosts: BlogPost[] = [
       "Surface disinfection, high-touch area sanitization, and eco-friendly disinfectants keep homes, offices, and commercial spaces healthier and safer.",
       [
         { heading: "High-Touch Surfaces", body: "We focus on door handles, switches, desks, restrooms, and shared equipment where germs spread most easily." },
-        { heading: "Healthcare Standards", body: "Our protocols meet strict hygiene requirements for hospitals, clinics, offices, and hospitality venues across India." },
+        { heading: "Healthcare Standards", body: "Our protocols meet strict hygiene requirements for hospitals, clinics, offices, and hospitality venues across Nepal." },
         { heading: "Eco-Friendly Disinfectants", body: "We use effective yet safe disinfectants that protect people and the environment without harsh chemical residues." },
       ]
     ),
   },
   {
     slug: "ac-cleaning",
-    title: "Air Conditioner Cleaning Services in India",
+    title: "Air Conditioner Cleaning Services in Nepal",
     description:
-      "Dirty AC units circulate dust and reduce efficiency. RocketSingh provides AC cleaning services in India to remove dust, allergens, and bacteria.",
+      "Dirty AC units circulate dust and reduce efficiency. HomeSewa provides AC cleaning services in Nepal to remove dust, allergens, and bacteria.",
     image: "/blog/ac-cleaning.jpg",
     category: "Residential",
     date: "December 25, 2025",
@@ -163,9 +163,9 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "laptop-cleaning",
-    title: "Laptop Cleaning Services in India",
+    title: "Laptop Cleaning Services in Nepal",
     description:
-      "Protect your devices with RocketSingh's professional laptop cleaning services across India.",
+      "Protect your devices with HomeSewa's professional laptop cleaning services across Nepal.",
     image: "/blog/laptop-cleaning.jpg",
     category: "Office",
     date: "December 20, 2025",
@@ -175,15 +175,15 @@ export const blogPosts: BlogPost[] = [
       [
         { heading: "Vent and Fan Cleaning", body: "Dust buildup in vents causes overheating and performance issues. Our technicians safely clean internal components without damaging hardware." },
         { heading: "Screen and Keyboard", body: "Professional screen and keyboard cleaning removes fingerprints, bacteria, and debris for a hygienic workspace." },
-        { heading: "Office Packages", body: "We offer bulk laptop cleaning for offices, schools, and co-working spaces across Chennai and nearby regions." },
+        { heading: "Office Packages", body: "We offer bulk laptop cleaning for offices, schools, and co-working spaces across Kathmandu and nearby regions." },
       ]
     ),
   },
   {
     slug: "desktop-cleaning",
-    title: "Professional Desktop Cleaning Services in India",
+    title: "Professional Desktop Cleaning Services in Nepal",
     description:
-      "Clean workstations improve productivity and hygiene. RocketSingh provides desktop cleaning services across India for offices and home workstations.",
+      "Clean workstations improve productivity and hygiene. HomeSewa provides desktop cleaning services across Nepal for offices and home workstations.",
     image: "/blog/desktop-cleaning.jpg",
     category: "Office",
     date: "December 18, 2025",
@@ -193,15 +193,15 @@ export const blogPosts: BlogPost[] = [
       [
         { heading: "Complete Workstation Care", body: "We clean monitors, keyboards, mice, desks, and CPU units using safe methods that protect electronics." },
         { heading: "Office Hygiene", body: "Regular desktop cleaning reduces germ spread in shared offices and improves employee health and productivity." },
-        { heading: "Scheduled Maintenance", body: "Weekly or monthly desktop cleaning packages are available for corporate clients across India." },
+        { heading: "Scheduled Maintenance", body: "Weekly or monthly desktop cleaning packages are available for corporate clients across Nepal." },
       ]
     ),
   },
   {
     slug: "aircraft-cleaning",
-    title: "Aeroplane & Helicopter Cleaning Services in India",
+    title: "Aeroplane & Helicopter Cleaning Services in Nepal",
     description:
-      "Aircraft interiors require professional cleaning for hygiene and passenger comfort. RocketSingh provides thorough aeroplane and helicopter cleaning services across India.",
+      "Aircraft interiors require professional cleaning for hygiene and passenger comfort. HomeSewa provides thorough aeroplane and helicopter cleaning services across Nepal.",
     image: "/blog/helicopter-cleaning.jpg",
     category: "Specialized",
     date: "December 15, 2025",
@@ -211,15 +211,15 @@ export const blogPosts: BlogPost[] = [
       [
         { heading: "Cabin Sanitization", body: "We deep clean seats, overhead bins, galleys, and lavatories using aviation-approved products and procedures." },
         { heading: "Upholstery Care", body: "Fabric and leather seat cleaning restores appearance and removes allergens for passenger comfort." },
-        { heading: "Safety Compliance", body: "Our team follows strict safety protocols for aircraft cleaning operations across India's aviation sector." },
+        { heading: "Safety Compliance", body: "Our team follows strict safety protocols for aircraft cleaning operations across Nepal's aviation sector." },
       ]
     ),
   },
   {
     slug: "reserve-tank",
-    title: "Safe Reserve Tank Cleaning Services in India",
+    title: "Safe Reserve Tank Cleaning Services in Nepal",
     description:
-      "Water storage tanks can accumulate dirt and bacteria. RocketSingh provides professional reserve tank cleaning services across India.",
+      "Water storage tanks can accumulate dirt and bacteria. HomeSewa provides professional reserve tank cleaning services across Nepal.",
     image: "/blog/reserve-tank-cleaning.jpg",
     category: "Residential",
     date: "December 12, 2025",
@@ -235,9 +235,9 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "marble-tile",
-    title: "Marble & Tile Cleaning Services in India",
+    title: "Marble & Tile Cleaning Services in Nepal",
     description:
-      "Marble and tiles enhance a home's beauty but require regular maintenance. RocketSingh offers professional cleaning for sparkling floors and grout.",
+      "Marble and tiles enhance a home's beauty but require regular maintenance. HomeSewa offers professional cleaning for sparkling floors and grout.",
     image: "/blog/marble-tile-cleaning.jpg",
     category: "Residential",
     date: "December 10, 2025",
@@ -253,9 +253,9 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "post-construction",
-    title: "Post-Construction Cleaning Services in India",
+    title: "Post-Construction Cleaning Services in Nepal",
     description:
-      "After construction or renovation, spaces are left dusty and messy. RocketSingh provides post-construction cleaning across India.",
+      "After construction or renovation, spaces are left dusty and messy. HomeSewa provides post-construction cleaning across Nepal.",
     image: "/blog/post-construction-cleaning.jpg",
     category: "Commercial",
     date: "December 8, 2025",
@@ -265,15 +265,15 @@ export const blogPosts: BlogPost[] = [
       [
         { heading: "Dust and Debris Removal", body: "Construction leaves fine dust on every surface. We remove debris from floors, walls, windows, and fixtures systematically." },
         { heading: "Final Touch Cleaning", body: "Before handover or move-in, we deliver a spotless finish including polished floors, clean windows, and sanitized wet areas." },
-        { heading: "Commercial Projects", body: "We handle post-construction cleaning for hotels, offices, schools, and residential complexes across India." },
+        { heading: "Commercial Projects", body: "We handle post-construction cleaning for hotels, offices, schools, and residential complexes across Nepal." },
       ]
     ),
   },
   {
     slug: "garden-cleaning",
-    title: "Garden Cleaning Services in India",
+    title: "Garden Cleaning Services in Nepal",
     description:
-      "A well-maintained garden enhances your home's appeal. RocketSingh offers expert garden cleaning services across India.",
+      "A well-maintained garden enhances your home's appeal. HomeSewa offers expert garden cleaning services across Nepal.",
     image: "/blog/garden-cleaning.jpg",
     category: "Outdoor",
     date: "December 5, 2025",
@@ -289,9 +289,9 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "garage-cleaning",
-    title: "Garage Cleaning Services in India",
+    title: "Garage Cleaning Services in Nepal",
     description:
-      "Garages can quickly become cluttered. RocketSingh organizes, sweeps, and removes oil stains and debris.",
+      "Garages can quickly become cluttered. HomeSewa organizes, sweeps, and removes oil stains and debris.",
     image: "/blog/garage-cleaning.jpg",
     category: "Residential",
     date: "December 3, 2025",
@@ -307,9 +307,9 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "air-duct",
-    title: "Air Duct & Vent Cleaning Services in India",
+    title: "Air Duct & Vent Cleaning Services in Nepal",
     description:
-      "Air ducts and vents collect dust and allergens over time. RocketSingh improves indoor air quality with professional HVAC cleaning.",
+      "Air ducts and vents collect dust and allergens over time. HomeSewa improves indoor air quality with professional HVAC cleaning.",
     image: "/blog/air-duct-vent-cleaning.jpg",
     category: "Commercial",
     date: "November 30, 2025",
@@ -325,9 +325,9 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "event-cleaning",
-    title: "Event Cleaning Services in India",
+    title: "Event Cleaning Services in Nepal",
     description:
-      "RocketSingh ensures stress-free post-event cleanup across India including trash removal and restroom sanitization.",
+      "HomeSewa ensures stress-free post-event cleanup across Nepal including trash removal and restroom sanitization.",
     image: "/blog/post-event-cleaning.jpg",
     category: "Commercial",
     date: "November 28, 2025",
@@ -335,7 +335,7 @@ export const blogPosts: BlogPost[] = [
     content: postContent(
       "Post-event cleanup leaves your venue spotless and ready for the next use with trash removal, surface cleaning, and restroom sanitization.",
       [
-        { heading: "Wedding and Banquet Cleanup", body: "We handle large-scale post-event cleaning for wedding venues, banquet halls, and reception spaces across Chennai." },
+        { heading: "Wedding and Banquet Cleanup", body: "We handle large-scale post-event cleaning for wedding venues, banquet halls, and reception spaces across Kathmandu." },
         { heading: "Corporate Events", body: "Conference and seminar cleanup includes seating areas, catering zones, and restroom facilities." },
         { heading: "Fast Turnaround", body: "Our teams work efficiently to restore venues overnight or within hours of event completion." },
       ]
@@ -343,9 +343,9 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "car-cleaning",
-    title: "Professional Car Cleaning Services in India",
+    title: "Professional Car Cleaning Services in Nepal",
     description:
-      "A clean car enhances both appearance and hygiene. RocketSingh provides exterior washing, polishing, and interior vacuuming across India.",
+      "A clean car enhances both appearance and hygiene. HomeSewa provides exterior washing, polishing, and interior vacuuming across Nepal.",
     image: "/blog/car-interior-cleaning.jpg",
     category: "Automotive",
     date: "November 25, 2025",
@@ -361,9 +361,9 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "facade-cleaning",
-    title: "Facade Cleaning Services in India",
+    title: "Facade Cleaning Services in Nepal",
     description:
-      "Building facades are exposed to dust and pollution. RocketSingh offers professional facade cleaning across India.",
+      "Building facades are exposed to dust and pollution. HomeSewa offers professional facade cleaning across Nepal.",
     image: "/blog/facade-cleaning.jpg",
     category: "Commercial",
     date: "November 22, 2025",
@@ -379,9 +379,9 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "parquet-chair",
-    title: "Parquet & Chair Cleaning Services in India",
+    title: "Parquet & Chair Cleaning Services in Nepal",
     description:
-      "Wooden floors and chairs require regular care. RocketSingh provides parquet and chair cleaning using eco-friendly products.",
+      "Wooden floors and chairs require regular care. HomeSewa provides parquet and chair cleaning using eco-friendly products.",
     image: "/blog/parquet-cleaning.jpg",
     category: "Commercial",
     date: "November 20, 2025",
@@ -391,15 +391,15 @@ export const blogPosts: BlogPost[] = [
       [
         { heading: "Parquet Floor Care", body: "Specialized cleaning and polishing protect wooden floors from scratches and maintain their natural beauty." },
         { heading: "Office Chair Cleaning", body: "Fabric and leather chair cleaning removes stains, odors, and allergens from high-use office seating." },
-        { heading: "Corporate Packages", body: "Monthly maintenance packages available for offices, schools, and institutions across India." },
+        { heading: "Corporate Packages", body: "Monthly maintenance packages available for offices, schools, and institutions across Nepal." },
       ]
     ),
   },
   {
     slug: "septic-cleaning",
-    title: "Drainage & Septic Tank Cleaning Services in India",
+    title: "Drainage & Septic Tank Cleaning Services in Nepal",
     description:
-      "Clogged drains and dirty septic tanks pose health hazards. RocketSingh provides professional drainage and septic tank cleaning.",
+      "Clogged drains and dirty septic tanks pose health hazards. HomeSewa provides professional drainage and septic tank cleaning.",
     image: "/blog/drainage-cleaning.jpg",
     category: "Residential",
     date: "November 18, 2025",
@@ -409,15 +409,15 @@ export const blogPosts: BlogPost[] = [
       [
         { heading: "Drain Unclogging", body: "Professional equipment clears blockages in kitchen, bathroom, and main drainage lines efficiently." },
         { heading: "Septic Tank Maintenance", body: "Regular septic cleaning prevents overflows, odors, and contamination of surrounding soil and water." },
-        { heading: "Emergency Service", body: "Same-day drainage and septic services may be available for urgent situations in Chennai and nearby areas." },
+        { heading: "Emergency Service", body: "Same-day drainage and septic services may be available for urgent situations in Kathmandu and nearby areas." },
       ]
     ),
   },
   {
     slug: "lift-cleaning",
-    title: "Lift & Elevator Cleaning Services in India",
+    title: "Lift & Elevator Cleaning Services in Nepal",
     description:
-      "Elevators are high-touch areas. RocketSingh ensures safe and sanitized rides with professional lift cleaning across India.",
+      "Elevators are high-touch areas. HomeSewa ensures safe and sanitized rides with professional lift cleaning across Nepal.",
     image: "/blog/lift-elevator-cleaning.jpg",
     category: "Commercial",
     date: "November 15, 2025",
@@ -433,9 +433,9 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "corporate-cleaning",
-    title: "Corporate & Monthly Cleaning Services in India",
+    title: "Corporate & Monthly Cleaning Services in Nepal",
     description:
-      "Maintaining clean corporate spaces is vital. RocketSingh offers regular office cleaning and monthly deep cleaning packages.",
+      "Maintaining clean corporate spaces is vital. HomeSewa offers regular office cleaning and monthly deep cleaning packages.",
     image: "/blog/monthly-cleaning.jpg",
     category: "Commercial",
     date: "November 12, 2025",

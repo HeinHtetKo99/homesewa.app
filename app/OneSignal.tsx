@@ -20,7 +20,7 @@ export function OneSignalInit() {
                     autoPrompt: true,
                     delay: { pageViews: 1, timeDelay: 2 },
                     text: {
-                      actionMessage: "Get updates on home service offers and RocketSingh deals.",
+                      actionMessage: "Get updates on home service offers and HomeSewa deals.",
                       acceptButton: "Subscribe",
                       cancelButton: "Later",
                     },

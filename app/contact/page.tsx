@@ -24,8 +24,8 @@ const quickContacts = [
 ];
 
 export const metadata = {
-  title: "Contact | RocketSingh",
-  description: "Contact RocketSingh for professional cleaning and home services in India.",
+  title: "Contact | HomeSewa",
+  description: "Contact HomeSewa for professional cleaning and home services in Nepal.",
 };
 
 export default function Contact() {
@@ -49,7 +49,7 @@ export default function Contact() {
           <span className="font-semibold text-gray-800">Contact</span>
         </div>
 
-        <FormPageTitle title="Contact RocketSingh" />
+        <FormPageTitle title="Contact HomeSewa" />
       </div>
 
       <div className="mx-auto w-full max-w-6xl px-4 py-6 sm:px-6">
@@ -61,7 +61,7 @@ export default function Contact() {
           <div className="flex justify-center lg:pt-4">
             <img
               src="/contact/remwork.jpg"
-              alt="RocketSingh Office"
+              alt="HomeSewa Office"
               className="h-[450px] w-full max-w-md rounded-2xl object-cover drop-shadow-2xl"
             />
           </div>
@@ -70,9 +70,9 @@ export default function Contact() {
         <div className="mb-16 w-full rounded-2xl bg-gradient-to-b from-teal-50 via-white to-teal-50 py-16 shadow-inner">
           <div className="mx-auto mb-16 grid max-w-6xl items-center gap-10 px-4 lg:grid-cols-2">
             <div>
-              <h2 className="mb-5 text-4xl font-extrabold text-teal-900">We Work Across India</h2>
+              <h2 className="mb-5 text-4xl font-extrabold text-teal-900">We Work Across Nepal</h2>
               <p className="text-lg leading-relaxed text-gray-700">
-                Our team serves Chennai, Bengaluru, Hyderabad, and nearby regions with fast, reliable cleaning solutions for homes, offices, hotels, and commercial properties.
+                Our team serves Kathmandu, Bengaluru, Hyderabad, and nearby regions with fast, reliable cleaning solutions for homes, offices, hotels, and commercial properties.
               </p>
             </div>
             <div className="h-[420px] overflow-hidden rounded-2xl border border-teal-400 shadow-[0_0_30px_rgba(13,93,89,0.2)]">
@@ -84,15 +84,15 @@ export default function Contact() {
             <div className="group rounded-xl border-2 border-teal-900 bg-white p-4 text-center shadow-md transition-all duration-500 hover:-translate-y-1 hover:shadow-xl">
               <div className="mb-2 flex justify-center"><VisitIcon /></div>
               <h3 className="mb-1 text-lg font-semibold text-teal-900">Visit Us</h3>
-              <p className="text-sm leading-relaxed">Anna Salai, T. Nagar,<br />Chennai, India</p>
+              <p className="text-sm leading-relaxed">Anna Salai, T. Nagar,<br />Kathmandu, Nepal</p>
             </div>
             <a
-              href="mailto:support@rocketsingh.app"
+              href="mailto:support@HomeSewa.app"
               className="group rounded-xl border-2 border-teal-900 bg-white p-4 text-center shadow-md transition-all duration-500 hover:-translate-y-1 hover:shadow-xl"
             >
               <div className="mb-2 flex justify-center"><EmailIcon /></div>
               <h3 className="mb-1 text-lg font-semibold text-teal-900">Email Us</h3>
-              <p className="text-sm leading-relaxed">support@rocketsingh.app</p>
+              <p className="text-sm leading-relaxed">support@HomeSewa.app</p>
             </a>
             <Link
               href="/book"
@@ -121,7 +121,7 @@ export default function Contact() {
                 <h3 className="mb-1 text-xl font-semibold">{person.name}</h3>
                 <p className="mb-4 text-gray-600">{person.role}</p>
                 <a
-                  href="https://b.broadpress.org/rocketsingh"
+                  href="https://b.broadpress.org/HomeSewa"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="rounded-lg bg-[#0E4541] px-4 py-2 font-medium text-white transition hover:bg-teal-900"

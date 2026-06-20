@@ -13,15 +13,15 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps) {
   const { slug } = await params;
   const post = getBlogPost(slug);
-  if (!post) return { title: "Post Not Found | RocketSingh" };
+  if (!post) return { title: "Post Not Found | HomeSewa" };
 
   return {
-    title: `${post.title} | RocketSingh`,
+    title: `${post.title} | HomeSewa`,
     description: post.description,
     openGraph: {
       title: post.title,
       description: post.description,
-      images: [{ url: `https://www.rocketsingh.app${post.image}` }],
+      images: [{ url: `https://www.HomeSewa.app${post.image}` }],
     },
   };
 }
@@ -65,7 +65,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         <div className="mt-12 bg-teal-50 border border-teal-200 rounded-2xl p-8 text-center">
           <h3 className="text-xl font-bold text-teal-900 mb-3">Need Professional Help?</h3>
           <p className="text-gray-600 mb-6">
-            Book a trusted RocketSingh professional for any cleaning service in Chennai and across India.
+            Book a trusted HomeSewa professional for any cleaning service in Kathmandu and across Nepal.
           </p>
           <Link
             href="/book"

@@ -38,10 +38,10 @@ function getServiceCopy(service: CatalogService, category: string): ServiceCopy 
     const baseLower = base.toLowerCase();
 
     return {
-      introTitle: `Trusted ${base} Services at Home with RocketSingh`,
-      introParagraph2: `RocketSingh connects you with verified ${baseLower} professionals who visit your home and provide the service on-site. As part of our ${category} lineup, every visit includes transparent pricing, quality materials where needed, and a satisfaction-first approach.`,
+      introTitle: `Trusted ${base} Services at Home with HomeSewa`,
+      introParagraph2: `HomeSewa connects you with verified ${baseLower} professionals who visit your home and provide the service on-site. As part of our ${category} lineup, every visit includes transparent pricing, quality materials where needed, and a satisfaction-first approach.`,
       bookLabel: `Book ${base} at Home`,
-      assessmentDescription: `A RocketSingh professional reviews your requirements and prepares to provide ${baseLower} services at your home.`,
+      assessmentDescription: `A HomeSewa professional reviews your requirements and prepares to provide ${baseLower} services at your home.`,
       deliveryDescription: `Your assigned professional delivers ${baseLower} services at your home using industry-standard tools and proven techniques.`,
       faqIncludeQuestion: `What's included when a professional provides ${baseLower} services at my home?`,
       faqBookQuestion: `How do I book ${baseLower} services at home?`,
@@ -52,10 +52,10 @@ function getServiceCopy(service: CatalogService, category: string): ServiceCopy 
   const nameLower = name.toLowerCase();
 
   return {
-    introTitle: `Trusted ${name} with RocketSingh`,
-    introParagraph2: `RocketSingh sends verified professionals to your location to provide ${nameLower}. As part of our ${category} lineup, every visit includes transparent pricing, quality materials where needed, and a satisfaction-first approach.`,
+    introTitle: `Trusted ${name} with HomeSewa`,
+    introParagraph2: `HomeSewa sends verified professionals to your location to provide ${nameLower}. As part of our ${category} lineup, every visit includes transparent pricing, quality materials where needed, and a satisfaction-first approach.`,
     bookLabel: `Book ${name}`,
-    assessmentDescription: `A RocketSingh professional reviews your space and requirements before providing ${nameLower}.`,
+    assessmentDescription: `A HomeSewa professional reviews your space and requirements before providing ${nameLower}.`,
     deliveryDescription: `Skilled professionals deliver ${nameLower} at your location using proven methods and industry-standard tools.`,
     faqIncludeQuestion: `What does ${name} include?`,
     faqBookQuestion: `How do I book ${name}?`,
@@ -72,7 +72,7 @@ function buildDefaultDetail(
   const copy = getServiceCopy(service, category);
 
   return {
-    heroTitle: `${name} in Chennai`,
+    heroTitle: `${name} in Kathmandu`,
     heroDescription: service.desc,
     bookLabel: copy.bookLabel,
     introTitle: copy.introTitle,
@@ -97,7 +97,7 @@ function buildDefaultDetail(
       },
       {
         title: "Final Quality Check",
-        description: `We walk through the completed work with you to ensure everything meets RocketSingh quality standards.`,
+        description: `We walk through the completed work with you to ensure everything meets HomeSewa quality standards.`,
         image: images.qualityCheck,
         imageAlt: `${name} quality check`,
       },
@@ -115,7 +115,7 @@ function buildDefaultDetail(
       },
       {
         id: 3,
-        question: "Are RocketSingh professionals verified?",
+        question: "Are HomeSewa professionals verified?",
         answer:
           "Yes. Every professional on our platform is background-checked, skill-assessed, and rated by customers after each job.",
       },
@@ -123,13 +123,13 @@ function buildDefaultDetail(
         id: 4,
         question: "Which cities do you serve?",
         answer:
-          "RocketSingh provides home services in Chennai and nearby areas.",
+          "HomeSewa provides home services in Kathmandu and nearby areas.",
       },
       {
         id: 5,
         question: "What if I am not satisfied with the service?",
         answer:
-          "Contact us within 24 hours of your appointment. RocketSingh will review the issue and arrange a re-visit or resolution at no extra cost where applicable.",
+          "Contact us within 24 hours of your appointment. HomeSewa will review the issue and arrange a re-visit or resolution at no extra cost where applicable.",
       },
     ],
   };
@@ -140,9 +140,9 @@ const serviceOverrides: Record<string, ServiceOverride> = {
     heroTitle: "Deep Cleaning Services for Homes & Offices",
     heroDescription:
       "A thorough top-to-bottom clean that targets grime, bacteria, and hard-to-reach areas — leaving your space fresh, sanitized, and move-in ready.",
-    introTitle: "Complete Deep Cleaning by RocketSingh",
+    introTitle: "Complete Deep Cleaning by HomeSewa",
     introParagraphs: [
-      "Regular cleaning keeps surfaces tidy, but deep cleaning goes further. RocketSingh's deep cleaning service scrubs kitchens, sanitizes bathrooms, dusts ceiling fans and vents, cleans behind appliances, and refreshes upholstery and floors.",
+      "Regular cleaning keeps surfaces tidy, but deep cleaning goes further. HomeSewa's deep cleaning service scrubs kitchens, sanitizes bathrooms, dusts ceiling fans and vents, cleans behind appliances, and refreshes upholstery and floors.",
       "Ideal before festivals, after renovations, or when moving in or out, our trained crews use eco-friendly products and a room-by-room checklist so nothing is missed.",
       "Book once for a full reset, or schedule periodic deep cleans to maintain a healthier home environment year-round.",
     ],
@@ -187,7 +187,7 @@ const serviceOverrides: Record<string, ServiceOverride> = {
         id: 3,
         question: "Do I need to provide cleaning supplies?",
         answer:
-          "No. RocketSingh professionals arrive with equipment and products. Let us know if you prefer specific brands or have allergy concerns.",
+          "No. HomeSewa professionals arrive with equipment and products. Let us know if you prefer specific brands or have allergy concerns.",
       },
       {
         id: 4,
@@ -207,9 +207,9 @@ const serviceOverrides: Record<string, ServiceOverride> = {
     heroTitle: "Reliable Handyman Services at Your Doorstep",
     heroDescription:
       "From minor repairs to furniture assembly and fixture installations — one visit, multiple fixes, done right the first time.",
-    introTitle: "Your Go-To Handyman in Chennai",
+    introTitle: "Your Go-To Handyman in Kathmandu",
     introParagraphs: [
-      "Small home issues add up fast — a loose handle, a dripping tap, a shelf that won't stay level. RocketSingh handyman services tackle multiple tasks in a single visit so you don't coordinate different contractors for every little job.",
+      "Small home issues add up fast — a loose handle, a dripping tap, a shelf that won't stay level. HomeSewa handyman services tackle multiple tasks in a single visit so you don't coordinate different contractors for every little job.",
       "Our handymen are equipped for general repairs, mounting, assembly, caulking, and basic maintenance across apartments, villas, and commercial spaces.",
       "Save time and avoid DIY frustration. Book a handyman and get your to-do list cleared efficiently.",
     ],
@@ -242,9 +242,9 @@ const serviceOverrides: Record<string, ServiceOverride> = {
     heroTitle: "Luxury Spa Treatments in the Comfort of Your Home",
     heroDescription:
       "A trained spa therapist visits your home to provide massages, facials, and wellness treatments — relaxation without leaving your door.",
-    introTitle: "Spa Services at Home with RocketSingh",
+    introTitle: "Spa Services at Home with HomeSewa",
     introParagraphs: [
-      "Skip the traffic and waiting rooms. A RocketSingh spa professional comes to your home and provides massages, body scrubs, facials, and aromatherapy sessions with premium products.",
+      "Skip the traffic and waiting rooms. A HomeSewa spa professional comes to your home and provides massages, body scrubs, facials, and aromatherapy sessions with premium products.",
       "Perfect for busy professionals, new parents, or anyone who wants a private wellness session delivered at home by a verified therapist.",
       "Choose individual treatments or curated spa packages for couples and special occasions.",
     ],
@@ -277,9 +277,9 @@ const serviceOverrides: Record<string, ServiceOverride> = {
     heroTitle: "Professional Salon Services at Your Home",
     heroDescription:
       "A verified beauty professional visits your home for haircuts, styling, skincare, and makeup — salon-quality service without the salon visit.",
-    introTitle: "Salon Services at Home with RocketSingh",
+    introTitle: "Salon Services at Home with HomeSewa",
     introParagraphs: [
-      "RocketSingh connects you with skilled beauty professionals who come to your home and provide salon services on-site. From haircuts and blowouts to skincare and makeup, the service is delivered by an individual expert at your location.",
+      "HomeSewa connects you with skilled beauty professionals who come to your home and provide salon services on-site. From haircuts and blowouts to skincare and makeup, the service is delivered by an individual expert at your location.",
       "No need to travel or wait at a salon. Book a time that suits you, and a verified professional arrives with the tools and products needed to complete your service at home.",
       "Ideal for busy schedules, family appointments, or anyone who prefers personal care in the comfort of their own space.",
     ],
@@ -325,30 +325,30 @@ const serviceOverrides: Record<string, ServiceOverride> = {
       },
       {
         id: 3,
-        question: "Are RocketSingh professionals verified?",
+        question: "Are HomeSewa professionals verified?",
         answer:
           "Yes. Every professional on our platform is background-checked, skill-assessed, and rated by customers after each job.",
       },
       {
         id: 4,
         question: "Which cities do you serve?",
-        answer: "RocketSingh provides home services in Chennai and nearby areas.",
+        answer: "HomeSewa provides home services in Kathmandu and nearby areas.",
       },
       {
         id: 5,
         question: "What if I am not satisfied with the service?",
         answer:
-          "Contact us within 24 hours of your appointment. RocketSingh will review the issue and arrange a re-visit or resolution at no extra cost where applicable.",
+          "Contact us within 24 hours of your appointment. HomeSewa will review the issue and arrange a re-visit or resolution at no extra cost where applicable.",
       },
     ],
   },
   plumbing: {
     heroTitle: "Expert Plumbing Services — Leaks, Installs & Repairs",
     heroDescription:
-      "Fast response for dripping taps, blocked drains, pipe leaks, and bathroom installations across Chennai.",
+      "Fast response for dripping taps, blocked drains, pipe leaks, and bathroom installations across Kathmandu.",
     introTitle: "Professional Plumbing You Can Trust",
     introParagraphs: [
-      "Plumbing problems don't wait. RocketSingh connects you with licensed plumbers who diagnose issues accurately and fix them with durable parts.",
+      "Plumbing problems don't wait. HomeSewa connects you with licensed plumbers who diagnose issues accurately and fix them with durable parts.",
       "From emergency leak repairs to new fixture installations, we handle residential and small commercial plumbing with transparent upfront quotes.",
       "Prevent water damage and high bills — schedule a plumber before a small drip becomes a major repair.",
     ],
@@ -381,9 +381,9 @@ const serviceOverrides: Record<string, ServiceOverride> = {
     heroTitle: "AC Servicing, Repair & Maintenance",
     heroDescription:
       "Keep your air conditioner running efficiently with filter cleaning, coil maintenance, gas checks, and seasonal tune-ups.",
-    introTitle: "Complete AC Care by RocketSingh",
+    introTitle: "Complete AC Care by HomeSewa",
     introParagraphs: [
-      "A poorly maintained AC drives up electricity bills and circulates dust and allergens. RocketSingh AC services cover split, window, and central units for homes and offices.",
+      "A poorly maintained AC drives up electricity bills and circulates dust and allergens. HomeSewa AC services cover split, window, and central units for homes and offices.",
       "Our technicians clean filters and coils, check refrigerant levels, inspect electrical components, and optimize cooling performance.",
       "We recommend servicing at least twice a year — before summer peak and after heavy use season.",
     ],

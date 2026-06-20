@@ -17,7 +17,7 @@ export default function History() {
                 <section>
                     <h2 className="text-2xl font-bold  mb-4">Our Beginning</h2>
                     <p className=" leading-relaxed">
-                        RocketSingh began its journey with a mission to bring advanced digital
+                        HomeSewa began its journey with a mission to bring advanced digital
                         transformation to industries that needed it the most. What started as a small initiative
                         has now grown into a trusted technology partner for organizations across healthcare,
                         employment, and tourism.
@@ -102,7 +102,7 @@ export default function History() {
                         <div className="p-6 card   rounded-xl shadow-sm hover:shadow-md transition-all">
                             <h3 className="text-xl font-semibold ">2018 – Company Established</h3>
                             <p className=" mt-2 ">
-                                RocketSingh was officially founded in Chennai, marking the beginning of its journey in delivering professional cleaning services with a commitment to quality and reliability.
+                                HomeSewa was officially founded in Kathmandu, marking the beginning of its journey in delivering professional cleaning services with a commitment to quality and reliability.
                             </p>
                         </div>
 
@@ -135,7 +135,7 @@ export default function History() {
                 <section className="pb-12">
                     <h2 className="text-2xl font-bold  mb-4">Our Journey Continues</h2>
                     <p className=" leading-relaxed">
-                        With each passing year, RocketSingh grows stronger and more dedicated to delivering
+                        With each passing year, HomeSewa grows stronger and more dedicated to delivering
                         high-quality digital experiences. Our history reflects our commitment to innovation,
                         service excellence, and building solutions that make a real difference.
                     </p>

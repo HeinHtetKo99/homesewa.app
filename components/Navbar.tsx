@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import { X } from 'lucide-react'
 
-const BANNER_DISMISS_KEY = 'rocketsingh-partner-banner-dismissed'
+const BANNER_DISMISS_KEY = 'HomeSewa-partner-banner-dismissed'
 
 const Navbar = () => {
   const [visible, setVisible] = useState(false);
@@ -31,7 +31,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto py-2.5 px-4 sm:px-5 flex items-center gap-3">
         <div className="flex flex-1 flex-col sm:flex-row items-center justify-center gap-3 text-center">
           <p className="text-sm sm:text-[13px] lg:text-sm">
-            RocketSingh is looking for Business Partners in India.
+            HomeSewa is looking for Business Partners in Nepal.
           </p>
 
           <a href="/partnership">

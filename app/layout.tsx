@@ -8,29 +8,29 @@ import { Suspense } from 'react';
 
 
 export const metadata = {
-  metadataBase: new URL("https://rocketsingh.app"),
-  title: "RocketSingh | SuperFast Service",
-  description: "RocketSingh is a superfast on demand home service.",
-  keywords: "RocketSingh, SuperFast Service, On Demand Home Service, India",
-  authors: [{ name: "RocketSingh" }],
+  metadataBase: new URL("https://homesewa.app"),
+  title: "HomeSewa | SuperFast Service",
+  description: "HomeSewa is a superfast on demand home service.",
+  keywords: "HomeSewa, SuperFast Service, On Demand Home Service, Nepal",
+  authors: [{ name: "HomeSewa" }],
   openGraph: {
-    title: "RocketSingh | SuperFast Service",
-    description: "RocketSingh is a superfast on demand home service.",
-    url: "https://rocketsingh.app",
+    title: "HomeSewa | SuperFast Service",
+    description: "HomeSewa is a superfast on demand home service.",
+    url: "https://homesewa.app",
     images: [
       {
         url: "/og/default.png",
         width: 1200,
         height: 630,
-        alt: "RocketSingh | SuperFast Service",
+        alt: "HomeSewa | SuperFast Service",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "RocketSingh | SuperFast Service",
-    description: "RocketSingh is a superfast on demand home service.",
+    title: "HomeSewa | SuperFast Service",
+    description: "HomeSewa is a superfast on demand home service.",
     images: ["/og/default.png"],
   },
 };

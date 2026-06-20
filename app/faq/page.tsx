@@ -4,30 +4,30 @@ import Ribbon from '../../components/Ribbon';
 
 export default function Faq() {
   const faqs = [
-    { id: 1, question: "When was RocketSingh established?", answer: "RocketSingh was founded on June 14, 2018, in Chennai, India." },
-    { id: 2, question: "Where is RocketSingh located?", answer: "Headquartered at T. Nagar, Chennai, India." },
-    { id: 3, question: "Does RocketSingh have a mobile app?", answer: "Yes, RocketSingh has a dedicated mobile app for service booking and management." },
-    { id: 4, question: "Which industries does RocketSingh serve?", answer: "We serve residential, commercial, healthcare, hospitality, and tourism sectors in Chennai and nearby regions." },
-    { id: 5, question: "Who leads the technology team?", answer: "Prakash Upreti (PRACAS) is the Chief Technology Officer of RocketSingh." },
-    { id: 6, question: "What makes RocketSingh unique?", answer: "We offer professional, customized, and eco-friendly cleaning solutions with modern technology support." },
+    { id: 1, question: "When was HomeSewa established?", answer: "HomeSewa was founded on June 14, 2018, in Kathmandu, Nepal." },
+    { id: 2, question: "Where is HomeSewa located?", answer: "Headquartered at T. Nagar, Kathmandu, Nepal." },
+    { id: 3, question: "Does HomeSewa have a mobile app?", answer: "Yes, HomeSewa has a dedicated mobile app for service booking and management." },
+    { id: 4, question: "Which industries does HomeSewa serve?", answer: "We serve residential, commercial, healthcare, hospitality, and tourism sectors in Kathmandu and nearby regions." },
+    { id: 5, question: "Who leads the technology team?", answer: "Prakash Upreti (PRACAS) is the Chief Technology Officer of HomeSewa." },
+    { id: 6, question: "What makes HomeSewa unique?", answer: "We offer professional, customized, and eco-friendly cleaning solutions with modern technology support." },
     { id: 7, question: "Difference between deep cleaning and regular cleaning?", answer: "Regular cleaning maintains cleanliness, while deep cleaning involves thorough sanitization of hard-to-reach areas." },
     { id: 8, question: "What services are included in commercial cleaning?", answer: "Office cleaning, floor maintenance, window washing, restroom sanitation, and facility upkeep." },
-    { id: 9, question: "Does RocketSingh provide residential cleaning?", answer: "Yes, including full house cleaning, kitchen, bathroom, living areas, and carpet/floor treatment." },
+    { id: 9, question: "Does HomeSewa provide residential cleaning?", answer: "Yes, including full house cleaning, kitchen, bathroom, living areas, and carpet/floor treatment." },
     { id: 10, question: "Is eco-friendly cleaning available?", answer: "Absolutely, we use environmentally safe products for both residential and commercial spaces." },
-    { id: 11, question: "Does RocketSingh handle events and post-event cleaning?", answer: "Yes, we manage pre-event setup cleaning and post-event deep cleaning services." },
-    { id: 12, question: "How can I book a cleaning service?", answer: "You can book via our website, mobile app, or by contacting our office in Chennai." },
-    { id: 13, question: "Does RocketSingh offer emergency cleaning services?", answer: "Yes, urgent cleaning requests can be accommodated on the same day depending on availability." },
+    { id: 11, question: "Does HomeSewa handle events and post-event cleaning?", answer: "Yes, we manage pre-event setup cleaning and post-event deep cleaning services." },
+    { id: 12, question: "How can I book a cleaning service?", answer: "You can book via our website, mobile app, or by contacting our office in Kathmandu." },
+    { id: 13, question: "Does HomeSewa offer emergency cleaning services?", answer: "Yes, urgent cleaning requests can be accommodated on the same day depending on availability." },
     { id: 14, question: "Are the cleaning staff trained?", answer: "All cleaning personnel undergo professional training and background verification." },
     { id: 15, question: "Do you provide specialized healthcare facility cleaning?", answer: "Yes, we follow strict hygiene protocols for hospitals, clinics, and labs." },
-    { id: 16, question: "Does RocketSingh offer ongoing maintenance contracts?", answer: "Yes, businesses can opt for weekly, bi-weekly, or monthly maintenance packages." },
+    { id: 16, question: "Does HomeSewa offer ongoing maintenance contracts?", answer: "Yes, businesses can opt for weekly, bi-weekly, or monthly maintenance packages." },
     { id: 17, question: "What are the charges for cleaning services?", answer: "Pricing depends on service type, area, and frequency. Contact us for a detailed quote." },
-    { id: 18, question: "Who are some of RocketSingh’s notable clients?", answer: "Clients include hospitals, hotels, offices, schools, and residential societies across Chennai." },
-    { id: 19, question: "Does RocketSingh offer training or internships?", answer: "Yes, internships are available for students and professionals from June-May with guided training." },
+    { id: 18, question: "Who are some of HomeSewa’s notable clients?", answer: "Clients include hospitals, hotels, offices, schools, and residential societies across Kathmandu." },
+    { id: 19, question: "Does HomeSewa offer training or internships?", answer: "Yes, internships are available for students and professionals from June-May with guided training." },
     { id: 20, question: "How do I apply for an internship?", answer: "Fill the online application form in the Internship section of our website." },
-    { id: 21, question: "Are cleaning products provided by RocketSingh?", answer: "Yes, we supply all necessary eco-friendly cleaning products and equipment." },
-    { id: 22, question: "Is RocketSingh insured?", answer: "Yes, we maintain comprehensive insurance coverage for staff and property during service." },
-    { id: 23, question: "Can RocketSingh handle large commercial projects?", answer: "Yes, our team is equipped for large-scale office complexes, hotels, and event venues." },
-    { id: 24, question: "How do I provide feedback after a service?", answer: "Feedback can be submitted via our website, app, or directly to support@rocketsingh.app." },
+    { id: 21, question: "Are cleaning products provided by HomeSewa?", answer: "Yes, we supply all necessary eco-friendly cleaning products and equipment." },
+    { id: 22, question: "Is HomeSewa insured?", answer: "Yes, we maintain comprehensive insurance coverage for staff and property during service." },
+    { id: 23, question: "Can HomeSewa handle large commercial projects?", answer: "Yes, our team is equipped for large-scale office complexes, hotels, and event venues." },
+    { id: 24, question: "How do I provide feedback after a service?", answer: "Feedback can be submitted via our website, app, or directly to support@HomeSewa.app." },
   ];
 
   const faq1 = faqs.slice(0, Math.ceil(faqs.length / 2));
@@ -90,7 +90,7 @@ export default function Faq() {
 
                 <div className={`transition-all duration-300 ease-in-out overflow-hidden card2 ${openIndex === faq.id ? 'max-h-96 opacity-100 translate-y-0 p-6' : 'max-h-0 opacity-0'}`}>
                   {faq.id === 24 ? (
-                    <>Feedback can be submitted via our website, app, or directly to <a href="mailto:support@rocketsingh.app" className="underline">support@rocketsingh.app</a>.</>
+                    <>Feedback can be submitted via our website, app, or directly to <a href="mailto:support@HomeSewa.app" className="underline">support@HomeSewa.app</a>.</>
                   ) : faq.answer}
                 </div>
               </div>

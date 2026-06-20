@@ -73,7 +73,7 @@ function wrongBaseHint(
   return (
     `Tables visible to the API for base ${configuredBaseId}: ${list}. ` +
     `Could not use "${configuredName}". ` +
-    `Ensure AIRTABLE_BASE_ID matches your RocketSingh base.${tableIdHint}`
+    `Ensure AIRTABLE_BASE_ID matches your HomeSewa base.${tableIdHint}`
   );
 }
 

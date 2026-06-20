@@ -18,7 +18,7 @@ import { bookingScheduleValidationError } from "@/lib/booking-datetime";
 import { emailValidationError } from "@/lib/form-validation";
 
 /**
- * RocketSingh base (appcaAplIBD3UYYKu) → **Booking** table (form view: RocketSingh).
+ * HomeSewa base (appcaAplIBD3UYYKu) → **Booking** table (form view: HomeSewa).
  * Field names match the Airtable schema exactly (see Meta API / Booking table).
  * Select Services links to rows in the **Services** table by record id.
  */
@@ -336,7 +336,7 @@ async function parseMultipart(request: Request): Promise<BookingPayload | null> 
     fullName: String(form.get("fullName") ?? "").trim(),
     email: String(form.get("email") ?? "").trim(),
     phone: String(form.get("phone") ?? "").trim(),
-    city: String(form.get("city") ?? "Chennai").trim() || "Chennai",
+    city: String(form.get("city") ?? "Kathmandu").trim() || "Kathmandu",
     area: String(form.get("area") ?? "").trim(),
     street: String(form.get("street") ?? "").trim(),
     zip: String(form.get("zip") ?? "").trim(),
@@ -360,7 +360,7 @@ function parseJsonBody(raw: BookingJsonBody): BookingPayload {
     fullName: String(raw.fullName ?? "").trim(),
     email: String(raw.email ?? "").trim(),
     phone: String(raw.phone ?? "").trim(),
-    city: String(raw.city ?? "Chennai").trim() || "Chennai",
+    city: String(raw.city ?? "Kathmandu").trim() || "Kathmandu",
     area: String(raw.area ?? "").trim(),
     street: String(raw.street ?? "").trim(),
     zip: String(raw.zip ?? "").trim(),

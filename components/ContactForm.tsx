@@ -166,7 +166,7 @@ export default function ContactForm() {
             value={city}
             onChange={(e) => setCity(e.target.value)}
             autoComplete="address-level2"
-            placeholder="Chennai, Bengaluru, Mumbai…"
+            placeholder="Kathmandu, Bengaluru, Mumbai…"
           />
         </div>
 

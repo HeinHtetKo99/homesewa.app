@@ -17,14 +17,14 @@ export default function BrandLogo({
   return (
     <Link href="/" onClick={onClick} className={`flex items-center gap-2.5 ${className}`}>
       <Image
-        src="/logo/rocketsingh-logo.png"
-        alt="RocketSingh logo"
+        src="/logo/homesewa-logo.png"
+        alt="HomeSewa logo"
         width={44}
         height={44}
         className={`rounded-full object-cover ${imageClassName}`}
         priority
       />
-      <span className={textClassName}>RocketSingh</span>
+      <span className={textClassName}>HomeSewa</span>
     </Link>
   );
 }

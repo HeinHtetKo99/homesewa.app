@@ -18,7 +18,7 @@ import {
   BOOKING_SERVICES,
   BOOKING_SHIFTS,
   BUDGET_OPTIONS,
-  CHENNAI_AREAS,
+  Kathmandu_AREAS,
   MAX_PHOTOS,
   PROPERTY_TYPES,
   REFERRAL_SOURCES,
@@ -349,11 +349,11 @@ export default function BookForm() {
           id={`${formId}-area`}
           label="Area"
           required
-          options={CHENNAI_AREAS}
+          options={Kathmandu_AREAS}
           value={area}
           onChange={setArea}
           placeholder="Type to search area…"
-          hint={`Example: Adyar, Anna Nagar, Velachery — ${CHENNAI_AREAS.length} areas in Chennai`}
+          hint={`Example: Adyar, Anna Nagar, Velachery — ${Kathmandu_AREAS.length} areas in Kathmandu`}
         />
 
         <div className="flex flex-col gap-1">

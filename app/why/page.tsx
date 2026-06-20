@@ -19,7 +19,7 @@ export default function WhyUs () {
                         100% Skilled & Certified Professionals
                     </h1>
                     <p className="">
-                        At RocketSingh, we connect you with fully skilled and certified cleaning professionals you can trust. From home cleaning, office cleaning, carpet and sofa cleaning to deep sanitization and specialized services, every cleaner on our platform is carefully vetted to ensure expertise and reliability — no more wasted time searching for trustworthy help.
+                        At HomeSewa, we connect you with fully skilled and certified cleaning professionals you can trust. From home cleaning, office cleaning, carpet and sofa cleaning to deep sanitization and specialized services, every cleaner on our platform is carefully vetted to ensure expertise and reliability — no more wasted time searching for trustworthy help.
                     </p>
                     </div>
 
@@ -73,7 +73,7 @@ export default function WhyUs () {
                         Fully insured professionals 
                     </h1>
                     <p className=" ">
-                        Since 2018, RocketSingh has grown steadily by listening to customer feedback and refining our services. Every professional you book through us is fully insured, giving you peace of mind and confidence with every cleaning appointment.
+                        Since 2018, HomeSewa has grown steadily by listening to customer feedback and refining our services. Every professional you book through us is fully insured, giving you peace of mind and confidence with every cleaning appointment.
                     </p>
                     </div>
 

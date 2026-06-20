@@ -13,15 +13,15 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps) {
   const { slug } = await params;
   const service = getServiceDetail(slug);
-  if (!service) return { title: "Service Not Found | RocketSingh" };
+  if (!service) return { title: "Service Not Found | HomeSewa" };
 
   return {
-    title: `${service.title} | RocketSingh`,
+    title: `${service.title} | HomeSewa`,
     description: service.heroDescription,
     openGraph: {
-      title: `${service.title} | RocketSingh`,
+      title: `${service.title} | HomeSewa`,
       description: service.heroDescription,
-      images: [{ url: `https://www.rocketsingh.app${service.image}` }],
+      images: [{ url: `https://www.HomeSewa.app${service.image}` }],
     },
   };
 }

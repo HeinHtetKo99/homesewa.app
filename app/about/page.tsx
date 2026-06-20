@@ -4,8 +4,8 @@ import React, { useState } from "react";
 
 const sections = {
   about: {
-    title: "About RocketSingh",
-    desc: "RocketSingh is an A-grade professional cleaning company delivering solutions for home cleaning, office sanitization, carpet care, AC cleaning, and post-construction cleanup with consistent quality and dependable service standards.",
+    title: "About HomeSewa",
+    desc: "HomeSewa is an A-grade professional cleaning company delivering solutions for home cleaning, office sanitization, carpet care, AC cleaning, and post-construction cleanup with consistent quality and dependable service standards.",
   },
   mission: {
     title: "Our Mission",
@@ -13,7 +13,7 @@ const sections = {
   },
   goals: {
     title: "Our Goals",
-    desc: "We aim to simplify everyday maintenance by delivering efficient deep cleaning, sanitization, and facility care that enhance comfort, hygiene, and long-term value for every client across India.",
+    desc: "We aim to simplify everyday maintenance by delivering efficient deep cleaning, sanitization, and facility care that enhance comfort, hygiene, and long-term value for every client across Nepal.",
   },
   vision: {
     title: "Our Vision",
@@ -102,7 +102,7 @@ export default function About() {
           <div className="flex justify-center">
             <img
               src="/about/about.png"
-              alt="About RocketSingh"
+              alt="About HomeSewa"
               className="rounded-2xl shadow-xl w-full max-w-md object-cover border-4 border-teal-100"
             />
           </div>
@@ -111,7 +111,7 @@ export default function About() {
         <div className="max-w-6xl mx-auto mt-24 text-center">
           <h2 className="text-3xl font-bold text-teal-800 mb-6">Internationally Trusted Standards</h2>
           <p className="text-gray-700 max-w-2xl mx-auto mb-12">
-            RocketSingh follows globally recognized standards to ensure safety, responsibility, and professionalism in every service we deliver.
+            HomeSewa follows globally recognized standards to ensure safety, responsibility, and professionalism in every service we deliver.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {values.map((v) => (
@@ -131,7 +131,7 @@ export default function About() {
           <img src="/about/director.png" alt="Ramesh Koirala" className="w-40 h-40 rounded-full object-cover shrink-0" />
           <div className="flex-1">
             <p className="text-gray-700 mb-4 leading-relaxed">
-              &ldquo;At RocketSingh, our vision is to create cleaner, healthier living and working spaces for every client.
+              &ldquo;At HomeSewa, our vision is to create cleaner, healthier living and working spaces for every client.
               Our team is committed to excellence, and we continually invest in training and modern equipment to ensure
               you receive the best service possible. Your satisfaction is our top priority.&rdquo;
             </p>

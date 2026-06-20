@@ -17,13 +17,13 @@ const Message = () => {
           {/* Message Paragraphs */}
           <section className="space-y-6 text-justify leading-relaxed mb-10">
             <p>
-              At RocketSingh, our mission has always been to provide top-quality cleaning services with integrity, professionalism, and care. 
+              At HomeSewa, our mission has always been to provide top-quality cleaning services with integrity, professionalism, and care. 
               Since our establishment in 2018, we have focused on building strong teams, efficient processes, and adopting modern cleaning techniques to deliver excellent results for our clients.
             </p>
 
             <p>
               Our teams have been dedicated to ensuring every home, office, and facility we serve receives exceptional attention and service. 
-              Each project contributes to our continuous growth and commitment to raising industry standards in Chennai and across India.
+              Each project contributes to our continuous growth and commitment to raising industry standards in Kathmandu and across Nepal.
             </p>
 
             <p>
@@ -32,7 +32,7 @@ const Message = () => {
             </p>
 
             <p>
-              Through consistent effort and dedication, RocketSingh has grown into a trusted partner for both residential and commercial clients, strengthening our reputation and long-term success in the cleaning industry.
+              Through consistent effort and dedication, HomeSewa has grown into a trusted partner for both residential and commercial clients, strengthening our reputation and long-term success in the cleaning industry.
             </p>
           </section>
 
@@ -42,7 +42,7 @@ const Message = () => {
             <div className="w-full md:w-3/5 space-y-6 text-justify leading-relaxed">
               <p>
                 Our commitment extends beyond cleaning; we strive to create environments that inspire comfort, health, and productivity. 
-                At RocketSingh, every client and every space matters, and every team member contributes to our shared mission of excellence.
+                At HomeSewa, every client and every space matters, and every team member contributes to our shared mission of excellence.
               </p>
 
               <p>
@@ -54,7 +54,7 @@ const Message = () => {
               <footer className="mt-10 text-left">
                 <p className="text-xl font-bold">Ramesh Koirala</p>
                 <p className="text-sm mb-2">Director</p>
-                <p className="font-medium mb-4"><a href="mailto:support@rocketsingh.app" className="hover:underline">support@rocketsingh.app</a></p>
+                <p className="font-medium mb-4"><a href="mailto:support@HomeSewa.app" className="hover:underline">support@HomeSewa.app</a></p>
 
                 {/* Social Icons */}
                 <div className="flex gap-4 mt-3">

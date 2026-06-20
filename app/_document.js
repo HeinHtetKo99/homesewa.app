@@ -9,25 +9,25 @@ export default function Document() {
         <link rel="manifest" href="/manifest.json" />
 
         {/* Primary Meta Tags */}
-        <meta name="title" content="RocketSingh | SuperFast Service" />
-        <meta name="description" content="RocketSingh is a superfast on demand home service." />
-        <meta name="keywords" content="RocketSingh, SuperFast Service, On Demand Home Service, India" />
-        <meta name="author" content="RocketSingh" />
+        <meta name="title" content="HomeSewa | SuperFast Service" />
+        <meta name="description" content="HomeSewa is a superfast on demand home service." />
+        <meta name="keywords" content="HomeSewa, SuperFast Service, On Demand Home Service, Nepal" />
+        <meta name="author" content="HomeSewa" />
 
         {/* Open Graph */}
-        <meta property="og:url" content="https://rocketsingh.app" />
+        <meta property="og:url" content="https://homesewa.app" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="RocketSingh | SuperFast Service" />
-        <meta property="og:description" content="RocketSingh is a superfast on demand home service." />
-        <meta property="og:image" content="https://rocketsingh.app/og/default.png" />
+        <meta property="og:title" content="HomeSewa | SuperFast Service" />
+        <meta property="og:description" content="HomeSewa is a superfast on demand home service." />
+        <meta property="og:image" content="https://homesewa.app/og/default.png" />
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta property="twitter:domain" content="rocketsingh.app" />
-        <meta property="twitter:url" content="https://rocketsingh.app" />
-        <meta name="twitter:title" content="RocketSingh | SuperFast Service" />
-        <meta name="twitter:description" content="RocketSingh is a superfast on demand home service." />
-        <meta name="twitter:image" content="https://rocketsingh.app/og/default.png" />
+        <meta property="twitter:domain" content="HomeSewa.app" />
+        <meta property="twitter:url" content="https://homesewa.app" />
+        <meta name="twitter:title" content="HomeSewa | SuperFast Service" />
+        <meta name="twitter:description" content="HomeSewa is a superfast on demand home service." />
+        <meta name="twitter:image" content="https://homesewa.app/og/default.png" />
       </Head>
       <body>
         {/* Google Tag Manager (noscript) */}

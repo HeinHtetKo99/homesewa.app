@@ -19,8 +19,8 @@ const projects: Project[] = [
   { title: "Club Himalaya", description: "Event cleaning, lobby and facility sanitation for guest comfort and hygiene.", image: "/projects/8.jpg" },
   { title: "Hotel Bhadgaon", description: "Complete hotel cleaning and housekeeping services for guest satisfaction.", image: "/projects/9.jpg" },
   { title: "Kavya Himalayas", description: "Corporate and residential cleaning services for office and lounge areas.", image: "/projects/10.jpg" },
-  { title: "Mercure Chennai", description: "Room, lobby, and kitchen cleaning maintaining international hospitality standards.", image: "/projects/11.jpg" },
-  { title: "Chennai Guest House", description: "Regular and deep cleaning services for a safe and comfortable stay.", image: "/projects/12.jpg" },
+  { title: "Mercure Kathmandu", description: "Room, lobby, and kitchen cleaning maintaining international hospitality standards.", image: "/projects/11.jpg" },
+  { title: "Kathmandu Guest House", description: "Regular and deep cleaning services for a safe and comfortable stay.", image: "/projects/12.jpg" },
   { title: "Sankha Park", description: "Public space cleaning including pathways, lawns, and restrooms.", image: "/projects/13.jpg" },
   { title: "Hotel Aikawa, Sauraha", description: "Comprehensive guest room, lobby, and kitchen cleaning services.", image: "/projects/14.jpg" },
   { title: "The British School", description: "Classroom, corridor, and office cleaning ensuring a healthy learning environment.", image: "/projects/15.jpg" },
@@ -40,7 +40,7 @@ const projects: Project[] = [
   { title: "Rupy’s International School", description: "Comprehensive school cleaning including classrooms, labs, and playgrounds.", image: "/projects/29.jpg" },
   { title: "Norvic Hospital", description: "Patient care area cleaning and sanitation for a safe hospital environment.", image: "/projects/30.jpg" },
   { title: "Fortune Resort", description: "Full cleaning services including guest rooms, lobby, and banquet halls.", image: "/projects/31.jpg" },
-  { title: "Chennai Premium Hotel", description: "Daily housekeeping and deep cleaning for premium hotel rooms.", image: "/projects/32.jpg" },
+  { title: "Kathmandu Premium Hotel", description: "Daily housekeeping and deep cleaning for premium hotel rooms.", image: "/projects/32.jpg" },
   { title: "Tribhuwan Park", description: "Public park cleaning including lawns, pathways, and seating areas.", image: "/projects/33.jpg" },
   { title: "Basundhara Park", description: "Professional cleaning services for recreational spaces, pathways, and greenery.", image: "/projects/34.jpg" },
   { title: "Garden of Dreams", description: "Historical garden and public area cleaning ensuring a pleasant visitor experience.", image: "/projects/35.jpg" },
@@ -56,7 +56,7 @@ export default function ProjectsPage() {
           Our Projects
         </h1>
         <p className="text-lg md:text-xl max-w-2xl mx-auto">
-          RocketSingh’s portfolio of beautifully maintained gardens, resorts, hotels, schools, and corporate spaces across India.
+          HomeSewa’s portfolio of beautifully maintained gardens, resorts, hotels, schools, and corporate spaces across Nepal.
         </p>
       </section>
 

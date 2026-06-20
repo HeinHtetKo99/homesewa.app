@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const PLAY_STORE_URL =
-  "https://play.google.com/store/apps/details?id=com.pracas.rocketsingh";
+  "https://play.google.com/store/apps/details?id=com.pracas.HomeSewa";
 const AUTO_HIDE_MS = 30_000;
 const SCROLL_THRESHOLD = 8;
 
@@ -24,7 +24,7 @@ function isStandaloneApp() {
 
 export default function SmartAppBanner() {
   const [visible, setVisible] = useState(false);
-  const [hostname, setHostname] = useState("rocketsingh.app");
+  const [hostname, setHostname] = useState("HomeSewa.app");
 
   useEffect(() => {
     if (isStandaloneApp()) return;
@@ -62,11 +62,11 @@ export default function SmartAppBanner() {
     <div
       className="smart-app-banner"
       role="region"
-      aria-label="Install RocketSingh App"
+      aria-label="Install HomeSewa App"
     >
       <div className="smart-app-banner__card">
         <Image
-          src="/logo/rocketsingh-logo.png"
+          src="/logo/homesewa-logo.png"
           alt=""
           width={40}
           height={40}
@@ -74,7 +74,7 @@ export default function SmartAppBanner() {
         />
 
         <div className="smart-app-banner__copy">
-          <p className="smart-app-banner__title">Install RocketSingh App</p>
+          <p className="smart-app-banner__title">Install HomeSewa App</p>
           <p className="smart-app-banner__domain">{hostname}</p>
         </div>
 

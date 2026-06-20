@@ -59,14 +59,14 @@ const featuredVideo = "https://www.youtube.com/embed/DBCGoFwTy4E?rel=0";
       <section className="max-w-7xl mx-auto  rounded-md px-4 sm:px-6 py-10 sm:py-12 md:py-10">
         <div className="text-center">
           <h2 className=" text-2xl sm:text-3xl md:text-4xl font-semibold mb-8">
-            Featured RocketSingh Video
+            Featured HomeSewa Video
           </h2>
 
           <div className="flex justify-center">
             <div className="w-full max-w-7xl aspect-video rounded-lg overflow-hidden shadow-2xl">
               <iframe
                 src={featuredVideo}
-                title="Featured RocketSingh Video"
+                title="Featured HomeSewa Video"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 referrerPolicy="strict-origin-when-cross-origin"
@@ -81,7 +81,7 @@ const featuredVideo = "https://www.youtube.com/embed/DBCGoFwTy4E?rel=0";
       {/* Video Gallery Section */}
       <section className="max-w-7xl mx-auto py-14 px-4 sm:px-6 md:px-8">
         <h2 className="card2 text-xl sm:text-2xl md:text-3xl font-semibold text-center mb-10">
-          RocketSingh Videos
+          HomeSewa Videos
         </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">

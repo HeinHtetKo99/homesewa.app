@@ -18,9 +18,9 @@ const TermsofServices = () => {
           </p>
 
           <p className="about leading-relaxed">
-            Welcome to RocketSingh. Please read these Terms and Conditions (“Terms”, 
+            Welcome to HomeSewa. Please read these Terms and Conditions (“Terms”, 
             “Terms and Conditions”) carefully before using the website, mobile application, 
-            or social media platforms (the &ldquo;Service&rdquo;) operated by RocketSingh
+            or social media platforms (the &ldquo;Service&rdquo;) operated by HomeSewa
             (&ldquo;us&rdquo;, &ldquo;we&rdquo;, or &ldquo;our&rdquo;).
           </p>
 
@@ -33,7 +33,7 @@ const TermsofServices = () => {
           <div>
             <h2 className="text-2xl font-semibold text-teal-800 mb-2">Eligibility / Age</h2>
             <p className="about leading-relaxed">
-              Anyone under the age of 18 is not authorized to provide or receive services on RocketSingh.
+              Anyone under the age of 18 is not authorized to provide or receive services on HomeSewa.
             </p>
           </div>
 
@@ -54,8 +54,8 @@ const TermsofServices = () => {
           <div>
             <h2 className="text-2xl font-semibold text-teal-800 mb-2">Understanding of Our Platform</h2>
             <p className="about leading-relaxed">
-              Established on June 14, 2018, RocketSingh is a premier professional cleaning services provider 
-              based in Chennai, India. We specialize in innovative IT solutions but do not endorse or guarantee 
+              Established on June 14, 2018, HomeSewa is a premier professional cleaning services provider 
+              based in Kathmandu, Nepal. We specialize in innovative IT solutions but do not endorse or guarantee 
               the services provided by users.
             </p>
             <p className="about leading-relaxed">
@@ -77,7 +77,7 @@ const TermsofServices = () => {
           <div>
             <h2 className="text-2xl font-semibold text-teal-800 mb-2">Delivery / Payment</h2>
             <p className="about leading-relaxed">
-              RocketSingh does not deliver services or accept fees on behalf of users. Providers and service seekers 
+              HomeSewa does not deliver services or accept fees on behalf of users. Providers and service seekers 
               are responsible for their own agreements, payments, and documents.
             </p>
           </div>
@@ -104,7 +104,7 @@ const TermsofServices = () => {
           <div>
             <h2 className="text-2xl font-semibold text-teal-800 mb-2">Governing Law</h2>
             <p className="about leading-relaxed">
-              These Terms are governed by the laws of India. If any part is held invalid, the remaining provisions remain effective.
+              These Terms are governed by the laws of Nepal. If any part is held invalid, the remaining provisions remain effective.
             </p>
           </div>
 
@@ -112,7 +112,7 @@ const TermsofServices = () => {
           <div>
             <h2 className="text-2xl font-semibold text-teal-800 mb-2">Amendments</h2>
             <p className="about leading-relaxed">
-              RocketSingh reserves the right to amend Terms at its discretion. Changes will be notified at least 15 days 
+              HomeSewa reserves the right to amend Terms at its discretion. Changes will be notified at least 15 days 
               in advance. Continued use constitutes acceptance of revised Terms.
             </p>
           </div>

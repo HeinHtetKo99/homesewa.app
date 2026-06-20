@@ -11,7 +11,7 @@ const cookiePolicy = () => {
       <div className="max-w-7xl mx-auto px-4 md:px-8 mb-12 space-y-6">
         <section className="footer p-6 rounded-xl shadow-md space-y-6">
           <p className="about leading-relaxed">
-            At <span className="font-medium">RocketSingh</span>, we value your privacy and are committed
+            At <span className="font-medium">HomeSewa</span>, we value your privacy and are committed
             to ensuring a transparent and secure browsing experience. This Cookie
             Policy explains how and why cookies are used on our website, what types
             of cookies we employ, and the choices you have to manage or disable them.
@@ -19,8 +19,8 @@ const cookiePolicy = () => {
           <div>
             <h2 className="text-2xl font-semibold text-teal-800 mb-2">Introduction</h2>
             <p className="about leading-relaxed mb-2">
-             RocketSingh uses cookies and similar tracking 
-             technologies on https://rocketsingh.app to improve your experience and to 
+             HomeSewa uses cookies and similar tracking 
+             technologies on https://homesewa.app to improve your experience and to 
              operate our services effectively. This Cookie Policy explains what cookies
              are, how we use them, the types of cookies we use, and how you can manage
              or disable them if you prefer.</p>
@@ -74,9 +74,9 @@ const cookiePolicy = () => {
           </div>
           <div>
             <h2 className="text-2xl font-semibold text-teal-800 mb-2">Contact Us</h2>
-            <p className="about leading-relaxed mb-1">Email: <a href="mailto:support@rocketsingh.app" className="hover:underline">support@rocketsingh.app</a></p>
-            <p className="about leading-relaxed mb-1">Phone: +91-8190074189</p>
-            <p className="about leading-relaxed">Address: [RocketSingh Address], Chennai, India</p>
+            <p className="about leading-relaxed mb-1">Email: <a href="mailto:support@HomeSewa.app" className="hover:underline">support@HomeSewa.app</a></p>
+            <p className="about leading-relaxed mb-1">Phone: +977-9852024365</p>
+            <p className="about leading-relaxed">Address: [HomeSewa Address], Kathmandu, Nepal</p>
           </div>
         </section>
       </div>

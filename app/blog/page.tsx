@@ -5,9 +5,9 @@ export default function BlogPage() {
   return (
     <main className="min-h-screen bg-gray-50 text-gray-800 py-16 px-6">
       <section className="text-center mb-16">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">RocketSingh Blog</h1>
+        <h1 className="text-4xl md:text-5xl font-bold mb-4">HomeSewa Blog</h1>
         <p className="text-lg md:text-xl max-w-2xl mx-auto">
-          Stay updated with expert cleaning tips, professional services, and home & office hygiene advice from RocketSingh.
+          Stay updated with expert cleaning tips, professional services, and home & office hygiene advice from HomeSewa.
         </p>
       </section>
 

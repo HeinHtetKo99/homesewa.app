@@ -18,15 +18,15 @@ const PrivacyPolicy = () => {
           </p>
 
           <p className="about leading-relaxed">
-            RocketSingh (also referred to as &quot;RocketSingh&quot;,
+            HomeSewa (also referred to as &quot;HomeSewa&quot;,
             &quot;us&quot;, &quot;we&quot; or &quot;our&quot;) operates the
-            www.rocketsingh.app website and mobile application (the &ldquo;Service&rdquo;). 
+            www.HomeSewa.app website and mobile application (the &ldquo;Service&rdquo;). 
             This Privacy Policy explains how we collect, use, and disclose 
             personal data when you use our Service.
           </p>
 
           <p className="about leading-relaxed">
-            By using RocketSingh, you agree to the collection and use 
+            By using HomeSewa, you agree to the collection and use 
             of information in accordance with this Privacy Policy. Any terms 
             used here have the same meaning as in our Terms & Conditions unless 
             specified otherwise.
@@ -110,8 +110,8 @@ const PrivacyPolicy = () => {
               Transfer of Data
             </h2>
             <p className="about leading-relaxed">
-              Your personal data may be transferred to servers located in India, 
-              USA, or India. By using our Service, you consent to this transfer. 
+              Your personal data may be transferred to servers located in Nepal, 
+              USA, or Nepal. By using our Service, you consent to this transfer. 
               We take reasonable steps to ensure your data is secure.
             </p>
           </div>
@@ -124,7 +124,7 @@ const PrivacyPolicy = () => {
             <p className="about leading-relaxed">We may disclose your data in good faith to:</p>
             <ul className="list-disc list-inside about space-y-1">
               <li>Comply with legal obligations</li>
-              <li>Protect RocketSingh’s rights or property</li>
+              <li>Protect HomeSewa’s rights or property</li>
               <li>Investigate wrongdoing</li>
               <li>Protect user safety</li>
               <li>Prevent legal liability</li>
@@ -192,10 +192,10 @@ const PrivacyPolicy = () => {
               Contact Us
             </h2>
             <p className="about leading-relaxed mb-1">
-              Email: <a href="mailto:support@rocketsingh.app" className="hover:underline">support@rocketsingh.app</a>
+              Email: <a href="mailto:support@HomeSewa.app" className="hover:underline">support@HomeSewa.app</a>
             </p>
             <p className="about leading-relaxed">
-              Address: RocketSingh, Chennai, India
+              Address: HomeSewa, Kathmandu, Nepal
             </p>
           </div>
 

@@ -11,12 +11,12 @@ type StagedFile = {
 /** Shared across warm serverless invocations (same pattern as nepalmotor in-memory staging). */
 const cache: Map<string, StagedFile> = (() => {
   const g = globalThis as typeof globalThis & {
-    __rocketSinghAttachmentCache?: Map<string, StagedFile>;
+    __HomeSewaAttachmentCache?: Map<string, StagedFile>;
   };
-  if (!g.__rocketSinghAttachmentCache) {
-    g.__rocketSinghAttachmentCache = new Map();
+  if (!g.__HomeSewaAttachmentCache) {
+    g.__HomeSewaAttachmentCache = new Map();
   }
-  return g.__rocketSinghAttachmentCache;
+  return g.__HomeSewaAttachmentCache;
 })();
 
 function pruneExpired() {

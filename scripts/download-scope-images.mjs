@@ -1,6 +1,6 @@
 /**
  * Builds scope images from scripts/scope-images.json
- * - "local": copies from public/ (RocketSingh service images — guaranteed match)
+ * - "local": copies from public/ (HomeSewa service images — guaranteed match)
  * - "pexels": downloads topic-specific stock photo
  *
  * Run: node scripts/download-scope-images.mjs
