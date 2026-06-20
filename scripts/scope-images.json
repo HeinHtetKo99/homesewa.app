@@ -1,0 +1,152 @@
+{
+  "salon-at-home": {
+    "01-assessment.jpg": { "pexels": 3065209, "topic": "Hair stylist consultation" },
+    "02-delivery.jpg": { "local": "services/salon-at-home.jpg", "topic": "Salon at home service" },
+    "03-quality-check.jpg": { "pexels": 3993446, "topic": "Finished hairstyle" }
+  },
+  "bridal-makeup": {
+    "01-assessment.jpg": { "pexels": 265722, "topic": "Bridal makeup consultation and skin prep" },
+    "02-delivery.jpg": { "pexels": 965989, "topic": "Makeup artist applying bridal makeup" },
+    "03-quality-check.jpg": { "pexels": 1024311, "topic": "Finished bridal makeup look" }
+  },
+  "chef-at-home": {
+    "01-assessment.jpg": { "pexels": 691114, "topic": "Chef menu planning in kitchen" },
+    "02-delivery.jpg": { "local": "services/chef-at-home.jpg", "topic": "Chef cooking at home" },
+    "03-quality-check.jpg": { "pexels": 696218, "topic": "Plated home-cooked meal" }
+  },
+  "massage-therapy": {
+    "01-assessment.jpg": { "pexels": 7690818, "topic": "Massage therapist client consultation" },
+    "02-delivery.jpg": { "pexels": 3757942, "topic": "Professional therapeutic massage session" },
+    "03-quality-check.jpg": { "pexels": 3207759, "topic": "Relaxed client after massage therapy" }
+  },
+  "spa-at-home": {
+    "01-relaxation-massage.jpg": { "local": "services/spa-at-home.jpg", "topic": "Relaxation massage at home" },
+    "02-body-treatments.jpg": { "pexels": 5240681, "topic": "Spa body treatment" },
+    "03-facial-skincare.jpg": { "pexels": 3985322, "topic": "Facial skincare treatment" }
+  },
+  "physiotherapy": {
+    "01-assessment.jpg": { "local": "services/physiotherapy.jpg", "topic": "Physiotherapy assessment" },
+    "02-delivery.jpg": { "pexels": 4506107, "topic": "Physiotherapy exercises" },
+    "03-quality-check.jpg": { "pexels": 4505969, "topic": "Recovery progress check" }
+  },
+  "handyman": {
+    "01-repairs-fixes.jpg": { "pexels": 6474524, "topic": "Home repairs and fixes" },
+    "02-assembly-installation.jpg": { "pexels": 5383809, "topic": "Furniture assembly and installation" },
+    "03-maintenance-checks.jpg": { "local": "services/handyman.jpg", "topic": "Handyman maintenance service" }
+  },
+  "carpentry": {
+    "01-assessment.jpg": { "pexels": 5691632, "topic": "Carpenter measuring wood" },
+    "02-delivery.jpg": { "local": "services/carpentry.jpg", "topic": "Carpentry work in progress" },
+    "03-quality-check.jpg": { "pexels": 3997985, "topic": "Finished carpentry work" }
+  },
+  "plumbing": {
+    "01-leak-pipe-repairs.jpg": { "pexels": 7046144, "topic": "Plumber fixing pipes and leaks" },
+    "02-drain-clearing.jpg": { "pexels": 6476589, "topic": "Drain and pipe clearing" },
+    "03-fixture-installation.jpg": { "local": "services/plumbing.jpg", "topic": "Plumbing fixture installation" }
+  },
+  "electrical-repairs": {
+    "01-assessment.jpg": { "pexels": 8853509, "topic": "Electrician wiring inspection" },
+    "02-delivery.jpg": { "local": "services/electrical.jpg", "topic": "Electrical repair work" },
+    "03-quality-check.jpg": { "pexels": 808851, "topic": "Electrical safety check" }
+  },
+  "tiling": {
+    "01-assessment.jpg": { "pexels": 6480723, "topic": "Tile layout planning" },
+    "02-delivery.jpg": { "pexels": 7031595, "topic": "Tile installation in progress" },
+    "03-quality-check.jpg": { "local": "services/tiling.jpg", "topic": "Finished tiled surface" }
+  },
+  "washing-machine-repair": {
+    "01-assessment.jpg": { "local": "services/washing-machine-repair.jpg", "topic": "Washing machine inspection" },
+    "02-delivery.jpg": { "pexels": 5591716, "topic": "Technician repairing washing machine" },
+    "03-quality-check.jpg": { "pexels": 5591661, "topic": "Washing machine running properly" }
+  },
+  "home-automation": {
+    "01-assessment.jpg": { "pexels": 808854, "topic": "Smart home system planning" },
+    "02-delivery.jpg": { "local": "services/home-automation.jpg", "topic": "Home automation installation" },
+    "03-quality-check.jpg": { "pexels": 1148820, "topic": "Smart device setup complete" }
+  },
+  "ev-charger-installation": {
+    "01-assessment.jpg": { "pexels": 9799997, "topic": "EV charger site assessment" },
+    "02-delivery.jpg": { "local": "services/electric-charger-installation.jpg", "topic": "EV charger installation" },
+    "03-quality-check.jpg": { "pexels": 9747647, "topic": "Electric vehicle charging at home" }
+  },
+  "ac-services": {
+    "01-filter-coil-cleaning.jpg": { "local": "services/ac-service.jpg", "topic": "AC unit filter and coil cleaning" },
+    "02-performance-check.jpg": { "pexels": 5483064, "topic": "AC technician performance check" },
+    "03-repair-gas-topup.jpg": { "pexels": 890665, "topic": "Air conditioner repair and service" }
+  },
+  "painting": {
+    "01-assessment.jpg": { "pexels": 325188, "topic": "Paint color assessment" },
+    "02-delivery.jpg": { "pexels": 5691628, "topic": "Painter applying paint to wall" },
+    "03-quality-check.jpg": { "local": "services/painting.jpg", "topic": "Freshly painted room" }
+  },
+  "indoor-planting": {
+    "01-assessment.jpg": { "pexels": 1072824, "topic": "Indoor plant selection" },
+    "02-delivery.jpg": { "local": "services/indoor-planting.jpg", "topic": "Indoor planting service" },
+    "03-quality-check.jpg": { "pexels": 1084199, "topic": "Healthy indoor plants" }
+  },
+  "cctv-services": {
+    "01-assessment.jpg": { "pexels": 1188473, "topic": "CCTV camera placement survey" },
+    "02-delivery.jpg": { "local": "services/cctv.jpg", "topic": "CCTV camera installation" },
+    "03-quality-check.jpg": { "pexels": 532001, "topic": "Security surveillance setup" }
+  },
+  "drywall-repair": {
+    "01-assessment.jpg": { "pexels": 448971, "topic": "Drywall damage assessment" },
+    "02-delivery.jpg": { "pexels": 2724749, "topic": "Drywall patching and repair" },
+    "03-quality-check.jpg": { "local": "services/drywall-repair.jpg", "topic": "Smooth repaired drywall" }
+  },
+  "modular-kitchen": {
+    "01-assessment.jpg": { "pexels": 2089698, "topic": "Modular kitchen design planning" },
+    "02-delivery.jpg": { "local": "services/modular-kitchen.jpg", "topic": "Modular kitchen installation" },
+    "03-quality-check.jpg": { "pexels": 1571460, "topic": "Finished modular kitchen" }
+  },
+  "parqueting": {
+    "01-assessment.jpg": { "pexels": 276724, "topic": "Wood floor assessment" },
+    "02-delivery.jpg": { "pexels": 1080721, "topic": "Parquet floor installation" },
+    "03-quality-check.jpg": { "local": "services/parqueting.jpg", "topic": "Finished parquet flooring" }
+  },
+  "home-renovation": {
+    "01-assessment.jpg": { "pexels": 1195996, "topic": "Home renovation site survey" },
+    "02-delivery.jpg": { "pexels": 11157201, "topic": "Renovation construction work" },
+    "03-quality-check.jpg": { "local": "services/home-renovation.jpg", "topic": "Completed home renovation" }
+  },
+  "ro-water-purifying": {
+    "01-assessment.jpg": { "pexels": 416471, "topic": "RO water purifier assessment" },
+    "02-delivery.jpg": { "local": "services/ro-water-purifying.jpg", "topic": "RO purifier installation" },
+    "03-quality-check.jpg": { "pexels": 416475, "topic": "Clean purified drinking water" }
+  },
+  "garden-care": {
+    "01-assessment.jpg": { "local": "services/garden-care.jpg", "topic": "Garden assessment" },
+    "02-delivery.jpg": { "pexels": 5716953, "topic": "Garden care and planting work" },
+    "03-quality-check.jpg": { "local": "services/lawn-care.jpg", "topic": "Well maintained lawn and garden" }
+  },
+  "pest-control": {
+    "01-assessment.jpg": { "local": "services/pest-control.jpg", "topic": "Pest inspection" },
+    "02-delivery.jpg": { "pexels": 5824916, "topic": "Pest control treatment" },
+    "03-quality-check.jpg": { "pexels": 4207908, "topic": "Pest-free protected home" }
+  },
+  "masonry-repair": {
+    "01-assessment.jpg": { "pexels": 2219026, "topic": "Masonry wall damage inspection" },
+    "02-delivery.jpg": { "local": "services/masonry-repair.jpg", "topic": "Masonry brick repair work" },
+    "03-quality-check.jpg": { "pexels": 2724749, "topic": "Repaired masonry finish" }
+  },
+  "deep-cleaning": {
+    "01-kitchen-deep-clean.jpg": { "local": "services/kitchen-cleaning.jpg", "topic": "Kitchen deep cleaning" },
+    "02-bathroom-sanitization.jpg": { "local": "services/bathroom-cleaning.jpg", "topic": "Bathroom sanitization" },
+    "03-living-room-refresh.jpg": { "local": "services/deep-cleaning.jpg", "topic": "Living room deep clean" }
+  },
+  "packing-and-moving": {
+    "01-assessment.jpg": { "pexels": 4386436, "topic": "Packing boxes for move" },
+    "02-delivery.jpg": { "pexels": 922965, "topic": "Movers carrying furniture" },
+    "03-quality-check.jpg": { "local": "services/packing-and-moving.jpg", "topic": "Belongings delivered safely" }
+  },
+  "airbnb-maintenance": {
+    "01-assessment.jpg": { "local": "services/airbnb-maintenance.jpg", "topic": "Rental property inspection" },
+    "02-delivery.jpg": { "local": "services/bathroom-cleaning.jpg", "topic": "Guest-ready bathroom cleaning" },
+    "03-quality-check.jpg": { "local": "services/deep-cleaning.jpg", "topic": "Clean maintained rental space" }
+  },
+  "refrigerator-repair": {
+    "01-assessment.jpg": { "local": "services/refrigerator-repair.jpg", "topic": "Refrigerator inspection" },
+    "02-delivery.jpg": { "pexels": 2060970, "topic": "Technician repairing refrigerator" },
+    "03-quality-check.jpg": { "pexels": 1128318, "topic": "Refrigerator working properly" }
+  }
+}

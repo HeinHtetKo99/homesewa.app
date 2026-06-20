@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    "target": "ES2017",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./*"]
+    }
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts",
+    "**/*.mts"
+, "components/ClappingFunction.tsx", "components/Sidekick.jsx", "components/BacktoToptsx", "components/BacktoToptsx", "components/Ribbon.tsx", "app/services/page.tsx", "app/feedback/page.tsx", "app/contact/page.tsx", "app/career/page.tsx", "app/notice/page.tsx", "app/vmgo/page.tsx", "app/history/page.tsx", "app/why/page.tsx", "app/certificates/page.tsx", "app/timeline/page.tsx", "app/gallery/page.tsx", "app/glossary/page.tsx", "app/qr/page.tsx", "app/message/page.tsx", "app/calendar/page.tsx", "app/faq/page.tsx", "app/payment/page.tsx", "app/internship/page.tsx", "app/download/page.tsx", "app/video/page.tsx", "app/location/page.tsx", "app/refund/page.tsx", "app/cookie/page.tsx", "app/privacy/page.tsx", "app/disclaimer/page.tsx", "app/tos/page.tsx"  ],
+  "exclude": ["node_modules"]
+}
