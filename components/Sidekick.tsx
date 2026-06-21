@@ -29,7 +29,7 @@ const Sidekick: React.FC = () => {
         {/* WhatsApp */}
         <div className="relative group flex items-center justify-center">
           <a
-            href="https://b.broadpress.org/HomeSewa"
+            href="https://d.sriyog.com/homesewa"
             target="_blank"
             rel="noopener noreferrer"
             className="fab-btn flex h-12 w-12 items-center justify-center rounded-full p-3 transition duration-200 animate-bounce touch-manipulation"

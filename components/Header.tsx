@@ -62,11 +62,7 @@ const Header = () => {
             <Link href="/projects" className="text-[16px] hover:text-teal-700">Projects</Link>
             <Link href="/contact" className="text-[16px] hover:text-teal-700">Contact</Link>
 
-            <Link href="/career">
-              <button className="border cursor-pointer text-[16px] border-teal-900 hover:text-black rounded px-4 py-1 hover:bg-teal-50">
-                Career
-              </button>
-            </Link>
+            
 
             <Link href="/book">
               <button className="bg-teal-900 cursor-pointer text-[16px] border border-teal-900 text-white px-4 py-1 rounded hover:bg-teal-800">

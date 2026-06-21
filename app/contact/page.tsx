@@ -84,7 +84,7 @@ export default function Contact() {
             <div className="group rounded-xl border-2 border-teal-900 bg-white p-4 text-center shadow-md transition-all duration-500 hover:-translate-y-1 hover:shadow-xl">
               <div className="mb-2 flex justify-center"><VisitIcon /></div>
               <h3 className="mb-1 text-lg font-semibold text-teal-900">Visit Us</h3>
-              <p className="text-sm leading-relaxed">Anna Salai, T. Nagar,<br />Kathmandu, Nepal</p>
+              <p className="text-sm leading-relaxed">Rem.Work, Kamalpokhari,<br />Kathmandu, Nepal</p>
             </div>
             <a
               href="mailto:support@HomeSewa.app"
@@ -121,7 +121,7 @@ export default function Contact() {
                 <h3 className="mb-1 text-xl font-semibold">{person.name}</h3>
                 <p className="mb-4 text-gray-600">{person.role}</p>
                 <a
-                  href="https://b.broadpress.org/HomeSewa"
+                  href="https://d.sriyog.com/homesewa"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="rounded-lg bg-[#0E4541] px-4 py-2 font-medium text-white transition hover:bg-teal-900"

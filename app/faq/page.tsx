@@ -5,10 +5,10 @@ import Ribbon from '../../components/Ribbon';
 export default function Faq() {
   const faqs = [
     { id: 1, question: "When was HomeSewa established?", answer: "HomeSewa was founded on June 14, 2018, in Kathmandu, Nepal." },
-    { id: 2, question: "Where is HomeSewa located?", answer: "Headquartered at T. Nagar, Kathmandu, Nepal." },
+    { id: 2, question: "Where is HomeSewa located?", answer: "Kamalpokhari, Kathmandu, Nepal." },
     { id: 3, question: "Does HomeSewa have a mobile app?", answer: "Yes, HomeSewa has a dedicated mobile app for service booking and management." },
     { id: 4, question: "Which industries does HomeSewa serve?", answer: "We serve residential, commercial, healthcare, hospitality, and tourism sectors in Kathmandu and nearby regions." },
-    { id: 5, question: "Who leads the technology team?", answer: "Prakash Upreti (PRACAS) is the Chief Technology Officer of HomeSewa." },
+    { id: 5, question: "Who leads the technology team?", answer: "A group of industry experts leads of HomeSewa." },
     { id: 6, question: "What makes HomeSewa unique?", answer: "We offer professional, customized, and eco-friendly cleaning solutions with modern technology support." },
     { id: 7, question: "Difference between deep cleaning and regular cleaning?", answer: "Regular cleaning maintains cleanliness, while deep cleaning involves thorough sanitization of hard-to-reach areas." },
     { id: 8, question: "What services are included in commercial cleaning?", answer: "Office cleaning, floor maintenance, window washing, restroom sanitation, and facility upkeep." },

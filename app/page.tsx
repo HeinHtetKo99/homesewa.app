@@ -18,7 +18,7 @@ const heroContent = {
 const sections = {
   about: {
     title: "About HomeSewa",
-    desc: "HomeSewa is a leading professional cleaning company in Kathmandu, Nepal. Any home, office, or commercial cleaning — whether deep cleaning, sanitization, carpet care, or post-construction cleanup — HomeSewa is there for you.",
+    desc: "Home Sewa is a technology-driven hyperlocal home services that delivers fast, reliable, and professional services at customers' doorsteps. By matching service requests with nearby professionals based on location, Home Sewa reduces response time and ensures quicker service fulfillment.",
   },
   mission: {
     title: "Our Mission",
@@ -277,7 +277,7 @@ export default function Home() {
 
       {/* FLOATING CONTACT */}
       {/* <div className={`fixed right-4 bottom-20 flex flex-col items-center gap-3 z-50 transition-transform duration-300 ${isScrolled ? "-translate-y-3" : "translate-y-0"}`}>
-        <a href="https://b.broadpress.org/HomeSewa" target="_blank" rel="noopener noreferrer" className="w-11 h-11 bg-green-500 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
+        <a href="https://d.sriyog.com/homesewa" target="_blank" rel="noopener noreferrer" className="w-11 h-11 bg-green-500 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
           <img src="/icons/whatsapp.svg" alt="WhatsApp" className="w-6 h-6" />
         </a>
         <a href="tel:+918190074189" className="w-11 h-11 bg-[#0E4541] rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform">

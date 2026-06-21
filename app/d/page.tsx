@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 };
 
 const PLAY_STORE_URL =
-  "https://play.google.com/store/apps/details?id=com.pracas.HomeSewa";
+  "https://play.google.com/store/apps/details?id=com.pracasinfosys.sriyog.com";
 const APP_STORE_URL = "#";
 
 const storeButtonClass =

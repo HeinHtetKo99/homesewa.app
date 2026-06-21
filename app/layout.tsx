@@ -19,7 +19,7 @@ export const metadata = {
     url: "https://homesewa.app",
     images: [
       {
-        url: "/og/default.png",
+        url: "/og/default.jpg",
         width: 1200,
         height: 630,
         alt: "HomeSewa | SuperFast Service",
@@ -31,7 +31,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "HomeSewa | SuperFast Service",
     description: "HomeSewa is a superfast on demand home service.",
-    images: ["/og/default.png"],
+    images: ["/og/default.jpg"],
   },
 };
 

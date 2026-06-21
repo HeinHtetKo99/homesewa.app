@@ -4,7 +4,7 @@ import CareerForm from "../../components/CareerForm";
 export const metadata = {
   title: "Career | HomeSewa",
   description:
-    "Join HomeSewa — career opportunities in professional cleaning services in Kathmandu, Nepal.",
+    "Join HomeSewa — career opportunities in professional home services in Kathmandu, Nepal.",
   keywords: "cleaning jobs Nepal, HomeSewa career, Kathmandu cleaning jobs",
 };
 

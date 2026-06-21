@@ -76,7 +76,7 @@ const cookiePolicy = () => {
             <h2 className="text-2xl font-semibold text-teal-800 mb-2">Contact Us</h2>
             <p className="about leading-relaxed mb-1">Email: <a href="mailto:support@HomeSewa.app" className="hover:underline">support@HomeSewa.app</a></p>
             <p className="about leading-relaxed mb-1">Phone: +977-9852024365</p>
-            <p className="about leading-relaxed">Address: [HomeSewa Address], Kathmandu, Nepal</p>
+            <p className="about leading-relaxed">Address: Rem.Work, Kamalpokhari, Kathmandu, Nepal</p>
           </div>
         </section>
       </div>
