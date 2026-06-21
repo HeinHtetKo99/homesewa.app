@@ -5,7 +5,7 @@ import React, { useState } from "react";
 const sections = {
   about: {
     title: "About HomeSewa",
-    desc: "HomeSewa is an A-grade professional cleaning company delivering solutions for home cleaning, office sanitization, carpet care, AC cleaning, and post-construction cleanup with consistent quality and dependable service standards.",
+    desc: "Home Sewa is a Express Home Service provider that instantly connects customers with nearby trusted professionals for on-demand home and local services. Customers receive fast access to nearby professionals, while service providers gain affordable access to high-quality local leads without paying large commissions. The low-cost membership and pay-per-lead model creates a scalable and sustainable services for both parties.",
   },
   mission: {
     title: "Our Mission",

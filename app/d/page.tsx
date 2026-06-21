@@ -26,7 +26,7 @@ export default function DownloadAppPage() {
       <div className="flex flex-col items-center justify-center px-6 py-10 sm:py-14">
         <figure className="w-full max-w-[min(78vw,300px)] sm:max-w-[320px] p-4 sm:p-5">
           <Image
-            src="/app-download/download-qr.png"
+            src="/d/d.png"
             alt="Scan to download the HomeSewa app"
             width={1024}
             height={1024}

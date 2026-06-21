@@ -19,7 +19,7 @@ export default function Document() {
         <meta property="og:type" content="website" />
         <meta property="og:title" content="HomeSewa | SuperFast Service" />
         <meta property="og:description" content="HomeSewa is a superfast on demand home service." />
-        <meta property="og:image" content="https://homesewa.app/og/default.png" />
+        <meta property="og:image" content="https://homesewa.app/og/default.jpg" />
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
@@ -27,7 +27,7 @@ export default function Document() {
         <meta property="twitter:url" content="https://homesewa.app" />
         <meta name="twitter:title" content="HomeSewa | SuperFast Service" />
         <meta name="twitter:description" content="HomeSewa is a superfast on demand home service." />
-        <meta name="twitter:image" content="https://homesewa.app/og/default.png" />
+        <meta name="twitter:image" content="https://homesewa.app/og/default.jpg" />
       </Head>
       <body>
         {/* Google Tag Manager (noscript) */}

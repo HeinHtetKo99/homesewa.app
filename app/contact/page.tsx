@@ -72,7 +72,7 @@ export default function Contact() {
             <div>
               <h2 className="mb-5 text-4xl font-extrabold text-teal-900">We Work Across Nepal</h2>
               <p className="text-lg leading-relaxed text-gray-700">
-                Our team serves Kathmandu, Bengaluru, Hyderabad, and nearby regions with fast, reliable cleaning solutions for homes, offices, hotels, and commercial properties.
+                Our team serves Kathmandu, Lalitpur, Bhaktapur and nearby regions with fast, reliable cleaning solutions for homes, offices, hotels, and commercial properties.
               </p>
             </div>
             <div className="h-[420px] overflow-hidden rounded-2xl border border-teal-400 shadow-[0_0_30px_rgba(13,93,89,0.2)]">
@@ -87,12 +87,12 @@ export default function Contact() {
               <p className="text-sm leading-relaxed">Rem.Work, Kamalpokhari,<br />Kathmandu, Nepal</p>
             </div>
             <a
-              href="mailto:support@HomeSewa.app"
+              href="mailto:HomeSewa@sriyog.com"
               className="group rounded-xl border-2 border-teal-900 bg-white p-4 text-center shadow-md transition-all duration-500 hover:-translate-y-1 hover:shadow-xl"
             >
               <div className="mb-2 flex justify-center"><EmailIcon /></div>
               <h3 className="mb-1 text-lg font-semibold text-teal-900">Email Us</h3>
-              <p className="text-sm leading-relaxed">support@HomeSewa.app</p>
+              <p className="text-sm leading-relaxed">HomeSewa@sriyog.com</p>
             </a>
             <Link
               href="/book"

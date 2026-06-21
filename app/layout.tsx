@@ -9,13 +9,13 @@ import { Suspense } from 'react';
 
 export const metadata = {
   metadataBase: new URL("https://homesewa.app"),
-  title: "HomeSewa | SuperFast Service",
+  title: "HomeSewa | SuperFast on Demand Home Service in Nepal",
   description: "HomeSewa is a superfast on demand home service.",
   keywords: "HomeSewa, SuperFast Service, On Demand Home Service, Nepal",
   authors: [{ name: "HomeSewa" }],
   openGraph: {
     title: "HomeSewa | SuperFast Service",
-    description: "HomeSewa is a superfast on demand home service.",
+    description: "HomeSewa is a superfast on demand home service providing reliable and efficient solutions.",
     url: "https://homesewa.app",
     images: [
       {
