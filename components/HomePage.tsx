@@ -280,7 +280,7 @@ export default function Home() {
         <a href="https://d.sriyog.com/homesewa" target="_blank" rel="noopener noreferrer" className="w-11 h-11 bg-green-500 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
           <img src="/icons/whatsapp.svg" alt="WhatsApp" className="w-6 h-6" />
         </a>
-        <a href="tel:+918190074189" className="w-11 h-11 bg-[#0E4541] rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
+        <a href="tel:+9779852024365" className="w-11 h-11 bg-[#0E4541] rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
           <img src="/icons/phone.svg" alt="Phone" className="w-6 h-6" />
         </a>
       </div> */}

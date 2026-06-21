@@ -184,7 +184,7 @@ const Footer = () => {
               <span className="text-sm">support@HomeSewa.app</span>
             </a>
 
-            <a href="tel:+918190074189" className="flex items-center gap-2 border-2 rounded-lg px-7 py-3 w-full sm:w-auto">
+            <a href="tel:+9779852024365" className="flex items-center gap-2 border-2 rounded-lg px-7 py-3 w-full sm:w-auto">
               <img src="/icons/phone.svg" alt="phone" className="h-6 w-6" />
               <span className="text-sm">+977-9852024365</span>
             </a>

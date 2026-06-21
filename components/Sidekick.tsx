@@ -15,7 +15,7 @@ const Sidekick: React.FC = () => {
         <div className="relative group flex items-center justify-center">
           <span className="absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75 animate-ping" />
           <a
-            href="tel:+918190074189"
+            href="tel:+9779852024365"
             className="relative fab-btn flex h-12 w-12 items-center justify-center rounded-full p-3 transition duration-200 touch-manipulation"
             aria-label="Call Us"
           >
