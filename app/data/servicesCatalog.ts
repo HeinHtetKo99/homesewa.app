@@ -96,13 +96,13 @@ export const serviceCategories: ServiceCategory[] = [
       {
         title: "Plumbing",
         slug: "plumbing",
-        image: "/services/plumbing.jpg",
+        image: "/services/plumbing-repair.jpg",
         desc: "Plumbing services handle everything from fixing leaks to installing pipes and fixtures. Whether it's a dripping faucet, clogged drain, or bathroom installation, expert plumbers ensure smooth water flow and proper drainage. Timely plumbing maintenance prevents water damage and costly repairs.",
       },
       {
         title: "Electrical Repairs",
         slug: "electrical-repairs",
-        image: "/services/electrical.jpg",
+        image: "/services/electrical-repair.jpg",
         desc: "Electrical repair services ensure your home's wiring, outlets, and power systems function safely and efficiently. From fixing faulty switches to resolving power issues, trained professionals handle all electrical concerns. Proper repairs reduce risks such as short circuits and fire hazards.",
       },
       {
@@ -133,7 +133,7 @@ export const serviceCategories: ServiceCategory[] = [
       {
         title: "EV Charger Installation",
         slug: "ev-charger-installation",
-        image: "/services/electric-charger-installation.jpg",
+        image: "/services/ev-charger-installation.jpg",
         desc: "EV charger installation provides a reliable and convenient solution for charging electric vehicles at home. Experts ensure proper setup, safety compliance, and efficient power usage. This service supports sustainable living while offering the ease of charging your vehicle anytime.",
       },
       {
@@ -162,7 +162,7 @@ export const serviceCategories: ServiceCategory[] = [
       {
         title: "CCTV Services",
         slug: "cctv-services",
-        image: "/services/cctv.jpg",
+        image: "/services/cctv-services.jpg",
         desc: "CCTV services provide comprehensive surveillance solutions for homes and businesses. Our experts install, maintain, and optimize security systems to ensure peace of mind. From camera placement to remote monitoring, we deliver reliable protection for your property.",
       },
       {
