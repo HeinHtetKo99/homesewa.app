@@ -45,9 +45,9 @@ export default function GalleryPage() {
         <span className="text-gray-500">
           Home / <span className="text-teal-700 font-semibold">Gallery</span>
         </span>
-        <h1 className="text-4xl font-bold text-teal-800 mt-2">Cleaning Projects</h1>
+        <h1 className="text-4xl font-bold text-teal-800 mt-2">Home Sewa Services</h1>
         <p className="text-gray-600 mt-2 max-w-2xl">
-          View our work quality across homes, offices, hotels, and commercial spaces in Nepal.
+          Home Sewa bridges the gap between customers and skilled professionals, making it easier than ever to find trusted local services.
         </p>
       </div>
 
