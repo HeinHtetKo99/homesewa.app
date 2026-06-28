@@ -59,14 +59,15 @@ const Footer = () => {
             </div>
 
             <p className="text-[15px] leading-relaxed mb-4">
-              HomeSewa is more than just a name. It represents a mindset, a work ethic, and a commitment to serving local communities with professionalism and reliability.
+              Home Sewa is Nepal’s superfast, on-demand home service platform, designed to instantly connect customers with trusted, verified professionals nearby.
             </p>
             <p className="text-[15px] leading-relaxed mb-4">
-              Traditionally, a"HomeSewa" is someone who is dependable, punctual, highly skilled, dedicated to his work, and always willing to help people around him. 
+              Powered by advanced AI-driven technology, Home Sewa ensures that service requests are matched with the right professionals quickly and efficiently.
+
             </p>
             
             <p className="text-[15px] leading-relaxed mb-4">
-              Inspired by these values, HomeSewa is created as an on-demand hyperlocal service platform that connects home owners with skilled professionals for a wide range of household and commercial services.
+              By leveraging artificial intelligence Home Sewa offers real-time push notifications, automated voice calls, SMS and WhatsApp alerts, location-based technology & few other technologies to automate.
             </p>
           
           </div>
@@ -179,9 +180,9 @@ const Footer = () => {
           {/* CONTACT BOXES */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
 
-            <a href="mailto:support@HomeSewa.app" className="flex items-center gap-2 border-2 rounded-lg px-7 py-3 w-full sm:w-auto">
+            <a href="mailto:HomeSewa@sriyog.com" className="flex items-center gap-2 border-2 rounded-lg px-7 py-3 w-full sm:w-auto">
               <img src="/icons/email.svg" alt="email" className="h-6 w-6" />
-              <span className="text-sm">support@HomeSewa.app</span>
+              <span className="text-sm">HomeSewa@sriyog.com</span>
             </a>
 
             <a href="tel:+9779852024365" className="flex items-center gap-2 border-2 rounded-lg px-7 py-3 w-full sm:w-auto">
@@ -189,7 +190,7 @@ const Footer = () => {
               <span className="text-sm">+977-9852024365</span>
             </a>
 
-            <a href="https://wa.me/918190074189" target="_blank" className="flex items-center gap-2 border-2 rounded-lg px-6 py-3 w-full sm:w-auto">
+            <a href="https://d.sriyog.com/homesewa" target="_blank" className="flex items-center gap-2 border-2 rounded-lg px-6 py-3 w-full sm:w-auto">
               <img src="/icons/whatsapp.svg" alt="whatsapp" className="h-6 w-6" />
               <span className="text-sm">+977-9852024365</span>
             </a>

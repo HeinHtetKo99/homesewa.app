@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "Download App | HomeSewa",
+  title: "Download Home Sewa Mobile App | HomeSewa",
   description: "Download the HomeSewa app for superfast on demand home services.",
 };
 
