@@ -3,10 +3,6 @@
 import React, { useState } from "react";
 
 const sections = {
-  about: {
-    title: "About HomeSewa",
-    desc: "Home Sewa is a Express Home Service provider that instantly connects customers with nearby trusted professionals for on-demand home and local services. Customers receive fast access to nearby professionals, while service providers gain affordable access to high-quality local leads without paying large commissions. The low-cost membership and pay-per-lead model creates a scalable and sustainable services for both parties.",
-  },
   mission: {
     title: "Our Mission",
     desc: "To simplify access to reliable home services by leveraging AI, real-time technology, and trusted local professionals, delivering fast, convenient, and transparent solutions while empowering service providers to increase their income and grow sustainably.",
@@ -61,7 +57,7 @@ const values = [
 ];
 
 export default function About() {
-  const [activeSection, setActiveSection] = useState("about");
+  const [activeSection, setActiveSection] = useState("mission");
 
   return (
     <main className="min-h-screen bg-gray-50 text-gray-800">

@@ -1,5 +1,5 @@
 import FormPageLayout from "../../components/FormPageLayout";
-import BookForm from "../../components/BookForm";
+import BookForm from "./BookForm";
 
 export const metadata = {
   title: "Book a HomeSewa in Kathmandu | HomeSewa",
