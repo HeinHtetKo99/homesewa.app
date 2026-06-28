@@ -1,4 +1,4 @@
-/** Scope card images live at /public/services/scope/{slug}/{filename} */
+/** Scope card images live at /public/services/{folder}/{filename} */
 
 export type ScopeImageSet = {
   assessment: string;
@@ -6,168 +6,88 @@ export type ScopeImageSet = {
   qualityCheck: string;
 };
 
-const scopeBase = (slug: string, file: string) => `/services/scope/${slug}/${file}`;
+/** Slug -> folder name when they differ */
+const scopeFolderOverrides: Record<string, string> = {
+  plumbing: "plumbing-repair",
+  "electrical-repairs": "electrical-repair",
+  "home-renovation": "handyman/home-renovation",
+};
 
-/** Default 3-step scope images used by most services */
+const scopePath = (slug: string, file: string) =>
+  `/services/${scopeFolderOverrides[slug] ?? slug}/${file}`;
+
+const numbered = (slug: string): ScopeImageSet => ({
+  assessment: scopePath(slug, "1.jpg"),
+  delivery: scopePath(slug, "2.jpg"),
+  qualityCheck: scopePath(slug, "3.jpg"),
+});
+
+const descriptive = (slug: string): ScopeImageSet => ({
+  assessment: scopePath(slug, "01-assessment.jpg"),
+  delivery: scopePath(slug, "02-delivery.jpg"),
+  qualityCheck: scopePath(slug, "03-quality-check.jpg"),
+});
+
+const custom = (
+  slug: string,
+  assessment: string,
+  delivery: string,
+  qualityCheck: string
+): ScopeImageSet => ({
+  assessment: scopePath(slug, assessment),
+  delivery: scopePath(slug, delivery),
+  qualityCheck: scopePath(slug, qualityCheck),
+});
+
+/** Per-service scope images keyed by catalog slug */
 export const defaultScopeFiles: Record<string, ScopeImageSet> = {
-  "salon-at-home": {
-    assessment: scopeBase("salon-at-home", "1.jpg"),
-    delivery: scopeBase("salon-at-home", "2.jpg"),
-    qualityCheck: scopeBase("salon-at-home", "3.jpg"),
-  },
-  "bridal-makeup": {
-    assessment: scopeBase("bridal-makeup", "1.jpg"),
-    delivery: scopeBase("bridal-makeup", "2.jpg"),
-    qualityCheck: scopeBase("bridal-makeup", "3.jpg"),
-  },
-  "chef-at-home": {
-    assessment: scopeBase("chef-at-home", "1.jpg"),
-    delivery: scopeBase("chef-at-home", "2.jpg"),
-    qualityCheck: scopeBase("chef-at-home", "3.jpg"),
-  },
-  "massage-therapy": {
-    assessment: scopeBase("massage-therapy", "1.jpg"),
-    delivery: scopeBase("massage-therapy", "2.jpg"),
-    qualityCheck: scopeBase("massage-therapy", "3.jpg"),
-  },
-  physiotherapy: {
-    assessment: scopeBase("physiotherapy", "1.jpg"),
-    delivery: scopeBase("physiotherapy", "2.jpg"),
-    qualityCheck: scopeBase("physiotherapy", "3.jpg"),
-  },
-  handyman: {
-    assessment: scopeBase("handyman", "1.jpg"),
-    delivery: scopeBase("handyman", "2.jpg"),
-    qualityCheck: scopeBase("handyman", "3.jpg"),
-  },
-  carpentry: {
-    assessment: scopeBase("carpentry", "1.jpg"),
-    delivery: scopeBase("carpentry", "2.jpg"),
-    qualityCheck: scopeBase("carpentry", "3.jpg"),
-  },
-  plumbing: {
-    assessment: scopeBase("plumbing", "1.jpg"),
-    delivery: scopeBase("plumbing", "2.jpg"),
-    qualityCheck: scopeBase("plumbing", "3.jpg"),
-  },
-  "electrical-repairs": {
-    assessment: scopeBase("electrical-repairs", "1.jpg"),
-    delivery: scopeBase("electrical-repairs", "2.jpg"),
-    qualityCheck: scopeBase("electrical-repairs", "3.jpg"),
-  },
-  tiling: {
-    assessment: scopeBase("tiling", "1.jpg"),
-    delivery: scopeBase("tiling", "2.jpg"),
-    qualityCheck: scopeBase("tiling", "3.jpg"),
-  },
-  "washing-machine-repair": {
-    assessment: scopeBase("washing-machine-repair", "1.jpg"),
-    delivery: scopeBase("washing-machine-repair", "2.jpg"),
-    qualityCheck: scopeBase("washing-machine-repair", "3.jpg"),
-  },
-  "home-automation": {
-    assessment: scopeBase("home-automation", "1.jpg"),
-    delivery: scopeBase("home-automation", "2.jpg"),
-    qualityCheck: scopeBase("home-automation", "3.jpg"),
-  },
-  "ev-charger-installation": {
-    assessment: scopeBase("ev-charger-installation", "1.jpg"),
-    delivery: scopeBase("ev-charger-installation", "2.jpg"),
-    qualityCheck: scopeBase("ev-charger-installation", "3.jpg"),
-  },
-  "ac-services": {
-    assessment: scopeBase("ac-services", "1.jpg"),
-    delivery: scopeBase("ac-services", "2.jpg"),
-    qualityCheck: scopeBase("ac-services", "3.jpg"),
-  },
-  painting: {
-    assessment: scopeBase("painting", "1.jpg"),
-    delivery: scopeBase("painting", "2.jpg"),
-    qualityCheck: scopeBase("painting", "3.jpg"),
-  },
-  "indoor-planting": {
-    assessment: scopeBase("indoor-planting", "1.jpg"),
-    delivery: scopeBase("indoor-planting", "2.jpg"),
-    qualityCheck: scopeBase("indoor-planting", "3.jpg"),
-  },
-  "cctv-services": {
-    assessment: scopeBase("cctv-services", "1.jpg"),
-    delivery: scopeBase("cctv-services", "2.jpg"),
-    qualityCheck: scopeBase("cctv-services", "3.jpg"),
-  },
-  "drywall-repair": {
-    assessment: scopeBase("drywall-repair", "1.jpg"),
-    delivery: scopeBase("drywall-repair", "2.jpg"),
-    qualityCheck: scopeBase("drywall-repair", "3.jpg"),
-  },
-  "modular-kitchen": {
-    assessment: scopeBase("modular-kitchen", "1.jpg"),
-    delivery: scopeBase("modular-kitchen", "2.jpg"),
-    qualityCheck: scopeBase("modular-kitchen", "3.jpg"),
-  },
-  parqueting: {
-    assessment: scopeBase("parqueting", "1.jpg"),
-    delivery: scopeBase("parqueting", "2.jpg"),
-    qualityCheck: scopeBase("parqueting", "3.jpg"),
-  },
-  "home-renovation": {
-    assessment: scopeBase("home-renovation", "1.jpg"),
-    delivery: scopeBase("home-renovation", "2.jpg"),
-    qualityCheck: scopeBase("home-renovation", "3.jpg"),
-  },
-  "ro-water-purifying": {
-    assessment: scopeBase("ro-water-purifying", "1.jpg"),
-    delivery: scopeBase("ro-water-purifying", "2.jpg"),
-    qualityCheck: scopeBase("ro-water-purifying", "3.jpg"),
-  },
-  "garden-care": {
-    assessment: scopeBase("garden-care", "1.jpg"),
-    delivery: scopeBase("garden-care", "2.jpg"),
-    qualityCheck: scopeBase("garden-care", "3.jpg"),
-  },
-  "pest-control": {
-    assessment: scopeBase("pest-control", "1.jpg"),
-    delivery: scopeBase("pest-control", "2.jpg"),
-    qualityCheck: scopeBase("pest-control", "3.jpg"),
-  },
-  "masonry-repair": {
-    assessment: scopeBase("masonry-repair", "1.jpg"),
-    delivery: scopeBase("masonry-repair", "2.jpg"),
-    qualityCheck: scopeBase("masonry-repair", "3.jpg"),
-  },
-  "deep-cleaning": {
-    assessment: scopeBase("deep-cleaning", "1.jpg"),
-    delivery: scopeBase("deep-cleaning", "2.jpg"),
-    qualityCheck: scopeBase("deep-cleaning", "3.jpg"),
-  },
-  "packing-and-moving": {
-    assessment: scopeBase("packing-and-moving", "1.jpg"),
-    delivery: scopeBase("packing-and-moving", "2.jpg"),
-    qualityCheck: scopeBase("packing-and-moving", "3.jpg"),
-  },
-  "airbnb-maintenance": {
-    assessment: scopeBase("airbnb-maintenance", "1.jpg"),
-    delivery: scopeBase("airbnb-maintenance", "2.jpg"),
-    qualityCheck: scopeBase("airbnb-maintenance", "3.jpg"),
-  },
-  "refrigerator-repair": {
-    assessment: scopeBase("refrigerator-repair", "1.jpg"),
-    delivery: scopeBase("refrigerator-repair", "2.jpg"),
-    qualityCheck: scopeBase("refrigerator-repair", "3.jpg"),
-  },
-  "spa-at-home": {
-    assessment: scopeBase("spa-at-home", "1.jpg"),
-    delivery: scopeBase("spa-at-home", "2.jpg"),
-    qualityCheck: scopeBase("spa-at-home", "3.jpg"),
-  },
+  "salon-at-home": descriptive("salon-at-home"),
+  "bridal-makeup": numbered("bridal-makeup"),
+  "chef-at-home": numbered("chef-at-home"),
+  "massage-therapy": descriptive("massage-therapy"),
+  physiotherapy: descriptive("physiotherapy"),
+  handyman: custom(
+    "handyman",
+    "01-repairs-fixes.jpg",
+    "02-assembly-installation.jpg",
+    "03-maintenance-checks.jpg"
+  ),
+  carpentry: numbered("carpentry"),
+  plumbing: custom(
+    "plumbing",
+    "01-leak-pipe-repairs.jpg",
+    "02-drain-clearing.jpg",
+    "03-fixture-installation.jpg"
+  ),
+  "electrical-repairs": descriptive("electrical-repairs"),
+  tiling: descriptive("tiling"),
+  "washing-machine-repair": descriptive("washing-machine-repair"),
+  "home-automation": descriptive("home-automation"),
+  "ev-charger-installation": descriptive("ev-charger-installation"),
+  "ac-services": numbered("ac-services"),
+  painting: descriptive("painting"),
+  "indoor-planting": descriptive("indoor-planting"),
+  "cctv-services": numbered("cctv-services"),
+  "drywall-repair": numbered("drywall-repair"),
+  "modular-kitchen": descriptive("modular-kitchen"),
+  parqueting: descriptive("parqueting"),
+  "home-renovation": descriptive("home-renovation"),
+  "ro-water-purifying": descriptive("ro-water-purifying"),
+  "garden-care": descriptive("garden-care"),
+  "pest-control": descriptive("pest-control"),
+  "masonry-repair": descriptive("masonry-repair"),
+  "deep-cleaning": numbered("deep-cleaning"),
+  "packing-and-moving": descriptive("packing-and-moving"),
+  "airbnb-maintenance": numbered("airbnb-maintenance"),
+  "refrigerator-repair": descriptive("refrigerator-repair"),
+  "spa-at-home": custom(
+    "spa-at-home",
+    "01-relaxation-massage.jpg",
+    "02-body-treatments.jpg",
+    "03-facial-skincare.jpg"
+  ),
 };
 
 export function getScopeImages(slug: string): ScopeImageSet {
-  return (
-    defaultScopeFiles[slug] ?? {
-      assessment: scopeBase(slug, "1.jpg"),
-      delivery: scopeBase(slug, "2.jpg"),
-      qualityCheck: scopeBase(slug, "3.jpg"),
-    }
-  );
+  return defaultScopeFiles[slug] ?? descriptive(slug);
 }
