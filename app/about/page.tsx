@@ -9,15 +9,15 @@ const sections = {
   },
   mission: {
     title: "Our Mission",
-    desc: "Our mission is to offer complete cleaning and facility care services under one trusted platform, eliminating the need to search multiple providers for different household and commercial requirements.",
+    desc: "To simplify access to reliable home services by leveraging AI, real-time technology, and trusted local professionals, delivering fast, convenient, and transparent solutions while empowering service providers to increase their income and grow sustainably.",
   },
   goals: {
     title: "Our Goals",
-    desc: "We aim to simplify everyday maintenance by delivering efficient deep cleaning, sanitization, and facility care that enhance comfort, hygiene, and long-term value for every client across Nepal.",
+    desc: "Home Sewa aims to provide fast, reliable, and hassle-free home services across Nepal by building a nationwide network of verified and skilled service professionals. Through the use of AI and automation, the platform seeks to optimize service matching and enhance customer satisfaction.",
   },
   vision: {
     title: "Our Vision",
-    desc: "Our vision is to build a trusted cleaning brand recognized for professionalism, accessibility, and service excellence through long-term client relationships and consistent work quality.",
+    desc: "To become Nepal's most trusted and innovative on-demand home service platform, transforming how households connect with skilled professionals through AI based technology, automation, and exceptional customer experiences with no middleman in between.",
   },
 };
 
@@ -69,8 +69,7 @@ export default function About() {
         <div className="text-center mb-14">
           <h1 className="text-4xl sm:text-5xl font-extrabold text-teal-900 mb-4 tracking-wide">About Us</h1>
           <p className="text-gray-700 max-w-3xl mx-auto text-lg leading-relaxed">
-            Deep cleaning, AC sanitization, and post-construction cleanup require not only effort but skill.
-            That&apos;s where our team comes in — to take the burden off your shoulders.
+            Home Sewa is Nepal’s superfast, on-demand home service platform, designed to instantly connect customers with trusted, verified professionals nearby. Powered by advanced AI-driven matching, Home Sewa ensures that service requests are matched with the right professionals quickly and efficiently.
           </p>
         </div>
 
