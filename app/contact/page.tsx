@@ -76,7 +76,7 @@ export default function Contact() {
             </div>
             <div className="h-[420px] overflow-hidden rounded-2xl border border-teal-400 shadow-[0_0_30px_rgba(13,93,89,0.2)]">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.9798999999997!2d80.2345678!3d13.0412345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a526766dfd86fb3%3A0x9dcda003383a79dc!2sT.%20Nagar%2C%20Kathmandu%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                src="https://maps.google.com/maps?q=Rem.Work,+Kamalpokhari,+Kathmandu,+Nepal&z=15&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
