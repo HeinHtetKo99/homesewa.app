@@ -14,10 +14,6 @@ const heroContent = {
 };
 
 const sections = {
-  about: {
-    title: "About HomeSewa",
-    desc: "Home Sewa is a technology-driven hyperlocal home services that delivers fast, reliable, and professional services at customers' doorsteps. By matching service requests with nearby professionals based on location, Home Sewa reduces response time and ensures quicker service fulfillment.",
-  },
   mission: {
     title: "Our Mission",
     desc: "We want to provide every cleaning and facility care service under one trusted platform so you don't have to search different places for different needs.",
