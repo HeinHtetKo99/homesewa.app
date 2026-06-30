@@ -456,6 +456,7 @@ export default function BookForm() {
         <FormSelect
           id={`${formId}-shift`}
           label="Select Shift"
+          required
           options={
             availableShifts.length > 0 ? availableShifts : [...BOOKING_SHIFTS]
           }
