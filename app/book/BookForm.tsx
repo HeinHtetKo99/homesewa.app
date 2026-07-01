@@ -2,120 +2,322 @@
 
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import {
-  FORM_STACK_CLASS,
-  FormSelect,
-  MultiServiceSelect,
-  PhotoDropzone,
-  ResetIcon,
-  SearchableSelect,
-  fieldLabelClass,
-  textInputClass,
-} from "@/components/form-controls";
-import {
   BOOKING_CITY,
-  BOOKING_PHOTO_FIELD,
   BOOKING_PRIORITIES,
   BOOKING_SERVICES,
   BOOKING_SHIFTS,
   BUDGET_OPTIONS,
   Kathmandu_AREAS,
-  MAX_PHOTOS,
   PROPERTY_TYPES,
-  REFERRAL_SOURCES,
 } from "@/lib/book-form-options";
 import {
   bookingScheduleValidationError,
   getAvailableShifts,
-  getBookingNowTime,
   getBookingToday,
 } from "@/lib/booking-datetime";
-import { emailValidationError } from "@/lib/form-validation";
 
 const onlyDigits = (v: string) => v.replace(/[^0-9]/g, "");
 
-type PhotoItem = {
-  id: string;
-  file: File;
-  previewUrl: string;
-};
+const INPUT_BASE =
+  "w-full rounded-xl border-[1.5px] border-[#E2E8F0] bg-white px-3.5 text-[15px] font-medium text-[#1A1A1A] outline-none transition-colors placeholder:text-[#4B4B4B]";
+const INPUT_ACTIVE = "border-[hsl(142,71%,45%)] bg-[#F4F7FF]";
+const LABEL_CLASS =
+  "mb-1.5 pl-1 text-[14px] font-semibold text-[#4A4A4A]";
 
-const IMAGE_EXTENSIONS = new Set([
-  "jpg",
-  "jpeg",
-  "png",
-  "gif",
-  "webp",
-  "heic",
-  "heif",
-  "bmp",
-]);
-
-function isImageFile(file: File): boolean {
-  if (file.type.startsWith("image/")) return true;
-  const ext = file.name.split(".").pop()?.toLowerCase() ?? "";
-  return IMAGE_EXTENSIONS.has(ext);
-}
-
-function createPhotoItem(file: File): PhotoItem {
-  const id =
-    typeof crypto !== "undefined" && "randomUUID" in crypto
-      ? crypto.randomUUID()
-      : `${file.name}-${file.size}-${file.lastModified}-${Math.random().toString(36).slice(2)}`;
-  return {
-    id,
-    file,
-    previewUrl: URL.createObjectURL(file),
-  };
-}
-
-function revokePhotoItems(items: PhotoItem[]) {
-  for (const item of items) {
-    URL.revokeObjectURL(item.previewUrl);
+function formatPhoneDisplay(value: string): string {
+  const cleaned = onlyDigits(value).slice(0, 10);
+  if (cleaned.length > 6) {
+    return `${cleaned.slice(0, 3)} ${cleaned.slice(3, 6)} ${cleaned.slice(6)}`;
   }
+  if (cleaned.length > 3) {
+    return `${cleaned.slice(0, 3)} ${cleaned.slice(3)}`;
+  }
+  return cleaned;
+}
+
+function stripPhoneSpaces(value: string): string {
+  return value.replace(/\s/g, "");
+}
+
+function RequiredMark() {
+  return <span className="text-red-600">*</span>;
+}
+
+function ChevronDown() {
+  return (
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 16 16"
+      fill="none"
+      aria-hidden
+      className="shrink-0 text-[#4B4B4B]"
+    >
+      <path
+        d="M4 6l4 4 4-4"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function FormLabel({
+  htmlFor,
+  children,
+  required,
+}: {
+  htmlFor?: string;
+  children: React.ReactNode;
+  required?: boolean;
+}) {
+  return (
+    <label htmlFor={htmlFor} className={LABEL_CLASS}>
+      {children}
+      {required ? <RequiredMark /> : null}
+    </label>
+  );
+}
+
+function PhoneInput({
+  id,
+  value,
+  onChange,
+  placeholder,
+  active,
+  onFocus,
+  onBlur,
+}: {
+  id: string;
+  value: string;
+  onChange: (v: string) => void;
+  placeholder: string;
+  active: boolean;
+  onFocus: () => void;
+  onBlur: () => void;
+}) {
+  return (
+    <div className="relative mb-5">
+      <span
+        className="pointer-events-none absolute left-3.5 top-1/2 z-10 -translate-y-1/2 text-lg"
+        aria-hidden
+      >
+        🇳🇵
+      </span>
+      <input
+        id={id}
+        type="tel"
+        inputMode="numeric"
+        maxLength={12}
+        className={`${INPUT_BASE} h-11 pl-12 pr-2.5 ${active ? INPUT_ACTIVE : ""}`}
+        placeholder={placeholder}
+        value={value}
+        onFocus={onFocus}
+        onBlur={onBlur}
+        onChange={(e) => onChange(formatPhoneDisplay(e.target.value))}
+        autoComplete="tel"
+      />
+    </div>
+  );
+}
+
+function SingleSelect({
+  id,
+  label,
+  options,
+  value,
+  onChange,
+  placeholder,
+  active,
+  onOpen,
+  onClose,
+  required,
+}: {
+  id: string;
+  label: string;
+  options: readonly string[];
+  value: string;
+  onChange: (v: string) => void;
+  placeholder: string;
+  active: boolean;
+  onOpen: () => void;
+  onClose: () => void;
+  required?: boolean;
+}) {
+  const [open, setOpen] = useState(false);
+  const rootRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const onDoc = (e: MouseEvent) => {
+      if (!rootRef.current?.contains(e.target as Node)) {
+        setOpen(false);
+        onClose();
+      }
+    };
+    document.addEventListener("mousedown", onDoc);
+    return () => document.removeEventListener("mousedown", onDoc);
+  }, [onClose]);
+
+  const toggle = () => {
+    const next = !open;
+    setOpen(next);
+    if (next) onOpen();
+    else onClose();
+  };
+
+  return (
+    <div ref={rootRef} className="mb-5">
+      <span id={`${id}-label`} className={LABEL_CLASS}>
+        {label}
+        {required ? <RequiredMark /> : null}
+      </span>
+      <div className="relative">
+        <button
+          id={id}
+          type="button"
+          aria-expanded={open}
+          aria-labelledby={`${id}-label`}
+          onClick={toggle}
+          className={`flex min-h-11 w-full items-center justify-between gap-2 rounded-xl border-[1.5px] px-3.5 py-2.5 text-left text-[15px] font-medium outline-none transition-colors ${
+            active || open
+              ? "border-[hsl(142,71%,45%)] bg-[#F4F7FF]"
+              : "border-[#E2E8F0] bg-white"
+          }`}
+        >
+          <span className={value ? "text-[#1A1A1A]" : "text-[#4B4B4B]"}>
+            {value || placeholder}
+          </span>
+          <ChevronDown />
+        </button>
+        {open ? (
+          <ul
+            role="listbox"
+            className="absolute z-40 mt-1 max-h-56 w-full overflow-auto rounded-xl border border-[#E2E8F0] bg-white py-1 shadow-lg"
+          >
+            {options.map((opt) => (
+              <li key={opt} role="option" aria-selected={value === opt}>
+                <button
+                  type="button"
+                  className="w-full px-3.5 py-2.5 text-left text-[15px] text-[#1A1A1A] hover:bg-[#F4F7FF]"
+                  onClick={() => {
+                    onChange(opt);
+                    setOpen(false);
+                    onClose();
+                  }}
+                >
+                  {opt}
+                </button>
+              </li>
+            ))}
+          </ul>
+        ) : null}
+      </div>
+    </div>
+  );
+}
+
+function ClearFormDialog({
+  open,
+  onCancel,
+  onConfirm,
+}: {
+  open: boolean;
+  onCancel: () => void;
+  onConfirm: () => void;
+}) {
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onCancel();
+    };
+    document.addEventListener("keydown", onKey);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prev;
+    };
+  }, [open, onCancel]);
+
+  if (!open) return null;
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4"
+      role="presentation"
+      onMouseDown={(e) => {
+        if (e.target === e.currentTarget) onCancel();
+      }}
+    >
+      <div
+        role="alertdialog"
+        aria-modal="true"
+        aria-labelledby="clear-form-title"
+        aria-describedby="clear-form-desc"
+        className="w-full max-w-[320px] overflow-hidden rounded-2xl bg-white shadow-xl"
+      >
+        <div className="px-5 pb-4 pt-5 text-center">
+          <h3
+            id="clear-form-title"
+            className="text-[17px] font-semibold text-[#1A1A1A]"
+          >
+            Clear Form
+          </h3>
+          <p
+            id="clear-form-desc"
+            className="mt-2 text-[14px] leading-relaxed text-[#4A4A4A]"
+          >
+            Are you sure you want to clear all fields?
+          </p>
+        </div>
+        <div className="flex border-t border-[#E2E8F0]">
+          <button
+            type="button"
+            onClick={onCancel}
+            className="flex-1 py-3.5 text-[16px] font-medium text-[#0a7de1] transition-colors hover:bg-[#F0FDF4]"
+          >
+            Cancel
+          </button>
+          <div className="w-px bg-[#E2E8F0]" aria-hidden />
+          <button
+            type="button"
+            onClick={onConfirm}
+            className="flex-1 py-3.5 text-[16px] font-semibold text-red-600 transition-colors hover:bg-red-50"
+          >
+            Yes, Clear
+          </button>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default function BookForm() {
   const formId = useId();
-  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const [fullName, setFullName] = useState("");
-  const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [area, setArea] = useState("");
-  const [street, setStreet] = useState("");
-  const [zip, setZip] = useState("");
-  const [landmark, setLandmark] = useState("");
-  const [propertyType, setPropertyType] = useState("");
-  const [services, setServices] = useState<string[]>([]);
+  const [selectedService, setSelectedService] = useState("");
   const [startDate, setStartDate] = useState("");
-  const [deadlineDate, setDeadlineDate] = useState("");
-  const [deadlineTime, setDeadlineTime] = useState("");
   const [shift, setShift] = useState("");
-  const [budget, setBudget] = useState("");
+  const [area, setArea] = useState("");
   const [priority, setPriority] = useState("");
-  const [workDescription, setWorkDescription] = useState("");
-  const [referralSource, setReferralSource] = useState("");
-  const [photoItems, setPhotoItems] = useState<PhotoItem[]>([]);
-  const [photoDragOver, setPhotoDragOver] = useState(false);
-  const photoItemsRef = useRef<PhotoItem[]>([]);
-
-  photoItemsRef.current = photoItems;
-
-  useEffect(() => {
-    return () => revokePhotoItems(photoItemsRef.current);
-  }, []);
+  const [budget, setBudget] = useState("");
+  const [message, setMessage] = useState("");
+  const [activeInput, setActiveInput] = useState<string | null>(null);
 
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [submitWarning, setSubmitWarning] = useState<string | null>(null);
-  const [emailError, setEmailError] = useState<string | null>(null);
+  const [showClearConfirm, setShowClearConfirm] = useState(false);
 
-  const todayLocal = getBookingToday();
-  const minDate = todayLocal;
-  const availableShifts = startDate ? getAvailableShifts(startDate) : BOOKING_SHIFTS;
-  const minDeadlineTime =
-    deadlineDate === todayLocal ? getBookingNowTime() : undefined;
+  const minDate = getBookingToday();
+  const availableShifts = startDate
+    ? getAvailableShifts(startDate)
+    : BOOKING_SHIFTS;
 
   useEffect(() => {
     if (startDate && shift && !getAvailableShifts(startDate).includes(shift)) {
@@ -125,56 +327,23 @@ export default function BookForm() {
 
   const resetFields = useCallback(() => {
     setFullName("");
-    setEmail("");
     setPhone("");
-    setArea("");
-    setStreet("");
-    setZip("");
-    setLandmark("");
-    setPropertyType("");
-    setServices([]);
+    setSelectedService("");
     setStartDate("");
-    setDeadlineDate("");
-    setDeadlineTime("");
     setShift("");
-    setBudget("");
+    setArea("");
     setPriority("");
-    setWorkDescription("");
-    setReferralSource("");
-    setPhotoItems((prev) => {
-      revokePhotoItems(prev);
-      return [];
-    });
-    setEmailError(null);
+    setBudget("");
+    setMessage("");
+    setActiveInput(null);
     setSubmitError(null);
-    if (fileInputRef.current) fileInputRef.current.value = "";
   }, []);
 
-  const clear = () => {
+  const confirmClearForm = () => {
     resetFields();
     setSubmitSuccess(false);
     setSubmitWarning(null);
-  };
-
-  const addPhotos = (files: FileList | null) => {
-    if (!files?.length) return;
-    const incoming = Array.from(files).filter(isImageFile);
-    if (incoming.length === 0) return;
-
-    setPhotoItems((prev) => {
-      const slotsLeft = MAX_PHOTOS - prev.length;
-      if (slotsLeft <= 0) return prev;
-      return [...prev, ...incoming.slice(0, slotsLeft).map(createPhotoItem)];
-    });
-    if (fileInputRef.current) fileInputRef.current.value = "";
-  };
-
-  const removePhoto = (id: string) => {
-    setPhotoItems((prev) => {
-      const target = prev.find((p) => p.id === id);
-      if (target) URL.revokeObjectURL(target.previewUrl);
-      return prev.filter((p) => p.id !== id);
-    });
+    setShowClearConfirm(false);
   };
 
   const onSubmit = async (e: React.FormEvent) => {
@@ -183,34 +352,50 @@ export default function BookForm() {
     setSubmitSuccess(false);
     setSubmitWarning(null);
 
-    const emailErr = emailValidationError(email);
-    setEmailError(emailErr);
-    if (emailErr) return;
+    const phoneDigits = stripPhoneSpaces(phone);
 
-    if (
-      !fullName.trim() ||
-      !phone.trim() ||
-      !area ||
-      !propertyType ||
-      services.length === 0 ||
-      !startDate ||
-      !shift ||
-      !budget ||
-      !priority
-    ) {
-      setSubmitError("Please fill in all required fields (marked with *).");
+    if (!fullName.trim()) {
+      setSubmitError("Full Name is required.");
       return;
     }
 
-    if (!/^\d{10}$/.test(phone)) {
-      setSubmitError("Enter a valid 10-digit mobile number.");
+    if (!phoneDigits || phoneDigits.length !== 10) {
+      setSubmitError("Enter a valid 10-digit phone number.");
+      return;
+    }
+
+    if (!selectedService) {
+      setSubmitError("Please select a service.");
+      return;
+    }
+
+    if (!startDate) {
+      setSubmitError("Please select a date.");
+      return;
+    }
+
+    if (!shift) {
+      setSubmitError("Please choose a time shift.");
+      return;
+    }
+
+    if (!area) {
+      setSubmitError("Please select your location.");
+      return;
+    }
+
+    if (!budget.trim()) {
+      setSubmitError("Budget cannot be empty.");
+      return;
+    }
+
+    if (!priority.trim()) {
+      setSubmitError("Please choose a Priority.");
       return;
     }
 
     const scheduleErr = bookingScheduleValidationError({
       startDate,
-      deadlineDate,
-      deadlineTime,
       shift,
     });
     if (scheduleErr) {
@@ -222,26 +407,23 @@ export default function BookForm() {
     try {
       const data = new FormData();
       data.append("fullName", fullName.trim());
-      data.append("email", email.trim());
-      data.append("phone", phone);
+      data.append("email", "");
+      data.append("phone", phoneDigits);
       data.append("city", BOOKING_CITY);
       data.append("area", area);
-      data.append("street", street.trim());
-      data.append("zip", zip.trim());
-      data.append("landmark", landmark.trim());
-      data.append("propertyType", propertyType);
-      data.append("services", JSON.stringify(services));
+      data.append("street", "");
+      data.append("zip", "");
+      data.append("landmark", "");
+      data.append("propertyType", PROPERTY_TYPES[0]);
+      data.append("services", JSON.stringify([selectedService]));
       data.append("startDate", startDate);
-      data.append("deadlineDate", deadlineDate);
-      data.append("deadlineTime", deadlineTime);
+      data.append("deadlineDate", "");
+      data.append("deadlineTime", "");
       data.append("shift", shift);
       data.append("budget", budget);
       data.append("priority", priority);
-      data.append("workDescription", workDescription.trim());
-      data.append("referralSource", referralSource);
-      for (const item of photoItems) {
-        data.append("photos", item.file);
-      }
+      data.append("workDescription", message.trim());
+      data.append("referralSource", "");
 
       const res = await fetch("/api/bookings", {
         method: "POST",
@@ -263,318 +445,220 @@ export default function BookForm() {
       setSubmitSuccess(true);
       setSubmitWarning(json.warning ?? null);
     } catch {
-      setSubmitError(
-        "Network error. Please check your connection and try again.",
-      );
+      setSubmitError("Something went wrong. Please try again.");
     } finally {
       setSubmitting(false);
     }
   };
 
+  const inputClass = (key: string) =>
+    `${INPUT_BASE} mb-5 h-11 ${activeInput === key ? INPUT_ACTIVE : ""}`;
+
   return (
-    <div className="w-full bg-white px-5 py-8 sm:px-8 sm:py-10">
+    <div className="w-full bg-white px-[6%] py-5 sm:py-8">
+      <ClearFormDialog
+        open={showClearConfirm}
+        onCancel={() => setShowClearConfirm(false)}
+        onConfirm={confirmClearForm}
+      />
       <form
         id={formId}
         onSubmit={onSubmit}
-        className={FORM_STACK_CLASS}
+        className="mx-auto max-w-2xl"
         noValidate
       >
-        <div className="flex flex-col gap-1">
-          <label htmlFor={`${formId}-name`} className={fieldLabelClass()}>
-            Full name<span className="text-red-600"> *</span>
-          </label>
-          <input
-            id={`${formId}-name`}
-            className={textInputClass()}
-            value={fullName}
-            onChange={(e) => setFullName(e.target.value)}
-            autoComplete="name"
-            required
-          />
-        </div>
+        <h2 className="pl-0.5 text-[22px] font-bold text-[#1A1A1A] sm:text-[26px]">
+          Book a Service
+        </h2>
+        <p className="mt-1 pl-0.5 text-[14px] text-[#666]">
+          Fill out the parameters below to arrange your request
+        </p>
 
-        <div className="flex flex-col gap-1">
-          <label htmlFor={`${formId}-phone`} className={fieldLabelClass()}>
-            Phone<span className="text-red-600"> *</span>
-          </label>
-          <input
-            id={`${formId}-phone`}
-            type="tel"
-            inputMode="numeric"
-            maxLength={10}
-            className={textInputClass()}
-            value={phone}
-            onChange={(e) => setPhone(onlyDigits(e.target.value).slice(0, 10))}
-            autoComplete="tel"
-            required
-          />
-        </div>
-
-        <div className="flex flex-col gap-1">
-          <label htmlFor={`${formId}-email`} className={fieldLabelClass()}>
-            eMail
-          </label>
-          <input
-            id={`${formId}-email`}
-            type="email"
-            className={textInputClass()}
-            value={email}
-            onChange={(e) => {
-              const v = e.target.value;
-              setEmail(v);
-              setEmailError(emailValidationError(v));
-            }}
-            autoComplete="email"
-            aria-invalid={emailError ? true : undefined}
-          />
-          {emailError ? (
-            <p className="text-[12px] text-red-600">{emailError}</p>
-          ) : null}
-        </div>
-
-        <div className="flex flex-col gap-1">
-          <label htmlFor={`${formId}-city`} className={fieldLabelClass()}>
-            City<span className="text-red-600"> *</span>
-          </label>
-          <input
-            id={`${formId}-city`}
-            className={textInputClass() + " cursor-not-allowed bg-gray-50 text-gray-600"}
-            value={BOOKING_CITY}
-            readOnly
-            tabIndex={-1}
-          />
-        </div>
-
-        <SearchableSelect
-          id={`${formId}-area`}
-          label="Area"
-          required
-          options={Kathmandu_AREAS}
-          value={area}
-          onChange={setArea}
-          placeholder="Type to search area…"
-          hint={`Example: Thamel, Baneshwor, Patan — ${Kathmandu_AREAS.length} areas in Kathmandu Valley`}
+        <div className="my-5" />
+        <FormLabel htmlFor={`${formId}-name`} required>
+          Full Name
+        </FormLabel>
+        <input
+          id={`${formId}-name`}
+          className={inputClass("name")}
+          placeholder="Enter your Full Name"
+          value={fullName}
+          maxLength={30}
+          onFocus={() => setActiveInput("name")}
+          onBlur={() => setActiveInput(null)}
+          onChange={(e) => setFullName(e.target.value)}
+          autoComplete="name"
         />
 
-        <div className="flex flex-col gap-1">
-          <label htmlFor={`${formId}-street`} className={fieldLabelClass()}>
-            Street
-          </label>
-          <input
-            id={`${formId}-street`}
-            className={textInputClass()}
-            value={street}
-            onChange={(e) => setStreet(e.target.value)}
-            autoComplete="street-address"
-          />
-        </div>
-
-        <div className="flex flex-col gap-1">
-          <label htmlFor={`${formId}-zip`} className={fieldLabelClass()}>
-            Zip
-          </label>
-          <input
-            id={`${formId}-zip`}
-            className={textInputClass()}
-            value={zip}
-            onChange={(e) => setZip(onlyDigits(e.target.value).slice(0, 6))}
-            inputMode="numeric"
-            maxLength={6}
-            autoComplete="postal-code"
-          />
-        </div>
-
-        <div className="flex flex-col gap-1">
-          <label htmlFor={`${formId}-landmark`} className={fieldLabelClass()}>
-            Nearest Landmark
-          </label>
-          <input
-            id={`${formId}-landmark`}
-            className={textInputClass()}
-            value={landmark}
-            onChange={(e) => setLandmark(e.target.value)}
-          />
-        </div>
-
-        <FormSelect
-          id={`${formId}-property`}
-          label="Property Type"
-          required
-          options={PROPERTY_TYPES}
-          value={propertyType}
-          onChange={setPropertyType}
+        <FormLabel htmlFor={`${formId}-phone`} required>
+          Phone Number
+        </FormLabel>
+        <PhoneInput
+          id={`${formId}-phone`}
+          value={phone}
+          onChange={setPhone}
+          placeholder="Enter your Phone Number"
+          active={activeInput === "phone"}
+          onFocus={() => setActiveInput("phone")}
+          onBlur={() => setActiveInput(null)}
         />
 
-        <MultiServiceSelect
-          id={`${formId}-services`}
-          label="Select Services"
-          required
+        <SingleSelect
+          id={`${formId}-service`}
+          label="Select Service"
           options={BOOKING_SERVICES}
-          values={services}
-          onChange={setServices}
+          value={selectedService}
+          onChange={setSelectedService}
+          placeholder="Select Services"
+          required
+          active={activeInput === "service"}
+          onOpen={() => setActiveInput("service")}
+          onClose={() => setActiveInput(null)}
         />
 
-        <div className="flex flex-col gap-1">
-          <label htmlFor={`${formId}-start`} className={fieldLabelClass()}>
-            Starting Date<span className="text-red-600"> *</span>
-          </label>
-          <input
-            id={`${formId}-start`}
-            type="date"
-            min={minDate}
-            className={textInputClass()}
-            value={startDate}
-            onChange={(e) => setStartDate(e.target.value)}
-            required
-          />
-        </div>
+        <FormLabel htmlFor={`${formId}-date`} required>
+          Choose Date
+        </FormLabel>
+        <input
+          id={`${formId}-date`}
+          type="date"
+          min={minDate}
+          className={inputClass("date")}
+          value={startDate}
+          onFocus={() => setActiveInput("date")}
+          onBlur={() => setActiveInput(null)}
+          onChange={(e) => setStartDate(e.target.value)}
+        />
 
-        <div className="flex flex-col gap-1">
-          <span className={fieldLabelClass()}>Deadline</span>
-          <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
-            <input
-              id={`${formId}-deadline-date`}
-              type="date"
-              min={startDate || minDate}
-              className={textInputClass()}
-              value={deadlineDate}
-              onChange={(e) => setDeadlineDate(e.target.value)}
-              aria-label="Deadline date"
-            />
-            <input
-              id={`${formId}-deadline-time`}
-              type="time"
-              min={minDeadlineTime}
-              className={textInputClass()}
-              value={deadlineTime}
-              onChange={(e) => setDeadlineTime(e.target.value)}
-              aria-label="Deadline time"
-            />
-          </div>
-        </div>
-
-        <FormSelect
+        <SingleSelect
           id={`${formId}-shift`}
-          label="Select Shift"
-          required
+          label="Preferred Time"
           options={
             availableShifts.length > 0 ? availableShifts : [...BOOKING_SHIFTS]
           }
           value={shift}
           onChange={setShift}
-        />
-
-        <FormSelect
-          id={`${formId}-budget`}
-          label="Budget"
+          placeholder="Choose a Shift"
           required
-          options={BUDGET_OPTIONS}
-          value={budget}
-          onChange={setBudget}
+          active={activeInput === "shift"}
+          onOpen={() => setActiveInput("shift")}
+          onClose={() => setActiveInput(null)}
         />
 
-        <FormSelect
+        <SingleSelect
+          id={`${formId}-area`}
+          label="Your Location"
+          options={Kathmandu_AREAS}
+          value={area}
+          onChange={setArea}
+          placeholder="Select your Location"
+          required
+          active={activeInput === "location"}
+          onOpen={() => setActiveInput("location")}
+          onClose={() => setActiveInput(null)}
+        />
+
+        <SingleSelect
           id={`${formId}-priority`}
           label="Priority"
-          required
           options={BOOKING_PRIORITIES}
           value={priority}
           onChange={setPriority}
+          placeholder="Select Priority"
+          required
+          active={activeInput === "priority"}
+          onOpen={() => setActiveInput("priority")}
+          onClose={() => setActiveInput(null)}
         />
 
-        <PhotoDropzone
-          inputId={`${formId}-photos`}
-          label={BOOKING_PHOTO_FIELD}
-          photoCount={photoItems.length}
-          maxPhotos={MAX_PHOTOS}
-          dragOver={photoDragOver}
-          onDragOver={(e) => {
-            e.preventDefault();
-            setPhotoDragOver(true);
-          }}
-          onDragLeave={() => setPhotoDragOver(false)}
-          onDrop={(e) => {
-            e.preventDefault();
-            setPhotoDragOver(false);
-            addPhotos(e.dataTransfer.files);
-          }}
-          onBrowse={addPhotos}
-          disabled={photoItems.length >= MAX_PHOTOS}
-          previews={photoItems.map((item) => ({
-            id: item.id,
-            url: item.previewUrl,
-            name: item.file.name,
-          }))}
-          onRemove={removePhoto}
-          inputRef={fileInputRef}
+        <SingleSelect
+          id={`${formId}-budget`}
+          label="Select Budget"
+          options={BUDGET_OPTIONS}
+          value={budget}
+          onChange={setBudget}
+          placeholder="Select Budget"
+          required
+          active={activeInput === "budget"}
+          onOpen={() => setActiveInput("budget")}
+          onClose={() => setActiveInput(null)}
         />
 
-        <div className="flex flex-col gap-1">
-          <label htmlFor={`${formId}-work`} className={fieldLabelClass()}>
-            Work Description
-          </label>
-          <textarea
-            id={`${formId}-work`}
-            rows={5}
-            className={textInputClass() + " resize-y min-h-[120px]"}
-            value={workDescription}
-            onChange={(e) => setWorkDescription(e.target.value)}
-          />
-        </div>
-
-        <FormSelect
-          id={`${formId}-referral`}
-          label="How did you know about us?"
-          options={REFERRAL_SOURCES}
-          value={referralSource}
-          onChange={setReferralSource}
+        <FormLabel htmlFor={`${formId}-message`}>Message</FormLabel>
+        <textarea
+          id={`${formId}-message`}
+          rows={4}
+          className={`${INPUT_BASE} mb-2 min-h-[100px] max-h-[140px] resize-y py-3 ${
+            activeInput === "message" ? INPUT_ACTIVE : ""
+          }`}
+          placeholder="Provide specific notes or special context here..."
+          value={message}
+          onFocus={() => setActiveInput("message")}
+          onBlur={() => setActiveInput(null)}
+          onChange={(e) => setMessage(e.target.value)}
         />
 
         {submitError ? (
           <p
             role="alert"
-            className="rounded border border-red-200 bg-red-50 px-3 py-2 text-[13px] text-red-800"
+            className="mb-4 rounded-xl border border-red-200 bg-red-50 px-3 py-2 text-[13px] text-red-800"
           >
             {submitError}
           </p>
         ) : null}
 
         {submitSuccess ? (
-          <div role="status" className="space-y-2">
-            <p className="rounded border border-green-200 bg-green-50 px-3 py-2 text-[13px] text-green-800">
+          <div role="status" className="mb-4 space-y-2">
+            <p className="rounded-xl border border-green-200 bg-green-50 px-3 py-2 text-[13px] text-green-800">
               Thank you! Your booking has been submitted. Our team will contact
               you shortly.
             </p>
             {submitWarning ? (
-              <p className="rounded border border-amber-200 bg-amber-50 px-3 py-2 text-[13px] text-amber-900">
+              <p className="rounded-xl border border-amber-200 bg-amber-50 px-3 py-2 text-[13px] text-amber-900">
                 {submitWarning}
               </p>
             ) : null}
           </div>
         ) : null}
 
-        <div className="flex items-center justify-between pt-2">
+        <div className="mt-4 flex items-center justify-between">
           <button
             type="button"
-            onClick={clear}
+            onClick={() => setShowClearConfirm(true)}
             disabled={submitting}
-            className="inline-flex items-center gap-1.5 text-[14px] text-gray-600 hover:text-gray-900 disabled:opacity-50"
+            className="mb-10 inline-flex items-center gap-1.5 text-[15px] font-medium text-[#0a7de1] hover:opacity-80 disabled:opacity-50"
           >
-            <ResetIcon />
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              aria-hidden
+            >
+              <path
+                d="M4 12a8 8 0 1 1 3 6.32"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+              />
+              <path
+                d="M4 16V12h4"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
             Clear form
           </button>
           <button
             type="submit"
             disabled={submitting}
-            className="rounded bg-black px-8 py-2.5 text-[14px] font-medium text-white hover:bg-gray-800 disabled:opacity-60"
+            className="mb-10 h-11 w-[40%] min-w-[120px] rounded-xl bg-black text-[15px] font-semibold text-white hover:bg-gray-800 disabled:opacity-60"
           >
             {submitting ? "Submitting…" : "Submit"}
           </button>
         </div>
-
-        <p className="text-center text-[11px] text-gray-400">
-          Do not submit passwords through this form. Report malicious form.
-        </p>
       </form>
     </div>
   );
