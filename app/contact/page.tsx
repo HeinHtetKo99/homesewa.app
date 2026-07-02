@@ -130,7 +130,7 @@ export default function Contact() {
                 <h3 className="mb-1 text-xl font-semibold">{person.name}</h3>
                 <p className="mb-4 text-gray-600">{person.role}</p>
                 <a
-                  href="https://d.sriyog.com/homesewa"
+                  href="https://wa.me/9779852024365"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="rounded-lg bg-[#0E4541] px-4 py-2 font-medium text-white transition hover:bg-teal-900"
