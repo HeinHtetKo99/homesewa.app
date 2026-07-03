@@ -162,6 +162,39 @@ html.dark .border-teal-700 {
   border-color: rgb(94 234 212 / 0.45);
 }
 
+/* Services page — entrance animation + locator toolbar */
+@keyframes rise-fade {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-rise-fade {
+  animation: rise-fade 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-rise-fade {
+    animation: none;
+  }
+}
+
+.services-toolbar {
+  background: rgb(255 255 255 / 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 20px rgb(15 23 42 / 0.06);
+}
+
+html.dark .services-toolbar {
+  background: color-mix(in srgb, var(--background) 88%, transparent);
+}
+
 .theme-toggle-btn {
   display: inline-flex;
   height: 2rem;

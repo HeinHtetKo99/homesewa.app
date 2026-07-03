@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-export const SITE_URL = "https://homesewa.app";
+export const SITE_URL = "https://www.homesewa.app";
 export const SITE_NAME = "HomeSewa";
 export const DEFAULT_OG_IMAGE = "/og/default.jpg";
 

@@ -32,21 +32,21 @@ export default function ServiceCard({
       ? "px-4 py-1 text-teal-700 border border-teal-700 rounded-full bg-white text-sm font-semibold transition-transform duration-200 hover:scale-105"
       : "px-4 py-1.5 text-white bg-[#0E4541] border border-teal-900 rounded-full text-sm font-semibold hover:bg-teal-900 transition-transform hover:scale-105";
   return (
-    <div className="group relative bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 border border-teal-100 flex flex-col h-full">
+    <div className="group relative bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-[transform,box-shadow] duration-400 ease-[cubic-bezier(0.22,1,0.36,1)] border border-teal-100 flex flex-col h-full">
       <div className="h-56 overflow-hidden">
         {href ? (
           <Link href={href}>
             <img
               src={image}
               alt={title}
-              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
             />
           </Link>
         ) : (
           <img
             src={image}
             alt={title}
-            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+            className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
           />
         )}
       </div>

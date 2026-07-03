@@ -182,7 +182,7 @@ const Disclaimer = () => {
               Email: <a href="mailto:support@HomeSewa.app" className="hover:underline">support@HomeSewa.app</a>
             </p>
             <p className="about leading-relaxed mb-1">
-              Website: <a href="https://homesewa.app" className="hover:underline">https://homesewa.app</a>
+              Website: <a href="https://www.homesewa.app" className="hover:underline">https://www.homesewa.app</a>
             </p>
             <p className="about leading-relaxed mb-1">Phone: +977-9852024365</p>
             <p className="about leading-relaxed">Address: Rem.Work, Kamalpokhari, Kathmandu, Nepal</p>
