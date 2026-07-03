@@ -1,38 +1,105 @@
 import './globals.css';
 import Script from 'next/script';
+import type { Metadata } from 'next';
 import LayoutChrome from '../components/LayoutChrome';
 import GoogleAnalytics from '../components/GoogleAnalytics';
+import JsonLd from '../components/JsonLd';
 import { OneSignalInit } from './OneSignal';
-import { Suspense } from 'react';
 import { THEME_STORAGE_KEY } from '../lib/theme';
+import { SITE_NAME, SITE_URL, absoluteUrl } from '../lib/seo';
 
+const defaultTitle = "HomeSewa | SuperFast On-Demand Home Services in Nepal";
+const defaultDescription =
+  "HomeSewa connects you with verified professionals for cleaning, salon at home, spa, massage, repairs, and 50+ on-demand home services in Kathmandu and across Nepal. Book online in minutes.";
 
-export const metadata = {
-  metadataBase: new URL("https://homesewa.app"),
-  title: "HomeSewa | SuperFast on Demand Home Service in Nepal",
-  description: "HomeSewa is a superfast on demand home service.",
-  keywords: "HomeSewa, SuperFast Service, On Demand Home Service, Nepal",
-  authors: [{ name: "HomeSewa" }],
+export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: defaultTitle,
+    template: `%s | ${SITE_NAME}`,
+  },
+  description: defaultDescription,
+  keywords: [
+    "HomeSewa",
+    "home services Nepal",
+    "on demand home service Kathmandu",
+    "cleaning services Nepal",
+    "salon at home Kathmandu",
+    "professional cleaning Kathmandu",
+    "book home services online Nepal",
+  ],
+  authors: [{ name: SITE_NAME, url: SITE_URL }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
+  applicationName: SITE_NAME,
+  alternates: {
+    canonical: './',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1,
+    },
+  },
   openGraph: {
-    title: "HomeSewa | SuperFast Service",
-    description: "HomeSewa is a superfast on demand home service providing reliable and efficient solutions.",
-    url: "https://homesewa.app",
+    title: defaultTitle,
+    description: defaultDescription,
+    url: SITE_URL,
+    siteName: SITE_NAME,
+    locale: "en_US",
+    type: "website",
     images: [
       {
         url: "/og/default.jpg",
         width: 1200,
         height: 630,
-        alt: "HomeSewa | SuperFast Service",
+        alt: defaultTitle,
       },
     ],
-    type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "HomeSewa | SuperFast Service",
-    description: "HomeSewa is a superfast on demand home service.",
+    title: defaultTitle,
+    description: defaultDescription,
     images: ["/og/default.jpg"],
   },
+};
+
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": `${SITE_URL}/#organization`,
+  name: SITE_NAME,
+  url: SITE_URL,
+  logo: absoluteUrl("/favicon/favicon.png"),
+  image: absoluteUrl("/og/default.jpg"),
+  description: defaultDescription,
+  email: "support@homesewa.app",
+  foundingDate: "2018-06-14",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Kamalpokhari",
+    addressLocality: "Kathmandu",
+    addressCountry: "NP",
+  },
+  areaServed: {
+    "@type": "Country",
+    name: "Nepal",
+  },
+};
+
+const webSiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${SITE_URL}/#website`,
+  name: SITE_NAME,
+  url: SITE_URL,
+  publisher: { "@id": `${SITE_URL}/#organization` },
 };
 
 export default function RootLayout({ children }:Readonly<{
@@ -80,6 +147,8 @@ export default function RootLayout({ children }:Readonly<{
         </Script>
       </head>
       <body>
+        <JsonLd data={organizationJsonLd} />
+        <JsonLd data={webSiteJsonLd} />
         <GoogleAnalytics />
 
         {/* Google Tag Manager noscript */}

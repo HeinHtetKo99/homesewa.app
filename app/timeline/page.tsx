@@ -1,4 +1,12 @@
-'use client';
+import type { Metadata } from "next";
+import { pageMetadata } from "../../lib/seo";
+
+export const metadata: Metadata = pageMetadata({
+  title: "Company Timeline",
+  description:
+    "Explore HomeSewa's journey from our founding in 2018 to becoming a leading on-demand home services platform in Nepal.",
+  path: "/timeline",
+});
 
 export default function Timeline() {
 

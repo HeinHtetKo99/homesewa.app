@@ -1,7 +1,13 @@
-'use client';
-
-import React from "react";
+import type { Metadata } from "next";
 import Ribbon from "../../components/Ribbon";
+import { pageMetadata } from "../../lib/seo";
+
+export const metadata: Metadata = pageMetadata({
+  title: "Privacy Policy",
+  description:
+    "Learn how HomeSewa collects, uses, and protects your personal information when you use our website, mobile app, and home services in Nepal.",
+  path: "/privacy",
+});
 
 const PrivacyPolicy = () => {
   return (

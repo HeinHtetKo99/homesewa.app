@@ -1,5 +1,13 @@
-import React from "react";
+import type { Metadata } from "next";
 import Ribbon from "../../components/Ribbon";
+import { pageMetadata } from "../../lib/seo";
+
+export const metadata: Metadata = pageMetadata({
+  title: "Disclaimer",
+  description:
+    "Read the HomeSewa website disclaimer covering service information, external links, and limitations of liability.",
+  path: "/disclaimer",
+});
 
 const Disclaimer = () => {
   return (

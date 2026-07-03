@@ -1,12 +1,14 @@
 import FormPageLayout from "../../components/FormPageLayout";
 import CareerForm from "../../components/CareerForm";
+import { pageMetadata } from "../../lib/seo";
 
-export const metadata = {
-  title: "Career | HomeSewa",
+export const metadata = pageMetadata({
+  title: "Careers",
   description:
-    "Join HomeSewa — career opportunities in professional home services in Kathmandu, Nepal.",
-  keywords: "cleaning jobs Nepal, HomeSewa career, Kathmandu cleaning jobs",
-};
+    "Join HomeSewa — career and job opportunities in professional home services in Kathmandu, Nepal.",
+  path: "/career",
+  keywords: ["cleaning jobs Nepal", "HomeSewa career", "Kathmandu service jobs"],
+});
 
 export default function CareerPage() {
   return (

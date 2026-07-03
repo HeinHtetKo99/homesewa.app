@@ -1,7 +1,13 @@
-'use client';
-
-import React from "react";
+import type { Metadata } from "next";
 import Ribbon from "../../components/Ribbon";
+import { pageMetadata } from "../../lib/seo";
+
+export const metadata: Metadata = pageMetadata({
+  title: "Videos",
+  description:
+    "Watch HomeSewa videos — expert cleaning tips, service walkthroughs, and behind-the-scenes looks at our professional home services in Nepal.",
+  path: "/video",
+});
 
 const videos = [
   {

@@ -1,5 +1,14 @@
+import type { Metadata } from "next";
 import BlogCard from "../../components/BlogCard";
 import { blogPosts } from "../data/blogPosts";
+import { pageMetadata } from "../../lib/seo";
+
+export const metadata: Metadata = pageMetadata({
+  title: "Blog — Cleaning Tips & Home Care Advice",
+  description:
+    "Expert cleaning tips, professional service guides, and home & office hygiene advice from HomeSewa — Nepal's on-demand home services platform.",
+  path: "/blog",
+});
 
 export default function BlogPage() {
   return (

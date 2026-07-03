@@ -1,7 +1,13 @@
-'use client';
-
-import React from "react";
+import type { Metadata } from "next";
 import Ribbon from "../../components/Ribbon";
+import { pageMetadata } from "../../lib/seo";
+
+export const metadata: Metadata = pageMetadata({
+  title: "Refund Policy",
+  description:
+    "HomeSewa's refund policy — how to request a refund, eligibility criteria, and processing timelines for home service bookings in Nepal.",
+  path: "/refund",
+});
 
 export default function RefundPolicy() {
   return (

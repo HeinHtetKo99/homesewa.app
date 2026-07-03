@@ -1,8 +1,14 @@
-'use client';
-
-import React from "react";
+import type { Metadata } from "next";
 import Ribbon from "../../components/Ribbon";
 import Image from "next/image";
+import { pageMetadata } from "../../lib/seo";
+
+export const metadata: Metadata = pageMetadata({
+  title: "A Message from HomeSewa",
+  description:
+    "A message from the HomeSewa team about our commitment to reliable, professional, and superfast home services in Nepal.",
+  path: "/message",
+});
 
 const Message = () => {
   return (

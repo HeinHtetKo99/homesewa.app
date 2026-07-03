@@ -1,5 +1,13 @@
-import React from 'react'
+import type { Metadata } from 'next'
 import Ribbon from '../../components/Ribbon'
+import { pageMetadata } from '../../lib/seo'
+
+export const metadata: Metadata = pageMetadata({
+  title: 'Cookie Policy',
+  description:
+    'How HomeSewa uses cookies and similar technologies on homesewa.app to improve your browsing and booking experience.',
+  path: '/cookie',
+})
 
 const cookiePolicy = () => {
   return (

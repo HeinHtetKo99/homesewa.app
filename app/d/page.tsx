@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { pageMetadata } from "../../lib/seo";
 
-export const metadata: Metadata = {
-  title: "Download Home Sewa Mobile App | HomeSewa",
-  description: "Download the HomeSewa app for superfast on demand home services.",
-};
+export const metadata: Metadata = pageMetadata({
+  title: "Download the HomeSewa Mobile App",
+  description:
+    "Download the HomeSewa app on iOS or Android for superfast on-demand home service booking in Nepal.",
+  path: "/d",
+});
 
 import { APP_STORE_URL, PLAY_STORE_URL } from "../../lib/app-links";
 

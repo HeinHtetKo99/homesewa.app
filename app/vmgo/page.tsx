@@ -1,5 +1,13 @@
-'use client'
+import type { Metadata } from 'next';
 import Ribbon from '../../components/Ribbon';
+import { pageMetadata } from '../../lib/seo';
+
+export const metadata: Metadata = pageMetadata({
+  title: 'Vision, Mission & Goals',
+  description:
+    "Discover HomeSewa's vision, mission, and goals — building Nepal's most trusted on-demand home service platform powered by AI and verified professionals.",
+  path: '/vmgo',
+});
 
 const sectionImageClass = 'h-40 w-40 shrink-0 object-contain';
 

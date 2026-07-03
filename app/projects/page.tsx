@@ -1,6 +1,12 @@
-"use client";
+import type { Metadata } from "next";
+import { pageMetadata } from "../../lib/seo";
 
-import React from "react";
+export const metadata: Metadata = pageMetadata({
+  title: "Our Projects",
+  description:
+    "Browse completed HomeSewa projects — residential, commercial, and specialized cleaning and home service work across Kathmandu and Nepal.",
+  path: "/projects",
+});
 
 type Project = {
   title: string;

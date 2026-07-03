@@ -1,6 +1,13 @@
-'use client';
-
+import type { Metadata } from "next";
 import Ribbon from "../../components/Ribbon";
+import { pageMetadata } from "../../lib/seo";
+
+export const metadata: Metadata = pageMetadata({
+  title: "Our Team",
+  description:
+    "Meet the HomeSewa team — the leaders and professionals behind Nepal's superfast on-demand home services platform.",
+  path: "/team",
+});
 
 const teamMembers = [
   { id: 1, name: "Ramesh Koirala", role: "Director", image: "/team/1.png" },

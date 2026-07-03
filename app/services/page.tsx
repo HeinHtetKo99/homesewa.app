@@ -1,7 +1,20 @@
-"use client";
-
+import type { Metadata } from "next";
 import ServiceCard from "../../components/ServiceCard";
 import { serviceCategories } from "../data/servicesCatalog";
+import { pageMetadata } from "../../lib/seo";
+
+export const metadata: Metadata = pageMetadata({
+  title: "All Home Services in Kathmandu, Nepal",
+  description:
+    "Browse all HomeSewa services — cleaning, salon at home, spa, massage, physiotherapy, repairs, and more. Verified professionals, transparent pricing, superfast booking across Nepal.",
+  path: "/services",
+  keywords: [
+    "home services Kathmandu",
+    "cleaning services Nepal",
+    "salon at home Nepal",
+    "on demand services Kathmandu",
+  ],
+});
 
 export default function ServicesPage() {
   return (

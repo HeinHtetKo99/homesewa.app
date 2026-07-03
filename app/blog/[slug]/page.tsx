@@ -1,5 +1,8 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import JsonLd from "../../../components/JsonLd";
+import { SITE_NAME, SITE_URL, absoluteUrl } from "../../../lib/seo";
 import { getAllBlogSlugs, getBlogPost } from "../../data/blogPosts";
 
 type PageProps = {
@@ -10,18 +13,29 @@ export async function generateStaticParams() {
   return getAllBlogSlugs().map((slug) => ({ slug }));
 }
 
-export async function generateMetadata({ params }: PageProps) {
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const post = getBlogPost(slug);
-  if (!post) return { title: "Post Not Found | HomeSewa" };
+  if (!post) return { title: "Post Not Found" };
 
+  const path = `/blog/${slug}`;
   return {
-    title: `${post.title} | HomeSewa`,
+    title: post.title,
     description: post.description,
+    alternates: { canonical: path },
     openGraph: {
-      title: post.title,
+      title: `${post.title} | ${SITE_NAME}`,
       description: post.description,
-      images: [{ url: `https://www.HomeSewa.app${post.image}` }],
+      url: path,
+      siteName: SITE_NAME,
+      type: "article",
+      images: [{ url: post.image, alt: post.title }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${post.title} | ${SITE_NAME}`,
+      description: post.description,
+      images: [post.image],
     },
   };
 }
@@ -31,8 +45,26 @@ export default async function BlogPostPage({ params }: PageProps) {
   const post = getBlogPost(slug);
   if (!post) notFound();
 
+  const parsedDate = new Date(post.date);
+  const blogPostingJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.description,
+    image: absoluteUrl(post.image),
+    url: absoluteUrl(`/blog/${slug}`),
+    mainEntityOfPage: absoluteUrl(`/blog/${slug}`),
+    ...(Number.isNaN(parsedDate.getTime())
+      ? {}
+      : { datePublished: parsedDate.toISOString() }),
+    articleSection: post.category,
+    author: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
+    publisher: { "@id": `${SITE_URL}/#organization` },
+  };
+
   return (
     <section className="min-h-screen bg-white py-20 px-6 sm:px-12 lg:px-20">
+      <JsonLd data={blogPostingJsonLd} />
       <div className="max-w-3xl mx-auto">
         <Link
           href="/blog"

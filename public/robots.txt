@@ -1,4 +1,0 @@
-User-agent: *
-Disallow: /admin/
-Allow: /
-Sitemap: https://www.homesewa.app/sitemap.xml

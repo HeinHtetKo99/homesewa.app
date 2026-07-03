@@ -1,6 +1,14 @@
-'use client'
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import Ribbon from '../../components/Ribbon';
+import { pageMetadata } from '../../lib/seo';
+
+export const metadata: Metadata = pageMetadata({
+  title: 'Why Choose HomeSewa',
+  description:
+    'Why thousands choose HomeSewa: verified professionals, transparent pricing, superfast booking, and reliable on-demand home services across Nepal.',
+  path: '/why',
+});
 
 export default function WhyUs () {
 

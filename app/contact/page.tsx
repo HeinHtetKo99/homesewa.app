@@ -1,6 +1,7 @@
 import Link from "next/link";
 import ContactForm from "../../components/ContactForm";
 import { FormPageTitle } from "../../components/FormPageLayout";
+import { pageMetadata } from "../../lib/seo";
 
 const VisitIcon = () => (
   <svg width="27" height="26" fill="none" stroke="#0D5D59" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -22,10 +23,12 @@ const quickContacts = [
   { name: "Sudeep Basnet", role: "Customer Support Lead", image: "/contact/3.png" },
 ];
 
-export const metadata = {
-  title: "Contact | HomeSewa",
-  description: "Contact HomeSewa for professional cleaning and home services in Nepal.",
-};
+export const metadata = pageMetadata({
+  title: "Contact Us",
+  description:
+    "Contact HomeSewa for professional cleaning and on-demand home services in Nepal. Reach us by email, phone, or the contact form.",
+  path: "/contact",
+});
 
 export default function Contact() {
   return (
