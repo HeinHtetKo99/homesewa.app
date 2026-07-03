@@ -185,14 +185,17 @@ html.dark .border-teal-700 {
 }
 
 .services-toolbar {
-  background: rgb(255 255 255 / 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 4px 20px rgb(15 23 42 / 0.06);
+  background-color: #ffffff;
+  box-shadow: 0 4px 16px rgb(15 23 42 / 0.06);
+}
+
+.services-chip-track {
+  -webkit-overflow-scrolling: touch;
+  scroll-padding-inline: 0.75rem;
 }
 
 html.dark .services-toolbar {
-  background: color-mix(in srgb, var(--background) 88%, transparent);
+  background-color: var(--background);
 }
 
 .theme-toggle-btn {

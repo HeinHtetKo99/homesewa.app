@@ -63,7 +63,9 @@ export default function ServicesExplorer() {
   const [query, setQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState(serviceCategories[0]?.title ?? "");
   const [stickyTop, setStickyTop] = useState(60);
+  const [isStuck, setIsStuck] = useState(false);
   const toolbarRef = useRef<HTMLDivElement>(null);
+  const chipsRef = useRef<HTMLDivElement>(null);
   // While > now, the scroll-spy stays quiet so it can't fight a chip click.
   const spyPausedUntil = useRef(0);
 
@@ -81,6 +83,23 @@ export default function ServicesExplorer() {
       window.removeEventListener("scroll", measure);
     };
   }, []);
+
+  // On mobile, swap to a single-row chip strip once the bar is stuck so it
+  // doesn't cover most of the screen.
+  useEffect(() => {
+    const toolbar = toolbarRef.current;
+    if (!toolbar) return;
+    const checkStuck = () => {
+      setIsStuck(toolbar.getBoundingClientRect().top <= stickyTop + 1);
+    };
+    checkStuck();
+    window.addEventListener("scroll", checkStuck, { passive: true });
+    window.addEventListener("resize", checkStuck);
+    return () => {
+      window.removeEventListener("scroll", checkStuck);
+      window.removeEventListener("resize", checkStuck);
+    };
+  }, [stickyTop]);
 
   // Scroll-spy: highlight the category currently in view.
   useEffect(() => {
@@ -119,6 +138,14 @@ export default function ServicesExplorer() {
   }, []);
 
   const normalizedQuery = query.trim().toLowerCase();
+
+  useEffect(() => {
+    if (!isStuck || normalizedQuery) return;
+    const track = chipsRef.current;
+    if (!track) return;
+    const active = track.querySelector<HTMLElement>('[aria-selected="true"]');
+    active?.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+  }, [activeCategory, isStuck, normalizedQuery]);
 
   const filteredCategories = useMemo(() => {
     if (!normalizedQuery) return serviceCategories;
@@ -178,11 +205,13 @@ export default function ServicesExplorer() {
       {/* Locator / filter bar */}
       <div
         ref={toolbarRef}
-        className="services-toolbar sticky z-40 -mx-4 sm:-mx-6 lg:mx-0 mb-10 border-y lg:border border-teal-100 lg:rounded-2xl px-4 sm:px-6 py-3"
+        className={`services-toolbar sticky z-50 mx-auto mb-10 w-full max-w-4xl rounded-2xl border border-teal-100 bg-white px-4 py-4 sm:px-5 ${
+          isStuck ? "shadow-lg ring-1 ring-teal-100/80 max-lg:py-3" : ""
+        }`}
         style={{ top: stickyTop }}
       >
-        <div className="flex flex-col gap-2.5">
-          <div className="relative mx-auto w-full max-w-md">
+        <div className="flex flex-col gap-3">
+          <div className="relative mx-auto w-full max-w-lg">
             <Search
               className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-teal-700/60"
               aria-hidden
@@ -208,9 +237,20 @@ export default function ServicesExplorer() {
             )}
           </div>
 
-          <div className="overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <div
+            ref={chipsRef}
+            className={
+              isStuck
+                ? "services-chip-track -mx-1 max-lg:overflow-x-auto max-lg:[scrollbar-width:none] max-lg:[&::-webkit-scrollbar]:hidden"
+                : undefined
+            }
+          >
             <div
-              className="mx-auto flex w-max gap-2 px-0.5 pb-0.5"
+              className={`flex gap-2 lg:w-full lg:flex-wrap lg:justify-center ${
+                isStuck
+                  ? "w-max flex-nowrap px-1 max-lg:pb-0.5"
+                  : "flex-wrap justify-center"
+              }`}
               role="tablist"
               aria-label="Jump to a service category"
             >
@@ -223,14 +263,14 @@ export default function ServicesExplorer() {
                     role="tab"
                     aria-selected={isActive}
                     onClick={() => jumpToCategory(category.title)}
-                    className={`shrink-0 whitespace-nowrap rounded-full border px-4 py-1.5 text-[13px] font-semibold transition-colors duration-200 sm:text-sm ${
-                      isActive
-                        ? "border-[#0E4541] bg-[#0E4541] text-white shadow-sm"
-                        : "border-teal-200 bg-white text-teal-900 hover:border-teal-400 hover:bg-teal-50"
-                    }`}
-                  >
-                    {category.title}
-                  </button>
+                    className={`shrink-0 whitespace-nowrap rounded-full border px-4 py-1.5 text-sm font-semibold transition-colors duration-200 ${
+                    isActive
+                      ? "border-[#0E4541] bg-[#0E4541] text-white shadow-sm"
+                      : "border-teal-200 bg-white text-teal-900 hover:border-teal-400 hover:bg-teal-50"
+                  }`}
+                >
+                  {category.title}
+                </button>
                 );
               })}
             </div>
