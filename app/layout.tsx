@@ -9,6 +9,7 @@ import { THEME_STORAGE_KEY } from '../lib/theme';
 import {
   DEFAULT_DESCRIPTION,
   DEFAULT_OG_IMAGE,
+  SITE_ALTERNATE_NAMES,
   SITE_NAME,
   SITE_URL,
   absoluteUrl,
@@ -28,6 +29,8 @@ export const metadata: Metadata = {
   description: defaultDescription,
   keywords: [
     "HomeSewa",
+    "homesewa",
+    ...SITE_ALTERNATE_NAMES,
     "home services Nepal",
     "on demand home service Kathmandu",
     "cleaning services Nepal",
@@ -91,9 +94,6 @@ export default function RootLayout({ children }:Readonly<{
             __html: `(function(){try{var t=localStorage.getItem("${THEME_STORAGE_KEY}");if(t==="dark"){document.documentElement.classList.add("dark")}}catch(e){}})();`,
           }}
         />
-        <link rel="icon" type="image/png" sizes="48x48" href="/favicon/favicon-48x48.png" />
-        <link rel="icon" type="image/png" sizes="1000x1000" href="/favicon/favicon.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
 
         <OneSignalInit />

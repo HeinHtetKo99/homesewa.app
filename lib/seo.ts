@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 export const SITE_URL = "https://www.homesewa.app";
 export const SITE_NAME = "HomeSewa";
+export const SITE_ALTERNATE_NAMES = ["homesewa", "Home Sewa", "home sewa", "homesewa.app"] as const;
 export const DEFAULT_OG_IMAGE = "/og/default.jpg";
 export const DEFAULT_DESCRIPTION =
   "HomeSewa connects you with verified professionals for cleaning, salon at home, spa, massage, repairs, and 50+ on-demand home services in Kathmandu and across Nepal. Book online in minutes.";
@@ -93,8 +94,14 @@ export function buildOrganizationJsonLd() {
     "@type": "LocalBusiness",
     "@id": `${SITE_URL}/#organization`,
     name: SITE_NAME,
+    alternateName: [...SITE_ALTERNATE_NAMES],
     url: SITE_URL,
-    logo: absoluteUrl("/favicon/favicon.png"),
+    logo: {
+      "@type": "ImageObject",
+      url: absoluteUrl("/favicon/favicon-48x48.png"),
+      width: 48,
+      height: 48,
+    },
     image: absoluteUrl(DEFAULT_OG_IMAGE),
     description: DEFAULT_DESCRIPTION,
     email: BUSINESS_EMAIL,
@@ -138,6 +145,7 @@ export function buildWebSiteJsonLd() {
     "@type": "WebSite",
     "@id": `${SITE_URL}/#website`,
     name: SITE_NAME,
+    alternateName: [...SITE_ALTERNATE_NAMES],
     url: SITE_URL,
     description: DEFAULT_DESCRIPTION,
     publisher: { "@id": `${SITE_URL}/#organization` },

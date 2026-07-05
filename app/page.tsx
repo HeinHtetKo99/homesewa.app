@@ -2,6 +2,7 @@ import JsonLd from "../components/JsonLd";
 import HomeClient from "./HomeClient";
 import {
   DEFAULT_DESCRIPTION,
+  SITE_ALTERNATE_NAMES,
   absoluteUrl,
   pageMetadata,
   SITE_NAME,
@@ -14,6 +15,8 @@ export const metadata = pageMetadata({
   path: "/",
   keywords: [
     "HomeSewa",
+    "homesewa",
+    ...SITE_ALTERNATE_NAMES,
     "home services Nepal",
     "on demand home service Kathmandu",
     "cleaning services Nepal",
