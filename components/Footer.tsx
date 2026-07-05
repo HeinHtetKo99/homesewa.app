@@ -157,22 +157,22 @@ const Footer = () => {
 
           {/* SOCIAL ICONS */}
           <div className="flex gap-6 justify-center">
-            <a href="#" className="flex items-center hover:opacity-60 transition hover:scale-110">
+            <a href="#" target="_blank" className="flex items-center hover:opacity-60 transition hover:scale-110">
               <img src={`/icons/x.svg`} className="h-5 w-5 sm:h-6 sm:w-6 cursor-pointer" />
             </a>
             <a href="https://biratinfo.com/author/HomeSewa" target="_blank" className="flex items-center hover:opacity-60 transition hover:scale-110">
               <img src={`/icons/biratinfo.svg`} className="h-5 w-5 sm:h-6 sm:w-6 cursor-pointer" />
             </a>
-            <a href="#" className="flex items-center hover:opacity-60 transition hover:scale-110">
+            <a href="#" target="_blank" className="flex items-center hover:opacity-60 transition hover:scale-110">
               <img src={`/icons/youtube.svg`} className="h-5 w-5 sm:h-6 sm:w-6 cursor-pointer" />
             </a>
-            <a href="https://d.sriyog.com/homsewapitch" className="flex items-center hover:opacity-60 transition hover:scale-110">
+            <a href="https://d.sriyog.com/homsewapitch" target="_blank" className="flex items-center hover:opacity-60 transition hover:scale-110">
               <img src={`/icons/pitchdeck.svg`} className="h-5 w-5 sm:h-6 sm:w-6 cursor-pointer" />
             </a>
-            <a href="#" className="flex items-center hover:opacity-60 transition hover:scale-110">
+            <a href="#" target="_blank" className="flex items-center hover:opacity-60 transition hover:scale-110">
               <img src={`/icons/discord.svg`} className="h-5 w-5 sm:h-6 sm:w-6 cursor-pointer" />
             </a>
-            <a href="#" className="flex items-center hover:opacity-60 transition hover:scale-110">
+            <a href="#" target="_blank" className="flex items-center hover:opacity-60 transition hover:scale-110">
               <img src={`/icons/viber.svg`} className="h-[22px] w-[22px] sm:h-[26px] sm:w-[26px] cursor-pointer" />
             </a>
 
