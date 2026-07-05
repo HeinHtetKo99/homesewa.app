@@ -6,9 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint",
-    "migrate:users": "node scripts/migrate-users-to-supabase.mjs",
-    "migrate:users:dry-run": "node scripts/migrate-users-to-supabase.mjs --dry-run"
+    "lint": "eslint"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.49.8",

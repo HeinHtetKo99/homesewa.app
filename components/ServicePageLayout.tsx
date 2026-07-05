@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import React, { useState } from "react";
+import { bookUrlForServiceSlug } from "@/lib/service-booking-map";
 
 export type ServiceFaq = {
   id: number;
@@ -18,6 +19,7 @@ export type ServiceScopeItem = {
 
 type ServicePageLayoutProps = {
   serviceName: string;
+  serviceSlug?: string;
   heroImage: string;
   heroTitle: string;
   heroDescription: string;
@@ -31,6 +33,7 @@ type ServicePageLayoutProps = {
 
 export default function ServicePageLayout({
   serviceName,
+  serviceSlug,
   heroImage,
   heroTitle,
   heroDescription,
@@ -48,7 +51,7 @@ export default function ServicePageLayout({
   };
 
   return (
-    <div className="flex flex-col">
+    <div className="min-h-screen bg-gray-50 text-gray-800">
       <section className="relative flex w-full items-center justify-center text-white">
         <img
           src={heroImage}
@@ -67,7 +70,7 @@ export default function ServicePageLayout({
           <p className="mx-auto mb-6 max-w-3xl text-sm leading-relaxed text-white sm:text-base md:text-lg">
             {heroDescription}
           </p>
-          <Link href="/book">
+          <Link href={serviceSlug ? bookUrlForServiceSlug(serviceSlug) : "/book"}>
             <button className="rounded-lg bg-[#0E4541] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-teal-900 sm:px-6 sm:py-3 sm:text-base">
               {bookLabel}
             </button>
@@ -107,7 +110,7 @@ export default function ServicePageLayout({
                   alt={item.imageAlt}
                   className="mb-3 h-40 w-full rounded-lg object-cover sm:mb-4 sm:h-48"
                 />
-                <h3 className="mb-2 text-lg font-semibold sm:text-xl">
+                <h3 className="mb-2 text-lg font-semibold text-gray-900 sm:text-xl">
                   {item.title}
                 </h3>
                 <p className="text-sm text-gray-600 sm:text-base">

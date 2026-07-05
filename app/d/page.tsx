@@ -1,17 +1,20 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { pageMetadata } from "../../lib/seo";
 
-export const metadata: Metadata = {
-  title: "Download Home Sewa Mobile App | HomeSewa",
-  description: "Download the HomeSewa app for superfast on demand home services.",
-};
+export const metadata: Metadata = pageMetadata({
+  title: "Download the HomeSewa Mobile App",
+  description:
+    "Download the HomeSewa app on iOS or Android for superfast on-demand home service booking in Nepal.",
+  path: "/d",
+});
 
-const PLAY_STORE_URL =
-  "https://play.google.com/store/apps/details?id=com.pracasinfosys.sriyog.com";
-const APP_STORE_URL = "#";
+import { APP_STORE_URL, PLAY_STORE_URL } from "../../lib/app-links";
 
 const storeButtonClass =
   "flex h-[52px] w-[52px] items-center justify-center rounded-2xl bg-white shadow-[0_4px_14px_rgba(15,23,42,0.1)] ring-1 ring-teal-200/90 transition-[transform,box-shadow] hover:scale-[1.04] hover:shadow-[0_8px_20px_rgba(15,23,42,0.12)] active:scale-[0.98]";
+const storeButtonDisabledClass =
+  "flex h-[52px] w-[52px] cursor-not-allowed items-center justify-center rounded-2xl bg-white opacity-60 shadow-[0_4px_14px_rgba(15,23,42,0.08)] ring-1 ring-teal-200/60";
 
 export default function DownloadAppPage() {
   return (
@@ -45,15 +48,26 @@ export default function DownloadAppPage() {
           >
             <PlayStoreIcon className="h-7 w-7" />
           </a>
-          <a
-            href={APP_STORE_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Download on the App Store"
-            className={storeButtonClass}
-          >
-            <AppStoreIcon className="h-7 w-7 text-slate-900" />
-          </a>
+          {APP_STORE_URL ? (
+            <a
+              href={APP_STORE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Download on the App Store"
+              className={storeButtonClass}
+            >
+              <AppStoreIcon className="h-7 w-7 text-slate-900" />
+            </a>
+          ) : (
+            <span
+              className={storeButtonDisabledClass}
+              role="img"
+              aria-label="App Store — coming soon"
+              title="Coming soon to the App Store"
+            >
+              <AppStoreIcon className="h-7 w-7 text-slate-500" />
+            </span>
+          )}
         </div>
       </div>
     </div>

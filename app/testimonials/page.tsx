@@ -1,6 +1,12 @@
-'use client';
+import type { Metadata } from "next";
+import { pageMetadata } from "../../lib/seo";
 
-import React from "react";
+export const metadata: Metadata = pageMetadata({
+  title: "Customer Testimonials",
+  description:
+    "Read what customers across Kathmandu and Nepal say about HomeSewa's cleaning, home care, and on-demand professional services.",
+  path: "/testimonials",
+});
 
 const testimonials = [
   { name: "Yogendra Bikram", feedback: "HomeSewa provided excellent home cleaning. Every corner was spotless. The team was punctual and professional, making my home fresh and inviting.", image: "/testimonials/1.png" },

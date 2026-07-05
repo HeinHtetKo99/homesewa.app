@@ -1,7 +1,13 @@
-'use client';
-
-import React from "react";
+import type { Metadata } from "next";
 import Ribbon from "../../components/Ribbon";
+import { pageMetadata } from "../../lib/seo";
+
+export const metadata: Metadata = pageMetadata({
+  title: "Privacy Policy",
+  description:
+    "Learn how HomeSewa collects, uses, and protects your personal information when you use our website, mobile app, and home services in Nepal.",
+  path: "/privacy",
+});
 
 const PrivacyPolicy = () => {
   return (
@@ -110,8 +116,8 @@ const PrivacyPolicy = () => {
               Transfer of Data
             </h2>
             <p className="about leading-relaxed">
-              Your personal data may be transferred to servers located in Nepal, 
-              USA, or Nepal. By using our Service, you consent to this transfer. 
+              Your personal data may be transferred to servers located in Nepal. 
+              By using our Service, you consent to this transfer. 
               We take reasonable steps to ensure your data is secure.
             </p>
           </div>

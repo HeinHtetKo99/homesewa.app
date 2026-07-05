@@ -14,8 +14,8 @@ const RoadBlock = () => {
   // --- STATES ---
   const [showRoadBlock, setShowRoadBlock] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(40); // total display time
-  const [displayTimeLeft, setDisplayTimeLeft] = useState(10); // X button timer
+  const [timeLeft, setTimeLeft] = useState(15); // total display time
+  const [displayTimeLeft, setDisplayTimeLeft] = useState(3); // X button timer
 
   // --- Close Function ---
   const onClose = useCallback(() => {

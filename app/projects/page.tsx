@@ -1,6 +1,12 @@
-"use client";
+import type { Metadata } from "next";
+import { pageMetadata } from "../../lib/seo";
 
-import React from "react";
+export const metadata: Metadata = pageMetadata({
+  title: "Our Projects",
+  description:
+    "Browse completed HomeSewa projects — residential, commercial, and specialized cleaning and home service work across Kathmandu and Nepal.",
+  path: "/projects",
+});
 
 type Project = {
   title: string;
@@ -12,7 +18,6 @@ const projects: Project[] = [
   { title: "Solatee Westend", description: "Comprehensive corporate and facility cleaning services for a spotless guest experience.", image: "/projects/1.jpg" },
   { title: "Bajeko Sekuwa", description: "Deep kitchen and dining area sanitization for hygienic restaurant operations.", image: "/projects/2.jpg" },
   { title: "Sudarshan Resort", description: "Full resort cleaning including guest rooms, lobby, and common areas.", image: "/projects/3.jpg" },
-  { title: "Mumbai Airport", description: "Terminal and restroom cleaning ensuring safe and hygienic spaces for travelers.", image: "/projects/4.jpg" },
   { title: "Gokarna Forest Resort", description: "Garden, lobby, and room cleaning for a pristine natural retreat.", image: "/projects/5.jpg" },
   { title: "Ncell", description: "Office and corporate space cleaning, including desks, conference rooms, and common areas.", image: "/projects/6.jpg" },
   { title: "Dusit Thani Himalaya Resort", description: "Post-construction and daily maintenance cleaning for luxury accommodation.", image: "/projects/7.jpg" },

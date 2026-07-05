@@ -45,6 +45,11 @@ export default function ContactForm() {
     setSubmitError(null);
     setSubmitSuccess(false);
 
+    if (!email.trim()) {
+      setEmailError("Email is required.");
+      return;
+    }
+
     const emailErr = emailValidationError(email);
     setEmailError(emailErr);
     if (emailErr) return;
@@ -54,7 +59,12 @@ export default function ContactForm() {
       return;
     }
 
-    if (phone && !/^\d{7,15}$/.test(phone)) {
+    if (!phone.trim()) {
+      setSubmitError("Phone number is required.");
+      return;
+    }
+
+    if (!/^\d{7,15}$/.test(phone)) {
       setSubmitError("Phone must be 7–15 digits.");
       return;
     }
@@ -120,7 +130,7 @@ export default function ContactForm() {
 
         <div className="flex flex-col gap-1">
           <label htmlFor={`${formId}-email`} className={fieldLabelClass()}>
-            eMail
+            eMail<span className="text-red-600"> *</span>
           </label>
           <input
             id={`${formId}-email`}
@@ -130,9 +140,10 @@ export default function ContactForm() {
             onChange={(e) => {
               const v = e.target.value;
               setEmail(v);
-              setEmailError(emailValidationError(v));
+              setEmailError(v.trim() ? emailValidationError(v) : null);
             }}
             autoComplete="email"
+            required
             aria-invalid={emailError ? true : undefined}
           />
           {emailError ? (
@@ -142,7 +153,7 @@ export default function ContactForm() {
 
         <div className="flex flex-col gap-1">
           <label htmlFor={`${formId}-phone`} className={fieldLabelClass()}>
-            Phone Number
+            Phone Number<span className="text-red-600"> *</span>
           </label>
           <input
             id={`${formId}-phone`}
@@ -153,6 +164,7 @@ export default function ContactForm() {
             value={phone}
             onChange={(e) => setPhone(onlyDigits(e.target.value).slice(0, 15))}
             autoComplete="tel"
+            required
           />
         </div>
 
@@ -166,7 +178,7 @@ export default function ContactForm() {
             value={city}
             onChange={(e) => setCity(e.target.value)}
             autoComplete="address-level2"
-            placeholder="Kathmandu, Bengaluru, Mumbai…"
+            placeholder="Kathmandu, Lalitpur, Bhaktapur…"
           />
         </div>
 

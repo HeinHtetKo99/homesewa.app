@@ -1,5 +1,13 @@
-'use client'
+import type { Metadata } from "next";
 import Ribbon from "../../components/Ribbon";
+import { pageMetadata } from "../../lib/seo";
+
+export const metadata: Metadata = pageMetadata({
+  title: "QR Codes",
+  description:
+    "Scan HomeSewa QR codes to quickly access our website, mobile app, and booking channels for home services in Nepal.",
+  path: "/qr",
+});
 
 const cardData = [
   {

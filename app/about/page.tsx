@@ -70,36 +70,47 @@ export default function About() {
         </div>
 
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-start">
-          <div className="space-y-6">
+          <div className="space-y-4">
             {Object.keys(sections).map((key) => (
-              <div key={key} className="relative">
+              <div
+                key={key}
+                className="group"
+                onMouseEnter={() => setActiveSection(key)}
+                onMouseLeave={() => setActiveSection("")}
+              >
                 <button
-                  onMouseEnter={() => setActiveSection(key)}
                   onClick={() => setActiveSection(key)}
-                  className={`w-full text-left px-5 py-3 rounded-lg transition-all duration-300 font-semibold text-lg ${
+                  className={`w-full text-left px-6 py-4 rounded-2xl transition-all duration-300 font-semibold text-lg cursor-pointer ${
                     activeSection === key
-                      ? "bg-gradient-to-r from-teal-800 via-teal-700 to-teal-600 text-white shadow-md"
-                      : "bg-white border border-teal-100 text-teal-900 hover:bg-teal-50"
+                      ? "bg-[#0E4541] text-white shadow-xl"
+                      : "bg-white border border-teal-100 text-teal-900 hover:border-teal-200 hover:shadow-md"
                   }`}
                 >
                   {sections[key as keyof typeof sections].title}
                 </button>
-                {activeSection === key && (
-                  <div className="mt-3 ml-2 border-l-4 border-teal-500 pl-4 bg-white rounded-r-xl shadow-sm py-3 px-2 animate-fadeIn">
+                <div
+                  className={`overflow-hidden transition-all duration-[2200ms] ease-out ${
+                    activeSection === key ? "max-h-96 opacity-100 mt-3" : "max-h-0 opacity-0"
+                  }`}
+                >
+                  <div className="ml-4 border-l-4 border-teal-600 pl-6 bg-white rounded-r-2xl shadow-sm py-5 px-6">
                     <p className="text-gray-700 leading-relaxed text-base sm:text-lg">
                       {sections[key as keyof typeof sections].desc}
                     </p>
                   </div>
-                )}
+                </div>
               </div>
             ))}
           </div>
-          <div className="flex justify-center">
-            <img
-              src="/about/about.png"
-              alt="About HomeSewa"
-              className="rounded-2xl shadow-xl w-full max-w-md object-cover border-4 border-teal-100"
-            />
+          <div className="flex justify-center lg:justify-end">
+            <div className="relative group">
+              <img
+                src="/about/about.png"
+                alt="About HomeSewa"
+                className="rounded-3xl shadow-2xl w-full max-w-md object-cover border-8 border-white transition-all duration-700 group-hover:scale-[1.03]"
+              />
+              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-teal-900/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+            </div>
           </div>
         </div>
 
@@ -110,7 +121,10 @@ export default function About() {
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {values.map((v) => (
-              <div key={v.title} className="bg-white border border-gray-200 rounded-xl shadow-sm p-6 text-left hover:shadow-md transition">
+              <div
+                key={v.title}
+                className="bg-white border border-teal-100 rounded-2xl shadow-lg p-6 text-left hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+              >
                 <div className="mb-4">{v.icon}</div>
                 <h3 className="font-semibold text-lg text-gray-900 mb-2">{v.title}</h3>
                 <p className="text-sm text-gray-600 leading-relaxed">{v.desc}</p>
@@ -122,7 +136,7 @@ export default function About() {
 
       <section className="py-16 px-6 max-w-4xl mx-auto">
         <h2 className="text-3xl font-bold mb-6 text-center text-teal-900">Message from the Director</h2>
-        <div className="flex flex-col md:flex-row items-center md:items-start gap-6 bg-white rounded-2xl shadow-md p-8 border border-teal-50">
+        <div className="flex flex-col md:flex-row items-center md:items-start gap-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-8 border border-teal-100">
           <img src="/about/director.png" alt="Ramesh Koirala" className="w-40 h-40 rounded-full object-cover shrink-0" />
           <div className="flex-1">
             <p className="text-gray-700 mb-4 leading-relaxed">
@@ -137,14 +151,6 @@ export default function About() {
           </div>
         </div>
       </section>
-
-      <style jsx global>{`
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(-6px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fadeIn { animation: fadeIn 0.4s ease-in-out; }
-      `}</style>
     </main>
   );
 }

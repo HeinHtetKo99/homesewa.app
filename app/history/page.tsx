@@ -1,7 +1,14 @@
-'use client'
-
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import Ribbon from '../../components/Ribbon';
+import { pageMetadata } from '../../lib/seo';
+
+export const metadata: Metadata = pageMetadata({
+  title: 'Our History',
+  description:
+    'The story of HomeSewa — founded in Kathmandu in 2018 and grown into a trusted on-demand home services platform serving customers across Nepal.',
+  path: '/history',
+});
 
 export default function History() { 
 

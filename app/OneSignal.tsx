@@ -1,6 +1,6 @@
 import Script from "next/script";
 
-const ONESIGNAL_APP_ID = "b4f5f04e-b679-4d95-9c61-b152038d0e08";
+const ONESIGNAL_APP_ID = "6088a935-58f5-4645-8290-80633f2bdbc5";
 
 export function OneSignalInit() {
   return (

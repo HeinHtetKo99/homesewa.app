@@ -1,10 +1,15 @@
 import Link from "next/link";
+import {
+  bookUrlForServiceSlug,
+  serviceSlugFromHref,
+} from "@/lib/service-booking-map";
 
 type ServiceCardProps = {
   image: string;
   title: string;
   desc: string;
   href?: string;
+  serviceSlug?: string;
   showBook?: boolean;
   showLearnMore?: boolean;
   bookButtonVariant?: "filled" | "outline";
@@ -15,30 +20,33 @@ export default function ServiceCard({
   title,
   desc,
   href,
+  serviceSlug,
   showBook = true,
   showLearnMore = true,
   bookButtonVariant = "filled",
 }: ServiceCardProps) {
+  const resolvedSlug = serviceSlug ?? serviceSlugFromHref(href);
+  const bookHref = resolvedSlug ? bookUrlForServiceSlug(resolvedSlug) : "/book";
   const bookButtonClass =
     bookButtonVariant === "outline"
       ? "px-4 py-1 text-teal-700 border border-teal-700 rounded-full bg-white text-sm font-semibold transition-transform duration-200 hover:scale-105"
       : "px-4 py-1.5 text-white bg-[#0E4541] border border-teal-900 rounded-full text-sm font-semibold hover:bg-teal-900 transition-transform hover:scale-105";
   return (
-    <div className="group relative bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 border border-teal-100 flex flex-col h-full">
+    <div className="group relative bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-[transform,box-shadow] duration-400 ease-[cubic-bezier(0.22,1,0.36,1)] border border-teal-100 flex flex-col h-full">
       <div className="h-56 overflow-hidden">
         {href ? (
           <Link href={href}>
             <img
               src={image}
               alt={title}
-              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
             />
           </Link>
         ) : (
           <img
             src={image}
             alt={title}
-            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+            className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
           />
         )}
       </div>
@@ -57,7 +65,7 @@ export default function ServiceCard({
                 Learn More
               </Link>
             )}
-            <Link href="/book" className={bookButtonClass}>
+            <Link href={bookHref} className={bookButtonClass}>
               Book a Service
             </Link>
           </div>
@@ -66,7 +74,7 @@ export default function ServiceCard({
 
       {showBook && !showLearnMore && (
         <div className="pb-6 flex justify-center">
-          <Link href="/book" className={`mt-4 ${bookButtonClass}`}>
+          <Link href={bookHref} className={`mt-4 ${bookButtonClass}`}>
             Book a Service
           </Link>
         </div>

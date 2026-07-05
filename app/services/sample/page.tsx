@@ -6,6 +6,7 @@ export default function AcCleaning() {
   return (
     <ServicePageLayout
       serviceName="A/C Cleaning"
+      serviceSlug="ac-services"
       heroImage="/services/ac-cleaning.jpg"
       heroTitle="Air Conditioner Cleaning Services in Kathmandu"
       heroDescription="Professional AC cleaning to remove dust, allergens, and bacteria, improving air quality and cooling efficiency for your home or office."

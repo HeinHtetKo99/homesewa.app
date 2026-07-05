@@ -3,12 +3,10 @@
 import Link from "next/link";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
+import AppDownloadBadges from "../components/AppDownloadBadges";
 import ServiceCard from "../components/ServiceCard";
 
 const displayLocation = "Kathmandu, Nepal";
-
-const PLAY_STORE_URL =
-  "https://play.google.com/store/apps/details?id=com.pracasinfosys.sriyog.com";
 
 const heroContent = {
   title: `Professional Home Services in ${displayLocation}`,
@@ -16,10 +14,6 @@ const heroContent = {
 };
 
 const sections = {
-  about: {
-    title: "About HomeSewa",
-    desc: "Home Sewa is a technology-driven hyperlocal home services that delivers fast, reliable, and professional services at customers' doorsteps. By matching service requests with nearby professionals based on location, Home Sewa reduces response time and ensures quicker service fulfillment.",
-  },
   mission: {
     title: "Our Mission",
     desc: "We want to provide every cleaning and facility care service under one trusted platform so you don't have to search different places for different needs.",
@@ -162,14 +156,7 @@ export default function Home() {
           <p className="text-gray-700 mb-8 text-base sm:text-lg">
             Book services faster, track professionals, and manage everything in one place.
           </p>
-          <div className="flex flex-wrap justify-center items-center gap-8 px-10 py-8 rounded-2xl shadow-lg">
-            <a href={PLAY_STORE_URL} target="_blank" rel="noopener noreferrer" className="group bg-white p-3 rounded-2xl shadow-md hover:scale-[1.06] hover:shadow-xl transition-all duration-300">
-              <img src="/icons/playstore.png" alt="Download on Play Store" className="h-14 sm:h-16 w-auto rounded-xl ring-2 ring-teal-300 group-hover:ring-teal-500 transition-all" />
-            </a>
-            <a href="#" className="group bg-white p-3 rounded-2xl shadow-md hover:scale-[1.06] hover:shadow-xl transition-all duration-300">
-              <img src="/icons/apple.png" alt="Download on App Store" className="h-14 sm:h-16 w-auto rounded-xl ring-2 ring-teal-300 group-hover:ring-teal-500 transition-all" />
-            </a>
-          </div>
+          <AppDownloadBadges />
         </div>
       </div>
 

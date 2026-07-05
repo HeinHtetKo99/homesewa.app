@@ -1,6 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import Ribbon from '../../components/Ribbon';
+import JsonLd from '../../components/JsonLd';
 
 export default function Faq() {
   const faqs = [
@@ -39,8 +40,19 @@ export default function Faq() {
     setOpenIndex(openIndex === index ? null : index);
   };
 
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: { "@type": "Answer", text: faq.answer },
+    })),
+  };
+
   return (
     <div className='footer'>
+      <JsonLd data={faqJsonLd} />
       {/* Ribbon/Header */}
       <Ribbon name="Frequently Asked Questions" showfont={false}/>
 

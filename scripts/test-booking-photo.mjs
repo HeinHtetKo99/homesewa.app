@@ -17,7 +17,7 @@ const fd = new FormData();
 fd.append("fullName", "Photo upload test");
 fd.append("phone", "9876543220");
 fd.append("city", "Kathmandu");
-fd.append("area", "Adyar");
+fd.append("area", "Thamel");
 fd.append("propertyType", "High-rise apartments");
 fd.append("services", JSON.stringify(["Cleaning & Deep Cleaning"]));
 fd.append("startDate", "2026-06-15");

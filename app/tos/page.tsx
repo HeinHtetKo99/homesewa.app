@@ -1,7 +1,13 @@
-'use client';
-
-import React from "react";
+import type { Metadata } from "next";
 import Ribbon from "../../components/Ribbon";
+import { pageMetadata } from "../../lib/seo";
+
+export const metadata: Metadata = pageMetadata({
+  title: "Terms of Service",
+  description:
+    "Read the HomeSewa Terms of Service covering bookings, payments, cancellations, and use of our on-demand home services platform in Nepal.",
+  path: "/tos",
+});
 
 const TermsofServices = () => {
   return (
