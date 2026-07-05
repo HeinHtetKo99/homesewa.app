@@ -13,6 +13,7 @@ import {
   SITE_NAME,
   SITE_URL,
   absoluteUrl,
+  buildBrandJsonLd,
   buildOrganizationJsonLd,
   buildWebSiteJsonLd,
 } from '../lib/seo';
@@ -81,6 +82,7 @@ export const metadata: Metadata = {
 };
 
 const organizationJsonLd = buildOrganizationJsonLd();
+const brandJsonLd = buildBrandJsonLd();
 const webSiteJsonLd = buildWebSiteJsonLd();
 
 export default function RootLayout({ children }:Readonly<{
@@ -127,6 +129,7 @@ export default function RootLayout({ children }:Readonly<{
       </head>
       <body>
         <JsonLd data={organizationJsonLd} />
+        <JsonLd data={brandJsonLd} />
         <JsonLd data={webSiteJsonLd} />
         <GoogleAnalytics />
 

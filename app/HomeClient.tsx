@@ -9,8 +9,8 @@ import ServiceCard from "../components/ServiceCard";
 const displayLocation = "Kathmandu, Nepal";
 
 const heroContent = {
-  title: `Professional Home Services in ${displayLocation}`,
-  subtitle: "AI Powered Services",
+  title: `HomeSewa — Professional Home Services in ${displayLocation}`,
+  subtitle: "AI Powered On-Demand Home Services",
 };
 
 const sections = {
@@ -93,7 +93,7 @@ export default function HomeClient() {
             </h1>
             <p className="text-base sm:text-lg text-teal-900 font-medium">{heroContent.subtitle}</p>
             <p className="text-sm sm:text-base text-gray-900 max-w-md">
-            HomeSewa is created as an on-demand hyperlocal service platform that connects home owners with skilled professionals.
+            HomeSewa (homesewa.app) connects homeowners with verified professionals for cleaning, salon, spa, repairs, and 50+ on-demand services across Nepal.
             </p>
             <div className="hidden md:flex flex-wrap items-center gap-3 pt-3">
               <Link href="/book" className="bg-[#0E4541] text-white font-semibold px-6 sm:px-8 py-2.5 rounded-full shadow-lg hover:bg-teal-900 transition-all duration-300 animate-pulse-soft">

@@ -88,6 +88,19 @@ export function buildBreadcrumbList(items: BreadcrumbItem[]) {
   };
 }
 
+export function buildBrandJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Brand",
+    "@id": `${SITE_URL}/#brand`,
+    name: SITE_NAME,
+    alternateName: [...SITE_ALTERNATE_NAMES],
+    url: SITE_URL,
+    logo: absoluteUrl("/logo/homesewa-logo.png"),
+    sameAs: [...SOCIAL_PROFILES],
+  };
+}
+
 export function buildOrganizationJsonLd() {
   return {
     "@context": "https://schema.org",
@@ -95,12 +108,14 @@ export function buildOrganizationJsonLd() {
     "@id": `${SITE_URL}/#organization`,
     name: SITE_NAME,
     alternateName: [...SITE_ALTERNATE_NAMES],
+    legalName: SITE_NAME,
     url: SITE_URL,
+    brand: { "@id": `${SITE_URL}/#brand` },
     logo: {
       "@type": "ImageObject",
-      url: absoluteUrl("/favicon/favicon-48x48.png"),
-      width: 48,
-      height: 48,
+      url: absoluteUrl("/logo/homesewa-logo.png"),
+      width: 1000,
+      height: 1000,
     },
     image: absoluteUrl(DEFAULT_OG_IMAGE),
     description: DEFAULT_DESCRIPTION,
