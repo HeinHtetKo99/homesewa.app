@@ -6,11 +6,18 @@ import GoogleAnalytics from '../components/GoogleAnalytics';
 import JsonLd from '../components/JsonLd';
 import { OneSignalInit } from './OneSignal';
 import { THEME_STORAGE_KEY } from '../lib/theme';
-import { SITE_NAME, SITE_URL, absoluteUrl } from '../lib/seo';
+import {
+  DEFAULT_DESCRIPTION,
+  DEFAULT_OG_IMAGE,
+  SITE_NAME,
+  SITE_URL,
+  absoluteUrl,
+  buildOrganizationJsonLd,
+  buildWebSiteJsonLd,
+} from '../lib/seo';
 
 const defaultTitle = "HomeSewa | SuperFast On-Demand Home Services in Nepal";
-const defaultDescription =
-  "HomeSewa connects you with verified professionals for cleaning, salon at home, spa, massage, repairs, and 50+ on-demand home services in Kathmandu and across Nepal. Book online in minutes.";
+const defaultDescription = DEFAULT_DESCRIPTION;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -55,7 +62,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/og/default.jpg",
+        url: absoluteUrl(DEFAULT_OG_IMAGE),
         width: 1200,
         height: 630,
         alt: defaultTitle,
@@ -66,41 +73,12 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: defaultTitle,
     description: defaultDescription,
-    images: ["/og/default.jpg"],
+    images: [absoluteUrl(DEFAULT_OG_IMAGE)],
   },
 };
 
-const organizationJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "@id": `${SITE_URL}/#organization`,
-  name: SITE_NAME,
-  url: SITE_URL,
-  logo: absoluteUrl("/favicon/favicon.png"),
-  image: absoluteUrl("/og/default.jpg"),
-  description: defaultDescription,
-  email: "support@homesewa.app",
-  foundingDate: "2018-06-14",
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "Kamalpokhari",
-    addressLocality: "Kathmandu",
-    addressCountry: "NP",
-  },
-  areaServed: {
-    "@type": "Country",
-    name: "Nepal",
-  },
-};
-
-const webSiteJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "@id": `${SITE_URL}/#website`,
-  name: SITE_NAME,
-  url: SITE_URL,
-  publisher: { "@id": `${SITE_URL}/#organization` },
-};
+const organizationJsonLd = buildOrganizationJsonLd();
+const webSiteJsonLd = buildWebSiteJsonLd();
 
 export default function RootLayout({ children }:Readonly<{
   children: React.ReactNode;

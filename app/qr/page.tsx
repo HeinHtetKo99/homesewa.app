@@ -7,6 +7,7 @@ export const metadata: Metadata = pageMetadata({
   description:
     "Scan HomeSewa QR codes to quickly access our website, mobile app, and booking channels for home services in Nepal.",
   path: "/qr",
+  noindex: true,
 });
 
 const cardData = [

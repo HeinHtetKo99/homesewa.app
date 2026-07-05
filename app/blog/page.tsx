@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import BlogCard from "../../components/BlogCard";
+import JsonLd from "../../components/JsonLd";
 import { blogPosts } from "../data/blogPosts";
-import { pageMetadata } from "../../lib/seo";
+import { absoluteUrl, pageMetadata, SITE_NAME, SITE_URL } from "../../lib/seo";
 
 export const metadata: Metadata = pageMetadata({
   title: "Blog — Cleaning Tips & Home Care Advice",
@@ -10,9 +11,28 @@ export const metadata: Metadata = pageMetadata({
   path: "/blog",
 });
 
+const blogListJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "@id": `${SITE_URL}/blog#blog`,
+  name: `${SITE_NAME} Blog`,
+  description:
+    "Expert cleaning tips, professional service guides, and home care advice from HomeSewa.",
+  url: absoluteUrl("/blog"),
+  publisher: { "@id": `${SITE_URL}/#organization` },
+  blogPost: blogPosts.map((post) => ({
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.description,
+    url: absoluteUrl(`/blog/${post.slug}`),
+    image: absoluteUrl(post.image),
+  })),
+};
+
 export default function BlogPage() {
   return (
     <main className="min-h-screen bg-gray-50 text-gray-800 py-16 px-6">
+      <JsonLd data={blogListJsonLd} />
       <section className="text-center mb-16">
         <h1 className="text-4xl md:text-5xl font-bold mb-4">HomeSewa Blog</h1>
         <p className="text-lg md:text-xl max-w-2xl mx-auto">

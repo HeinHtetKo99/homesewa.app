@@ -1,7 +1,14 @@
 import Link from "next/link";
 import ContactForm from "../../components/ContactForm";
 import { FormPageTitle } from "../../components/FormPageLayout";
-import { pageMetadata } from "../../lib/seo";
+import JsonLd from "../../components/JsonLd";
+import {
+  BUSINESS_EMAIL,
+  BUSINESS_PHONE,
+  absoluteUrl,
+  pageMetadata,
+  SITE_URL,
+} from "../../lib/seo";
 
 const VisitIcon = () => (
   <svg width="27" height="26" fill="none" stroke="#0D5D59" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -28,11 +35,32 @@ export const metadata = pageMetadata({
   description:
     "Contact HomeSewa for professional cleaning and on-demand home services in Nepal. Reach us by email, phone, or the contact form.",
   path: "/contact",
+  keywords: ["contact HomeSewa", "HomeSewa Kathmandu office", "home services support Nepal"],
 });
+
+const contactPageJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  url: absoluteUrl("/contact"),
+  mainEntity: {
+    "@id": `${SITE_URL}/#organization`,
+    contactPoint: [
+      {
+        "@type": "ContactPoint",
+        telephone: BUSINESS_PHONE,
+        email: BUSINESS_EMAIL,
+        contactType: "customer service",
+        areaServed: "NP",
+        availableLanguage: ["English", "Nepali"],
+      },
+    ],
+  },
+};
 
 export default function Contact() {
   return (
     <div className="flex min-h-screen flex-col bg-gray-50 pb-24 text-gray-800 md:pb-10">
+      <JsonLd data={contactPageJsonLd} />
       <div className="shrink-0 border-b border-gray-100 px-4 py-3 text-center">
         <div className="flex items-center justify-center text-sm text-gray-500">
           <Link href="/" className="hover:text-teal-700">

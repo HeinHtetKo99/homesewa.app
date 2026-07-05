@@ -1,7 +1,7 @@
 {
   "short_name": "HomeSewa",
-  "name": "HomeSewa | SuperFast Service",
-  "description": "HomeSewa is a superfast on demand home service.",
+  "name": "HomeSewa | SuperFast On-Demand Home Services",
+  "description": "Book verified home service professionals for cleaning, salon, spa, repairs, and more across Kathmandu and Nepal.",
   "icons": [
     {
       "src": "/icons/icon-192x192.png",
@@ -18,7 +18,7 @@
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait-primary",
-  "theme_color": "#0A66FF",
+  "theme_color": "#0E4541",
   "background_color": "#ffffff",
   "prefer_related_applications": false
 }

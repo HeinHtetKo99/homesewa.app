@@ -2,7 +2,12 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import JsonLd from "../../../components/JsonLd";
 import ServicePageLayout from "../../../components/ServicePageLayout";
-import { SITE_NAME, SITE_URL, absoluteUrl } from "../../../lib/seo";
+import {
+  absoluteUrl,
+  buildBreadcrumbList,
+  pageMetadata,
+  SITE_URL,
+} from "../../../lib/seo";
 import { getAllServiceDetailSlugs, getServiceDetail } from "../../data/serviceDetails";
 
 type PageProps = {
@@ -20,25 +25,18 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const path = `/services/${slug}`;
   const title = `${service.title} in Kathmandu, Nepal`;
-  return {
+  return pageMetadata({
     title,
     description: service.heroDescription,
-    alternates: { canonical: path },
-    openGraph: {
-      title: `${title} | ${SITE_NAME}`,
-      description: service.heroDescription,
-      url: path,
-      siteName: SITE_NAME,
-      type: "website",
-      images: [{ url: service.image, alt: service.title }],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: `${title} | ${SITE_NAME}`,
-      description: service.heroDescription,
-      images: [service.image],
-    },
-  };
+    path,
+    image: service.image,
+    keywords: [
+      `${service.title} Kathmandu`,
+      `${service.title} Nepal`,
+      `book ${service.title.toLowerCase()} Kathmandu`,
+      "HomeSewa services",
+    ],
+  });
 }
 
 export default async function ServiceDetailPage({ params }: PageProps) {
@@ -70,15 +68,11 @@ export default async function ServiceDetailPage({ params }: PageProps) {
       }
     : null;
 
-  const breadcrumbJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
-      { "@type": "ListItem", position: 2, name: "Services", item: absoluteUrl("/services") },
-      { "@type": "ListItem", position: 3, name: service.title, item: serviceUrl },
-    ],
-  };
+  const breadcrumbJsonLd = buildBreadcrumbList([
+    { name: "Home", path: "/" },
+    { name: "Services", path: "/services" },
+    { name: service.title, path: `/services/${slug}` },
+  ]);
 
   return (
     <>

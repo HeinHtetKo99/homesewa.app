@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import JsonLd from "../../../components/JsonLd";
-import { SITE_NAME, SITE_URL, absoluteUrl } from "../../../lib/seo";
+import { absoluteUrl, pageMetadata, SITE_NAME, SITE_URL } from "../../../lib/seo";
 import { getAllBlogSlugs, getBlogPost } from "../../data/blogPosts";
 
 type PageProps = {
@@ -19,25 +19,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!post) return { title: "Post Not Found" };
 
   const path = `/blog/${slug}`;
-  return {
+  return pageMetadata({
     title: post.title,
     description: post.description,
-    alternates: { canonical: path },
-    openGraph: {
-      title: `${post.title} | ${SITE_NAME}`,
-      description: post.description,
-      url: path,
-      siteName: SITE_NAME,
-      type: "article",
-      images: [{ url: post.image, alt: post.title }],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: `${post.title} | ${SITE_NAME}`,
-      description: post.description,
-      images: [post.image],
-    },
-  };
+    path,
+    image: post.image,
+    ogType: "article",
+    keywords: [post.category, "HomeSewa blog", "home care tips Nepal"],
+  });
 }
 
 export default async function BlogPostPage({ params }: PageProps) {
