@@ -1,95 +1,81 @@
 -- Restore Dashboard.csv professionals into public.workforce
--- (users + workforce merged; UIN is the only ID)
+-- Kathmandu only — areas table has no cities parent.
 -- Run AFTER 001_create_workforce_schema.sql in the Supabase SQL Editor.
 
 begin;
 
-insert into public.cities (name) values ('Kathmandu') on conflict (name) do nothing;
 
-insert into public.areas (city_id, name) select id, 'All area in Kathmandu' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-insert into public.areas (city_id, name) select id, 'All kathmandu' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-insert into public.areas (city_id, name) select id, 'All over Nepal' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-insert into public.areas (city_id, name) select id, 'All-rounder kathamdu valleys with dhading bensi' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-insert into public.areas (city_id, name) select id, 'Anamnagar' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-insert into public.areas (city_id, name) select id, 'Asan' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-insert into public.areas (city_id, name) select id, 'Balaju' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-insert into public.areas (city_id, name) select id, 'Balkhu kirtipur kalanki' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-insert into public.areas (city_id, name) select id, 'Balkumari' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-insert into public.areas (city_id, name) select id, 'Banasthali' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-insert into public.areas (city_id, name) select id, 'Baneshwor' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-insert into public.areas (city_id, name) select id, 'Baniyatar' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-insert into public.areas (city_id, name) select id, 'Bhaisipati' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-insert into public.areas (city_id, name) select id, 'Bhaktapur' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-insert into public.areas (city_id, name) select id, 'Bouddha jorpati' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-insert into public.areas (city_id, name) select id, 'Boudha' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-insert into public.areas (city_id, name) select id, 'Chabahil' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-insert into public.areas (city_id, name) select id, 'Chandragiri' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-insert into public.areas (city_id, name) select id, 'Dhapakhel' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-insert into public.areas (city_id, name) select id, 'Gairi Gaun' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-insert into public.areas (city_id, name) select id, 'Goldunga' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-insert into public.areas (city_id, name) select id, 'Gongabu' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-insert into public.areas (city_id, name) select id, 'Hadigaun' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-insert into public.areas (city_id, name) select id, 'Hattigauda' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-insert into public.areas (city_id, name) select id, 'Imadol,tikathali,kotesor,satdobato,lagankhel' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-insert into public.areas (city_id, name) select id, 'Jorpati' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-insert into public.areas (city_id, name) select id, 'KTM' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-insert into public.areas (city_id, name) select id, 'Kalanki' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-insert into public.areas (city_id, name) select id, 'Kalanki chandragiri' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-insert into public.areas (city_id, name) select id, 'Kapan' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-insert into public.areas (city_id, name) select id, 'Kathandu' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-insert into public.areas (city_id, name) select id, 'Kathmandu' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-insert into public.areas (city_id, name) select id, 'Kathmandu bhaktapur lalitpur' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-insert into public.areas (city_id, name) select id, 'Kathmandu lalitpur bhaktapur' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-insert into public.areas (city_id, name) select id, 'Kathmandu valley' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-insert into public.areas (city_id, name) select id, 'Kathmandu, lalitpur' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-insert into public.areas (city_id, name) select id, 'Kathmandu,bhaktapur,lalitpur' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-insert into public.areas (city_id, name) select id, 'Kirtipur' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-insert into public.areas (city_id, name) select id, 'Koteshwor' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-insert into public.areas (city_id, name) select id, 'Kritipur' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-insert into public.areas (city_id, name) select id, 'Ktm' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-insert into public.areas (city_id, name) select id, 'Ktm ct' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-insert into public.areas (city_id, name) select id, 'Lalitpur' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-insert into public.areas (city_id, name) select id, 'Maharajgung' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-insert into public.areas (city_id, name) select id, 'Naya Baneshwor' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-insert into public.areas (city_id, name) select id, 'Naya bazaar' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-insert into public.areas (city_id, name) select id, 'Nayabasthi' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-insert into public.areas (city_id, name) select id, 'Nepaltar' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-insert into public.areas (city_id, name) select id, 'Panauti' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-insert into public.areas (city_id, name) select id, 'Pashupatinath' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-insert into public.areas (city_id, name) select id, 'Pepscicola' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-insert into public.areas (city_id, name) select id, 'PepsiCola townplaning' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-insert into public.areas (city_id, name) select id, 'Pepsicola' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-insert into public.areas (city_id, name) select id, 'Purano Baneswor' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-insert into public.areas (city_id, name) select id, 'Putalisadak' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-insert into public.areas (city_id, name) select id, 'Radhe radhe' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-insert into public.areas (city_id, name) select id, 'Ratopul, Paneku margha,' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-insert into public.areas (city_id, name) select id, 'Samakhusi' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-insert into public.areas (city_id, name) select id, 'Sanepa' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-insert into public.areas (city_id, name) select id, 'Sinamangal' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-insert into public.areas (city_id, name) select id, 'Sorakhutte' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-insert into public.areas (city_id, name) select id, 'Swayambhu' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-insert into public.areas (city_id, name) select id, 'Tarakeshwar' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-insert into public.areas (city_id, name) select id, 'Tokha' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-insert into public.areas (city_id, name) select id, 'all overNepal' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-insert into public.areas (city_id, name) select id, 'xxx' from public.cities where name = 'Kathmandu' on conflict (city_id, name) do nothing;
-
-insert into public.services (name) values ('AC Repair') on conflict (name) do nothing;
-insert into public.services (name) values ('CCTV Camera') on conflict (name) do nothing;
-insert into public.services (name) values ('Carpenter') on conflict (name) do nothing;
-insert into public.services (name) values ('Chef at Home') on conflict (name) do nothing;
-insert into public.services (name) values ('Electrician') on conflict (name) do nothing;
-insert into public.services (name) values ('Lift Repair') on conflict (name) do nothing;
-insert into public.services (name) values ('Marble Tiles') on conflict (name) do nothing;
-insert into public.services (name) values ('Masonry Repair') on conflict (name) do nothing;
-insert into public.services (name) values ('Packers Movers') on conflict (name) do nothing;
-insert into public.services (name) values ('Painter') on conflict (name) do nothing;
-insert into public.services (name) values ('Plumber') on conflict (name) do nothing;
-insert into public.services (name) values ('Septic Tank Cleaner') on conflict (name) do nothing;
+insert into public.areas (name) values ('All area in Kathmandu') on conflict (name) do nothing;
+insert into public.areas (name) values ('All kathmandu') on conflict (name) do nothing;
+insert into public.areas (name) values ('All over Nepal') on conflict (name) do nothing;
+insert into public.areas (name) values ('All-rounder kathamdu valleys with dhading bensi') on conflict (name) do nothing;
+insert into public.areas (name) values ('Anamnagar') on conflict (name) do nothing;
+insert into public.areas (name) values ('Asan') on conflict (name) do nothing;
+insert into public.areas (name) values ('Balaju') on conflict (name) do nothing;
+insert into public.areas (name) values ('Balkhu kirtipur kalanki') on conflict (name) do nothing;
+insert into public.areas (name) values ('Balkumari') on conflict (name) do nothing;
+insert into public.areas (name) values ('Banasthali') on conflict (name) do nothing;
+insert into public.areas (name) values ('Baneshwor') on conflict (name) do nothing;
+insert into public.areas (name) values ('Baniyatar') on conflict (name) do nothing;
+insert into public.areas (name) values ('Bhaisipati') on conflict (name) do nothing;
+insert into public.areas (name) values ('Bhaktapur') on conflict (name) do nothing;
+insert into public.areas (name) values ('Bouddha jorpati') on conflict (name) do nothing;
+insert into public.areas (name) values ('Boudha') on conflict (name) do nothing;
+insert into public.areas (name) values ('Chabahil') on conflict (name) do nothing;
+insert into public.areas (name) values ('Chandragiri') on conflict (name) do nothing;
+insert into public.areas (name) values ('Dhapakhel') on conflict (name) do nothing;
+insert into public.areas (name) values ('Gairi Gaun') on conflict (name) do nothing;
+insert into public.areas (name) values ('Goldunga') on conflict (name) do nothing;
+insert into public.areas (name) values ('Gongabu') on conflict (name) do nothing;
+insert into public.areas (name) values ('Hadigaun') on conflict (name) do nothing;
+insert into public.areas (name) values ('Hattigauda') on conflict (name) do nothing;
+insert into public.areas (name) values ('Imadol,tikathali,kotesor,satdobato,lagankhel') on conflict (name) do nothing;
+insert into public.areas (name) values ('Jorpati') on conflict (name) do nothing;
+insert into public.areas (name) values ('KTM') on conflict (name) do nothing;
+insert into public.areas (name) values ('Kalanki') on conflict (name) do nothing;
+insert into public.areas (name) values ('Kalanki chandragiri') on conflict (name) do nothing;
+insert into public.areas (name) values ('Kapan') on conflict (name) do nothing;
+insert into public.areas (name) values ('Kathandu') on conflict (name) do nothing;
+insert into public.areas (name) values ('Kathmandu') on conflict (name) do nothing;
+insert into public.areas (name) values ('Kathmandu bhaktapur lalitpur') on conflict (name) do nothing;
+insert into public.areas (name) values ('Kathmandu lalitpur bhaktapur') on conflict (name) do nothing;
+insert into public.areas (name) values ('Kathmandu valley') on conflict (name) do nothing;
+insert into public.areas (name) values ('Kathmandu, lalitpur') on conflict (name) do nothing;
+insert into public.areas (name) values ('Kathmandu,bhaktapur,lalitpur') on conflict (name) do nothing;
+insert into public.areas (name) values ('Kirtipur') on conflict (name) do nothing;
+insert into public.areas (name) values ('Koteshwor') on conflict (name) do nothing;
+insert into public.areas (name) values ('Kritipur') on conflict (name) do nothing;
+insert into public.areas (name) values ('Ktm') on conflict (name) do nothing;
+insert into public.areas (name) values ('Ktm ct') on conflict (name) do nothing;
+insert into public.areas (name) values ('Lalitpur') on conflict (name) do nothing;
+insert into public.areas (name) values ('Maharajgung') on conflict (name) do nothing;
+insert into public.areas (name) values ('Naya Baneshwor') on conflict (name) do nothing;
+insert into public.areas (name) values ('Naya bazaar') on conflict (name) do nothing;
+insert into public.areas (name) values ('Nayabasthi') on conflict (name) do nothing;
+insert into public.areas (name) values ('Nepaltar') on conflict (name) do nothing;
+insert into public.areas (name) values ('Panauti') on conflict (name) do nothing;
+insert into public.areas (name) values ('Pashupatinath') on conflict (name) do nothing;
+insert into public.areas (name) values ('Pepscicola') on conflict (name) do nothing;
+insert into public.areas (name) values ('PepsiCola townplaning') on conflict (name) do nothing;
+insert into public.areas (name) values ('Pepsicola') on conflict (name) do nothing;
+insert into public.areas (name) values ('Purano Baneswor') on conflict (name) do nothing;
+insert into public.areas (name) values ('Putalisadak') on conflict (name) do nothing;
+insert into public.areas (name) values ('Radhe radhe') on conflict (name) do nothing;
+insert into public.areas (name) values ('Ratopul, Paneku margha,') on conflict (name) do nothing;
+insert into public.areas (name) values ('Samakhusi') on conflict (name) do nothing;
+insert into public.areas (name) values ('Sanepa') on conflict (name) do nothing;
+insert into public.areas (name) values ('Sinamangal') on conflict (name) do nothing;
+insert into public.areas (name) values ('Sorakhutte') on conflict (name) do nothing;
+insert into public.areas (name) values ('Swayambhu') on conflict (name) do nothing;
+insert into public.areas (name) values ('Tarakeshwar') on conflict (name) do nothing;
+insert into public.areas (name) values ('Tokha') on conflict (name) do nothing;
+insert into public.areas (name) values ('all overNepal') on conflict (name) do nothing;
+insert into public.areas (name) values ('xxx') on conflict (name) do nothing;
 
 -- Workforce professionals
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -99,9 +85,7 @@ insert into public.workforce (
   null,
   'Chaudhary',
   null,
-  '9779842867168',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  null,
+  '9779842867168',  null,
   '2024-05-31T13:47:00.000Z'::timestamptz,
   null,
   'Male',
@@ -125,9 +109,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -146,12 +128,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 143, id from public.services where name = 'Electrician'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Electrician')
+where uin = 143
+  and not ('Electrician' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -161,9 +144,7 @@ insert into public.workforce (
   null,
   'Adhikari',
   null,
-  '9779845318832',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  null,
+  '9779845318832',  null,
   '2024-06-10T23:39:00.000Z'::timestamptz,
   null,
   'Male',
@@ -187,9 +168,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -208,12 +187,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 373, id from public.services where name = 'Electrician'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Electrician')
+where uin = 373
+  and not ('Electrician' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -223,9 +203,7 @@ insert into public.workforce (
   null,
   'Dangol',
   null,
-  '9779841991117',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  null,
+  '9779841991117',  null,
   '2024-06-11T00:00:00.000Z'::timestamptz,
   null,
   'Male',
@@ -249,9 +227,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -270,12 +246,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 383, id from public.services where name = 'Painter'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Painter')
+where uin = 383
+  and not ('Painter' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -285,9 +262,7 @@ insert into public.workforce (
   'Nath',
   'Dhungana',
   null,
-  '9779841001718',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  null,
+  '9779841001718',  null,
   '2024-06-11T00:01:00.000Z'::timestamptz,
   null,
   'Male',
@@ -311,9 +286,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -332,12 +305,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 384, id from public.services where name = 'Painter'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Painter')
+where uin = 384
+  and not ('Painter' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -347,9 +321,7 @@ insert into public.workforce (
   'Lal',
   'Shrestha',
   null,
-  '9779808374669',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  null,
+  '9779808374669',  null,
   '2024-06-11T00:02:00.000Z'::timestamptz,
   null,
   'Male',
@@ -373,9 +345,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -394,12 +364,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 386, id from public.services where name = 'Painter'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Painter')
+where uin = 386
+  and not ('Painter' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -409,9 +380,7 @@ insert into public.workforce (
   null,
   'Maharjan',
   null,
-  '9779808152744',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  null,
+  '9779808152744',  null,
   '2024-06-11T00:03:00.000Z'::timestamptz,
   null,
   'Male',
@@ -435,9 +404,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -456,12 +423,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 387, id from public.services where name = 'Painter'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Painter')
+where uin = 387
+  and not ('Painter' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -471,9 +439,7 @@ insert into public.workforce (
   null,
   'Karki',
   null,
-  '9779841038268',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  null,
+  '9779841038268',  null,
   '2024-06-11T00:04:00.000Z'::timestamptz,
   null,
   'Male',
@@ -497,9 +463,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -518,12 +482,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 388, id from public.services where name = 'Painter'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Painter')
+where uin = 388
+  and not ('Painter' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -533,9 +498,7 @@ insert into public.workforce (
   null,
   'Bahadur',
   null,
-  '9779803514717',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  null,
+  '9779803514717',  null,
   '2024-06-11T00:05:00.000Z'::timestamptz,
   null,
   'Male',
@@ -559,9 +522,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -580,12 +541,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 389, id from public.services where name = 'Painter'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Painter')
+where uin = 389
+  and not ('Painter' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -595,9 +557,7 @@ insert into public.workforce (
   null,
   'Rimal',
   null,
-  '9779841635145',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  null,
+  '9779841635145',  null,
   '2024-06-11T00:06:00.000Z'::timestamptz,
   null,
   'Male',
@@ -621,9 +581,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -642,12 +600,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 390, id from public.services where name = 'Painter'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Painter')
+where uin = 390
+  and not ('Painter' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -657,9 +616,7 @@ insert into public.workforce (
   null,
   'Shrestha',
   null,
-  '9779851004108',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  null,
+  '9779851004108',  null,
   '2024-06-11T00:09:00.000Z'::timestamptz,
   null,
   'Male',
@@ -683,9 +640,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -704,12 +659,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 391, id from public.services where name = 'Painter'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Painter')
+where uin = 391
+  and not ('Painter' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -719,9 +675,7 @@ insert into public.workforce (
   null,
   'Bahadur',
   null,
-  '9779860442861',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  null,
+  '9779860442861',  null,
   '2024-06-11T00:10:00.000Z'::timestamptz,
   null,
   'Male',
@@ -745,9 +699,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -766,12 +718,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 392, id from public.services where name = 'Painter'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Painter')
+where uin = 392
+  and not ('Painter' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -781,9 +734,7 @@ insert into public.workforce (
   null,
   'Shah',
   null,
-  '9779841263291',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  null,
+  '9779841263291',  null,
   '2024-06-11T00:12:00.000Z'::timestamptz,
   null,
   'Male',
@@ -807,9 +758,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -828,12 +777,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 393, id from public.services where name = 'Painter'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Painter')
+where uin = 393
+  and not ('Painter' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -843,9 +793,7 @@ insert into public.workforce (
   null,
   'Tiwari',
   null,
-  '9779841541274',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  null,
+  '9779841541274',  null,
   '2024-06-11T00:13:00.000Z'::timestamptz,
   null,
   'Male',
@@ -869,9 +817,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -890,12 +836,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 394, id from public.services where name = 'Painter'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Painter')
+where uin = 394
+  and not ('Painter' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -905,9 +852,7 @@ insert into public.workforce (
   'Kumar',
   'KC',
   null,
-  '9779841665661',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  null,
+  '9779841665661',  null,
   '2024-06-11T00:14:00.000Z'::timestamptz,
   null,
   'Male',
@@ -931,9 +876,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -952,12 +895,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 395, id from public.services where name = 'Painter'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Painter')
+where uin = 395
+  and not ('Painter' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -967,9 +911,7 @@ insert into public.workforce (
   null,
   'Rai',
   null,
-  '9779841442661',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  null,
+  '9779841442661',  null,
   '2024-06-11T00:15:00.000Z'::timestamptz,
   null,
   'Male',
@@ -993,9 +935,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -1014,12 +954,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 396, id from public.services where name = 'Painter'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Painter')
+where uin = 396
+  and not ('Painter' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -1029,9 +970,7 @@ insert into public.workforce (
   null,
   'Khadgi',
   null,
-  '9779841389969',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  null,
+  '9779841389969',  null,
   '2024-06-11T00:16:00.000Z'::timestamptz,
   null,
   'Male',
@@ -1055,9 +994,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -1076,12 +1013,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 397, id from public.services where name = 'Painter'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Painter')
+where uin = 397
+  and not ('Painter' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -1091,9 +1029,7 @@ insert into public.workforce (
   null,
   'Shrestha',
   null,
-  '9779841242933',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  null,
+  '9779841242933',  null,
   '2024-06-11T00:17:00.000Z'::timestamptz,
   null,
   'Male',
@@ -1117,9 +1053,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -1138,12 +1072,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 398, id from public.services where name = 'Electrician'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Electrician')
+where uin = 398
+  and not ('Electrician' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -1153,9 +1088,7 @@ insert into public.workforce (
   'Prasad',
   'Siwakoti',
   null,
-  '9779849707064',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  null,
+  '9779849707064',  null,
   '2024-06-11T00:18:00.000Z'::timestamptz,
   null,
   'Male',
@@ -1179,9 +1112,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -1200,12 +1131,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 399, id from public.services where name = 'Painter'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Painter')
+where uin = 399
+  and not ('Painter' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -1215,9 +1147,7 @@ insert into public.workforce (
   null,
   'Dangol',
   null,
-  '9779849692387',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  null,
+  '9779849692387',  null,
   '2024-06-11T00:19:00.000Z'::timestamptz,
   null,
   'Male',
@@ -1241,9 +1171,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -1262,12 +1190,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 400, id from public.services where name = 'Painter'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Painter')
+where uin = 400
+  and not ('Painter' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -1277,9 +1206,7 @@ insert into public.workforce (
   null,
   'Krishna',
   null,
-  '9779841453241',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  null,
+  '9779841453241',  null,
   '2024-06-11T00:23:00.000Z'::timestamptz,
   null,
   'Male',
@@ -1303,9 +1230,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -1324,12 +1249,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 403, id from public.services where name = 'Painter'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Painter')
+where uin = 403
+  and not ('Painter' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -1339,9 +1265,7 @@ insert into public.workforce (
   'Hari',
   'Gautam',
   null,
-  '9779849149689',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  null,
+  '9779849149689',  null,
   '2024-06-11T00:24:00.000Z'::timestamptz,
   null,
   'Male',
@@ -1365,9 +1289,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -1386,12 +1308,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 404, id from public.services where name = 'Painter'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Painter')
+where uin = 404
+  and not ('Painter' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -1401,9 +1324,7 @@ insert into public.workforce (
   null,
   'Bahadur',
   null,
-  '9779841472884',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  null,
+  '9779841472884',  null,
   '2024-06-11T00:25:00.000Z'::timestamptz,
   null,
   'Male',
@@ -1427,9 +1348,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -1448,12 +1367,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 405, id from public.services where name = 'Painter'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Painter')
+where uin = 405
+  and not ('Painter' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -1463,9 +1383,7 @@ insert into public.workforce (
   null,
   'Dhungana',
   null,
-  '9779841496273',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  null,
+  '9779841496273',  null,
   '2024-06-11T00:27:00.000Z'::timestamptz,
   null,
   'Male',
@@ -1489,9 +1407,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -1510,12 +1426,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 407, id from public.services where name = 'Painter'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Painter')
+where uin = 407
+  and not ('Painter' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -1525,9 +1442,7 @@ insert into public.workforce (
   null,
   'Sharan',
   null,
-  '9779851198861',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  null,
+  '9779851198861',  null,
   '2024-06-11T00:28:00.000Z'::timestamptz,
   null,
   'Male',
@@ -1551,9 +1466,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -1572,12 +1485,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 408, id from public.services where name = 'Painter'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Painter')
+where uin = 408
+  and not ('Painter' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -1587,9 +1501,7 @@ insert into public.workforce (
   'Raj',
   'Kharel',
   null,
-  '9779841949714',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  null,
+  '9779841949714',  null,
   '2024-06-11T00:29:00.000Z'::timestamptz,
   null,
   'Male',
@@ -1613,9 +1525,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -1634,12 +1544,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 409, id from public.services where name = 'Painter'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Painter')
+where uin = 409
+  and not ('Painter' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -1649,9 +1560,7 @@ insert into public.workforce (
   null,
   'Magar',
   null,
-  '9779813002161',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  null,
+  '9779813002161',  null,
   '2024-06-11T00:34:00.000Z'::timestamptz,
   null,
   'Male',
@@ -1675,9 +1584,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -1696,12 +1603,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 413, id from public.services where name = 'Painter'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Painter')
+where uin = 413
+  and not ('Painter' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -1711,9 +1619,7 @@ insert into public.workforce (
   null,
   'Raya',
   null,
-  '9779841459230',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  null,
+  '9779841459230',  null,
   '2024-06-11T00:37:00.000Z'::timestamptz,
   null,
   'Male',
@@ -1737,9 +1643,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -1758,12 +1662,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 415, id from public.services where name = 'Painter'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Painter')
+where uin = 415
+  and not ('Painter' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -1773,9 +1678,7 @@ insert into public.workforce (
   null,
   'Magar',
   null,
-  '9779818881807',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  null,
+  '9779818881807',  null,
   '2024-06-11T00:37:00.000Z'::timestamptz,
   null,
   'Male',
@@ -1799,9 +1702,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -1820,12 +1721,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 416, id from public.services where name = 'Painter'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Painter')
+where uin = 416
+  and not ('Painter' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -1835,9 +1737,7 @@ insert into public.workforce (
   'Prasad',
   'Ojha',
   null,
-  '9779841673350',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  null,
+  '9779841673350',  null,
   '2024-06-11T00:39:00.000Z'::timestamptz,
   null,
   'Male',
@@ -1861,9 +1761,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -1882,12 +1780,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 418, id from public.services where name = 'Painter'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Painter')
+where uin = 418
+  and not ('Painter' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -1897,9 +1796,7 @@ insert into public.workforce (
   'Kumar',
   'Jaiswal',
   null,
-  '9779841509389',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  null,
+  '9779841509389',  null,
   '2024-06-11T00:40:00.000Z'::timestamptz,
   null,
   'Male',
@@ -1923,9 +1820,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -1944,12 +1839,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 419, id from public.services where name = 'Painter'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Painter')
+where uin = 419
+  and not ('Painter' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -1959,9 +1855,7 @@ insert into public.workforce (
   null,
   'Khokali',
   null,
-  '9779849239205',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  null,
+  '9779849239205',  null,
   '2024-06-12T18:05:00.000Z'::timestamptz,
   null,
   'Male',
@@ -1985,9 +1879,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -2006,12 +1898,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 483, id from public.services where name = 'Painter'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Painter')
+where uin = 483
+  and not ('Painter' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -2021,9 +1914,7 @@ insert into public.workforce (
   'Bahadur',
   'Thapa',
   null,
-  '9779849690382',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  null,
+  '9779849690382',  null,
   '2024-06-12T18:07:00.000Z'::timestamptz,
   null,
   'Male',
@@ -2047,9 +1938,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -2068,12 +1957,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 484, id from public.services where name = 'Painter'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Painter')
+where uin = 484
+  and not ('Painter' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -2083,9 +1973,7 @@ insert into public.workforce (
   null,
   'Thapa',
   null,
-  '9779840005973',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'xxx' limit 1),
+  '9779840005973',  (select a.id from public.areas a where a.name = 'xxx' limit 1),
   '2024-09-09T10:48:00.000Z'::timestamptz,
   null,
   'Male',
@@ -2109,9 +1997,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -2130,12 +2016,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 561, id from public.services where name = 'Packers Movers'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Packers Movers')
+where uin = 561
+  and not ('Packers Movers' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -2145,9 +2032,7 @@ insert into public.workforce (
   null,
   'Bhandari',
   null,
-  '9779864242285',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'xxx' limit 1),
+  '9779864242285',  (select a.id from public.areas a where a.name = 'xxx' limit 1),
   '2024-09-09T10:50:00.000Z'::timestamptz,
   null,
   'Male',
@@ -2171,9 +2056,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -2192,12 +2075,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 562, id from public.services where name = 'Packers Movers'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Packers Movers')
+where uin = 562
+  and not ('Packers Movers' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -2207,9 +2091,7 @@ insert into public.workforce (
   null,
   'Bhujel',
   null,
-  '9779841501451',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'xxx' limit 1),
+  '9779841501451',  (select a.id from public.areas a where a.name = 'xxx' limit 1),
   '2024-09-09T10:52:00.000Z'::timestamptz,
   null,
   'Male',
@@ -2233,9 +2115,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -2254,12 +2134,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 563, id from public.services where name = 'Packers Movers'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Packers Movers')
+where uin = 563
+  and not ('Packers Movers' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -2269,9 +2150,7 @@ insert into public.workforce (
   null,
   'Neupane',
   null,
-  '9779851226669',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'xxx' limit 1),
+  '9779851226669',  (select a.id from public.areas a where a.name = 'xxx' limit 1),
   '2024-09-09T10:55:00.000Z'::timestamptz,
   null,
   'Male',
@@ -2295,9 +2174,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -2316,12 +2193,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 564, id from public.services where name = 'Packers Movers'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Packers Movers')
+where uin = 564
+  and not ('Packers Movers' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -2331,9 +2209,7 @@ insert into public.workforce (
   null,
   'Bhujel',
   null,
-  '9779845047385',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'xxx' limit 1),
+  '9779845047385',  (select a.id from public.areas a where a.name = 'xxx' limit 1),
   '2024-09-09T10:56:00.000Z'::timestamptz,
   null,
   'Male',
@@ -2357,9 +2233,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -2378,12 +2252,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 565, id from public.services where name = 'Packers Movers'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Packers Movers')
+where uin = 565
+  and not ('Packers Movers' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -2393,9 +2268,7 @@ insert into public.workforce (
   null,
   'Adhikari',
   null,
-  '9779860038562',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'xxx' limit 1),
+  '9779860038562',  (select a.id from public.areas a where a.name = 'xxx' limit 1),
   '2024-09-09T11:01:00.000Z'::timestamptz,
   null,
   'Male',
@@ -2419,9 +2292,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -2440,12 +2311,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 566, id from public.services where name = 'Packers Movers'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Packers Movers')
+where uin = 566
+  and not ('Packers Movers' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -2455,9 +2327,7 @@ insert into public.workforce (
   null,
   'Shrestha',
   null,
-  '9779818650866',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'xxx' limit 1),
+  '9779818650866',  (select a.id from public.areas a where a.name = 'xxx' limit 1),
   '2024-09-09T11:12:00.000Z'::timestamptz,
   null,
   'Male',
@@ -2481,9 +2351,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -2502,12 +2370,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 567, id from public.services where name = 'Packers Movers'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Packers Movers')
+where uin = 567
+  and not ('Packers Movers' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -2517,9 +2386,7 @@ insert into public.workforce (
   'Kumar',
   'Thapa',
   null,
-  '9779860661128',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'xxx' limit 1),
+  '9779860661128',  (select a.id from public.areas a where a.name = 'xxx' limit 1),
   '2024-09-09T11:15:00.000Z'::timestamptz,
   null,
   'Male',
@@ -2543,9 +2410,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -2564,12 +2429,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 568, id from public.services where name = 'Packers Movers'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Packers Movers')
+where uin = 568
+  and not ('Packers Movers' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -2579,9 +2445,7 @@ insert into public.workforce (
   'Kumar',
   'Tamang',
   null,
-  '9779851241878',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'xxx' limit 1),
+  '9779851241878',  (select a.id from public.areas a where a.name = 'xxx' limit 1),
   '2024-09-09T11:22:00.000Z'::timestamptz,
   null,
   'Male',
@@ -2605,9 +2469,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -2626,12 +2488,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 569, id from public.services where name = 'Packers Movers'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Packers Movers')
+where uin = 569
+  and not ('Packers Movers' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -2641,9 +2504,7 @@ insert into public.workforce (
   null,
   'Dhungel',
   null,
-  '9779852050693',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'xxx' limit 1),
+  '9779852050693',  (select a.id from public.areas a where a.name = 'xxx' limit 1),
   '2024-09-09T11:48:00.000Z'::timestamptz,
   null,
   'Male',
@@ -2667,9 +2528,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -2688,12 +2547,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 572, id from public.services where name = 'Packers Movers'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Packers Movers')
+where uin = 572
+  and not ('Packers Movers' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -2703,9 +2563,7 @@ insert into public.workforce (
   null,
   'Thapa',
   null,
-  '9779851239227',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Ratopul, Paneku margha,' limit 1),
+  '9779851239227',  (select a.id from public.areas a where a.name = 'Ratopul, Paneku margha,' limit 1),
   '2024-09-09T14:15:00.000Z'::timestamptz,
   null,
   'Male',
@@ -2729,9 +2587,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -2750,12 +2606,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 575, id from public.services where name = 'Painter'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Painter')
+where uin = 575
+  and not ('Painter' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -2765,9 +2622,7 @@ insert into public.workforce (
   null,
   'Sah',
   null,
-  '9779840218033',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Koteshwor' limit 1),
+  '9779840218033',  (select a.id from public.areas a where a.name = 'Koteshwor' limit 1),
   '2024-09-09T14:19:00.000Z'::timestamptz,
   null,
   'Male',
@@ -2791,9 +2646,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -2812,12 +2665,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 576, id from public.services where name = 'Painter'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Painter')
+where uin = 576
+  and not ('Painter' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -2827,9 +2681,7 @@ insert into public.workforce (
   null,
   'Maharjan',
   null,
-  '9779851330803',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'xxx' limit 1),
+  '9779851330803',  (select a.id from public.areas a where a.name = 'xxx' limit 1),
   '2024-09-09T16:01:00.000Z'::timestamptz,
   null,
   'Male',
@@ -2853,9 +2705,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -2874,12 +2724,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 582, id from public.services where name = 'Painter'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Painter')
+where uin = 582
+  and not ('Painter' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -2889,9 +2740,7 @@ insert into public.workforce (
   null,
   'Dhungana',
   null,
-  '9779845915826',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'xxx' limit 1),
+  '9779845915826',  (select a.id from public.areas a where a.name = 'xxx' limit 1),
   '2024-09-09T16:02:00.000Z'::timestamptz,
   null,
   'Male',
@@ -2915,9 +2764,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -2936,12 +2783,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 583, id from public.services where name = 'Painter'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Painter')
+where uin = 583
+  and not ('Painter' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -2951,9 +2799,7 @@ insert into public.workforce (
   null,
   'Pariyar',
   null,
-  '9779860881051',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'xxx' limit 1),
+  '9779860881051',  (select a.id from public.areas a where a.name = 'xxx' limit 1),
   '2024-09-09T16:03:00.000Z'::timestamptz,
   null,
   'Male',
@@ -2977,9 +2823,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -2998,12 +2842,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 584, id from public.services where name = 'Painter'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Painter')
+where uin = 584
+  and not ('Painter' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -3013,9 +2858,7 @@ insert into public.workforce (
   null,
   'Karmacharya',
   null,
-  '9779801121418',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'xxx' limit 1),
+  '9779801121418',  (select a.id from public.areas a where a.name = 'xxx' limit 1),
   '2024-09-09T16:05:00.000Z'::timestamptz,
   null,
   'Male',
@@ -3039,9 +2882,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -3060,12 +2901,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 586, id from public.services where name = 'Painter'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Painter')
+where uin = 586
+  and not ('Painter' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -3075,9 +2917,7 @@ insert into public.workforce (
   null,
   'Majhi',
   null,
-  '9779849296293',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'xxx' limit 1),
+  '9779849296293',  (select a.id from public.areas a where a.name = 'xxx' limit 1),
   '2024-09-09T16:08:00.000Z'::timestamptz,
   null,
   'Male',
@@ -3101,9 +2941,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -3122,12 +2960,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 588, id from public.services where name = 'Painter'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Painter')
+where uin = 588
+  and not ('Painter' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -3137,9 +2976,7 @@ insert into public.workforce (
   null,
   'Lama',
   null,
-  '9779818673273',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'xxx' limit 1),
+  '9779818673273',  (select a.id from public.areas a where a.name = 'xxx' limit 1),
   '2024-09-09T16:09:00.000Z'::timestamptz,
   null,
   'Male',
@@ -3163,9 +3000,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -3184,12 +3019,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 589, id from public.services where name = 'Painter'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Painter')
+where uin = 589
+  and not ('Painter' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -3199,9 +3035,7 @@ insert into public.workforce (
   null,
   'Sah',
   null,
-  '9779860270910',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'xxx' limit 1),
+  '9779860270910',  (select a.id from public.areas a where a.name = 'xxx' limit 1),
   '2024-09-09T16:12:00.000Z'::timestamptz,
   null,
   'Male',
@@ -3225,9 +3059,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -3246,12 +3078,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 591, id from public.services where name = 'Electrician'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Electrician')
+where uin = 591
+  and not ('Electrician' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -3261,9 +3094,7 @@ insert into public.workforce (
   null,
   'Karna',
   null,
-  '9779849999128',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'xxx' limit 1),
+  '9779849999128',  (select a.id from public.areas a where a.name = 'xxx' limit 1),
   '2024-09-09T16:14:00.000Z'::timestamptz,
   null,
   'Male',
@@ -3287,9 +3118,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -3308,12 +3137,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 592, id from public.services where name = 'Electrician'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Electrician')
+where uin = 592
+  and not ('Electrician' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -3323,9 +3153,7 @@ insert into public.workforce (
   null,
   'Poudel',
   null,
-  '9779745340157',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'xxx' limit 1),
+  '9779745340157',  (select a.id from public.areas a where a.name = 'xxx' limit 1),
   '2024-09-09T16:22:00.000Z'::timestamptz,
   null,
   'Male',
@@ -3349,9 +3177,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -3370,12 +3196,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 595, id from public.services where name = 'Electrician'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Electrician')
+where uin = 595
+  and not ('Electrician' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -3385,9 +3212,7 @@ insert into public.workforce (
   null,
   'Gurung',
   null,
-  '9779841290458',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'xxx' limit 1),
+  '9779841290458',  (select a.id from public.areas a where a.name = 'xxx' limit 1),
   '2024-09-09T16:25:00.000Z'::timestamptz,
   null,
   'Male',
@@ -3411,9 +3236,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -3432,12 +3255,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 596, id from public.services where name = 'Electrician'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Electrician')
+where uin = 596
+  and not ('Electrician' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -3447,9 +3271,7 @@ insert into public.workforce (
   null,
   'Khatri',
   null,
-  '9779762417004',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'xxx' limit 1),
+  '9779762417004',  (select a.id from public.areas a where a.name = 'xxx' limit 1),
   '2024-09-09T16:27:00.000Z'::timestamptz,
   null,
   'Male',
@@ -3473,9 +3295,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -3494,12 +3314,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 597, id from public.services where name = 'Electrician'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Electrician')
+where uin = 597
+  and not ('Electrician' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -3509,9 +3330,7 @@ insert into public.workforce (
   null,
   'Shrestha',
   null,
-  '9779863800249',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'xxx' limit 1),
+  '9779863800249',  (select a.id from public.areas a where a.name = 'xxx' limit 1),
   '2024-09-09T16:29:00.000Z'::timestamptz,
   null,
   'Male',
@@ -3535,9 +3354,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -3556,12 +3373,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 598, id from public.services where name = 'Electrician'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Electrician')
+where uin = 598
+  and not ('Electrician' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -3571,9 +3389,7 @@ insert into public.workforce (
   null,
   'Dhungana',
   'https://v5.airtableusercontent.com/v3/u/54/54/1783152000000/KMIL0WB05cEpYn1vyKp8ng/qeaxv2MIArVINXEJbOi9Gw_J4dF8YP45PdA-pWSh-IU_BXoolLdkc5Bw3GbxsCRJ3NcmCaqMJHHpaw4mX2tAKVYEu3JZ5fR7QmzXsug-MW_aBRuM93L0qzON8GpZcN8NHlckXd0iEdml3TRTiuZYRqpnq5XVs4mWHCsSAHMzlj4/g-OerM8RhEulsJkTGwzi8VTUtqo5iAkxAhA_7jF9CX0',
-  '9779841345953',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'xxx' limit 1),
+  '9779841345953',  (select a.id from public.areas a where a.name = 'xxx' limit 1),
   '2024-09-09T16:30:00.000Z'::timestamptz,
   null,
   'Male',
@@ -3597,9 +3413,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -3618,12 +3432,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 599, id from public.services where name = 'Electrician'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Electrician')
+where uin = 599
+  and not ('Electrician' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -3633,9 +3448,7 @@ insert into public.workforce (
   null,
   'Alam',
   null,
-  '9779851144503',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'xxx' limit 1),
+  '9779851144503',  (select a.id from public.areas a where a.name = 'xxx' limit 1),
   '2024-09-09T16:31:00.000Z'::timestamptz,
   null,
   'Male',
@@ -3659,9 +3472,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -3680,12 +3491,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 600, id from public.services where name = 'Electrician'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Electrician')
+where uin = 600
+  and not ('Electrician' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -3695,9 +3507,7 @@ insert into public.workforce (
   null,
   'Sah',
   null,
-  '9779851232966',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'xxx' limit 1),
+  '9779851232966',  (select a.id from public.areas a where a.name = 'xxx' limit 1),
   '2024-09-09T16:32:00.000Z'::timestamptz,
   null,
   'Male',
@@ -3721,9 +3531,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -3742,12 +3550,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 601, id from public.services where name = 'Electrician'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Electrician')
+where uin = 601
+  and not ('Electrician' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -3757,9 +3566,7 @@ insert into public.workforce (
   null,
   'Ghosh',
   null,
-  '9779849049458',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'xxx' limit 1),
+  '9779849049458',  (select a.id from public.areas a where a.name = 'xxx' limit 1),
   '2024-09-09T16:36:00.000Z'::timestamptz,
   null,
   'Male',
@@ -3783,9 +3590,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -3804,12 +3609,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 602, id from public.services where name = 'Electrician'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Electrician')
+where uin = 602
+  and not ('Electrician' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -3819,9 +3625,7 @@ insert into public.workforce (
   null,
   'Bhujel',
   null,
-  '9779861106065',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Kapan' limit 1),
+  '9779861106065',  (select a.id from public.areas a where a.name = 'Kapan' limit 1),
   '2025-01-02T21:12:00.000Z'::timestamptz,
   null,
   'Male',
@@ -3845,9 +3649,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -3866,12 +3668,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 631, id from public.services where name = 'Electrician'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Electrician')
+where uin = 631
+  and not ('Electrician' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -3881,9 +3684,7 @@ insert into public.workforce (
   null,
   'Maharjan',
   null,
-  '9779801814739',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Lalitpur' limit 1),
+  '9779801814739',  (select a.id from public.areas a where a.name = 'Lalitpur' limit 1),
   '2025-01-02T21:42:00.000Z'::timestamptz,
   null,
   'Male',
@@ -3907,9 +3708,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -3928,12 +3727,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 633, id from public.services where name = 'Electrician'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Electrician')
+where uin = 633
+  and not ('Electrician' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -3943,9 +3743,7 @@ insert into public.workforce (
   null,
   'Kumar Oli',
   'https://v5.airtableusercontent.com/v3/u/54/54/1783152000000/seGZpv4h2UyLxQzk5oBpsg/0O7gQxxtnRg-ZigeJaEMtL-AdarWEp5dem-kj4iSo97Z5yA49xoR7vRcKNohpSCOp0MycrREtMK0xcqrCY18BL5ZZA7cCk1J3kf83XZihNpEe0_4nJzz66zgKPY0Lm2AFneEPMpXPEfAncUcpfwxIKR7_-JvGyt-sQEk7hop76o/scd9cQRDEohHkkXVIpQYKrZwMfI5tMFtZoqmVwxD2us',
-  '9779851202336',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Balkhu kirtipur kalanki' limit 1),
+  '9779851202336',  (select a.id from public.areas a where a.name = 'Balkhu kirtipur kalanki' limit 1),
   '2025-01-03T10:07:00.000Z'::timestamptz,
   null,
   'Male',
@@ -3969,9 +3767,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -3990,12 +3786,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 639, id from public.services where name = 'Plumber'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Plumber')
+where uin = 639
+  and not ('Plumber' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -4005,9 +3802,7 @@ insert into public.workforce (
   null,
   'Yadav',
   null,
-  '9779841340079',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  null,
+  '9779841340079',  null,
   '2025-01-03T10:42:00.000Z'::timestamptz,
   null,
   'Male',
@@ -4031,9 +3826,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -4052,12 +3845,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 641, id from public.services where name = 'Lift Repair'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Lift Repair')
+where uin = 641
+  and not ('Lift Repair' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -4067,9 +3861,7 @@ insert into public.workforce (
   null,
   'Tamang',
   null,
-  '9779843767798',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Goldunga' limit 1),
+  '9779843767798',  (select a.id from public.areas a where a.name = 'Goldunga' limit 1),
   '2025-01-03T10:51:00.000Z'::timestamptz,
   null,
   'Male',
@@ -4093,9 +3885,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -4114,12 +3904,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 642, id from public.services where name = 'Electrician'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Electrician')
+where uin = 642
+  and not ('Electrician' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -4129,9 +3920,7 @@ insert into public.workforce (
   null,
   'Shrestha',
   null,
-  '9779843722345',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Kathmandu,bhaktapur,lalitpur' limit 1),
+  '9779843722345',  (select a.id from public.areas a where a.name = 'Kathmandu,bhaktapur,lalitpur' limit 1),
   '2025-01-03T11:39:00.000Z'::timestamptz,
   null,
   'Male',
@@ -4155,9 +3944,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -4176,12 +3963,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 643, id from public.services where name = 'Plumber'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Plumber')
+where uin = 643
+  and not ('Plumber' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -4191,9 +3979,7 @@ insert into public.workforce (
   null,
   'Pariyar',
   null,
-  '9779862400954',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Imadol,tikathali,kotesor,satdobato,lagankhel' limit 1),
+  '9779862400954',  (select a.id from public.areas a where a.name = 'Imadol,tikathali,kotesor,satdobato,lagankhel' limit 1),
   '2025-01-03T15:40:00.000Z'::timestamptz,
   null,
   'Male',
@@ -4217,9 +4003,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -4238,12 +4022,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 646, id from public.services where name = 'Electrician'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Electrician')
+where uin = 646
+  and not ('Electrician' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -4253,9 +4038,7 @@ insert into public.workforce (
   null,
   'Karki',
   null,
-  '9779841442232',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Lalitpur' limit 1),
+  '9779841442232',  (select a.id from public.areas a where a.name = 'Lalitpur' limit 1),
   '2025-01-03T20:31:00.000Z'::timestamptz,
   null,
   'Male',
@@ -4279,9 +4062,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -4300,12 +4081,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 654, id from public.services where name = 'Plumber'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Plumber')
+where uin = 654
+  and not ('Plumber' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -4315,9 +4097,7 @@ insert into public.workforce (
   null,
   'Karki',
   null,
-  '9779841442232',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Lalitpur' limit 1),
+  '9779841442232',  (select a.id from public.areas a where a.name = 'Lalitpur' limit 1),
   '2025-01-03T20:33:00.000Z'::timestamptz,
   null,
   'Male',
@@ -4341,9 +4121,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -4362,12 +4140,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 655, id from public.services where name = 'Electrician'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Electrician')
+where uin = 655
+  and not ('Electrician' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -4377,9 +4156,7 @@ insert into public.workforce (
   'Bahadur',
   'B.K.',
   'https://v5.airtableusercontent.com/v3/u/54/54/1783152000000/HAJSC628R-FctHsyKqF3KA/p2t2TN8uzWXt3SSgiT-Xv_oSKytKF2AgeOjjyqIERNViYZECZ_4RHuGECjkX0W9bA6kH7krETk5epU7kS9elf1mT5btleEI-hCvh0Kmhb8Rnb3Q_MDOx_jG0FenKh0AI6OPcCcFD4fURUBxaWRKfYFisPi5g_yYF2HvXTZJ-Scs/NrFcH53KWpMgOxuGHYiEChBXXP_bzEHT1UbvQFZykTQ',
-  '9779840827137',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  null,
+  '9779840827137',  null,
   '2025-01-04T11:09:00.000Z'::timestamptz,
   null,
   'Male',
@@ -4403,9 +4180,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -4424,12 +4199,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 658, id from public.services where name = 'Masonry Repair'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Masonry Repair')
+where uin = 658
+  and not ('Masonry Repair' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -4439,9 +4215,7 @@ insert into public.workforce (
   null,
   'Chapagain',
   null,
-  '9779866695931',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Kathmandu bhaktapur lalitpur' limit 1),
+  '9779866695931',  (select a.id from public.areas a where a.name = 'Kathmandu bhaktapur lalitpur' limit 1),
   '2025-01-04T11:21:00.000Z'::timestamptz,
   null,
   'Male',
@@ -4465,9 +4239,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -4486,12 +4258,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 659, id from public.services where name = 'AC Repair'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'AC Repair')
+where uin = 659
+  and not ('AC Repair' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -4501,9 +4274,7 @@ insert into public.workforce (
   'Bdr.',
   'Sunuwar',
   null,
-  '9779860491460',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Ktm' limit 1),
+  '9779860491460',  (select a.id from public.areas a where a.name = 'Ktm' limit 1),
   '2025-01-04T11:44:00.000Z'::timestamptz,
   null,
   'Male',
@@ -4527,9 +4298,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -4548,12 +4317,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 660, id from public.services where name = 'Painter'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Painter')
+where uin = 660
+  and not ('Painter' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -4563,9 +4333,7 @@ insert into public.workforce (
   null,
   'Khand',
   null,
-  '9779841426860',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'All area in Kathmandu' limit 1),
+  '9779841426860',  (select a.id from public.areas a where a.name = 'All area in Kathmandu' limit 1),
   '2025-01-04T17:08:00.000Z'::timestamptz,
   null,
   'Male',
@@ -4589,9 +4357,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -4610,12 +4376,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 662, id from public.services where name = 'Electrician'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Electrician')
+where uin = 662
+  and not ('Electrician' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -4625,9 +4392,7 @@ insert into public.workforce (
   null,
   'Khand',
   null,
-  '9779841426860',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'All kathmandu' limit 1),
+  '9779841426860',  (select a.id from public.areas a where a.name = 'All kathmandu' limit 1),
   '2025-01-04T17:29:00.000Z'::timestamptz,
   null,
   'Male',
@@ -4651,9 +4416,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -4672,12 +4435,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 664, id from public.services where name = 'Painter'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Painter')
+where uin = 664
+  and not ('Painter' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -4687,9 +4451,7 @@ insert into public.workforce (
   null,
   'Maharjan',
   'https://v5.airtableusercontent.com/v3/u/54/54/1783152000000/yE13904GAbIKr-xgjN9wcQ/eSoQgJ0Y-dOY5k72Q5Mjgg2Js_4vbgKzmn1Z2KIEv6Y2tNINNco9Clx-Y9t-FZKCu0KxZEBdcMfk-VgKRvn2YF-Ho2utheowb3B9zeeHi1Gfp2I75ZYikA4mlICyZtprP1LcfE1XazLvO48XjZJnBniy5kA21fT4eWUWOit6Vbg/lJcLzWuXZKJUFjceugEq1l9xVLZVoLDCE1fxn7y-r7I',
-  '9779849224359',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Kathmandu, lalitpur' limit 1),
+  '9779849224359',  (select a.id from public.areas a where a.name = 'Kathmandu, lalitpur' limit 1),
   '2025-01-04T18:31:00.000Z'::timestamptz,
   null,
   'Male',
@@ -4713,9 +4475,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -4734,12 +4494,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 667, id from public.services where name = 'Electrician'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Electrician')
+where uin = 667
+  and not ('Electrician' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -4749,9 +4510,7 @@ insert into public.workforce (
   null,
   'Shrestha',
   null,
-  '9779761812289',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Kathmandu' limit 1),
+  '9779761812289',  (select a.id from public.areas a where a.name = 'Kathmandu' limit 1),
   '2025-01-04T23:25:00.000Z'::timestamptz,
   null,
   'Male',
@@ -4775,9 +4534,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -4796,12 +4553,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 673, id from public.services where name = 'Electrician'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Electrician')
+where uin = 673
+  and not ('Electrician' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -4811,9 +4569,7 @@ insert into public.workforce (
   null,
   'Acharya',
   null,
-  '9779860820580',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'all overNepal' limit 1),
+  '9779860820580',  (select a.id from public.areas a where a.name = 'all overNepal' limit 1),
   '2025-01-05T06:52:00.000Z'::timestamptz,
   null,
   'Male',
@@ -4837,9 +4593,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -4858,12 +4612,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 676, id from public.services where name = 'Electrician'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Electrician')
+where uin = 676
+  and not ('Electrician' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -4873,9 +4628,7 @@ insert into public.workforce (
   null,
   'Shrestha',
   null,
-  '9779848827852',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'All-rounder kathamdu valleys with dhading bensi' limit 1),
+  '9779848827852',  (select a.id from public.areas a where a.name = 'All-rounder kathamdu valleys with dhading bensi' limit 1),
   '2025-01-05T10:09:00.000Z'::timestamptz,
   null,
   'Male',
@@ -4899,9 +4652,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -4920,12 +4671,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 678, id from public.services where name = 'Plumber'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Plumber')
+where uin = 678
+  and not ('Plumber' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -4935,9 +4687,7 @@ insert into public.workforce (
   null,
   'Maharjan',
   null,
-  '9779841336144',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Kathmandu valley' limit 1),
+  '9779841336144',  (select a.id from public.areas a where a.name = 'Kathmandu valley' limit 1),
   '2025-01-05T19:59:00.000Z'::timestamptz,
   null,
   'Male',
@@ -4961,9 +4711,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -4982,12 +4730,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 684, id from public.services where name = 'Electrician'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Electrician')
+where uin = 684
+  and not ('Electrician' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -4997,9 +4746,7 @@ insert into public.workforce (
   null,
   'Khatri',
   'https://v5.airtableusercontent.com/v3/u/54/54/1783152000000/oElD00S3-y66EdiXL7GX6g/Qgyo_4XQcJOC3SZ9O8o80j2uGxQykIxkUu-Ax43eZ26fzwO6DGWKmxq3IlXhlMfGafgOBo1j3g8Gz4a-2VU_CL43MM3FXXcFrXpYYEocrkmwJltBbfMn_XZzOfzpnK2Fi7jjejp1BhTzBsICnKsh8mHCpLbNxMKejAiOTXVzTjk/lZAZNxtWoj4MPF7whU-URRBK7exdBp0wThQBc7iZ71c',
-  '9779843951088',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Bouddha jorpati' limit 1),
+  '9779843951088',  (select a.id from public.areas a where a.name = 'Bouddha jorpati' limit 1),
   '2025-01-05T20:05:00.000Z'::timestamptz,
   null,
   'Male',
@@ -5023,9 +4770,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -5044,12 +4789,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 686, id from public.services where name = 'Plumber'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Plumber')
+where uin = 686
+  and not ('Plumber' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -5059,9 +4805,7 @@ insert into public.workforce (
   'Prasad',
   'Chalise',
   null,
-  '9779849514546',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'All over Nepal' limit 1),
+  '9779849514546',  (select a.id from public.areas a where a.name = 'All over Nepal' limit 1),
   '2025-01-05T21:05:00.000Z'::timestamptz,
   null,
   'Male',
@@ -5085,9 +4829,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -5106,12 +4848,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 689, id from public.services where name = 'Electrician'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Electrician')
+where uin = 689
+  and not ('Electrician' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -5121,9 +4864,7 @@ insert into public.workforce (
   null,
   'Shrestha',
   null,
-  '9779841723425',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Balaju' limit 1),
+  '9779841723425',  (select a.id from public.areas a where a.name = 'Balaju' limit 1),
   '2025-01-05T21:42:00.000Z'::timestamptz,
   null,
   'Male',
@@ -5147,9 +4888,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -5168,12 +4907,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 690, id from public.services where name = 'Electrician'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Electrician')
+where uin = 690
+  and not ('Electrician' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -5183,9 +4923,7 @@ insert into public.workforce (
   null,
   'Gopali',
   null,
-  '9779705270709',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Kirtipur' limit 1),
+  '9779705270709',  (select a.id from public.areas a where a.name = 'Kirtipur' limit 1),
   '2025-01-06T08:26:00.000Z'::timestamptz,
   null,
   'Male',
@@ -5209,9 +4947,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -5230,12 +4966,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 692, id from public.services where name = 'Plumber'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Plumber')
+where uin = 692
+  and not ('Plumber' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -5245,9 +4982,7 @@ insert into public.workforce (
   null,
   'Jaiswal',
   null,
-  '9779818190736',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Kathandu' limit 1),
+  '9779818190736',  (select a.id from public.areas a where a.name = 'Kathandu' limit 1),
   '2025-01-07T16:08:00.000Z'::timestamptz,
   null,
   'Male',
@@ -5271,9 +5006,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -5292,12 +5025,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 695, id from public.services where name = 'Painter'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Painter')
+where uin = 695
+  and not ('Painter' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -5307,9 +5041,7 @@ insert into public.workforce (
   null,
   'Lama',
   'https://v5.airtableusercontent.com/v3/u/54/54/1783152000000/vZezs9CxZcCLXPjAB5s9vA/214NdMtsOmrbjsyt_DeY0H7_aPyHS7xWAEun3_kpYCypi2SeBCABqRMBZzB6Lw7IGZCFitOcRcrBTphlx0_OA8E0UmcF2MpeV9Clzmt74X_A7NsS9Y47kk_hN6ZcNc9RoRvW0fctmXhBm46AhL0Vy6NbsMYhYDvEISCHc3SZyVQ/GMHD97q4Nn9meK3XXK72qfU59x22xmgMJg74L71_0FM',
-  '9779841640712',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Ktm ct' limit 1),
+  '9779841640712',  (select a.id from public.areas a where a.name = 'Ktm ct' limit 1),
   '2025-01-09T15:16:00.000Z'::timestamptz,
   null,
   'Male',
@@ -5333,9 +5065,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -5354,12 +5084,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 698, id from public.services where name = 'Plumber'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Plumber')
+where uin = 698
+  and not ('Plumber' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -5369,9 +5100,7 @@ insert into public.workforce (
   null,
   'Shrestha',
   null,
-  '9779841233682',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Kalanki chandragiri' limit 1),
+  '9779841233682',  (select a.id from public.areas a where a.name = 'Kalanki chandragiri' limit 1),
   '2025-01-12T09:56:00.000Z'::timestamptz,
   null,
   'Male',
@@ -5395,9 +5124,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -5416,12 +5143,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 700, id from public.services where name = 'Plumber'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Plumber')
+where uin = 700
+  and not ('Plumber' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -5431,9 +5159,7 @@ insert into public.workforce (
   null,
   'Shrestha',
   null,
-  '9779841723425',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Balaju' limit 1),
+  '9779841723425',  (select a.id from public.areas a where a.name = 'Balaju' limit 1),
   '2025-01-27T22:01:00.000Z'::timestamptz,
   null,
   'Male',
@@ -5457,9 +5183,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -5478,12 +5202,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 705, id from public.services where name = 'Electrician'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Electrician')
+where uin = 705
+  and not ('Electrician' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -5493,9 +5218,7 @@ insert into public.workforce (
   null,
   'Tamang',
   null,
-  '9779842442648',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Nepaltar' limit 1),
+  '9779842442648',  (select a.id from public.areas a where a.name = 'Nepaltar' limit 1),
   '2025-02-16T17:55:00.000Z'::timestamptz,
   null,
   'Male',
@@ -5519,9 +5242,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -5540,12 +5261,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 708, id from public.services where name = 'Plumber'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Plumber')
+where uin = 708
+  and not ('Plumber' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -5555,9 +5277,7 @@ insert into public.workforce (
   null,
   'Sapkota',
   null,
-  '9779861157999',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Jorpati' limit 1),
+  '9779861157999',  (select a.id from public.areas a where a.name = 'Jorpati' limit 1),
   '2025-02-16T18:00:00.000Z'::timestamptz,
   null,
   'Male',
@@ -5581,9 +5301,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -5602,12 +5320,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 709, id from public.services where name = 'Plumber'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Plumber')
+where uin = 709
+  and not ('Plumber' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -5617,9 +5336,7 @@ insert into public.workforce (
   null,
   'Shrestha',
   null,
-  '9779808425335',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  null,
+  '9779808425335',  null,
   '2025-02-16T18:04:00.000Z'::timestamptz,
   null,
   'Male',
@@ -5643,9 +5360,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -5664,12 +5379,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 710, id from public.services where name = 'Electrician'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Electrician')
+where uin = 710
+  and not ('Electrician' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -5679,9 +5395,7 @@ insert into public.workforce (
   null,
   'Khadka',
   null,
-  '9779846436007',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Samakhusi' limit 1),
+  '9779846436007',  (select a.id from public.areas a where a.name = 'Samakhusi' limit 1),
   '2025-02-16T18:06:00.000Z'::timestamptz,
   null,
   'Male',
@@ -5705,9 +5419,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -5726,12 +5438,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 711, id from public.services where name = 'CCTV Camera'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'CCTV Camera')
+where uin = 711
+  and not ('CCTV Camera' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -5741,9 +5454,7 @@ insert into public.workforce (
   null,
   'Gajurel',
   null,
-  '9779803506697',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  null,
+  '9779803506697',  null,
   '2025-02-16T18:07:00.000Z'::timestamptz,
   null,
   'Male',
@@ -5767,9 +5478,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -5788,12 +5497,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 712, id from public.services where name = 'AC Repair'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'AC Repair')
+where uin = 712
+  and not ('AC Repair' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -5803,9 +5513,7 @@ insert into public.workforce (
   null,
   'Shrestha',
   null,
-  '9779843601182',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Banasthali' limit 1),
+  '9779843601182',  (select a.id from public.areas a where a.name = 'Banasthali' limit 1),
   '2025-02-16T18:12:00.000Z'::timestamptz,
   null,
   'Male',
@@ -5829,9 +5537,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -5850,12 +5556,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 713, id from public.services where name = 'Marble Tiles'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Marble Tiles')
+where uin = 713
+  and not ('Marble Tiles' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -5865,9 +5572,7 @@ insert into public.workforce (
   null,
   'Maharjan',
   null,
-  '9779801814739',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Bhaisipati' limit 1),
+  '9779801814739',  (select a.id from public.areas a where a.name = 'Bhaisipati' limit 1),
   '2025-02-16T18:14:00.000Z'::timestamptz,
   null,
   'Male',
@@ -5891,9 +5596,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -5912,12 +5615,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 714, id from public.services where name = 'Electrician'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Electrician')
+where uin = 714
+  and not ('Electrician' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -5927,9 +5631,7 @@ insert into public.workforce (
   null,
   'Basnet',
   null,
-  '9779847404920',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Sorakhutte' limit 1),
+  '9779847404920',  (select a.id from public.areas a where a.name = 'Sorakhutte' limit 1),
   '2025-02-16T18:16:00.000Z'::timestamptz,
   null,
   'Male',
@@ -5953,9 +5655,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -5974,12 +5674,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 715, id from public.services where name = 'CCTV Camera'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'CCTV Camera')
+where uin = 715
+  and not ('CCTV Camera' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -5989,9 +5690,7 @@ insert into public.workforce (
   null,
   'Gurung',
   null,
-  '9779828164388',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Gongabu' limit 1),
+  '9779828164388',  (select a.id from public.areas a where a.name = 'Gongabu' limit 1),
   '2025-02-18T23:11:00.000Z'::timestamptz,
   null,
   'Male',
@@ -6015,9 +5714,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -6036,12 +5733,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 721, id from public.services where name = 'Electrician'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Electrician')
+where uin = 721
+  and not ('Electrician' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -6051,9 +5749,7 @@ insert into public.workforce (
   null,
   'Shah',
   null,
-  '9779811734307',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  null,
+  '9779811734307',  null,
   '2025-02-18T23:13:00.000Z'::timestamptz,
   null,
   'Male',
@@ -6077,9 +5773,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -6098,12 +5792,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 722, id from public.services where name = 'Electrician'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Electrician')
+where uin = 722
+  and not ('Electrician' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -6113,9 +5808,7 @@ insert into public.workforce (
   null,
   'Giri',
   null,
-  '9779823621833',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Gairi Gaun' limit 1),
+  '9779823621833',  (select a.id from public.areas a where a.name = 'Gairi Gaun' limit 1),
   '2025-02-18T23:15:00.000Z'::timestamptz,
   null,
   'Male',
@@ -6139,9 +5832,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -6160,12 +5851,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 723, id from public.services where name = 'Electrician'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Electrician')
+where uin = 723
+  and not ('Electrician' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -6175,9 +5867,7 @@ insert into public.workforce (
   null,
   'Magar',
   'https://v5.airtableusercontent.com/v3/u/54/54/1783152000000/CsPXP7TpyR52EEr55vP5kg/qhfrQ_LnLpPZELWyaCezg16jtoqBMnSlX1r6Io7CgcA8AvGBVjqUDLizeSgB_pHntgkZ3CHQM-fDNIQp5UHqGFb0_8vfcmY3LA9MxsNGi4kcZVld1YRPdCsHix0YIvWSY9gn6A9T5lL9u42qFhmlS9tWbDyBZb0iE6FnLGwP5Is/ce6JeGlqu7QcrLnmwOwgmonSGPuplobCz5makwTMAGY',
-  '9779860972416',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  null,
+  '9779860972416',  null,
   '2025-02-18T23:21:00.000Z'::timestamptz,
   null,
   'Male',
@@ -6201,9 +5891,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -6222,12 +5910,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 726, id from public.services where name = 'Electrician'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Electrician')
+where uin = 726
+  and not ('Electrician' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -6237,9 +5926,7 @@ insert into public.workforce (
   null,
   'Shrestha',
   null,
-  '9779841233682',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Jorpati' limit 1),
+  '9779841233682',  (select a.id from public.areas a where a.name = 'Jorpati' limit 1),
   '2025-02-18T23:25:00.000Z'::timestamptz,
   null,
   'Male',
@@ -6263,9 +5950,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -6284,12 +5969,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 727, id from public.services where name = 'Plumber'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Plumber')
+where uin = 727
+  and not ('Plumber' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -6299,9 +5985,7 @@ insert into public.workforce (
   null,
   'Rajbanshi',
   null,
-  '9779704889495',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  null,
+  '9779704889495',  null,
   '2025-02-18T23:26:00.000Z'::timestamptz,
   null,
   'Male',
@@ -6325,9 +6009,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -6346,12 +6028,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 728, id from public.services where name = 'Electrician'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Electrician')
+where uin = 728
+  and not ('Electrician' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -6361,9 +6044,7 @@ insert into public.workforce (
   null,
   'Khatri',
   null,
-  '9779843951088',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  null,
+  '9779843951088',  null,
   '2025-02-18T23:28:00.000Z'::timestamptz,
   null,
   'Male',
@@ -6387,9 +6068,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -6408,12 +6087,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 729, id from public.services where name = 'Plumber'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Plumber')
+where uin = 729
+  and not ('Plumber' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -6423,9 +6103,7 @@ insert into public.workforce (
   null,
   'Sapkota',
   null,
-  '9779803301087',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Sinamangal' limit 1),
+  '9779803301087',  (select a.id from public.areas a where a.name = 'Sinamangal' limit 1),
   '2025-02-18T23:33:00.000Z'::timestamptz,
   null,
   'Male',
@@ -6449,9 +6127,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -6470,12 +6146,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 731, id from public.services where name = 'Electrician'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Electrician')
+where uin = 731
+  and not ('Electrician' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -6485,9 +6162,7 @@ insert into public.workforce (
   'Bahadur',
   'Thapa',
   null,
-  '9779845835626',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Balkumari' limit 1),
+  '9779845835626',  (select a.id from public.areas a where a.name = 'Balkumari' limit 1),
   '2025-02-18T23:39:00.000Z'::timestamptz,
   null,
   'Male',
@@ -6511,9 +6186,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -6532,12 +6205,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 733, id from public.services where name = 'AC Repair'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'AC Repair')
+where uin = 733
+  and not ('AC Repair' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -6547,9 +6221,7 @@ insert into public.workforce (
   null,
   'Lama',
   null,
-  '9779749871087',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  null,
+  '9779749871087',  null,
   '2025-02-19T13:32:00.000Z'::timestamptz,
   null,
   'Male',
@@ -6573,9 +6245,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -6594,12 +6264,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 736, id from public.services where name = 'Plumber'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Plumber')
+where uin = 736
+  and not ('Plumber' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -6609,9 +6280,7 @@ insert into public.workforce (
   null,
   'Tamu',
   null,
-  '9779823036513',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Radhe radhe' limit 1),
+  '9779823036513',  (select a.id from public.areas a where a.name = 'Radhe radhe' limit 1),
   '2025-02-19T13:39:00.000Z'::timestamptz,
   null,
   'Male',
@@ -6635,9 +6304,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -6656,12 +6323,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 738, id from public.services where name = 'Plumber'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Plumber')
+where uin = 738
+  and not ('Plumber' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -6671,9 +6339,7 @@ insert into public.workforce (
   null,
   'Gajurel',
   null,
-  '9779803506697',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  null,
+  '9779803506697',  null,
   '2025-02-19T13:41:00.000Z'::timestamptz,
   null,
   'Male',
@@ -6697,9 +6363,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -6718,12 +6382,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 739, id from public.services where name = 'AC Repair'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'AC Repair')
+where uin = 739
+  and not ('AC Repair' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -6733,9 +6398,7 @@ insert into public.workforce (
   null,
   'Belbase',
   null,
-  '9779810089293',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Purano Baneswor' limit 1),
+  '9779810089293',  (select a.id from public.areas a where a.name = 'Purano Baneswor' limit 1),
   '2025-03-03T12:11:00.000Z'::timestamptz,
   null,
   'Male',
@@ -6759,9 +6422,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -6780,12 +6441,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 747, id from public.services where name = 'Electrician'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Electrician')
+where uin = 747
+  and not ('Electrician' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -6795,9 +6457,7 @@ insert into public.workforce (
   'Bahadur',
   'Giri',
   null,
-  '9779840241638',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Tokha' limit 1),
+  '9779840241638',  (select a.id from public.areas a where a.name = 'Tokha' limit 1),
   '2025-03-03T13:03:00.000Z'::timestamptz,
   null,
   'Male',
@@ -6821,9 +6481,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -6842,12 +6500,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 748, id from public.services where name = 'Electrician'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Electrician')
+where uin = 748
+  and not ('Electrician' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -6857,9 +6516,7 @@ insert into public.workforce (
   null,
   'Parajuli',
   null,
-  '9779849744590',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Jorpati' limit 1),
+  '9779849744590',  (select a.id from public.areas a where a.name = 'Jorpati' limit 1),
   '2025-03-03T13:05:00.000Z'::timestamptz,
   null,
   'Male',
@@ -6883,9 +6540,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -6904,12 +6559,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 749, id from public.services where name = 'Electrician'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Electrician')
+where uin = 749
+  and not ('Electrician' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -6919,9 +6575,7 @@ insert into public.workforce (
   null,
   'Shrestha',
   null,
-  '9779849433139',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Bhaktapur' limit 1),
+  '9779849433139',  (select a.id from public.areas a where a.name = 'Bhaktapur' limit 1),
   '2025-03-03T13:09:00.000Z'::timestamptz,
   null,
   'Male',
@@ -6945,9 +6599,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -6966,12 +6618,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 750, id from public.services where name = 'Electrician'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Electrician')
+where uin = 750
+  and not ('Electrician' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -6981,9 +6634,7 @@ insert into public.workforce (
   null,
   'Chaudhary',
   null,
-  '9779860397630',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Lalitpur' limit 1),
+  '9779860397630',  (select a.id from public.areas a where a.name = 'Lalitpur' limit 1),
   '2025-03-03T13:12:00.000Z'::timestamptz,
   null,
   'Male',
@@ -7007,9 +6658,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -7028,12 +6677,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 751, id from public.services where name = 'Electrician'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Electrician')
+where uin = 751
+  and not ('Electrician' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -7043,9 +6693,7 @@ insert into public.workforce (
   null,
   'Adhikari',
   null,
-  '9779869288365',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Bhaktapur' limit 1),
+  '9779869288365',  (select a.id from public.areas a where a.name = 'Bhaktapur' limit 1),
   '2025-03-03T13:14:00.000Z'::timestamptz,
   null,
   'Male',
@@ -7069,9 +6717,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -7090,12 +6736,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 752, id from public.services where name = 'Electrician'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Electrician')
+where uin = 752
+  and not ('Electrician' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -7105,9 +6752,7 @@ insert into public.workforce (
   null,
   'Gurung',
   null,
-  '9779848909215',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Hattigauda' limit 1),
+  '9779848909215',  (select a.id from public.areas a where a.name = 'Hattigauda' limit 1),
   '2025-03-03T13:33:00.000Z'::timestamptz,
   null,
   'Male',
@@ -7131,9 +6776,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -7152,12 +6795,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 753, id from public.services where name = 'Electrician'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Electrician')
+where uin = 753
+  and not ('Electrician' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -7167,9 +6811,7 @@ insert into public.workforce (
   null,
   'Mahato',
   null,
-  '9779843629852',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  null,
+  '9779843629852',  null,
   '2025-03-03T13:35:00.000Z'::timestamptz,
   null,
   'Male',
@@ -7193,9 +6835,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -7214,12 +6854,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 754, id from public.services where name = 'Electrician'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Electrician')
+where uin = 754
+  and not ('Electrician' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -7229,9 +6870,7 @@ insert into public.workforce (
   null,
   'Bhandari',
   null,
-  '9779843179417',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  null,
+  '9779843179417',  null,
   '2025-03-03T13:43:00.000Z'::timestamptz,
   null,
   'Male',
@@ -7255,9 +6894,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -7276,12 +6913,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 755, id from public.services where name = 'CCTV Camera'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'CCTV Camera')
+where uin = 755
+  and not ('CCTV Camera' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -7291,9 +6929,7 @@ insert into public.workforce (
   null,
   'Maharjan',
   null,
-  '9779803037505',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Boudha' limit 1),
+  '9779803037505',  (select a.id from public.areas a where a.name = 'Boudha' limit 1),
   '2025-03-03T13:54:00.000Z'::timestamptz,
   null,
   'Male',
@@ -7317,9 +6953,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -7338,12 +6972,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 756, id from public.services where name = 'Electrician'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Electrician')
+where uin = 756
+  and not ('Electrician' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -7353,9 +6988,7 @@ insert into public.workforce (
   null,
   'Sapkota',
   null,
-  '9779803301087',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Sinamangal' limit 1),
+  '9779803301087',  (select a.id from public.areas a where a.name = 'Sinamangal' limit 1),
   '2025-03-03T14:03:00.000Z'::timestamptz,
   null,
   'Male',
@@ -7379,9 +7012,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -7400,12 +7031,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 757, id from public.services where name = 'Electrician'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Electrician')
+where uin = 757
+  and not ('Electrician' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -7415,9 +7047,7 @@ insert into public.workforce (
   null,
   'Shah',
   null,
-  '9779844336750',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Sanepa' limit 1),
+  '9779844336750',  (select a.id from public.areas a where a.name = 'Sanepa' limit 1),
   '2025-03-03T14:07:00.000Z'::timestamptz,
   null,
   'Male',
@@ -7441,9 +7071,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -7462,12 +7090,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 758, id from public.services where name = 'Electrician'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Electrician')
+where uin = 758
+  and not ('Electrician' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -7477,9 +7106,7 @@ insert into public.workforce (
   null,
   'Mahato',
   null,
-  '9779804756317',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Naya Baneshwor' limit 1),
+  '9779804756317',  (select a.id from public.areas a where a.name = 'Naya Baneshwor' limit 1),
   '2025-03-03T14:10:00.000Z'::timestamptz,
   null,
   'Male',
@@ -7503,9 +7130,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -7524,12 +7149,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 759, id from public.services where name = 'Electrician'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Electrician')
+where uin = 759
+  and not ('Electrician' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -7539,9 +7165,7 @@ insert into public.workforce (
   null,
   'Shrestha',
   null,
-  '9779868824305',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Balaju' limit 1),
+  '9779868824305',  (select a.id from public.areas a where a.name = 'Balaju' limit 1),
   '2025-03-03T14:18:00.000Z'::timestamptz,
   null,
   'Male',
@@ -7565,9 +7189,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -7586,12 +7208,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 760, id from public.services where name = 'Plumber'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Plumber')
+where uin = 760
+  and not ('Plumber' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -7601,9 +7224,7 @@ insert into public.workforce (
   null,
   'Timilsina',
   null,
-  '9779840942701',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Kritipur' limit 1),
+  '9779840942701',  (select a.id from public.areas a where a.name = 'Kritipur' limit 1),
   '2025-03-03T14:20:00.000Z'::timestamptz,
   null,
   'Male',
@@ -7627,9 +7248,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -7648,12 +7267,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 761, id from public.services where name = 'Plumber'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Plumber')
+where uin = 761
+  and not ('Plumber' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -7663,9 +7283,7 @@ insert into public.workforce (
   null,
   'Karki',
   null,
-  '9779800950296',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Kapan' limit 1),
+  '9779800950296',  (select a.id from public.areas a where a.name = 'Kapan' limit 1),
   '2025-03-03T15:49:00.000Z'::timestamptz,
   null,
   'Male',
@@ -7689,9 +7307,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -7710,12 +7326,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 762, id from public.services where name = 'Plumber'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Plumber')
+where uin = 762
+  and not ('Plumber' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -7725,9 +7342,7 @@ insert into public.workforce (
   null,
   'Pradhan',
   null,
-  '9779844247514',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Swayambhu' limit 1),
+  '9779844247514',  (select a.id from public.areas a where a.name = 'Swayambhu' limit 1),
   '2025-03-03T16:22:00.000Z'::timestamptz,
   null,
   'Male',
@@ -7751,9 +7366,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -7772,12 +7385,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 763, id from public.services where name = 'Plumber'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Plumber')
+where uin = 763
+  and not ('Plumber' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -7787,9 +7401,7 @@ insert into public.workforce (
   null,
   'Malla',
   null,
-  '9779867073969',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Balaju' limit 1),
+  '9779867073969',  (select a.id from public.areas a where a.name = 'Balaju' limit 1),
   '2025-03-03T16:26:00.000Z'::timestamptz,
   null,
   'Male',
@@ -7813,9 +7425,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -7834,12 +7444,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 764, id from public.services where name = 'AC Repair'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'AC Repair')
+where uin = 764
+  and not ('AC Repair' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -7849,9 +7460,7 @@ insert into public.workforce (
   null,
   'Gurung',
   null,
-  '9779861376449',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Hattigauda' limit 1),
+  '9779861376449',  (select a.id from public.areas a where a.name = 'Hattigauda' limit 1),
   '2025-03-04T12:50:00.000Z'::timestamptz,
   null,
   'Male',
@@ -7875,9 +7484,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -7896,12 +7503,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 775, id from public.services where name = 'Masonry Repair'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Masonry Repair')
+where uin = 775
+  and not ('Masonry Repair' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -7911,9 +7519,7 @@ insert into public.workforce (
   null,
   'Thapa',
   null,
-  '9779840005973',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Pepsicola' limit 1),
+  '9779840005973',  (select a.id from public.areas a where a.name = 'Pepsicola' limit 1),
   '2025-03-04T16:09:00.000Z'::timestamptz,
   null,
   'Male',
@@ -7937,9 +7543,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -7958,12 +7562,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 778, id from public.services where name = 'Packers Movers'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Packers Movers')
+where uin = 778
+  and not ('Packers Movers' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -7973,9 +7578,7 @@ insert into public.workforce (
   null,
   'Gurung',
   null,
-  '9779843667991',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Putalisadak' limit 1),
+  '9779843667991',  (select a.id from public.areas a where a.name = 'Putalisadak' limit 1),
   '2025-03-04T18:08:00.000Z'::timestamptz,
   null,
   'Male',
@@ -7999,9 +7602,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -8020,12 +7621,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 783, id from public.services where name = 'Painter'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Painter')
+where uin = 783
+  and not ('Painter' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -8035,9 +7637,7 @@ insert into public.workforce (
   null,
   'Koirala',
   null,
-  '9779861758862',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Maharajgung' limit 1),
+  '9779861758862',  (select a.id from public.areas a where a.name = 'Maharajgung' limit 1),
   '2025-03-04T18:25:00.000Z'::timestamptz,
   null,
   'Male',
@@ -8061,9 +7661,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -8082,12 +7680,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 784, id from public.services where name = 'Painter'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Painter')
+where uin = 784
+  and not ('Painter' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -8097,9 +7696,7 @@ insert into public.workforce (
   'Bahadur',
   'Tamang',
   null,
-  '9779828935599',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  null,
+  '9779828935599',  null,
   '2025-03-05T12:38:00.000Z'::timestamptz,
   null,
   'Male',
@@ -8123,9 +7720,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -8144,12 +7739,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 786, id from public.services where name = 'Plumber'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Plumber')
+where uin = 786
+  and not ('Plumber' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -8159,9 +7755,7 @@ insert into public.workforce (
   null,
   'Koirala',
   'https://v5.airtableusercontent.com/v3/u/54/54/1783152000000/9HZwNwgcCojXt78VSLlCgw/Dt9aWGyD7Q2Cg6GsNofM2TOLvUsXNALrI4tK1Oa34m9fGE9dtAN8qjhGjo_x-7BtCMgKXAbIpjn-G3po_4F187MicFpoISlndRGfh9UffNspB0XgzCMXuuQlJJyw5QiOSW0Vg0ToEuiEQyx80KY_1R8BfI-x2H72i3J9gC9mbg4/wsOgfPZa_0L5lkHQvcE16bj0Tzuq3Nhj1z6hMIvaDdA',
-  '9779849203063',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Chandragiri' limit 1),
+  '9779849203063',  (select a.id from public.areas a where a.name = 'Chandragiri' limit 1),
   '2025-03-05T13:25:00.000Z'::timestamptz,
   null,
   'Male',
@@ -8185,9 +7779,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -8206,12 +7798,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 787, id from public.services where name = 'Electrician'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Electrician')
+where uin = 787
+  and not ('Electrician' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -8221,9 +7814,7 @@ insert into public.workforce (
   null,
   'Adhikari',
   null,
-  '9779841688537',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Kalanki' limit 1),
+  '9779841688537',  (select a.id from public.areas a where a.name = 'Kalanki' limit 1),
   '2025-03-05T13:48:00.000Z'::timestamptz,
   null,
   'Male',
@@ -8247,9 +7838,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -8268,12 +7857,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 789, id from public.services where name = 'AC Repair'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'AC Repair')
+where uin = 789
+  and not ('AC Repair' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -8283,9 +7873,7 @@ insert into public.workforce (
   null,
   'Chaudhary',
   null,
-  '9779813935712',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Anamnagar' limit 1),
+  '9779813935712',  (select a.id from public.areas a where a.name = 'Anamnagar' limit 1),
   '2025-03-05T15:57:00.000Z'::timestamptz,
   null,
   'Male',
@@ -8309,9 +7897,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -8330,12 +7916,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 790, id from public.services where name = 'Carpenter'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Carpenter')
+where uin = 790
+  and not ('Carpenter' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -8345,9 +7932,7 @@ insert into public.workforce (
   null,
   'Maharjan',
   'https://v5.airtableusercontent.com/v3/u/54/54/1783152000000/Gzz3Z_ti9T6LPeLkhBeToQ/4yq0YCSu_4wMeW0yBZPbD1TnNzOcm1mbyV3jOUYRQOUbECnQJ8EA-8N_pG3PjEk4gznVLd08K6hYPlYjqV6ETUwuyJeYqxy8IWGn3r9RP5lVx3pz0LuOldhJtWAEvxqimNbWdCM5Ik6ILZMRv4W1QoUv3FntHOy9EUDE9kTaF9g/cego4UkCDmUQXEZax7ALDI1ll_NYz823ZZ04lGg22Po',
-  '9779864699660',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Kirtipur' limit 1),
+  '9779864699660',  (select a.id from public.areas a where a.name = 'Kirtipur' limit 1),
   '2025-03-07T21:41:00.000Z'::timestamptz,
   null,
   'Male',
@@ -8371,9 +7956,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -8392,12 +7975,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 791, id from public.services where name = 'Plumber'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Plumber')
+where uin = 791
+  and not ('Plumber' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -8407,9 +7991,7 @@ insert into public.workforce (
   null,
   'Bohara',
   null,
-  '9779843146663',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Kalanki' limit 1),
+  '9779843146663',  (select a.id from public.areas a where a.name = 'Kalanki' limit 1),
   '2025-03-09T09:48:00.000Z'::timestamptz,
   null,
   'Male',
@@ -8433,9 +8015,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -8454,12 +8034,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 792, id from public.services where name = 'Plumber'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Plumber')
+where uin = 792
+  and not ('Plumber' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -8469,9 +8050,7 @@ insert into public.workforce (
   null,
   'Ramtel',
   null,
-  '9779841031378',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Pepscicola' limit 1),
+  '9779841031378',  (select a.id from public.areas a where a.name = 'Pepscicola' limit 1),
   '2025-03-09T16:38:00.000Z'::timestamptz,
   null,
   'Male',
@@ -8495,9 +8074,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -8516,12 +8093,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 797, id from public.services where name = 'Plumber'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Plumber')
+where uin = 797
+  and not ('Plumber' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -8531,9 +8109,7 @@ insert into public.workforce (
   null,
   'Dangol',
   null,
-  '9779841991117',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Hadigaun' limit 1),
+  '9779841991117',  (select a.id from public.areas a where a.name = 'Hadigaun' limit 1),
   '2025-03-10T13:13:00.000Z'::timestamptz,
   null,
   'Male',
@@ -8557,9 +8133,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -8578,12 +8152,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 798, id from public.services where name = 'Marble Tiles'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Marble Tiles')
+where uin = 798
+  and not ('Marble Tiles' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -8593,9 +8168,7 @@ insert into public.workforce (
   null,
   'Balami',
   null,
-  '9779808708003',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Chandragiri' limit 1),
+  '9779808708003',  (select a.id from public.areas a where a.name = 'Chandragiri' limit 1),
   '2025-03-10T13:43:00.000Z'::timestamptz,
   null,
   'Male',
@@ -8619,9 +8192,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -8640,12 +8211,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 800, id from public.services where name = 'Painter'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Painter')
+where uin = 800
+  and not ('Painter' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -8655,9 +8227,7 @@ insert into public.workforce (
   null,
   'Karki',
   null,
-  '9779841038268',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Pepsicola' limit 1),
+  '9779841038268',  (select a.id from public.areas a where a.name = 'Pepsicola' limit 1),
   '2025-03-10T13:55:00.000Z'::timestamptz,
   null,
   'Male',
@@ -8681,9 +8251,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -8702,12 +8270,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 801, id from public.services where name = 'Painter'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Painter')
+where uin = 801
+  and not ('Painter' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -8717,9 +8286,7 @@ insert into public.workforce (
   null,
   'Bishal',
   null,
-  '9779803514717',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Tarakeshwar' limit 1),
+  '9779803514717',  (select a.id from public.areas a where a.name = 'Tarakeshwar' limit 1),
   '2025-03-10T14:08:00.000Z'::timestamptz,
   null,
   'Male',
@@ -8743,9 +8310,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -8764,12 +8329,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 802, id from public.services where name = 'Painter'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Painter')
+where uin = 802
+  and not ('Painter' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -8779,9 +8345,7 @@ insert into public.workforce (
   null,
   'karki',
   null,
-  '9779841698361',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Kritipur' limit 1),
+  '9779841698361',  (select a.id from public.areas a where a.name = 'Kritipur' limit 1),
   '2025-03-10T14:18:00.000Z'::timestamptz,
   null,
   'Male',
@@ -8805,9 +8369,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -8826,12 +8388,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 803, id from public.services where name = 'Painter'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Painter')
+where uin = 803
+  and not ('Painter' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -8841,9 +8404,7 @@ insert into public.workforce (
   null,
   'Napit',
   null,
-  '9779841390028',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Pashupatinath' limit 1),
+  '9779841390028',  (select a.id from public.areas a where a.name = 'Pashupatinath' limit 1),
   '2025-03-10T14:24:00.000Z'::timestamptz,
   null,
   'Male',
@@ -8867,9 +8428,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -8888,12 +8447,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 804, id from public.services where name = 'Painter'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Painter')
+where uin = 804
+  and not ('Painter' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -8903,9 +8463,7 @@ insert into public.workforce (
   'Bahadur',
   'Shrestha',
   null,
-  '9779860442861',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Baniyatar' limit 1),
+  '9779860442861',  (select a.id from public.areas a where a.name = 'Baniyatar' limit 1),
   '2025-03-10T14:44:00.000Z'::timestamptz,
   null,
   'Male',
@@ -8929,9 +8487,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -8950,12 +8506,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 805, id from public.services where name = 'Painter'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Painter')
+where uin = 805
+  and not ('Painter' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -8965,9 +8522,7 @@ insert into public.workforce (
   null,
   'Shah',
   'https://v5.airtableusercontent.com/v3/u/54/54/1783152000000/gQsJRmMH61TcW4j8ixlGUg/LaZz_vMbS3ofGkhZXz_ripYq0O06oqjSHC2l7yCud3FAAP6N1Ta9U6qAultmQrNQ7hvaMo5OY_AN7pXIupqasp8KbRc43c9sphl4CaPTtJ_B7plyV1UoMczpxxRtfbeLKrWSCZSr0Akdr_xtZ6PTSpBFoBDJqPbyo4WpDoniJYA/cMsOIJZXfuiOQVtsPIczn7AEW2ncIX0YYYIubi-HfO4',
-  '9779841419057',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Baniyatar' limit 1),
+  '9779841419057',  (select a.id from public.areas a where a.name = 'Baniyatar' limit 1),
   '2025-03-10T14:49:00.000Z'::timestamptz,
   null,
   'Male',
@@ -8991,9 +8546,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -9012,12 +8565,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 806, id from public.services where name = 'Painter'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Painter')
+where uin = 806
+  and not ('Painter' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -9027,9 +8581,7 @@ insert into public.workforce (
   null,
   'Rai',
   'https://v5.airtableusercontent.com/v3/u/54/54/1783152000000/HNHTG9q8quk3n-yYGsyNVw/fze01-8OitZjOKoOtxty0JbvBx9kEi0XrJ82NRX9FmC_H9bUxtUmY0WrmXRjfVbsrySgmlOcXbGmzaHwxCcAN0dztUsXbSQqphs9sHm3JT4-Tf3sLXEbqpXHT12IwuscAV89JS32-9ZnIfecGcfPBSWekxh1E3697tSxIOWHijo/gHn-QGnbvfB-4gxGZtSVFjirrVMn4zarA8Gka3ZKlBY',
-  '9779841442661',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Kapan' limit 1),
+  '9779841442661',  (select a.id from public.areas a where a.name = 'Kapan' limit 1),
   '2025-03-10T15:21:00.000Z'::timestamptz,
   null,
   'Male',
@@ -9053,9 +8605,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -9074,12 +8624,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 807, id from public.services where name = 'Painter'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Painter')
+where uin = 807
+  and not ('Painter' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -9089,9 +8640,7 @@ insert into public.workforce (
   null,
   'Tamang',
   null,
-  '9779841316046',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Chabahil' limit 1),
+  '9779841316046',  (select a.id from public.areas a where a.name = 'Chabahil' limit 1),
   '2025-03-10T15:38:00.000Z'::timestamptz,
   null,
   'Male',
@@ -9115,9 +8664,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -9136,12 +8683,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 808, id from public.services where name = 'Painter'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Painter')
+where uin = 808
+  and not ('Painter' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -9151,9 +8699,7 @@ insert into public.workforce (
   null,
   'Khadka',
   null,
-  '9779849633374',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Panauti' limit 1),
+  '9779849633374',  (select a.id from public.areas a where a.name = 'Panauti' limit 1),
   '2025-03-10T16:04:00.000Z'::timestamptz,
   null,
   'Male',
@@ -9177,9 +8723,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -9198,12 +8742,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 809, id from public.services where name = 'Painter'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Painter')
+where uin = 809
+  and not ('Painter' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -9213,9 +8758,7 @@ insert into public.workforce (
   null,
   'Pandey',
   null,
-  '9779843345280',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Kathmandu' limit 1),
+  '9779843345280',  (select a.id from public.areas a where a.name = 'Kathmandu' limit 1),
   '2025-03-11T13:47:00.000Z'::timestamptz,
   null,
   'Male',
@@ -9239,9 +8782,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -9260,12 +8801,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 811, id from public.services where name = 'AC Repair'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'AC Repair')
+where uin = 811
+  and not ('AC Repair' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -9275,9 +8817,7 @@ insert into public.workforce (
   null,
   'Dongol',
   null,
-  '9779841416256',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'KTM' limit 1),
+  '9779841416256',  (select a.id from public.areas a where a.name = 'KTM' limit 1),
   '2025-03-11T16:45:00.000Z'::timestamptz,
   null,
   'Male',
@@ -9301,9 +8841,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -9322,12 +8860,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 813, id from public.services where name = 'Carpenter'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Carpenter')
+where uin = 813
+  and not ('Carpenter' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -9337,9 +8876,7 @@ insert into public.workforce (
   null,
   'Sahani',
   null,
-  '9779824247404',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  null,
+  '9779824247404',  null,
   '2025-03-11T18:32:00.000Z'::timestamptz,
   null,
   'Male',
@@ -9363,9 +8900,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -9384,12 +8919,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 814, id from public.services where name = 'Marble Tiles'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Marble Tiles')
+where uin = 814
+  and not ('Marble Tiles' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -9399,9 +8935,7 @@ insert into public.workforce (
   null,
   'Budhathoki',
   null,
-  '9779849442728',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Chabahil' limit 1),
+  '9779849442728',  (select a.id from public.areas a where a.name = 'Chabahil' limit 1),
   '2025-03-12T14:19:00.000Z'::timestamptz,
   null,
   'Male',
@@ -9425,9 +8959,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -9446,12 +8978,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 815, id from public.services where name = 'Septic Tank Cleaner'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Septic Tank Cleaner')
+where uin = 815
+  and not ('Septic Tank Cleaner' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -9461,9 +8994,7 @@ insert into public.workforce (
   'Kumar',
   'Shrestha',
   null,
-  '9779810298841',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Chabahil' limit 1),
+  '9779810298841',  (select a.id from public.areas a where a.name = 'Chabahil' limit 1),
   '2025-03-12T14:51:00.000Z'::timestamptz,
   null,
   'Male',
@@ -9487,9 +9018,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -9508,12 +9037,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 816, id from public.services where name = 'Plumber'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Plumber')
+where uin = 816
+  and not ('Plumber' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -9523,9 +9053,7 @@ insert into public.workforce (
   null,
   'Bohara',
   null,
-  '9779849759072',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Chabahil' limit 1),
+  '9779849759072',  (select a.id from public.areas a where a.name = 'Chabahil' limit 1),
   '2025-03-12T15:01:00.000Z'::timestamptz,
   null,
   'Male',
@@ -9549,9 +9077,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -9570,12 +9096,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 817, id from public.services where name = 'Plumber'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Plumber')
+where uin = 817
+  and not ('Plumber' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -9585,9 +9112,7 @@ insert into public.workforce (
   null,
   'Baral',
   null,
-  '9779851056662',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Nayabasthi' limit 1),
+  '9779851056662',  (select a.id from public.areas a where a.name = 'Nayabasthi' limit 1),
   '2025-03-12T16:08:00.000Z'::timestamptz,
   null,
   'Male',
@@ -9611,9 +9136,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -9632,12 +9155,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 819, id from public.services where name = 'Septic Tank Cleaner'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Septic Tank Cleaner')
+where uin = 819
+  and not ('Septic Tank Cleaner' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -9647,9 +9171,7 @@ insert into public.workforce (
   null,
   'Tamang',
   null,
-  '9779851009672',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Chabahil' limit 1),
+  '9779851009672',  (select a.id from public.areas a where a.name = 'Chabahil' limit 1),
   '2025-03-12T16:18:00.000Z'::timestamptz,
   null,
   'Male',
@@ -9673,9 +9195,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -9694,12 +9214,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 820, id from public.services where name = 'Plumber'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Plumber')
+where uin = 820
+  and not ('Plumber' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -9709,9 +9230,7 @@ insert into public.workforce (
   null,
   'Katuwal',
   null,
-  '9779841663668',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Chabahil' limit 1),
+  '9779841663668',  (select a.id from public.areas a where a.name = 'Chabahil' limit 1),
   '2025-03-12T16:30:00.000Z'::timestamptz,
   null,
   'Male',
@@ -9735,9 +9254,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -9756,12 +9273,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 821, id from public.services where name = 'Septic Tank Cleaner'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Septic Tank Cleaner')
+where uin = 821
+  and not ('Septic Tank Cleaner' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -9771,9 +9289,7 @@ insert into public.workforce (
   null,
   'Pahari',
   null,
-  '9779860053516',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Chabahil' limit 1),
+  '9779860053516',  (select a.id from public.areas a where a.name = 'Chabahil' limit 1),
   '2025-03-12T17:31:00.000Z'::timestamptz,
   null,
   'Male',
@@ -9797,9 +9313,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -9818,12 +9332,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 822, id from public.services where name = 'Septic Tank Cleaner'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Septic Tank Cleaner')
+where uin = 822
+  and not ('Septic Tank Cleaner' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -9833,9 +9348,7 @@ insert into public.workforce (
   null,
   'Dahal',
   null,
-  '9779851088592',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Koteshwor' limit 1),
+  '9779851088592',  (select a.id from public.areas a where a.name = 'Koteshwor' limit 1),
   '2025-03-12T18:16:00.000Z'::timestamptz,
   null,
   'Male',
@@ -9859,9 +9372,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -9880,12 +9391,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 823, id from public.services where name = 'Septic Tank Cleaner'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Septic Tank Cleaner')
+where uin = 823
+  and not ('Septic Tank Cleaner' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -9895,9 +9407,7 @@ insert into public.workforce (
   null,
   'Karki',
   null,
-  '9779841559659',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Swayambhu' limit 1),
+  '9779841559659',  (select a.id from public.areas a where a.name = 'Swayambhu' limit 1),
   '2025-03-12T18:25:00.000Z'::timestamptz,
   null,
   'Male',
@@ -9921,9 +9431,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -9942,12 +9450,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 824, id from public.services where name = 'Plumber'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Plumber')
+where uin = 824
+  and not ('Plumber' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -9957,9 +9466,7 @@ insert into public.workforce (
   'Prasad',
   'Timilsina',
   'https://v5.airtableusercontent.com/v3/u/54/54/1783152000000/nEtMBAJ4h2xQmvDNe-nhAQ/bC1iwSyvEXJKmDifpZ20I7NVJhrj_JCUy5BSKNlPS26oUYnaaM5znmHS_rr5dzQ7CEP-FQS3yreL19OJ52tmHVcFPn9OzyXzc3TltRQotsApEE-AUtRQ7xT8QUjn5Qh3m_B3ocS2Y5SrsoyMJUxZvUyWAJmS4NBGvuaUDisra9Y/AAxja3B3ZBXQTQoCvO2j_brhziH_mMRF6xqi6KKNK8I',
-  '9779841448770',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Chabahil' limit 1),
+  '9779841448770',  (select a.id from public.areas a where a.name = 'Chabahil' limit 1),
   '2025-03-12T18:34:00.000Z'::timestamptz,
   null,
   'Male',
@@ -9983,9 +9490,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -10004,12 +9509,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 825, id from public.services where name = 'Septic Tank Cleaner'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Septic Tank Cleaner')
+where uin = 825
+  and not ('Septic Tank Cleaner' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -10019,9 +9525,7 @@ insert into public.workforce (
   'Bahadur',
   'Magar',
   null,
-  '9779841955291',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Baneshwor' limit 1),
+  '9779841955291',  (select a.id from public.areas a where a.name = 'Baneshwor' limit 1),
   '2025-03-12T18:42:00.000Z'::timestamptz,
   null,
   'Male',
@@ -10045,9 +9549,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -10066,12 +9568,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 826, id from public.services where name = 'Septic Tank Cleaner'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Septic Tank Cleaner')
+where uin = 826
+  and not ('Septic Tank Cleaner' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -10081,9 +9584,7 @@ insert into public.workforce (
   null,
   'Bhadel',
   null,
-  '9779843304346',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  null,
+  '9779843304346',  null,
   '2025-03-12T21:55:00.000Z'::timestamptz,
   null,
   'Male',
@@ -10107,9 +9608,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -10128,12 +9627,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 827, id from public.services where name = 'Plumber'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Plumber')
+where uin = 827
+  and not ('Plumber' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -10143,9 +9643,7 @@ insert into public.workforce (
   null,
   'Ojha',
   null,
-  '9779845412394',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Kathmandu lalitpur bhaktapur' limit 1),
+  '9779845412394',  (select a.id from public.areas a where a.name = 'Kathmandu lalitpur bhaktapur' limit 1),
   '2025-03-13T19:55:00.000Z'::timestamptz,
   null,
   'Male',
@@ -10169,9 +9667,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -10190,12 +9686,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 830, id from public.services where name = 'Electrician'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Electrician')
+where uin = 830
+  and not ('Electrician' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -10205,9 +9702,7 @@ insert into public.workforce (
   null,
   'Neupane',
   null,
-  '9779847521106',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Kalanki' limit 1),
+  '9779847521106',  (select a.id from public.areas a where a.name = 'Kalanki' limit 1),
   '2025-03-14T00:25:00.000Z'::timestamptz,
   null,
   'Male',
@@ -10231,9 +9726,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -10252,12 +9745,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 831, id from public.services where name = 'Electrician'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Electrician')
+where uin = 831
+  and not ('Electrician' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -10267,9 +9761,7 @@ insert into public.workforce (
   null,
   'Darlami',
   'https://v5.airtableusercontent.com/v3/u/54/54/1783152000000/CJjL2GmDCbYnzwYv2DFaTQ/g-ZpS0a5upWoMpTiwPNEtKmTut8rfKCbRJGSmNImXO3Pt2pZL-7PC4XZfQP4_gwKLBfggUUYXuIYAjtDG977r2fQGziePiRDwqlxe7BioHTtjMb3qre6-hgWNmvj1J7GhnBmr9Lruprvx6CjzGB8vQgbn59DhcVPbENZYQBFoU1XJeab2fniudYFule-LY6X/kYUCQG30O-c9GOsooARU9yzB1v08z_tkLxeLIPg5euw',
-  '9779841167241',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Kathmandu' limit 1),
+  '9779841167241',  (select a.id from public.areas a where a.name = 'Kathmandu' limit 1),
   '2025-03-16T06:47:00.000Z'::timestamptz,
   null,
   'Male',
@@ -10293,9 +9785,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -10314,12 +9804,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 834, id from public.services where name = 'Marble Tiles'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Marble Tiles')
+where uin = 834
+  and not ('Marble Tiles' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -10329,9 +9820,7 @@ insert into public.workforce (
   null,
   'Jodhani',
   'https://v5.airtableusercontent.com/v3/u/54/54/1783152000000/QyGy_spT6ifV7qbVQuiEBw/0sZuLTh6mHajZsCjKdswJMRPdHmEXOKJWP22VpZrE7BDnKideZrMlzlvoylHvPeX-LiVme7wMBXhoYVzi2cYCallk6Yud7seKz0yu2pwUvdnztzgAWI8Z_-f7sCWl3tb-9Wv5dClqvki3YL-1-4SZ6iTtphHJqlQ7nxxT92_wQA/9T1golpuOOq1PTTBuKzOCDrIHxyty6pwO6507sjpuuQ',
-  '9779801082189',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Kathmandu' limit 1),
+  '9779801082189',  (select a.id from public.areas a where a.name = 'Kathmandu' limit 1),
   '2025-03-16T08:54:00.000Z'::timestamptz,
   null,
   'Male',
@@ -10355,9 +9844,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -10376,12 +9863,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 835, id from public.services where name = 'CCTV Camera'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'CCTV Camera')
+where uin = 835
+  and not ('CCTV Camera' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -10391,9 +9879,7 @@ insert into public.workforce (
   null,
   'Maharjan',
   null,
-  '9779843331234',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Kritipur' limit 1),
+  '9779843331234',  (select a.id from public.areas a where a.name = 'Kritipur' limit 1),
   '2025-03-24T16:27:00.000Z'::timestamptz,
   null,
   'Male',
@@ -10417,9 +9903,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -10438,12 +9922,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 840, id from public.services where name = 'Chef at Home'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Chef at Home')
+where uin = 840
+  and not ('Chef at Home' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -10453,9 +9938,7 @@ insert into public.workforce (
   null,
   'Magar',
   null,
-  '9779846660262',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Chabahil' limit 1),
+  '9779846660262',  (select a.id from public.areas a where a.name = 'Chabahil' limit 1),
   '2025-03-26T12:10:00.000Z'::timestamptz,
   null,
   'Male',
@@ -10479,9 +9962,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -10500,12 +9981,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 842, id from public.services where name = 'Packers Movers'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Packers Movers')
+where uin = 842
+  and not ('Packers Movers' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -10515,9 +9997,7 @@ insert into public.workforce (
   null,
   'Bishwakarma',
   null,
-  '9779869098999',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Naya bazaar' limit 1),
+  '9779869098999',  (select a.id from public.areas a where a.name = 'Naya bazaar' limit 1),
   '2025-03-26T13:47:00.000Z'::timestamptz,
   null,
   'Male',
@@ -10541,9 +10021,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -10562,12 +10040,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 852, id from public.services where name = 'Electrician'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Electrician')
+where uin = 852
+  and not ('Electrician' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -10577,9 +10056,7 @@ insert into public.workforce (
   null,
   'Gurung',
   null,
-  '9779816192981',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Hattigauda' limit 1),
+  '9779816192981',  (select a.id from public.areas a where a.name = 'Hattigauda' limit 1),
   '2025-04-07T15:12:00.000Z'::timestamptz,
   null,
   'Male',
@@ -10603,9 +10080,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -10624,12 +10099,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 856, id from public.services where name = 'AC Repair'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'AC Repair')
+where uin = 856
+  and not ('AC Repair' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -10639,9 +10115,7 @@ insert into public.workforce (
   null,
   'Thakur',
   'https://v5.airtableusercontent.com/v3/u/54/54/1783152000000/YFn44hv-nc9GvuITNh75Ow/zW8JZVUA9lfR2-VYsEQh4xT55t1xMVgyTnu6rY-L1-regDGkQkRvWIml5pioKt0xcvUAgPzXOe7MMcRVyRQi60cTIzkkg1FBJuzRbZeKOIqFa3If0iGOu4gO4xcCHRrz-OSJ7CcuaNHO6rdokKjizJGdCN2H3rhi8hFIkjqYZsA/jMcR4Y--NhnpkJvD4AllNhkz-LjGAImcHoayRhY0waI',
-  '9779803921483',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Asan' limit 1),
+  '9779803921483',  (select a.id from public.areas a where a.name = 'Asan' limit 1),
   '2025-04-18T16:11:00.000Z'::timestamptz,
   null,
   'Male',
@@ -10665,9 +10139,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -10686,12 +10158,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 858, id from public.services where name = 'AC Repair'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'AC Repair')
+where uin = 858
+  and not ('AC Repair' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -10701,9 +10174,7 @@ insert into public.workforce (
   null,
   'Jha',
   null,
-  '9779823642919',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'Dhapakhel' limit 1),
+  '9779823642919',  (select a.id from public.areas a where a.name = 'Dhapakhel' limit 1),
   '2025-04-19T17:08:00.000Z'::timestamptz,
   null,
   'Male',
@@ -10727,9 +10198,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -10748,12 +10217,13 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 859, id from public.services where name = 'AC Repair'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'AC Repair')
+where uin = 859
+  and not ('AC Repair' = any(coalesce(services, '{}')));
 insert into public.workforce (
   uin, first_name, middle_name, last_name, headshot_url, phone,
-  city_id, area_id, created_date, issues, gender, dob, bio, updated_at,
+  area_id, created_date, issues, gender, dob, bio, updated_at,
   whatsapp_available, ward_number, valid_till, date_of_birth, blood_group,
   profile_status, police_report, training_certificate, payment_qr, referred_by,
   government_issued_id_filename, government_issued_id_url
@@ -10763,9 +10233,7 @@ insert into public.workforce (
   null,
   'Karna',
   'https://v5.airtableusercontent.com/v3/u/54/54/1783152000000/qbRPaEEmfi-u0z9_Jr1REw/lH_V3ohJaBmtVef13WW4JdXBVtDfTOJ6THDfW8LLlF5JEE5Ws7iXh3C0UHhEUwMi7LRya3R2xGkPw8w2otQtXo1xMHT8XYvwtLFXWGWcK85dpdincn-lY64YArY3S5RtA8bQdOb3BW7GnGWtEvRZ-8F8Hwqa0EC9Ru5DcPORmnM/ddqyGas7m2xn9RD9_T6zXy7sd44hR78IJ_fdMw5ZZGo',
-  '9779849999128',
-  (select id from public.cities where name = 'Kathmandu' limit 1),
-  (select a.id from public.areas a join public.cities c on c.id = a.city_id where c.name = 'Kathmandu' and a.name = 'PepsiCola townplaning' limit 1),
+  '9779849999128',  (select a.id from public.areas a where a.name = 'PepsiCola townplaning' limit 1),
   '2025-04-24T15:56:00.000Z'::timestamptz,
   null,
   'Male',
@@ -10789,9 +10257,7 @@ insert into public.workforce (
   middle_name = excluded.middle_name,
   last_name = excluded.last_name,
   headshot_url = excluded.headshot_url,
-  phone = excluded.phone,
-  city_id = excluded.city_id,
-  area_id = excluded.area_id,
+  phone = excluded.phone,  area_id = excluded.area_id,
   created_date = excluded.created_date,
   issues = excluded.issues,
   gender = excluded.gender,
@@ -10810,9 +10276,20 @@ insert into public.workforce (
   referred_by = excluded.referred_by,
   government_issued_id_filename = excluded.government_issued_id_filename,
   government_issued_id_url = excluded.government_issued_id_url;
-insert into public.workforce_services (workforce_uin, service_id)
-select 860, id from public.services where name = 'Electrician'
-on conflict do nothing;
+update public.workforce
+set services = array_append(coalesce(services, '{}'), 'Electrician')
+where uin = 860
+  and not ('Electrician' = any(coalesce(services, '{}')));
+
+update public.workforce
+set profile_status = 'Active'
+where profile_status is null or trim(profile_status) = '';
+
+select setval(
+  'public.workforce_uin_seq',
+  coalesce((select max(uin) from public.workforce), 0),
+  true
+);
 
 commit;
 

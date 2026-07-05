@@ -177,7 +177,7 @@ const SideNavDrawer: React.FC<SideNavDrawerProps> = ({ isOpen, setIsOpen }) => {
               className="side-nav-drawer__action flex w-full items-center justify-center gap-2 rounded-xl border border-teal-900 px-4 py-2.5 text-[15px] font-medium text-teal-900 hover:bg-teal-50 transition"
             >
               <Briefcase size={18} className="text-teal-700" />
-              Career
+              Join as a Professional
             </Link>
             <Link
               href="/book"

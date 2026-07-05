@@ -30,9 +30,9 @@ const cardData = [
   },
   {
     id: 4,
-    title: "Career",
+    title: "Join as a Professional",
     image: "/qr/career.png",
-    description: "Apply or inquire about career opportunities with us.",
+    description: "Join HomeSewa as a verified home service professional.",
   },
   {
     id: 7,

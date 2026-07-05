@@ -1,13 +1,17 @@
 "use client";
 
 import { useCallback, useEffect, useId, useRef, useState } from "react";
-import { BOOKING_SERVICES } from "@/lib/book-form-options";
 import {
-  CAREER_POSITIONS,
+  MAX_JOIN_EXPERTISE_SELECTIONS,
+  WEBSITE_SERVICE_TITLES,
+} from "@/lib/website-services";
+import {
   MAX_CAREER_FILE_MB,
   PREFERRED_WORKING_AREAS,
 } from "@/lib/career-form-options";
 import { emailValidationError } from "@/lib/form-validation";
+
+const JOIN_EXPERTISE_OPTIONS = WEBSITE_SERVICE_TITLES;
 
 const onlyDigits = (v: string) => v.replace(/[^0-9]/g, "");
 
@@ -146,6 +150,7 @@ function CareerPhoneInput({
 function CareerDropdown({
   id,
   label,
+  hint,
   options,
   values,
   onChange,
@@ -157,6 +162,7 @@ function CareerDropdown({
 }: {
   id: string;
   label: string;
+  hint?: string;
   options: readonly string[];
   values: string[];
   onChange: (values: string[]) => void;
@@ -196,6 +202,11 @@ function CareerDropdown({
         {label}
         <RequiredMark />
       </span>
+      {hint ? (
+        <p className="mb-1.5 pl-1 text-[13px] font-medium text-[#4B4B4B]">
+          {hint}
+        </p>
+      ) : null}
       <div className="relative">
         <button
           id={id}
@@ -455,7 +466,6 @@ export default function CareerForm() {
   const [fullName, setFullName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
-  const [positions, setPositions] = useState<string[]>([]);
   const [expertise, setExpertise] = useState<string[]>([]);
   const [yearsExperience, setYearsExperience] = useState("");
   const [preferredAreas, setPreferredAreas] = useState<string[]>([]);
@@ -489,7 +499,6 @@ export default function CareerForm() {
     setFullName("");
     setPhone("");
     setEmail("");
-    setPositions([]);
     setExpertise([]);
     setYearsExperience("");
     setPreferredAreas([]);
@@ -570,13 +579,15 @@ export default function CareerForm() {
       return;
     }
 
-    if (positions.length === 0) {
-      setSubmitError("Please select at least one position.");
+    if (expertise.length === 0) {
+      setSubmitError("Please select at least one area of expertise.");
       return;
     }
 
-    if (expertise.length === 0) {
-      setSubmitError("Please select at least one expertise.");
+    if (expertise.length > MAX_JOIN_EXPERTISE_SELECTIONS) {
+      setSubmitError(
+        `Please select at most ${MAX_JOIN_EXPERTISE_SELECTIONS} areas of expertise.`,
+      );
       return;
     }
 
@@ -626,7 +637,6 @@ export default function CareerForm() {
       data.append("fullName", fullName.trim());
       data.append("phone", phoneDigits);
       data.append("email", email.trim());
-      data.append("positions", JSON.stringify(positions));
       data.append("expertise", JSON.stringify(expertise));
       data.append("yearsExperience", yearsExperience);
       data.append("preferredAreas", JSON.stringify(preferredAreas));
@@ -677,7 +687,7 @@ export default function CareerForm() {
       />
       <form id={formId} onSubmit={onSubmit} className="mx-auto max-w-2xl" noValidate>
         <h2 className="pl-0.5 text-[22px] font-bold text-[#1A1A1A] sm:text-[26px]">
-          HomeSewa - Join Now
+          Join as a Professional
         </h2>
 
         <div className="my-5" />
@@ -720,25 +730,14 @@ export default function CareerForm() {
         />
 
         <CareerDropdown
-          id={`${formId}-position`}
-          label="Position Applied For"
-          options={CAREER_POSITIONS}
-          values={positions}
-          onChange={setPositions}
-          placeholder="Select the position you are applying for"
-          active={activeInput === "position"}
-          onOpen={() => setActiveInput("position")}
-          onClose={() => setActiveInput(null)}
-        />
-
-        <CareerDropdown
           id={`${formId}-expertise`}
           label="Area of Expertise"
-          options={BOOKING_SERVICES}
+          hint={`Select ${MAX_JOIN_EXPERTISE_SELECTIONS} max`}
+          options={JOIN_EXPERTISE_OPTIONS}
           values={expertise}
           onChange={setExpertise}
-          placeholder="Select the area of expertise"
-          maxSelections={3}
+          placeholder="Select your areas of expertise"
+          maxSelections={MAX_JOIN_EXPERTISE_SELECTIONS}
           active={activeInput === "expertise"}
           onOpen={() => setActiveInput("expertise")}
           onClose={() => setActiveInput(null)}
@@ -878,8 +877,8 @@ export default function CareerForm() {
         {submitSuccess ? (
           <div role="status" className="mb-4 space-y-2">
             <p className="rounded-xl border border-green-200 bg-green-50 px-3 py-2 text-[13px] text-green-800">
-              Thank you! Your application has been submitted. Our team will
-              contact you shortly.
+              Thank you! Your profile has been submitted and is waiting for
+              verification. We will contact you once you are activated.
             </p>
             {submitWarning ? (
               <p className="rounded-xl border border-amber-200 bg-amber-50 px-3 py-2 text-[13px] text-amber-900">

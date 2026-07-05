@@ -1,3 +1,5 @@
+import { getCatalogServiceTitles } from "@/app/data/servicesCatalog";
+
 export const BOOKING_CITY = "Kathmandu" as const;
 
 export const Kathmandu_AREAS = [
@@ -79,52 +81,8 @@ export const PROPERTY_TYPES = [
   "Co-living spaces",
 ] as const;
 
-export const BOOKING_SERVICES = [
-  "Cleaning & Deep Cleaning",
-  "Pressure Washing",
-  "Gutter & Roof Cleaning",
-  "Handyman / Small Repairs",
-  "Carpentry",
-  "Plumbing",
-  "Electrical Repairs",
-  "Flooring & Surface Fixes",
-  "Smart Home & Fixture Installations",
-  "EV Charger Installation",
-  "AC Maintenance & Servicing",
-  "Painting & Decorating",
-  "Wallpaper Installation & Removal",
-  "Drywall Repair & Installation",
-  "Tile Installation & Repair",
-  "Lawn Care & Landscaping",
-  "Tree Trimming & Removal",
-  "Garden Maintenance",
-  "Irrigation System Installation & Repair",
-  "Fence & Gate Repair",
-  "Outdoor Lighting Installation",
-  "Moving & Furniture Assembly",
-  "Airbnb Property Maintenance",
-  "Packing & Unpacking Services",
-  "Storage & Relocation Assistance",
-  "Subscription Home Concierge",
-  "Regular Home Cleaning Subscription",
-  "Seasonal Home Maintenance Subscription",
-  "Smart Home Monitoring & Support Subscription",
-  "Cleaning Machine Operation",
-  "Pest Control",
-  "Garden Cleaning",
-  "Planting and Transplanting",
-  "Soil Improvement",
-  "Hardscaping",
-  "Landscape Design",
-  "Consultation Services",
-  "Landscape Lighting",
-  "Rooftop Gardening",
-  "Electrical Wiring",
-  "Deep Cleaning",
-  "Handyman",
-  "Gutter & Cleaning",
-  "Other",
-] as const;
+/** Matches /services page — same list as Join as a Professional expertise field. */
+export const BOOKING_SERVICES: readonly string[] = getCatalogServiceTitles();
 
 export const BOOKING_SHIFTS = [
   "Morning",

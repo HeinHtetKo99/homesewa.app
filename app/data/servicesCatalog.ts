@@ -24,6 +24,15 @@ export function getAllServiceSlugs(): string[] {
   return getAllServices().map((service) => service.slug);
 }
 
+/** Titles shown on /services — used by Join as a Professional form. */
+export function getCatalogServiceTitles(): string[] {
+  return [...new Set(getAllServices().map((s) => s.title.trim()))].sort(
+    (a, b) => a.localeCompare(b),
+  );
+}
+
+export const MAX_JOIN_EXPERTISE_SELECTIONS = 5;
+
 export const serviceCategories: ServiceCategory[] = [
   {
     title: "Home Services",
@@ -191,7 +200,7 @@ export const serviceCategories: ServiceCategory[] = [
     services: [
       
       {
-        title: "Home Renovation ",
+        title: "Home Renovation",
         slug: "home-renovation",
         image: "/services/home-renovation.jpg",
         desc: "Home renovation services transform your living space with modern updates and improvements. From kitchen and bathroom makeovers to complete interior redesigns, our professionals deliver quality results that enhance comfort and style.",

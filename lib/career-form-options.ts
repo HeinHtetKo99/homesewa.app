@@ -1,39 +1,4 @@
-/** Position Applied For — workForce table multipleSelects (Airtable). */
-export const CAREER_POSITIONS = [
-  "Deep Cleaner",
-  "Pressure Washer",
-  "Roof & Gutter Cleaner",
-  "Handyman",
-  "Carpenter",
-  "Plumber",
-  "Electrical Repairer",
-  "Flooring Fixer",
-  "Washing Machine Repairer",
-  "Smart Home Setup",
-  "EV Charger Installer",
-  "AC Servicing",
-  "Painter",
-  "Wallpaper Fixer",
-  "Drywall Repairer",
-  "Tile Worker",
-  "Window Repairer",
-  "Floor Repairer",
-  "Lawn Care",
-  "Tree Cutter",
-  "Garden Care",
-  "Irrigation Installer",
-  "Fence Repairer",
-  "Outdoor Lighting Installer",
-  "Mover",
-  "Airbnb Maintenance",
-  "Packing",
-  "Home Concierge",
-  "Cleaning Planner",
-  "Maintenance Planner",
-  "Carpentry",
-] as const;
-
-/** Preferred Working Area — workForce multipleSelects (Kathmandu + Other). */
+/** Preferred Working Area — Kathmandu areas for join form. */
 export const PREFERRED_WORKING_AREAS = [
   "Asan",
   "Balaju",

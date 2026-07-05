@@ -1,29 +1,24 @@
 -- HomeSewa workforce schema
--- Working professionals (users + workforce merged into one table: public.workforce).
+-- Single table: public.workforce (professionals + join form data).
 -- UIN is the only ID. Run 002_restore_workforce_from_dashboard.sql next to load Dashboard.csv data.
 
 -- ---------------------------------------------------------------------------
--- Reference tables
+-- Reference tables (Kathmandu only — areas list, no separate cities table)
 -- ---------------------------------------------------------------------------
 
-create table if not exists public.cities (
+create table if not exists public.areas (
   id serial primary key,
   name text not null unique
 );
 
-create table if not exists public.areas (
-  id serial primary key,
-  city_id integer not null references public.cities (id) on delete cascade,
-  name text not null,
-  unique (city_id, name)
-);
-
-create index if not exists areas_city_id_idx on public.areas (city_id);
+comment on table public.areas is 'Kathmandu valley areas (HomeSewa operates in Kathmandu only)';
 
 create table if not exists public.services (
   id serial primary key,
   name text not null unique
 );
+
+comment on table public.services is 'Website /services catalog — names match servicesCatalog.ts';
 
 -- ---------------------------------------------------------------------------
 -- Workforce (working professionals). UIN is the sole identifier.
@@ -36,7 +31,7 @@ create table if not exists public.workforce (
   last_name text,
   headshot_url text,
   phone text,
-  city_id integer references public.cities (id) on delete set null,
+  email text,
   area_id integer references public.areas (id) on delete set null,
   created_date timestamptz,
   issues text,
@@ -49,211 +44,185 @@ create table if not exists public.workforce (
   valid_till timestamptz,
   date_of_birth date,
   blood_group text,
-  profile_status text,
+  profile_status text not null default 'Active',
   police_report text,
   training_certificate text,
   payment_qr text,
   referred_by text,
   government_issued_id_filename text,
   government_issued_id_url text,
-  migrated_at timestamptz not null default now()
+  expertise text[] not null default '{}',
+  services text[] not null default '{}',
+  years_experience text,
+  working_areas text[] not null default '{}',
+  insurance_policy_number text,
+  emergency_contact text,
+  cover_letter text,
+  resume_filename text,
+  resume_url text,
+  submitted_at timestamptz,
+  migrated_at timestamptz not null default now(),
+  constraint workforce_profile_status_check check (
+    profile_status in (
+      'Waiting for Verification',
+      'Active',
+      'Suspended'
+    )
+  )
 );
 
 create index if not exists workforce_phone_idx on public.workforce (phone);
-create index if not exists workforce_city_id_idx on public.workforce (city_id);
 create index if not exists workforce_area_id_idx on public.workforce (area_id);
 create index if not exists workforce_profile_status_idx on public.workforce (profile_status);
 
-comment on table public.workforce is 'Working professionals (HomeSewa workforce)';
+comment on table public.workforce is
+  'HomeSewa professionals. Join form creates rows as Waiting for Verification; only Active are activated.';
 comment on column public.workforce.uin is 'Unique identification number — sole primary key';
 comment on column public.workforce.headshot_url is 'Public URL for the professional headshot';
 comment on column public.workforce.government_issued_id_filename is 'Government-issued ID attachment filename';
 comment on column public.workforce.government_issued_id_url is 'Government-issued ID attachment URL';
-comment on column public.workforce.city_id is 'City where the professional is based';
-comment on column public.workforce.area_id is 'Area within the city where the professional is based';
+comment on column public.workforce.area_id is 'Primary area within Kathmandu where the professional is based';
+comment on column public.workforce.services is 'Services offered by the professional';
+comment on column public.workforce.working_areas is 'Areas the professional serves';
+comment on column public.workforce.profile_status is 'Waiting for Verification | Active | Suspended';
 
-create table if not exists public.workforce_services (
-  workforce_uin integer not null references public.workforce (uin) on delete cascade,
-  service_id integer not null references public.services (id) on delete cascade,
-  primary key (workforce_uin, service_id)
-);
+create sequence if not exists public.workforce_uin_seq;
 
-create index if not exists workforce_services_service_id_idx
-  on public.workforce_services (service_id);
+create or replace function public.assign_workforce_uin()
+returns trigger
+language plpgsql
+as $$
+begin
+  if new.uin is null then
+    new.uin := nextval('public.workforce_uin_seq');
+  end if;
 
-comment on table public.workforce_services is 'Services offered by a workforce professional';
+  if new.profile_status is null or trim(new.profile_status) = '' then
+    new.profile_status := 'Active';
+  end if;
 
-create table if not exists public.workforce_working_areas (
-  workforce_uin integer not null references public.workforce (uin) on delete cascade,
-  area_id integer not null references public.areas (id) on delete cascade,
-  primary key (workforce_uin, area_id)
-);
+  if new.submitted_at is null and new.profile_status = 'Waiting for Verification' then
+    new.submitted_at := now();
+  end if;
 
-create index if not exists workforce_working_areas_area_id_idx
-  on public.workforce_working_areas (area_id);
+  if new.created_date is null then
+    new.created_date := now();
+  end if;
 
-comment on table public.workforce_working_areas is 'Areas a workforce professional serves';
+  new.updated_at := now();
+  return new;
+end;
+$$;
+
+drop trigger if exists workforce_assign_uin on public.workforce;
+
+create trigger workforce_assign_uin
+before insert on public.workforce
+for each row
+execute function public.assign_workforce_uin();
 
 -- ---------------------------------------------------------------------------
--- Seed cities, areas, and HomeSewa services
+-- Seed areas (Kathmandu) and HomeSewa services
 -- ---------------------------------------------------------------------------
 
-insert into public.cities (name)
-values ('Kathmandu'), ('Other')
+insert into public.areas (name)
+values
+  ('Asan'),
+  ('Balaju'),
+  ('Baluwatar'),
+  ('Baneshwor'),
+  ('Basundhara'),
+  ('Bhaisepati'),
+  ('Bhaktapur'),
+  ('Bouddha'),
+  ('Budhanilkantha'),
+  ('Chabahil'),
+  ('Changunarayan'),
+  ('Chundevi'),
+  ('Dhapasi'),
+  ('Durbar Marg'),
+  ('Ekantakuna'),
+  ('Gaushala'),
+  ('Godawari'),
+  ('Gongabu'),
+  ('Gwarko'),
+  ('Gyaneshwor'),
+  ('Harisiddhi'),
+  ('Imadol'),
+  ('Jawalakhel'),
+  ('Jorpati'),
+  ('Kalanki'),
+  ('Kalimati'),
+  ('Kamalbinayak'),
+  ('Kamalpokhari'),
+  ('Kirtipur'),
+  ('Koteshwor'),
+  ('Khusibu'),
+  ('Kupondole'),
+  ('Lagankhel'),
+  ('Lazimpat'),
+  ('Machhapokhari'),
+  ('Maharajgunj'),
+  ('Mangal Bazar'),
+  ('Naikap'),
+  ('Nayabazar'),
+  ('New Baneshwor'),
+  ('New Road'),
+  ('Patan'),
+  ('Pulchowk'),
+  ('Putalisadak'),
+  ('Ranibari'),
+  ('Samakhusi'),
+  ('Sanepa'),
+  ('Satdobato'),
+  ('Sitapaila'),
+  ('Sinamangal'),
+  ('Sukedhara'),
+  ('Sundhara'),
+  ('Suryabinayak'),
+  ('Swayambhu'),
+  ('Teku'),
+  ('Thamel'),
+  ('Thaiba'),
+  ('Thankot'),
+  ('Thimi'),
+  ('Tokha'),
+  ('Tripureshwor'),
+  ('Other')
 on conflict (name) do nothing;
-
-insert into public.areas (city_id, name)
-select c.id, a.name
-from public.cities c
-cross join (
-  values
-    ('Asan'),
-    ('Balaju'),
-    ('Baluwatar'),
-    ('Baneshwor'),
-    ('Basundhara'),
-    ('Bhaisepati'),
-    ('Bhaktapur'),
-    ('Bouddha'),
-    ('Budhanilkantha'),
-    ('Chabahil'),
-    ('Changunarayan'),
-    ('Chundevi'),
-    ('Dhapasi'),
-    ('Durbar Marg'),
-    ('Ekantakuna'),
-    ('Gaushala'),
-    ('Godawari'),
-    ('Gongabu'),
-    ('Gwarko'),
-    ('Gyaneshwor'),
-    ('Harisiddhi'),
-    ('Imadol'),
-    ('Jawalakhel'),
-    ('Jorpati'),
-    ('Kalanki'),
-    ('Kalimati'),
-    ('Kamalbinayak'),
-    ('Kamalpokhari'),
-    ('Kirtipur'),
-    ('Koteshwor'),
-    ('Khusibu'),
-    ('Kupondole'),
-    ('Lagankhel'),
-    ('Lazimpat'),
-    ('Machhapokhari'),
-    ('Maharajgunj'),
-    ('Mangal Bazar'),
-    ('Naikap'),
-    ('Nayabazar'),
-    ('New Baneshwor'),
-    ('New Road'),
-    ('Patan'),
-    ('Pulchowk'),
-    ('Putalisadak'),
-    ('Ranibari'),
-    ('Samakhusi'),
-    ('Sanepa'),
-    ('Satdobato'),
-    ('Sitapaila'),
-    ('Sinamangal'),
-    ('Sukedhara'),
-    ('Sundhara'),
-    ('Suryabinayak'),
-    ('Swayambhu'),
-    ('Teku'),
-    ('Thamel'),
-    ('Thaiba'),
-    ('Thankot'),
-    ('Thimi'),
-    ('Tokha'),
-    ('Tripureshwor'),
-    ('Other')
-) as a (name)
-where c.name = 'Kathmandu'
-on conflict (city_id, name) do nothing;
-
-insert into public.areas (city_id, name)
-select c.id, 'Other'
-from public.cities c
-where c.name = 'Other'
-on conflict (city_id, name) do nothing;
 
 insert into public.services (name)
 values
-  ('Cleaning & Deep Cleaning'),
-  ('Pressure Washing'),
-  ('Gutter & Roof Cleaning'),
-  ('Handyman / Small Repairs'),
+  ('Salon at Home'),
+  ('Bridal Makeup'),
+  ('Chef at Home'),
+  ('Massage Therapy'),
+  ('Spa at Home'),
+  ('Physiotherapy'),
+  ('Handyman'),
   ('Carpentry'),
   ('Plumbing'),
   ('Electrical Repairs'),
-  ('Flooring & Surface Fixes'),
-  ('Smart Home & Fixture Installations'),
+  ('Tiling'),
+  ('Washing Machine Repair'),
+  ('Home Automation'),
   ('EV Charger Installation'),
-  ('AC Maintenance & Servicing'),
-  ('Painting & Decorating'),
-  ('Wallpaper Installation & Removal'),
-  ('Drywall Repair & Installation'),
-  ('Tile Installation & Repair'),
-  ('Lawn Care & Landscaping'),
-  ('Tree Trimming & Removal'),
-  ('Garden Maintenance'),
-  ('Irrigation System Installation & Repair'),
-  ('Fence & Gate Repair'),
-  ('Outdoor Lighting Installation'),
-  ('Moving & Furniture Assembly'),
-  ('Airbnb Property Maintenance'),
-  ('Packing & Unpacking Services'),
-  ('Storage & Relocation Assistance'),
-  ('Subscription Home Concierge'),
-  ('Regular Home Cleaning Subscription'),
-  ('Seasonal Home Maintenance Subscription'),
-  ('Smart Home Monitoring & Support Subscription'),
-  ('Cleaning Machine Operation'),
-  ('Pest Control'),
-  ('Garden Cleaning'),
-  ('Planting and Transplanting'),
-  ('Soil Improvement'),
-  ('Hardscaping'),
-  ('Landscape Design'),
-  ('Consultation Services'),
-  ('Landscape Lighting'),
-  ('Rooftop Gardening'),
-  ('Electrical Wiring'),
-  ('Deep Cleaning'),
-  ('Handyman'),
-  ('Gutter & Cleaning'),
-  ('Deep Cleaner'),
-  ('Pressure Washer'),
-  ('Roof & Gutter Cleaner'),
-  ('Carpenter'),
-  ('Plumber'),
-  ('Electrical Repairer'),
-  ('Flooring Fixer'),
-  ('Washing Machine Repairer'),
-  ('Smart Home Setup'),
-  ('EV Charger Installer'),
-  ('AC Servicing'),
-  ('Painter'),
-  ('Wallpaper Fixer'),
-  ('Drywall Repairer'),
-  ('Tile Worker'),
-  ('Window Repairer'),
-  ('Floor Repairer'),
-  ('Lawn Care'),
-  ('Tree Cutter'),
+  ('AC Services'),
+  ('Painting'),
+  ('Indoor Planting'),
+  ('CCTV Services'),
+  ('Drywall Repair'),
+  ('Modular Kitchen'),
+  ('Parqueting'),
+  ('Home Renovation'),
+  ('RO Water Purifying'),
   ('Garden Care'),
-  ('Irrigation Installer'),
-  ('Fence Repairer'),
-  ('Outdoor Lighting Installer'),
-  ('Mover'),
+  ('Pest Control'),
+  ('Masonry Repair'),
+  ('Deep Cleaning'),
+  ('Packing & Moving'),
   ('Airbnb Maintenance'),
-  ('Packing'),
-  ('Home Concierge'),
-  ('Cleaning Planner'),
-  ('Maintenance Planner'),
-  ('Other')
+  ('Refrigerator Repair')
 on conflict (name) do nothing;
 
 -- ---------------------------------------------------------------------------
@@ -267,49 +236,25 @@ begin
     return;
   end if;
 
-  -- Cities from users.city
-  insert into public.cities (name)
-  select distinct trim(u.city)
+  -- Areas from users.area (Kathmandu only)
+  insert into public.areas (name)
+  select distinct trim(u.area)
   from public.users u
-  where u.city is not null and trim(u.city) <> ''
-  on conflict (name) do nothing;
-
-  -- Areas from users.area (tied to that row's city, default Kathmandu)
-  insert into public.areas (city_id, name)
-  select distinct
-    coalesce(c.id, k.id),
-    trim(u.area)
-  from public.users u
-  left join public.cities c on lower(c.name) = lower(trim(u.city))
-  cross join lateral (
-    select id from public.cities where name = 'Kathmandu' limit 1
-  ) k
   where u.area is not null and trim(u.area) <> ''
-  on conflict (city_id, name) do nothing;
-
-  -- Services from users.profession (Services Offered)
-  insert into public.services (name)
-  select distinct trim(u.profession)
-  from public.users u
-  where u.profession is not null and trim(u.profession) <> ''
   on conflict (name) do nothing;
+
+  -- Services table is website catalog only (see services seed in 001 / 010).
 
   -- Areas mentioned in working_area (multi-value text)
-  insert into public.areas (city_id, name)
-  select distinct
-    coalesce(c.id, k.id),
-    trim(part)
+  insert into public.areas (name)
+  select distinct trim(part)
   from public.users u
-  left join public.cities c on lower(c.name) = lower(trim(u.city))
-  cross join lateral (
-    select id from public.cities where name = 'Kathmandu' limit 1
-  ) k
   cross join lateral regexp_split_to_table(
     coalesce(u.working_area, ''),
     '[,;\n|]+'
   ) as part
   where trim(part) <> ''
-  on conflict (city_id, name) do nothing;
+  on conflict (name) do nothing;
 
   -- Workforce rows (UIN only; one row per UIN)
   insert into public.workforce (
@@ -319,7 +264,6 @@ begin
     last_name,
     headshot_url,
     phone,
-    city_id,
     area_id,
     created_date,
     issues,
@@ -351,7 +295,6 @@ begin
       substring(u.headshot_filename from '\((https?://[^)]+)\)')
     ),
     u.phone,
-    c.id,
     a.id,
     u.created_date,
     u.issues,
@@ -385,11 +328,8 @@ begin
     end,
     coalesce(u.migrated_at, now())
   from public.users u
-  left join public.cities c
-    on lower(c.name) = lower(trim(coalesce(u.city, 'Kathmandu')))
   left join public.areas a
-    on a.city_id = c.id
-   and lower(a.name) = lower(trim(u.area))
+    on lower(a.name) = lower(trim(u.area))
   where u.uin is not null
   order by u.uin, u.updated_at desc nulls last
   on conflict (uin) do update set
@@ -398,7 +338,6 @@ begin
     last_name = excluded.last_name,
     headshot_url = excluded.headshot_url,
     phone = excluded.phone,
-    city_id = excluded.city_id,
     area_id = excluded.area_id,
     created_date = excluded.created_date,
     issues = excluded.issues,
@@ -420,32 +359,44 @@ begin
     government_issued_id_url = excluded.government_issued_id_url,
     migrated_at = excluded.migrated_at;
 
-  -- Services offered (profession → services)
-  insert into public.workforce_services (workforce_uin, service_id)
-  select distinct u.uin, s.id
-  from public.users u
-  join public.services s on lower(s.name) = lower(trim(u.profession))
-  where u.uin is not null
-    and u.profession is not null
-    and trim(u.profession) <> ''
-  on conflict do nothing;
+  -- Services offered (profession → workforce.services)
+  update public.workforce w
+  set services = coalesce(sub.names, '{}')
+  from (
+    select
+      u.uin,
+      array_agg(distinct trim(u.profession) order by trim(u.profession)) as names
+    from public.users u
+    where u.uin is not null
+      and u.profession is not null
+      and trim(u.profession) <> ''
+    group by u.uin
+  ) sub
+  where w.uin = sub.uin;
 
-  -- Working areas professionals serve
-  insert into public.workforce_working_areas (workforce_uin, area_id)
-  select distinct u.uin, a.id
-  from public.users u
-  left join public.cities c
-    on lower(c.name) = lower(trim(coalesce(u.city, 'Kathmandu')))
-  cross join lateral regexp_split_to_table(
-    coalesce(u.working_area, ''),
-    '[,;\n|]+'
-  ) as part
-  join public.areas a
-    on lower(a.name) = lower(trim(part))
-   and (a.city_id = c.id or c.id is null)
-  where u.uin is not null
-    and trim(part) <> ''
-  on conflict do nothing;
+  -- Working areas professionals serve (working_area → workforce.working_areas)
+  update public.workforce w
+  set working_areas = coalesce(sub.names, '{}')
+  from (
+    select
+      u.uin,
+      array_agg(distinct trim(part) order by trim(part)) as names
+    from public.users u
+    cross join lateral regexp_split_to_table(
+      coalesce(u.working_area, ''),
+      '[,;\n|]+'
+    ) as part
+    where u.uin is not null
+      and trim(part) <> ''
+    group by u.uin
+  ) sub
+  where w.uin = sub.uin;
+
+  select setval(
+    'public.workforce_uin_seq',
+    coalesce((select max(uin) from public.workforce), 0),
+    true
+  );
 
   -- Keep public.users until you verify workforce looks correct, then drop it yourself:
   --   drop table public.users cascade;
