@@ -183,7 +183,7 @@ export async function handleJoinProfessionalSubmission(
         working_areas:
           payload.preferredAreas.length > 0 ? payload.preferredAreas : [],
         emergency_contact: payload.emergencyContact || null,
-        referral_phone: payload.referralPhone || null,
+        referred_by: payload.referralPhone || null,
         issues: payload.message || null,
         government_issued_id_filename: idProofFilename,
         government_issued_id_url: idProofUrl,
