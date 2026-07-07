@@ -34,14 +34,18 @@ export type JoinProfessionalPayload = {
   fullName: string;
   phone: string;
   email: string;
+  gender: string;
   expertise: string[];
   yearsExperience: string;
+  preferredCity: string;
   preferredAreas: string[];
   insurancePolicyNumber: string;
   emergencyContact: string;
+  referralPhone: string;
   coverLetter: string;
   message: string;
   idProof: File | null;
+  headshot: File | null;
   resume: File | null;
 };
 
@@ -53,22 +57,28 @@ async function parseMultipart(
 ): Promise<JoinProfessionalPayload | null> {
   const form = await request.formData();
   const idRaw = form.get("idProof");
+  const headshotRaw = form.get("headshot");
   const resumeRaw = form.get("resume");
 
   return {
     fullName: String(form.get("fullName") ?? "").trim(),
     phone: String(form.get("phone") ?? "").trim(),
     email: String(form.get("email") ?? "").trim(),
+    gender: String(form.get("gender") ?? "").trim(),
     expertise: parseStringArray(form.get("expertise")),
     yearsExperience: String(form.get("yearsExperience") ?? "").trim(),
+    preferredCity: String(form.get("preferredCity") ?? "").trim(),
     preferredAreas: parseStringArray(form.get("preferredAreas")),
     insurancePolicyNumber: String(
       form.get("insurancePolicyNumber") ?? "",
     ).trim(),
     emergencyContact: String(form.get("emergencyContact") ?? "").trim(),
+    referralPhone: String(form.get("referralPhone") ?? "").trim(),
     coverLetter: String(form.get("coverLetter") ?? "").trim(),
     message: String(form.get("message") ?? "").trim(),
     idProof: idRaw instanceof File && idRaw.size > 0 ? idRaw : null,
+    headshot:
+      headshotRaw instanceof File && headshotRaw.size > 0 ? headshotRaw : null,
     resume: resumeRaw instanceof File && resumeRaw.size > 0 ? resumeRaw : null,
   };
 }
@@ -84,6 +94,9 @@ function validatePayload(payload: JoinProfessionalPayload): string | null {
   if (emailErr) return emailErr;
   if (payload.emergencyContact && !/^\d{10}$/.test(payload.emergencyContact)) {
     return "Emergency contact must be a 10-digit number.";
+  }
+  if (payload.referralPhone && !/^\d{10}$/.test(payload.referralPhone)) {
+    return "Referral phone must be a 10-digit number.";
   }
   if (payload.expertise.length === 0) {
     return "Please select at least one area of expertise.";
@@ -144,6 +157,18 @@ export async function handleJoinProfessionalSubmission(
     }
   }
 
+  let headshotUrl: string | null = null;
+  if (payload.headshot) {
+    try {
+      headshotUrl = await uploadFormFile("join/headshot", payload.headshot);
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : "Upload failed";
+      warnings.push(
+        `Headshot could not be uploaded: ${payload.headshot.name}: ${msg}.`,
+      );
+    }
+  }
+
   let resumeUrl: string | null = null;
   let resumeFilename: string | null = null;
   if (payload.resume) {
@@ -170,15 +195,19 @@ export async function handleJoinProfessionalSubmission(
         first_name: firstName,
         middle_name: middleName,
         last_name: lastName,
+        headshot_url: headshotUrl,
         phone: payload.phone,
         email: payload.email || null,
+        gender: payload.gender || null,
         expertise,
         services: expertise,
         years_experience: payload.yearsExperience || null,
+        preferred_city: payload.preferredCity || null,
         working_areas:
           payload.preferredAreas.length > 0 ? payload.preferredAreas : [],
         insurance_policy_number: payload.insurancePolicyNumber || null,
         emergency_contact: payload.emergencyContact || null,
+        referral_phone: payload.referralPhone || null,
         cover_letter: payload.coverLetter || null,
         issues: payload.message || null,
         government_issued_id_filename: idProofFilename,

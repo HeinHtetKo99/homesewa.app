@@ -3,10 +3,9 @@
 import { useCallback, useId, useState } from "react";
 import {
   FORM_STACK_CLASS,
-  FormLabel,
   ResetIcon,
-  inputClass,
-  textareaClass,
+  fieldLabelClass,
+  textInputClass,
 } from "@/components/form-controls";
 import { emailValidationError } from "@/lib/form-validation";
 
@@ -20,7 +19,6 @@ export default function ContactForm() {
   const [phone, setPhone] = useState("");
   const [city, setCity] = useState("");
   const [message, setMessage] = useState("");
-  const [activeInput, setActiveInput] = useState<string | null>(null);
 
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
@@ -33,7 +31,6 @@ export default function ContactForm() {
     setPhone("");
     setCity("");
     setMessage("");
-    setActiveInput(null);
     setEmailError(null);
     setSubmitError(null);
   }, []);
@@ -110,101 +107,99 @@ export default function ContactForm() {
   };
 
   return (
-    <div className="w-full bg-white px-[6%] py-5 sm:py-8">
+    <div className="w-full bg-white px-5 py-8 sm:px-8 sm:py-10">
       <form
         id={formId}
         onSubmit={onSubmit}
-        className={`${FORM_STACK_CLASS} mx-auto max-w-2xl`}
+        className={FORM_STACK_CLASS}
         noValidate
       >
-        <FormLabel htmlFor={`${formId}-name`} required>
-          Full Name
-        </FormLabel>
-        <input
-          id={`${formId}-name`}
-          className={inputClass(activeInput === "name")}
-          placeholder="Enter your Full Name"
-          value={fullName}
-          onFocus={() => setActiveInput("name")}
-          onBlur={() => setActiveInput(null)}
-          onChange={(e) => setFullName(e.target.value)}
-          autoComplete="name"
-          required
-        />
+        <div className="flex flex-col gap-1">
+          <label htmlFor={`${formId}-name`} className={fieldLabelClass()}>
+            Full Name<span className="text-red-600"> *</span>
+          </label>
+          <input
+            id={`${formId}-name`}
+            className={textInputClass()}
+            value={fullName}
+            onChange={(e) => setFullName(e.target.value)}
+            autoComplete="name"
+            required
+          />
+        </div>
 
-        <FormLabel htmlFor={`${formId}-email`} required>
-          eMail
-        </FormLabel>
-        <input
-          id={`${formId}-email`}
-          type="email"
-          className={inputClass(activeInput === "email")}
-          placeholder="Enter your Email"
-          value={email}
-          onFocus={() => setActiveInput("email")}
-          onBlur={() => setActiveInput(null)}
-          onChange={(e) => {
-            const v = e.target.value;
-            setEmail(v);
-            setEmailError(v.trim() ? emailValidationError(v) : null);
-          }}
-          autoComplete="email"
-          required
-          aria-invalid={emailError ? true : undefined}
-        />
-        {emailError ? (
-          <p className="-mt-3 mb-5 text-[12px] text-red-600">{emailError}</p>
-        ) : null}
+        <div className="flex flex-col gap-1">
+          <label htmlFor={`${formId}-email`} className={fieldLabelClass()}>
+            eMail<span className="text-red-600"> *</span>
+          </label>
+          <input
+            id={`${formId}-email`}
+            type="email"
+            className={textInputClass()}
+            value={email}
+            onChange={(e) => {
+              const v = e.target.value;
+              setEmail(v);
+              setEmailError(v.trim() ? emailValidationError(v) : null);
+            }}
+            autoComplete="email"
+            required
+            aria-invalid={emailError ? true : undefined}
+          />
+          {emailError ? (
+            <p className="text-[12px] text-red-600">{emailError}</p>
+          ) : null}
+        </div>
 
-        <FormLabel htmlFor={`${formId}-phone`} required>
-          Phone Number
-        </FormLabel>
-        <input
-          id={`${formId}-phone`}
-          type="tel"
-          inputMode="numeric"
-          maxLength={15}
-          className={inputClass(activeInput === "phone")}
-          placeholder="Enter your Phone Number"
-          value={phone}
-          onFocus={() => setActiveInput("phone")}
-          onBlur={() => setActiveInput(null)}
-          onChange={(e) => setPhone(onlyDigits(e.target.value).slice(0, 15))}
-          autoComplete="tel"
-          required
-        />
+        <div className="flex flex-col gap-1">
+          <label htmlFor={`${formId}-phone`} className={fieldLabelClass()}>
+            Phone Number<span className="text-red-600"> *</span>
+          </label>
+          <input
+            id={`${formId}-phone`}
+            type="tel"
+            inputMode="numeric"
+            maxLength={15}
+            className={textInputClass()}
+            value={phone}
+            onChange={(e) => setPhone(onlyDigits(e.target.value).slice(0, 15))}
+            autoComplete="tel"
+            required
+          />
+        </div>
 
-        <FormLabel htmlFor={`${formId}-city`}>City</FormLabel>
-        <input
-          id={`${formId}-city`}
-          className={inputClass(activeInput === "city")}
-          placeholder="Kathmandu, Lalitpur, Bhaktapur…"
-          value={city}
-          onFocus={() => setActiveInput("city")}
-          onBlur={() => setActiveInput(null)}
-          onChange={(e) => setCity(e.target.value)}
-          autoComplete="address-level2"
-        />
+        <div className="flex flex-col gap-1">
+          <label htmlFor={`${formId}-city`} className={fieldLabelClass()}>
+            City
+          </label>
+          <input
+            id={`${formId}-city`}
+            className={textInputClass()}
+            value={city}
+            onChange={(e) => setCity(e.target.value)}
+            autoComplete="address-level2"
+            placeholder="Kathmandu, Lalitpur, Bhaktapur…"
+          />
+        </div>
 
-        <FormLabel htmlFor={`${formId}-message`} required>
-          Message
-        </FormLabel>
-        <textarea
-          id={`${formId}-message`}
-          rows={5}
-          className={textareaClass(activeInput === "message", "min-h-[120px]")}
-          placeholder="Enter your message..."
-          value={message}
-          onFocus={() => setActiveInput("message")}
-          onBlur={() => setActiveInput(null)}
-          onChange={(e) => setMessage(e.target.value)}
-          required
-        />
+        <div className="flex flex-col gap-1">
+          <label htmlFor={`${formId}-message`} className={fieldLabelClass()}>
+            Message<span className="text-red-600"> *</span>
+          </label>
+          <textarea
+            id={`${formId}-message`}
+            rows={5}
+            className={textInputClass() + " resize-y min-h-[120px]"}
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            required
+          />
+        </div>
 
         {submitError ? (
           <p
             role="alert"
-            className="mb-4 rounded-xl border border-red-200 bg-red-50 px-3 py-2 text-[13px] text-red-800"
+            className="rounded border border-red-200 bg-red-50 px-3 py-2 text-[13px] text-red-800"
           >
             {submitError}
           </p>
@@ -213,7 +208,7 @@ export default function ContactForm() {
         {submitSuccess ? (
           <p
             role="status"
-            className="mb-4 rounded-xl border border-green-200 bg-green-50 px-3 py-2 text-[13px] text-green-800"
+            className="rounded border border-green-200 bg-green-50 px-3 py-2 text-[13px] text-green-800"
           >
             Thank you! Your message has been received. We will get back to you soon.
           </p>
@@ -224,7 +219,7 @@ export default function ContactForm() {
             type="button"
             onClick={clear}
             disabled={submitting}
-            className="inline-flex items-center gap-1.5 text-[15px] font-medium text-[#0a7de1] hover:opacity-80 disabled:opacity-50"
+            className="inline-flex items-center gap-1.5 text-[14px] text-gray-600 hover:text-gray-900 disabled:opacity-50"
           >
             <ResetIcon />
             Clear form
@@ -232,13 +227,13 @@ export default function ContactForm() {
           <button
             type="submit"
             disabled={submitting}
-            className="h-11 min-w-[120px] rounded-xl bg-black px-8 text-[15px] font-semibold text-white hover:bg-gray-800 disabled:opacity-60"
+            className="rounded bg-black px-8 py-2.5 text-[14px] font-medium text-white hover:bg-gray-800 disabled:opacity-60"
           >
             {submitting ? "Sending…" : "Submit"}
           </button>
         </div>
 
-        <p className="text-center text-[11px] text-[#4B4B4B]">
+        <p className="text-center text-[11px] text-gray-400">
           Do not submit passwords through this form. Report malicious form.
         </p>
       </form>

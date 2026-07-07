@@ -4,17 +4,15 @@ import { useCallback, useEffect, useId, useRef, useState } from "react";
 import {
   FORM_STACK_CLASS,
   FileDropzone,
-  FormLabel,
-  FormPhoneInput,
   FormSelect,
   ResetIcon,
-  inputClass,
-  textareaClass,
+  fieldLabelClass,
+  textInputClass,
 } from "@/components/form-controls";
 import { BOOKING_SERVICES } from "@/lib/book-form-options";
 import { emailValidationError } from "@/lib/form-validation";
 
-const stripPhoneSpaces = (v: string) => v.replace(/\s/g, "");
+const onlyDigits = (v: string) => v.replace(/[^0-9]/g, "");
 const MAX_HEADSHOT_MB = 5;
 const HEADSHOT_ACCEPT = "image/*,.heic,.heif";
 
@@ -58,7 +56,6 @@ export default function FeedbackForm() {
   const [message, setMessage] = useState("");
   const [headshotItem, setHeadshotItem] = useState<FileItem | null>(null);
   const [headshotDragOver, setHeadshotDragOver] = useState(false);
-  const [activeInput, setActiveInput] = useState<string | null>(null);
 
   const headshotRef = useRef<FileItem | null>(null);
   headshotRef.current = headshotItem;
@@ -88,7 +85,6 @@ export default function FeedbackForm() {
       revokeFileItem(prev);
       return null;
     });
-    setActiveInput(null);
     setEmailError(null);
     setSubmitError(null);
     if (headshotInputRef.current) headshotInputRef.current.value = "";
@@ -131,8 +127,6 @@ export default function FeedbackForm() {
     setEmailError(emailErr);
     if (emailErr) return;
 
-    const phoneDigits = stripPhoneSpaces(phone);
-
     if (
       !firstName.trim() ||
       !middleName.trim() ||
@@ -140,7 +134,7 @@ export default function FeedbackForm() {
       !country.trim() ||
       !organization.trim() ||
       !designation.trim() ||
-      !phoneDigits ||
+      !phone.trim() ||
       !email.trim() ||
       !service ||
       !message.trim() ||
@@ -150,7 +144,7 @@ export default function FeedbackForm() {
       return;
     }
 
-    if (!/^\d{10}$/.test(phoneDigits)) {
+    if (!/^\d{10}$/.test(phone)) {
       setSubmitError("Enter a valid 10-digit mobile number.");
       return;
     }
@@ -164,7 +158,7 @@ export default function FeedbackForm() {
       data.append("country", country.trim());
       data.append("organization", organization.trim());
       data.append("designation", designation.trim());
-      data.append("phone", phoneDigits);
+      data.append("phone", phone);
       data.append("email", email.trim());
       data.append("service", service);
       data.append("message", message.trim());
@@ -199,140 +193,136 @@ export default function FeedbackForm() {
   };
 
   return (
-    <div className="w-full bg-white px-[6%] py-5 sm:py-8">
+    <div className="w-full bg-white px-5 py-8 sm:px-8 sm:py-10">
       <form
         id={formId}
         onSubmit={onSubmit}
-        className={`${FORM_STACK_CLASS} mx-auto max-w-2xl`}
+        className={FORM_STACK_CLASS}
         noValidate
       >
-        <FormLabel htmlFor={`${formId}-first`} required>
-          First Name
-        </FormLabel>
-        <input
-          id={`${formId}-first`}
-          className={inputClass(activeInput === "first")}
-          placeholder="Enter your First Name"
-          value={firstName}
-          onFocus={() => setActiveInput("first")}
-          onBlur={() => setActiveInput(null)}
-          onChange={(e) => setFirstName(e.target.value)}
-          autoComplete="given-name"
-          required
-        />
+        <div className="flex flex-col gap-1">
+          <label htmlFor={`${formId}-first`} className={fieldLabelClass()}>
+            First Name<span className="text-red-600"> *</span>
+          </label>
+          <input
+            id={`${formId}-first`}
+            className={textInputClass()}
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            autoComplete="given-name"
+            required
+          />
+        </div>
 
-        <FormLabel htmlFor={`${formId}-middle`} required>
-          Middle Name
-        </FormLabel>
-        <input
-          id={`${formId}-middle`}
-          className={inputClass(activeInput === "middle")}
-          placeholder="Enter your Middle Name"
-          value={middleName}
-          onFocus={() => setActiveInput("middle")}
-          onBlur={() => setActiveInput(null)}
-          onChange={(e) => setMiddleName(e.target.value)}
-          autoComplete="additional-name"
-          required
-        />
+        <div className="flex flex-col gap-1">
+          <label htmlFor={`${formId}-middle`} className={fieldLabelClass()}>
+            Middle Name<span className="text-red-600"> *</span>
+          </label>
+          <input
+            id={`${formId}-middle`}
+            className={textInputClass()}
+            value={middleName}
+            onChange={(e) => setMiddleName(e.target.value)}
+            autoComplete="additional-name"
+            required
+          />
+        </div>
 
-        <FormLabel htmlFor={`${formId}-last`} required>
-          Last Name
-        </FormLabel>
-        <input
-          id={`${formId}-last`}
-          className={inputClass(activeInput === "last")}
-          placeholder="Enter your Last Name"
-          value={lastName}
-          onFocus={() => setActiveInput("last")}
-          onBlur={() => setActiveInput(null)}
-          onChange={(e) => setLastName(e.target.value)}
-          autoComplete="family-name"
-          required
-        />
+        <div className="flex flex-col gap-1">
+          <label htmlFor={`${formId}-last`} className={fieldLabelClass()}>
+            Last Name<span className="text-red-600"> *</span>
+          </label>
+          <input
+            id={`${formId}-last`}
+            className={textInputClass()}
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            autoComplete="family-name"
+            required
+          />
+        </div>
 
-        <FormLabel htmlFor={`${formId}-country`} required>
-          Country
-        </FormLabel>
-        <input
-          id={`${formId}-country`}
-          className={inputClass(activeInput === "country")}
-          placeholder="Enter your Country"
-          value={country}
-          onFocus={() => setActiveInput("country")}
-          onBlur={() => setActiveInput(null)}
-          onChange={(e) => setCountry(e.target.value)}
-          autoComplete="country-name"
-          required
-        />
+        <div className="flex flex-col gap-1">
+          <label htmlFor={`${formId}-country`} className={fieldLabelClass()}>
+            Country<span className="text-red-600"> *</span>
+          </label>
+          <input
+            id={`${formId}-country`}
+            className={textInputClass()}
+            value={country}
+            onChange={(e) => setCountry(e.target.value)}
+            autoComplete="country-name"
+            required
+          />
+        </div>
 
-        <FormLabel htmlFor={`${formId}-org`} required>
-          Organization
-        </FormLabel>
-        <input
-          id={`${formId}-org`}
-          className={inputClass(activeInput === "org")}
-          placeholder="Enter your Organization"
-          value={organization}
-          onFocus={() => setActiveInput("org")}
-          onBlur={() => setActiveInput(null)}
-          onChange={(e) => setOrganization(e.target.value)}
-          autoComplete="organization"
-          required
-        />
+        <div className="flex flex-col gap-1">
+          <label htmlFor={`${formId}-org`} className={fieldLabelClass()}>
+            Organization<span className="text-red-600"> *</span>
+          </label>
+          <input
+            id={`${formId}-org`}
+            className={textInputClass()}
+            value={organization}
+            onChange={(e) => setOrganization(e.target.value)}
+            autoComplete="organization"
+            required
+          />
+        </div>
 
-        <FormLabel htmlFor={`${formId}-designation`} required>
-          Designation
-        </FormLabel>
-        <input
-          id={`${formId}-designation`}
-          className={inputClass(activeInput === "designation")}
-          placeholder="Enter your Designation"
-          value={designation}
-          onFocus={() => setActiveInput("designation")}
-          onBlur={() => setActiveInput(null)}
-          onChange={(e) => setDesignation(e.target.value)}
-          autoComplete="organization-title"
-          required
-        />
+        <div className="flex flex-col gap-1">
+          <label htmlFor={`${formId}-designation`} className={fieldLabelClass()}>
+            Designation<span className="text-red-600"> *</span>
+          </label>
+          <input
+            id={`${formId}-designation`}
+            className={textInputClass()}
+            value={designation}
+            onChange={(e) => setDesignation(e.target.value)}
+            autoComplete="organization-title"
+            required
+          />
+        </div>
 
-        <FormLabel htmlFor={`${formId}-phone`} required>
-          Phone
-        </FormLabel>
-        <FormPhoneInput
-          id={`${formId}-phone`}
-          value={phone}
-          onChange={setPhone}
-          placeholder="Enter your Phone Number"
-          active={activeInput === "phone"}
-          onFocus={() => setActiveInput("phone")}
-          onBlur={() => setActiveInput(null)}
-          maxLength={12}
-        />
+        <div className="flex flex-col gap-1">
+          <label htmlFor={`${formId}-phone`} className={fieldLabelClass()}>
+            Phone<span className="text-red-600"> *</span>
+          </label>
+          <input
+            id={`${formId}-phone`}
+            type="tel"
+            inputMode="numeric"
+            maxLength={10}
+            className={textInputClass()}
+            value={phone}
+            onChange={(e) => setPhone(onlyDigits(e.target.value).slice(0, 10))}
+            autoComplete="tel"
+            required
+          />
+        </div>
 
-        <FormLabel htmlFor={`${formId}-email`} required>
-          Email
-        </FormLabel>
-        <input
-          id={`${formId}-email`}
-          type="email"
-          className={inputClass(activeInput === "email")}
-          placeholder="Enter your Email"
-          value={email}
-          onFocus={() => setActiveInput("email")}
-          onBlur={() => setActiveInput(null)}
-          onChange={(e) => {
-            const v = e.target.value;
-            setEmail(v);
-            setEmailError(emailValidationError(v));
-          }}
-          autoComplete="email"
-          required
-          aria-invalid={emailError ? true : undefined}
-        />
-        {emailError ? (
-          <p className="-mt-3 mb-5 text-[12px] text-red-600">{emailError}</p>
-        ) : null}
+        <div className="flex flex-col gap-1">
+          <label htmlFor={`${formId}-email`} className={fieldLabelClass()}>
+            Email<span className="text-red-600"> *</span>
+          </label>
+          <input
+            id={`${formId}-email`}
+            type="email"
+            className={textInputClass()}
+            value={email}
+            onChange={(e) => {
+              const v = e.target.value;
+              setEmail(v);
+              setEmailError(emailValidationError(v));
+            }}
+            autoComplete="email"
+            required
+            aria-invalid={emailError ? true : undefined}
+          />
+          {emailError ? (
+            <p className="text-[12px] text-red-600">{emailError}</p>
+          ) : null}
+        </div>
 
         <FileDropzone
           inputId={`${formId}-headshot`}
@@ -381,37 +371,36 @@ export default function FeedbackForm() {
           placeholder="Select a service"
         />
 
-        <FormLabel htmlFor={`${formId}-message`} required>
-          Feedback
-        </FormLabel>
-        <textarea
-          id={`${formId}-message`}
-          rows={5}
-          className={textareaClass(activeInput === "message", "min-h-[120px]")}
-          placeholder="Share your feedback..."
-          value={message}
-          onFocus={() => setActiveInput("message")}
-          onBlur={() => setActiveInput(null)}
-          onChange={(e) => setMessage(e.target.value)}
-          required
-        />
+        <div className="flex flex-col gap-1">
+          <label htmlFor={`${formId}-message`} className={fieldLabelClass()}>
+            Feedback<span className="text-red-600"> *</span>
+          </label>
+          <textarea
+            id={`${formId}-message`}
+            rows={5}
+            className={textInputClass() + " resize-y min-h-[120px]"}
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            required
+          />
+        </div>
 
         {submitError ? (
           <p
             role="alert"
-            className="mb-4 rounded-xl border border-red-200 bg-red-50 px-3 py-2 text-[13px] text-red-800"
+            className="rounded border border-red-200 bg-red-50 px-3 py-2 text-[13px] text-red-800"
           >
             {submitError}
           </p>
         ) : null}
 
         {submitSuccess ? (
-          <div role="status" className="mb-4 space-y-2">
-            <p className="rounded-xl border border-green-200 bg-green-50 px-3 py-2 text-[13px] text-green-800">
+          <div role="status" className="space-y-2">
+            <p className="rounded border border-green-200 bg-green-50 px-3 py-2 text-[13px] text-green-800">
               Thank you! Your feedback has been submitted successfully.
             </p>
             {submitWarning ? (
-              <p className="rounded-xl border border-amber-200 bg-amber-50 px-3 py-2 text-[13px] text-amber-900">
+              <p className="rounded border border-amber-200 bg-amber-50 px-3 py-2 text-[13px] text-amber-900">
                 {submitWarning}
               </p>
             ) : null}
@@ -423,7 +412,7 @@ export default function FeedbackForm() {
             type="button"
             onClick={clear}
             disabled={submitting}
-            className="inline-flex items-center gap-1.5 text-[15px] font-medium text-[#0a7de1] hover:opacity-80 disabled:opacity-50"
+            className="inline-flex items-center gap-1.5 text-[14px] text-gray-600 hover:text-gray-900 disabled:opacity-50"
           >
             <ResetIcon />
             Clear form
@@ -431,13 +420,13 @@ export default function FeedbackForm() {
           <button
             type="submit"
             disabled={submitting}
-            className="h-11 min-w-[120px] rounded-xl bg-black px-8 text-[15px] font-semibold text-white hover:bg-gray-800 disabled:opacity-60"
+            className="rounded bg-black px-8 py-2.5 text-[14px] font-medium text-white hover:bg-gray-800 disabled:opacity-60"
           >
             {submitting ? "Submitting…" : "Submit"}
           </button>
         </div>
 
-        <p className="text-center text-[11px] text-[#4B4B4B]">
+        <p className="text-center text-[11px] text-gray-400">
           Do not submit passwords through this form. Report malicious form.
         </p>
       </form>

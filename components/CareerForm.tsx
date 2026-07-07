@@ -6,7 +6,9 @@ import {
   WEBSITE_SERVICE_TITLES,
 } from "@/lib/website-services";
 import {
+  GENDER_OPTIONS,
   MAX_CAREER_FILE_MB,
+  PREFERRED_CITIES,
   PREFERRED_WORKING_AREAS,
 } from "@/lib/career-form-options";
 import { emailValidationError } from "@/lib/form-validation";
@@ -17,12 +19,13 @@ const onlyDigits = (v: string) => v.replace(/[^0-9]/g, "");
 
 const DOCUMENT_ACCEPT =
   "image/*,.heic,.heif,.pdf,application/pdf";
+const HEADSHOT_ACCEPT = "image/*,.heic,.heif";
 const RESUME_ACCEPT =
   ".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document";
 
 const INPUT_BASE =
   "w-full rounded-xl border-[1.5px] border-[#E2E8F0] bg-white px-3.5 text-[15px] font-medium text-[#1A1A1A] outline-none transition-colors placeholder:text-[#4B4B4B]";
-const INPUT_ACTIVE = "border-[#295C59] bg-[#EFF8F7]";
+const INPUT_ACTIVE = "border-[hsl(142,71%,45%)] bg-[#F4F7FF]";
 const LABEL_CLASS =
   "mb-1.5 pl-1 text-[14px] font-semibold text-[#4A4A4A]";
 
@@ -147,6 +150,99 @@ function CareerPhoneInput({
   );
 }
 
+function CareerSingleSelect({
+  id,
+  label,
+  options,
+  value,
+  onChange,
+  placeholder,
+  active,
+  onOpen,
+  onClose,
+}: {
+  id: string;
+  label: string;
+  options: readonly string[];
+  value: string;
+  onChange: (v: string) => void;
+  placeholder: string;
+  active: boolean;
+  onOpen: () => void;
+  onClose: () => void;
+}) {
+  const [open, setOpen] = useState(false);
+  const rootRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const onDoc = (e: MouseEvent) => {
+      if (!rootRef.current?.contains(e.target as Node)) {
+        setOpen(false);
+        onClose();
+      }
+    };
+    document.addEventListener("mousedown", onDoc);
+    return () => document.removeEventListener("mousedown", onDoc);
+  }, [onClose]);
+
+  const toggle = () => {
+    const next = !open;
+    setOpen(next);
+    if (next) onOpen();
+    else onClose();
+  };
+
+  return (
+    <div ref={rootRef} className="mb-5">
+      <span id={`${id}-label`} className={LABEL_CLASS}>
+        {label}
+        <RequiredMark />
+      </span>
+      <div className="relative">
+        <button
+          id={id}
+          type="button"
+          aria-expanded={open}
+          aria-labelledby={`${id}-label`}
+          onClick={toggle}
+          className={`flex min-h-11 w-full items-center justify-between gap-2 rounded-xl border-[1.5px] px-3.5 py-2.5 text-left text-[15px] font-medium outline-none transition-colors ${
+            active || open
+              ? "border-[hsl(142,71%,45%)] bg-[#F4F7FF]"
+              : "border-[#E2E8F0] bg-white"
+          }`}
+        >
+          <span className={value ? "text-[#1A1A1A]" : "text-[#4B4B4B]"}>
+            {value || placeholder}
+          </span>
+          <ChevronDown />
+        </button>
+        {open ? (
+          <ul
+            role="listbox"
+            className="absolute z-40 mt-1 max-h-56 w-full overflow-auto rounded-xl border border-[#E2E8F0] bg-white py-1 shadow-lg"
+          >
+            {options.map((opt) => (
+              <li key={opt} role="option" aria-selected={value === opt}>
+                <button
+                  type="button"
+                  className="w-full px-3.5 py-2.5 text-left text-[15px] text-[#1A1A1A] hover:bg-[#F4F7FF]"
+                  onClick={() => {
+                    onChange(opt);
+                    setOpen(false);
+                    onClose();
+                  }}
+                >
+                  {opt}
+                </button>
+              </li>
+            ))}
+          </ul>
+        ) : null}
+      </div>
+    </div>
+  );
+}
+
 function CareerDropdown({
   id,
   label,
@@ -216,7 +312,7 @@ function CareerDropdown({
           onClick={toggle}
           className={`flex min-h-11 w-full items-center justify-between gap-2 rounded-xl border-[1.5px] px-3.5 py-2.5 text-left text-[15px] font-medium outline-none transition-colors ${
             active || open
-              ? "border-[#295C59] bg-[#EFF8F7]"
+              ? "border-[hsl(142,71%,45%)] bg-[#F4F7FF]"
               : "border-[#E2E8F0] bg-white"
           }`}
         >
@@ -238,7 +334,7 @@ function CareerDropdown({
               <li key={opt} role="option">
                 <button
                   type="button"
-                  className="w-full px-3.5 py-2.5 text-left text-[15px] text-[#1A1A1A] hover:bg-[#EFF8F7]"
+                  className="w-full px-3.5 py-2.5 text-left text-[15px] text-[#1A1A1A] hover:bg-[#F4F7FF]"
                   onClick={() => {
                     onChange([...values, opt]);
                     if (maxSelections != null && values.length + 1 >= maxSelections) {
@@ -264,7 +360,7 @@ function CareerDropdown({
           {values.map((v) => (
             <span
               key={v}
-              className="inline-flex max-w-full items-center gap-1 rounded-lg bg-[#EFF8F7] px-2.5 py-1 text-[13px] text-[#1A1A1A]"
+              className="inline-flex max-w-full items-center gap-1 rounded-lg bg-[#F4F7FF] px-2.5 py-1 text-[13px] text-[#1A1A1A]"
             >
               <span className="truncate">{v}</span>
               <button
@@ -318,7 +414,7 @@ function CareerFileUpload({
         onBlur={onBlur}
         className={`flex min-h-[100px] cursor-pointer flex-col items-center justify-center rounded-xl border-[1.5px] px-4 py-6 text-center transition-colors ${
           active
-            ? "border-[#295C59] bg-[#EFF8F7]"
+            ? "border-[hsl(142,71%,45%)] bg-[#F4F7FF]"
             : "border-[#E2E8F0] bg-white hover:border-[#cbd5e1]"
         }`}
       >
@@ -352,7 +448,7 @@ function CareerFileUpload({
         />
       </label>
       {file ? (
-        <div className="mt-2 flex items-start gap-3 rounded-xl border border-[#E2E8F0] bg-[#EFF8F7] p-3">
+        <div className="mt-2 flex items-start gap-3 rounded-xl border border-[#E2E8F0] bg-[#F4F7FF] p-3">
           {file.previewUrl ? (
             <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-lg border border-[#E2E8F0] bg-white">
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -440,7 +536,7 @@ function ClearFormDialog({
           <button
             type="button"
             onClick={onCancel}
-            className="flex-1 py-3.5 text-[16px] font-medium text-[#0a7de1] transition-colors hover:bg-[#EFF8F7]"
+            className="flex-1 py-3.5 text-[16px] font-medium text-[#0a7de1] transition-colors hover:bg-[#F4F7FF]"
           >
             Cancel
           </button>
@@ -461,30 +557,38 @@ function ClearFormDialog({
 export default function CareerForm() {
   const formId = useId();
   const idProofInputRef = useRef<HTMLInputElement>(null);
+  const headshotInputRef = useRef<HTMLInputElement>(null);
   const resumeInputRef = useRef<HTMLInputElement>(null);
 
   const [fullName, setFullName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
+  const [gender, setGender] = useState("");
   const [expertise, setExpertise] = useState<string[]>([]);
   const [yearsExperience, setYearsExperience] = useState("");
+  const [preferredCity, setPreferredCity] = useState("");
   const [preferredAreas, setPreferredAreas] = useState<string[]>([]);
   const [insurancePolicyNumber, setInsurancePolicyNumber] = useState("");
   const [emergencyContact, setEmergencyContact] = useState("");
+  const [referralPhone, setReferralPhone] = useState("");
   const [coverLetter, setCoverLetter] = useState("");
   const [message, setMessage] = useState("");
   const [idProofItem, setIdProofItem] = useState<FileItem | null>(null);
+  const [headshotItem, setHeadshotItem] = useState<FileItem | null>(null);
   const [resumeItem, setResumeItem] = useState<FileItem | null>(null);
   const [activeInput, setActiveInput] = useState<string | null>(null);
 
   const idProofRef = useRef<FileItem | null>(null);
+  const headshotRef = useRef<FileItem | null>(null);
   const resumeRef = useRef<FileItem | null>(null);
   idProofRef.current = idProofItem;
+  headshotRef.current = headshotItem;
   resumeRef.current = resumeItem;
 
   useEffect(() => {
     return () => {
       revokeFileItem(idProofRef.current);
+      revokeFileItem(headshotRef.current);
       revokeFileItem(resumeRef.current);
     };
   }, []);
@@ -499,14 +603,21 @@ export default function CareerForm() {
     setFullName("");
     setPhone("");
     setEmail("");
+    setGender("");
     setExpertise([]);
     setYearsExperience("");
+    setPreferredCity("");
     setPreferredAreas([]);
     setInsurancePolicyNumber("");
     setEmergencyContact("");
+    setReferralPhone("");
     setCoverLetter("");
     setMessage("");
     setIdProofItem((prev) => {
+      revokeFileItem(prev);
+      return null;
+    });
+    setHeadshotItem((prev) => {
       revokeFileItem(prev);
       return null;
     });
@@ -517,6 +628,7 @@ export default function CareerForm() {
     setActiveInput(null);
     setSubmitError(null);
     if (idProofInputRef.current) idProofInputRef.current.value = "";
+    if (headshotInputRef.current) headshotInputRef.current.value = "";
     if (resumeInputRef.current) resumeInputRef.current.value = "";
   }, []);
 
@@ -557,6 +669,7 @@ export default function CareerForm() {
 
     const phoneDigits = stripPhoneSpaces(phone);
     const emergencyDigits = stripPhoneSpaces(emergencyContact);
+    const referralDigits = stripPhoneSpaces(referralPhone);
 
     if (!fullName.trim()) {
       setSubmitError("Full Name is required.");
@@ -579,6 +692,11 @@ export default function CareerForm() {
       return;
     }
 
+    if (!gender.trim()) {
+      setSubmitError("Please select your gender.");
+      return;
+    }
+
     if (expertise.length === 0) {
       setSubmitError("Please select at least one area of expertise.");
       return;
@@ -596,8 +714,18 @@ export default function CareerForm() {
       return;
     }
 
+    if (!headshotItem?.file) {
+      setSubmitError("Please upload your headshot.");
+      return;
+    }
+
     if (!idProofItem?.file) {
       setSubmitError("Please upload your ID.");
+      return;
+    }
+
+    if (!preferredCity.trim()) {
+      setSubmitError("Please select your preferred city.");
       return;
     }
 
@@ -613,6 +741,11 @@ export default function CareerForm() {
 
     if (!emergencyDigits || emergencyDigits.length !== 10) {
       setSubmitError("Enter a valid emergency contact number.");
+      return;
+    }
+
+    if (referralDigits && referralDigits.length !== 10) {
+      setSubmitError("Enter a valid 10-digit referral phone number.");
       return;
     }
 
@@ -637,14 +770,18 @@ export default function CareerForm() {
       data.append("fullName", fullName.trim());
       data.append("phone", phoneDigits);
       data.append("email", email.trim());
+      data.append("gender", gender);
       data.append("expertise", JSON.stringify(expertise));
       data.append("yearsExperience", yearsExperience);
+      data.append("preferredCity", preferredCity);
       data.append("preferredAreas", JSON.stringify(preferredAreas));
       data.append("insurancePolicyNumber", insurancePolicyNumber.trim());
       data.append("emergencyContact", emergencyDigits);
+      data.append("referralPhone", referralDigits);
       data.append("coverLetter", coverLetter.trim());
       data.append("message", message.trim());
       data.append("idProof", idProofItem.file);
+      data.append("headshot", headshotItem.file);
       data.append("resume", resumeItem.file);
 
       const res = await fetch("/api/career", {
@@ -729,6 +866,18 @@ export default function CareerForm() {
           autoComplete="email"
         />
 
+        <CareerSingleSelect
+          id={`${formId}-gender`}
+          label="Gender"
+          options={GENDER_OPTIONS}
+          value={gender}
+          onChange={setGender}
+          placeholder="Select your gender"
+          active={activeInput === "gender"}
+          onOpen={() => setActiveInput("gender")}
+          onClose={() => setActiveInput(null)}
+        />
+
         <CareerDropdown
           id={`${formId}-expertise`}
           label="Area of Expertise"
@@ -756,6 +905,27 @@ export default function CareerForm() {
         />
 
         <CareerFileUpload
+          id={`${formId}-headshot`}
+          label="Headshot"
+          accept={HEADSHOT_ACCEPT}
+          file={headshotItem}
+          onBrowse={(files) =>
+            setSingleFile(files, setHeadshotItem, headshotInputRef)
+          }
+          onRemove={() => {
+            setHeadshotItem((prev) => {
+              revokeFileItem(prev);
+              return null;
+            });
+            if (headshotInputRef.current) headshotInputRef.current.value = "";
+          }}
+          inputRef={headshotInputRef}
+          active={activeInput === "headshot"}
+          onFocus={() => setActiveInput("headshot")}
+          onBlur={() => setActiveInput(null)}
+        />
+
+        <CareerFileUpload
           id={`${formId}-id-proof`}
           label="ID Proof"
           accept={DOCUMENT_ACCEPT}
@@ -774,6 +944,18 @@ export default function CareerForm() {
           active={activeInput === "idProof"}
           onFocus={() => setActiveInput("idProof")}
           onBlur={() => setActiveInput(null)}
+        />
+
+        <CareerSingleSelect
+          id={`${formId}-city`}
+          label="Preferred City"
+          options={PREFERRED_CITIES}
+          value={preferredCity}
+          onChange={setPreferredCity}
+          placeholder="Select your preferred city"
+          active={activeInput === "preferredCity"}
+          onOpen={() => setActiveInput("preferredCity")}
+          onClose={() => setActiveInput(null)}
         />
 
         <CareerDropdown
@@ -815,6 +997,19 @@ export default function CareerForm() {
           placeholder="Enter your emergency contact number"
           active={activeInput === "emergencyPhone"}
           onFocus={() => setActiveInput("emergencyPhone")}
+          onBlur={() => setActiveInput(null)}
+        />
+
+        <CareerLabel htmlFor={`${formId}-referral`}>
+          Referral Phone Number
+        </CareerLabel>
+        <CareerPhoneInput
+          id={`${formId}-referral`}
+          value={referralPhone}
+          onChange={setReferralPhone}
+          placeholder="Enter referral phone number (optional)"
+          active={activeInput === "referralPhone"}
+          onFocus={() => setActiveInput("referralPhone")}
           onBlur={() => setActiveInput(null)}
         />
 

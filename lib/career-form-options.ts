@@ -1,3 +1,12 @@
+export const GENDER_OPTIONS = ["Male", "Female", "Other"] as const;
+
+export const PREFERRED_CITIES = [
+  "Kathmandu",
+  "Lalitpur",
+  "Bhaktapur",
+  "Other",
+] as const;
+
 /** Preferred Working Area — Kathmandu areas for join form. */
 export const PREFERRED_WORKING_AREAS = [
   "Asan",

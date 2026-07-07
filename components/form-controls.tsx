@@ -2,186 +2,9 @@
 
 import { useEffect, useId, useMemo, useRef, useState } from "react";
 
-export const BORDER = "#E2E8F0";
-export const FOCUS_BORDER = "#295C59";
-export const FOCUS_BG = "#EFF8F7";
+export const BORDER = "#d1d5db";
 
 export const FORM_STACK_CLASS = "rs-form-stack";
-
-/** Mobile app input styles (HomeSewa Book/Career/Partnership). */
-export const INPUT_BASE =
-  "w-full rounded-xl border-[1.5px] border-[#E2E8F0] bg-white px-3.5 text-[15px] font-medium text-[#1A1A1A] outline-none transition-colors placeholder:text-[#4B4B4B]";
-export const INPUT_ACTIVE = "border-[#295C59] bg-[#EFF8F7]";
-export const LABEL_CLASS =
-  "mb-1.5 pl-1 text-[14px] font-semibold text-[#4A4A4A]";
-
-export function inputClass(active?: boolean, extra?: string) {
-  return [INPUT_BASE, "mb-5 h-11", active ? INPUT_ACTIVE : "", extra]
-    .filter(Boolean)
-    .join(" ");
-}
-
-export function textareaClass(active?: boolean, extra?: string) {
-  return [INPUT_BASE, "mb-5 resize-y py-3", active ? INPUT_ACTIVE : "", extra]
-    .filter(Boolean)
-    .join(" ");
-}
-
-export function RequiredMark() {
-  return <span className="text-red-600"> *</span>;
-}
-
-export function FormLabel({
-  htmlFor,
-  children,
-  required,
-}: {
-  htmlFor?: string;
-  children: React.ReactNode;
-  required?: boolean;
-}) {
-  return (
-    <label htmlFor={htmlFor} className={LABEL_CLASS}>
-      {children}
-      {required ? <RequiredMark /> : null}
-    </label>
-  );
-}
-
-const onlyDigits = (v: string) => v.replace(/[^0-9]/g, "");
-
-export function formatPhoneDisplay(value: string): string {
-  const cleaned = onlyDigits(value).slice(0, 10);
-  if (cleaned.length > 6) {
-    return `${cleaned.slice(0, 3)} ${cleaned.slice(3, 6)} ${cleaned.slice(6)}`;
-  }
-  if (cleaned.length > 3) {
-    return `${cleaned.slice(0, 3)} ${cleaned.slice(3)}`;
-  }
-  return cleaned;
-}
-
-export function FormPhoneInput({
-  id,
-  value,
-  onChange,
-  placeholder,
-  active,
-  onFocus,
-  onBlur,
-  maxLength = 12,
-  className,
-}: {
-  id: string;
-  value: string;
-  onChange: (v: string) => void;
-  placeholder: string;
-  active?: boolean;
-  onFocus?: () => void;
-  onBlur?: () => void;
-  maxLength?: number;
-  className?: string;
-}) {
-  return (
-    <div className={`relative mb-5 ${className ?? ""}`}>
-      <span
-        className="pointer-events-none absolute left-3.5 top-1/2 z-10 -translate-y-1/2 text-lg"
-        aria-hidden
-      >
-        🇳🇵
-      </span>
-      <input
-        id={id}
-        type="tel"
-        inputMode="numeric"
-        maxLength={maxLength}
-        className={`${INPUT_BASE} h-11 pl-12 pr-2.5 ${active ? INPUT_ACTIVE : ""}`}
-        placeholder={placeholder}
-        value={value}
-        onFocus={onFocus}
-        onBlur={onBlur}
-        onChange={(e) => onChange(formatPhoneDisplay(e.target.value))}
-        autoComplete="tel"
-      />
-    </div>
-  );
-}
-
-export function ClearFormDialog({
-  open,
-  onCancel,
-  onConfirm,
-}: {
-  open: boolean;
-  onCancel: () => void;
-  onConfirm: () => void;
-}) {
-  useEffect(() => {
-    if (!open) return;
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onCancel();
-    };
-    document.addEventListener("keydown", onKey);
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.removeEventListener("keydown", onKey);
-      document.body.style.overflow = prev;
-    };
-  }, [open, onCancel]);
-
-  if (!open) return null;
-
-  return (
-    <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4"
-      role="presentation"
-      onMouseDown={(e) => {
-        if (e.target === e.currentTarget) onCancel();
-      }}
-    >
-      <div
-        role="alertdialog"
-        aria-modal="true"
-        aria-labelledby="clear-form-title"
-        aria-describedby="clear-form-desc"
-        className="w-full max-w-[320px] overflow-hidden rounded-2xl bg-white shadow-xl"
-      >
-        <div className="px-5 pb-4 pt-5 text-center">
-          <h3
-            id="clear-form-title"
-            className="text-[17px] font-semibold text-[#1A1A1A]"
-          >
-            Clear Form
-          </h3>
-          <p
-            id="clear-form-desc"
-            className="mt-2 text-[14px] leading-relaxed text-[#4A4A4A]"
-          >
-            Are you sure you want to clear all fields?
-          </p>
-        </div>
-        <div className="flex border-t border-[#E2E8F0]">
-          <button
-            type="button"
-            onClick={onCancel}
-            className="flex-1 py-3.5 text-[16px] font-medium text-[#0a7de1] transition-colors hover:bg-[#EFF8F7]"
-          >
-            Cancel
-          </button>
-          <div className="w-px bg-[#E2E8F0]" aria-hidden />
-          <button
-            type="button"
-            onClick={onConfirm}
-            className="flex-1 py-3.5 text-[16px] font-semibold text-red-600 transition-colors hover:bg-red-50"
-          >
-            Yes, Clear
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-}
 
 function ChevronDown({ className }: { className?: string }) {
   return (
@@ -232,23 +55,21 @@ export function ResetIcon({ className }: { className?: string }) {
 }
 
 export function fieldLabelClass() {
-  return LABEL_CLASS;
+  return "text-[13px] font-normal text-gray-700";
 }
 
-export function textInputClass(active?: boolean) {
+export function textInputClass() {
   return [
-    INPUT_BASE,
-    "h-11",
-    active ? INPUT_ACTIVE : "focus:border-[#295C59] focus:bg-[#EFF8F7]",
+    "w-full rounded border border-gray-300 bg-white px-3 py-2.5 text-[15px] text-gray-900",
+    "placeholder:text-gray-400 outline-none transition-colors",
+    "focus:border-gray-400 focus:ring-1 focus:ring-gray-200",
   ].join(" ");
 }
 
-export function selectButtonClass(active?: boolean) {
+export function selectButtonClass() {
   return [
-    "flex w-full min-h-11 items-center justify-between gap-2 rounded-xl border-[1.5px] px-3.5 py-2.5 text-left text-[15px] font-medium outline-none transition-colors",
-    active
-      ? "border-[#295C59] bg-[#EFF8F7]"
-      : "border-[#E2E8F0] bg-white focus:border-[#295C59] focus:bg-[#EFF8F7]",
+    "flex w-full min-h-[42px] items-center justify-between gap-2 rounded border border-gray-300 bg-white px-3 py-2.5 text-left text-[15px] text-gray-900",
+    "outline-none transition-colors focus:border-gray-400 focus:ring-1 focus:ring-gray-200",
   ].join(" ");
 }
 
@@ -262,7 +83,7 @@ export type FormSelectProps = {
   placeholder?: string;
 };
 
-/** Full-width dropdown (mobile app style). */
+/** Full-width dropdown (tackles.pro style). */
 export function FormSelect({
   id,
   label,
@@ -273,7 +94,6 @@ export function FormSelect({
   placeholder = "Select…",
 }: FormSelectProps) {
   const [open, setOpen] = useState(false);
-  const [focused, setFocused] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -284,13 +104,11 @@ export function FormSelect({
     return () => document.removeEventListener("mousedown", onDoc);
   }, []);
 
-  const active = focused || open;
-
   return (
-    <div className="mb-5 flex flex-col">
+    <div className="flex flex-col gap-1">
       <label htmlFor={id} className={fieldLabelClass()}>
         {label}
-        {required ? <RequiredMark /> : null}
+        {required ? <span className="text-red-600"> *</span> : null}
       </label>
       <div ref={rootRef} className="relative">
         <button
@@ -299,25 +117,23 @@ export function FormSelect({
           aria-expanded={open}
           aria-haspopup="listbox"
           onClick={() => setOpen((o) => !o)}
-          onFocus={() => setFocused(true)}
-          onBlur={() => setFocused(false)}
-          className={selectButtonClass(active)}
+          className={selectButtonClass()}
         >
-          <span className={value ? "text-[#1A1A1A]" : "text-[#4B4B4B]"}>
+          <span className={value ? "text-gray-900" : "text-gray-400"}>
             {value || placeholder}
           </span>
-          <ChevronDown className="shrink-0 text-[#4B4B4B]" />
+          <ChevronDown className="shrink-0 text-gray-500" />
         </button>
         {open ? (
           <ul
             role="listbox"
-            className="absolute z-30 mt-1 max-h-56 w-full overflow-auto rounded-xl border border-[#E2E8F0] bg-white py-1 shadow-lg"
+            className="absolute z-30 mt-1 max-h-56 w-full overflow-auto rounded border border-gray-200 bg-white py-1 shadow-lg"
           >
             {options.map((opt) => (
               <li key={opt} role="option" aria-selected={value === opt}>
                 <button
                   type="button"
-                  className="w-full px-3.5 py-2.5 text-left text-[15px] text-[#1A1A1A] hover:bg-[#EFF8F7]"
+                  className="w-full px-3 py-2.5 text-left text-[15px] text-gray-800 hover:bg-gray-50"
                   onClick={() => {
                     onChange(opt);
                     setOpen(false);
@@ -361,7 +177,6 @@ export function SearchableSelect({
   const [query, setQuery] = useState(value);
   const [open, setOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
-  const [focused, setFocused] = useState(false);
 
   useEffect(() => {
     setQuery(value);
@@ -389,10 +204,10 @@ export function SearchableSelect({
   };
 
   return (
-    <div className="mb-5 flex flex-col">
+    <div className="flex flex-col gap-1">
       <label htmlFor={id} className={fieldLabelClass()}>
         {label}
-        {required ? <RequiredMark /> : null}
+        {required ? <span className="text-red-600"> *</span> : null}
       </label>
       <div ref={rootRef} className="relative">
         <div className="relative">
@@ -404,7 +219,7 @@ export function SearchableSelect({
             aria-controls={listId}
             aria-autocomplete="list"
             autoComplete="off"
-            className={textInputClass(focused || open) + " pr-9"}
+            className={textInputClass() + " pr-9"}
             placeholder={placeholder}
             value={query}
             onChange={(e) => {
@@ -413,11 +228,7 @@ export function SearchableSelect({
               setActiveIndex(-1);
               if (!e.target.value.trim()) onChange("");
             }}
-            onFocus={() => {
-              setOpen(true);
-              setFocused(true);
-            }}
-            onBlur={() => setFocused(false)}
+            onFocus={() => setOpen(true)}
             onKeyDown={(e) => {
               if (!open && (e.key === "ArrowDown" || e.key === "Enter")) {
                 setOpen(true);
@@ -440,7 +251,7 @@ export function SearchableSelect({
               }
             }}
           />
-          <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-[#4B4B4B]">
+          <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-500">
             <ChevronDown />
           </span>
         </div>
@@ -448,16 +259,16 @@ export function SearchableSelect({
           <ul
             id={listId}
             role="listbox"
-            className="absolute z-40 mt-1 max-h-52 w-full overflow-auto rounded-xl border border-[#E2E8F0] bg-white py-1 shadow-lg"
+            className="absolute z-40 mt-1 max-h-52 w-full overflow-auto rounded border border-gray-200 bg-white py-1 shadow-lg"
           >
             {filtered.map((opt, i) => (
               <li key={opt} role="option" aria-selected={value === opt}>
                 <button
                   type="button"
-                  className={`w-full px-3.5 py-2.5 text-left text-[15px] ${
+                  className={`w-full px-3 py-2.5 text-left text-[15px] ${
                     i === activeIndex
-                      ? "bg-[#EFF8F7] text-[#1A1A1A]"
-                      : "text-[#1A1A1A] hover:bg-[#EFF8F7]"
+                      ? "bg-gray-100 text-gray-900"
+                      : "text-gray-800 hover:bg-gray-50"
                   }`}
                   onMouseEnter={() => setActiveIndex(i)}
                   onClick={() => pick(opt)}
@@ -469,13 +280,13 @@ export function SearchableSelect({
           </ul>
         ) : null}
         {open && query.trim() && filtered.length === 0 ? (
-          <p className="absolute z-40 mt-1 w-full rounded-xl border border-[#E2E8F0] bg-white px-3 py-2 text-[14px] text-[#4B4B4B] shadow-lg">
+          <p className="absolute z-40 mt-1 w-full rounded border border-gray-200 bg-white px-3 py-2 text-[14px] text-gray-500 shadow-lg">
             No matching area
           </p>
         ) : null}
       </div>
       {hint ? (
-        <p className="mt-1 text-[12px] text-[#4B4B4B]">{hint}</p>
+        <p className="text-[12px] text-gray-500">{hint}</p>
       ) : null}
     </div>
   );
@@ -515,35 +326,35 @@ export function MultiServiceSelect({
   const remaining = options.filter((o) => !values.includes(o));
 
   return (
-    <div className="mb-5 flex flex-col">
+    <div className="flex flex-col gap-1">
       <span id={`${id}-label`} className={fieldLabelClass()}>
         {label}
-        {required ? <RequiredMark /> : null}
+        {required ? <span className="text-red-600"> *</span> : null}
       </span>
       <div ref={rootRef} className="relative">
         <div
-          className="flex min-h-11 flex-wrap items-center gap-2 rounded-xl border-[1.5px] border-[#E2E8F0] bg-white px-2 py-2"
+          className="flex min-h-[42px] flex-wrap items-center gap-2 rounded border border-gray-300 bg-white px-2 py-2"
           aria-labelledby={`${id}-label`}
         >
           <button
             type="button"
             aria-expanded={open}
             aria-haspopup="listbox"
-            className="inline-flex h-8 shrink-0 items-center gap-1 rounded-lg border border-[#E2E8F0] bg-[#EFF8F7] px-2 text-[14px] font-medium text-[#295C59] hover:bg-[#E2E8F0]/50"
+            className="inline-flex h-8 shrink-0 items-center gap-1 rounded border border-gray-200 bg-gray-50 px-2 text-[14px] text-gray-700 hover:bg-gray-100"
             onClick={() => setOpen((o) => !o)}
           >
-            <span className="text-lg leading-none">+</span>
+            <span className="text-lg leading-none text-gray-600">+</span>
             {addButtonLabel}
           </button>
           {values.map((v) => (
             <span
               key={v}
-              className="inline-flex max-w-full items-center gap-1 rounded-lg bg-[#EFF8F7] px-2 py-1 text-[13px] font-medium text-[#1A1A1A]"
+              className="inline-flex max-w-full items-center gap-1 rounded bg-gray-100 px-2 py-1 text-[13px] text-gray-800"
             >
               <span className="truncate">{v}</span>
               <button
                 type="button"
-                className="text-[#4B4B4B] hover:text-[#1A1A1A]"
+                className="text-gray-500 hover:text-gray-900"
                 aria-label={`Remove ${v}`}
                 onClick={() => onChange(values.filter((x) => x !== v))}
               >
@@ -555,13 +366,13 @@ export function MultiServiceSelect({
         {open && remaining.length > 0 ? (
           <ul
             role="listbox"
-            className="absolute z-40 mt-1 max-h-56 w-full overflow-auto rounded-xl border border-[#E2E8F0] bg-white py-1 shadow-lg"
+            className="absolute z-40 mt-1 max-h-56 w-full overflow-auto rounded border border-gray-200 bg-white py-1 shadow-lg"
           >
             {remaining.map((opt) => (
               <li key={opt} role="option">
                 <button
                   type="button"
-                  className="w-full px-3.5 py-2.5 text-left text-[15px] text-[#1A1A1A] hover:bg-[#EFF8F7]"
+                  className="w-full px-3 py-2.5 text-left text-[15px] text-gray-800 hover:bg-gray-50"
                   onClick={() => {
                     onChange([...values, opt]);
                     setOpen(false);
@@ -610,21 +421,21 @@ export function PhotoDropzone({
   inputRef,
 }: PhotoDropzoneProps) {
   return (
-    <div className="mb-5 flex flex-col gap-2">
+    <div className="flex flex-col gap-2">
       <span className={fieldLabelClass()}>{label}</span>
       <label
         htmlFor={inputId}
         onDragOver={onDragOver}
         onDragLeave={onDragLeave}
         onDrop={onDrop}
-        className={`flex min-h-[140px] cursor-pointer flex-col items-center justify-center rounded-xl border-[1.5px] border-dashed px-4 py-8 text-center transition-colors ${
+        className={`flex min-h-[140px] cursor-pointer flex-col items-center justify-center rounded border-2 border-dashed px-4 py-8 text-center transition-colors ${
           dragOver
-            ? "border-[#295C59] bg-[#EFF8F7]"
-            : "border-[#295C59] bg-white hover:bg-[#EFF8F7]/50"
+            ? "border-gray-500 bg-gray-50"
+            : "border-gray-300 bg-white hover:border-gray-400 hover:bg-gray-50/50"
         } ${disabled ? "pointer-events-none opacity-60" : ""}`}
       >
         <svg
-          className="mb-2 h-8 w-8 text-[#295C59]"
+          className="mb-2 h-8 w-8 text-gray-400"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -637,11 +448,11 @@ export function PhotoDropzone({
             d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
           />
         </svg>
-        <span className="text-[15px] font-medium text-[#295C59]">
+        <span className="text-[15px] text-gray-700">
           Drop files here or{" "}
-          <span className="underline">browse</span>
+          <span className="text-blue-600 underline">browse</span>
         </span>
-        <span className="mt-1 text-[12px] text-[#4B4B4B]">
+        <span className="mt-1 text-[12px] text-gray-500">
           {photoCount}/{maxPhotos} images · max 5 MB each
         </span>
         <input
@@ -660,7 +471,7 @@ export function PhotoDropzone({
           {previews.map((item, i) => (
             <li
               key={item.id}
-              className="relative h-24 w-24 shrink-0 overflow-hidden rounded-lg border border-[#E2E8F0] bg-[#EFF8F7] sm:h-28 sm:w-28"
+              className="relative h-24 w-24 shrink-0 overflow-hidden rounded border border-gray-200 bg-gray-100 sm:h-28 sm:w-28"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
@@ -719,24 +530,24 @@ export function FileDropzone({
   inputRef,
 }: FileDropzoneProps) {
   return (
-    <div className="mb-5 flex flex-col gap-2">
+    <div className="flex flex-col gap-2">
       <span className={fieldLabelClass()}>
         {label}
-        {required ? <RequiredMark /> : null}
+        {required ? <span className="text-red-600"> *</span> : null}
       </span>
       <label
         htmlFor={inputId}
         onDragOver={onDragOver}
         onDragLeave={onDragLeave}
         onDrop={onDrop}
-        className={`flex min-h-[140px] cursor-pointer flex-col items-center justify-center rounded-xl border-[1.5px] border-dashed px-4 py-8 text-center transition-colors ${
+        className={`flex min-h-[140px] cursor-pointer flex-col items-center justify-center rounded border-2 border-dashed px-4 py-8 text-center transition-colors ${
           dragOver
-            ? "border-[#295C59] bg-[#EFF8F7]"
-            : "border-[#295C59] bg-white hover:bg-[#EFF8F7]/50"
+            ? "border-gray-500 bg-gray-50"
+            : "border-gray-300 bg-white hover:border-gray-400 hover:bg-gray-50/50"
         } ${disabled ? "pointer-events-none opacity-60" : ""}`}
       >
         <svg
-          className="mb-2 h-8 w-8 text-[#295C59]"
+          className="mb-2 h-8 w-8 text-gray-400"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -749,11 +560,11 @@ export function FileDropzone({
             d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
           />
         </svg>
-        <span className="text-[15px] font-medium text-[#295C59]">
+        <span className="text-[15px] text-gray-700">
           Drop files here or{" "}
-          <span className="underline">browse</span>
+          <span className="text-blue-600 underline">browse</span>
         </span>
-        <span className="mt-1 text-[12px] text-[#4B4B4B]">{hint}</span>
+        <span className="mt-1 text-[12px] text-gray-500">{hint}</span>
         <input
           ref={inputRef}
           id={inputId}
@@ -765,9 +576,9 @@ export function FileDropzone({
         />
       </label>
       {file ? (
-        <div className="flex items-start gap-3 rounded-xl border border-[#E2E8F0] bg-[#EFF8F7] p-3">
+        <div className="flex items-start gap-3 rounded border border-gray-200 bg-gray-50 p-3">
           {file.previewUrl ? (
-            <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-lg border border-[#E2E8F0] bg-white">
+            <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded border border-gray-200 bg-white">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={file.previewUrl}
@@ -777,11 +588,11 @@ export function FileDropzone({
             </div>
           ) : null}
           <div className="min-w-0 flex-1">
-            <p className="truncate text-[14px] font-medium text-[#1A1A1A]">{file.name}</p>
+            <p className="truncate text-[14px] text-gray-800">{file.name}</p>
           </div>
           <button
             type="button"
-            className="shrink-0 text-[18px] text-[#4B4B4B] hover:text-[#1A1A1A]"
+            className="shrink-0 text-[14px] text-gray-500 hover:text-gray-900"
             aria-label={`Remove ${file.name}`}
             onClick={onRemove}
           >
