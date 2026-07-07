@@ -20,8 +20,6 @@ const onlyDigits = (v: string) => v.replace(/[^0-9]/g, "");
 const DOCUMENT_ACCEPT =
   "image/*,.heic,.heif,.pdf,application/pdf";
 const HEADSHOT_ACCEPT = "image/*,.heic,.heif";
-const RESUME_ACCEPT =
-  ".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document";
 
 const INPUT_BASE =
   "w-full rounded-xl border-[1.5px] border-[#E2E8F0] bg-white px-3.5 text-[15px] font-medium text-[#1A1A1A] outline-none transition-colors placeholder:text-[#4B4B4B]";
@@ -558,7 +556,6 @@ export default function CareerForm() {
   const formId = useId();
   const idProofInputRef = useRef<HTMLInputElement>(null);
   const headshotInputRef = useRef<HTMLInputElement>(null);
-  const resumeInputRef = useRef<HTMLInputElement>(null);
 
   const [fullName, setFullName] = useState("");
   const [phone, setPhone] = useState("");
@@ -568,28 +565,22 @@ export default function CareerForm() {
   const [yearsExperience, setYearsExperience] = useState("");
   const [preferredCity, setPreferredCity] = useState("");
   const [preferredAreas, setPreferredAreas] = useState<string[]>([]);
-  const [insurancePolicyNumber, setInsurancePolicyNumber] = useState("");
   const [emergencyContact, setEmergencyContact] = useState("");
   const [referralPhone, setReferralPhone] = useState("");
-  const [coverLetter, setCoverLetter] = useState("");
   const [message, setMessage] = useState("");
   const [idProofItem, setIdProofItem] = useState<FileItem | null>(null);
   const [headshotItem, setHeadshotItem] = useState<FileItem | null>(null);
-  const [resumeItem, setResumeItem] = useState<FileItem | null>(null);
   const [activeInput, setActiveInput] = useState<string | null>(null);
 
   const idProofRef = useRef<FileItem | null>(null);
   const headshotRef = useRef<FileItem | null>(null);
-  const resumeRef = useRef<FileItem | null>(null);
   idProofRef.current = idProofItem;
   headshotRef.current = headshotItem;
-  resumeRef.current = resumeItem;
 
   useEffect(() => {
     return () => {
       revokeFileItem(idProofRef.current);
       revokeFileItem(headshotRef.current);
-      revokeFileItem(resumeRef.current);
     };
   }, []);
 
@@ -608,10 +599,8 @@ export default function CareerForm() {
     setYearsExperience("");
     setPreferredCity("");
     setPreferredAreas([]);
-    setInsurancePolicyNumber("");
     setEmergencyContact("");
     setReferralPhone("");
-    setCoverLetter("");
     setMessage("");
     setIdProofItem((prev) => {
       revokeFileItem(prev);
@@ -621,15 +610,10 @@ export default function CareerForm() {
       revokeFileItem(prev);
       return null;
     });
-    setResumeItem((prev) => {
-      revokeFileItem(prev);
-      return null;
-    });
     setActiveInput(null);
     setSubmitError(null);
     if (idProofInputRef.current) idProofInputRef.current.value = "";
     if (headshotInputRef.current) headshotInputRef.current.value = "";
-    if (resumeInputRef.current) resumeInputRef.current.value = "";
   }, []);
 
   const handleClearForm = () => {
@@ -734,11 +718,6 @@ export default function CareerForm() {
       return;
     }
 
-    if (!insurancePolicyNumber.trim()) {
-      setSubmitError("Policy number is required.");
-      return;
-    }
-
     if (!emergencyDigits || emergencyDigits.length !== 10) {
       setSubmitError("Enter a valid emergency contact number.");
       return;
@@ -746,16 +725,6 @@ export default function CareerForm() {
 
     if (referralDigits && referralDigits.length !== 10) {
       setSubmitError("Enter a valid 10-digit referral phone number.");
-      return;
-    }
-
-    if (!resumeItem?.file) {
-      setSubmitError("Please upload your CV.");
-      return;
-    }
-
-    if (!coverLetter.trim()) {
-      setSubmitError("Cover message is required.");
       return;
     }
 
@@ -775,14 +744,11 @@ export default function CareerForm() {
       data.append("yearsExperience", yearsExperience);
       data.append("preferredCity", preferredCity);
       data.append("preferredAreas", JSON.stringify(preferredAreas));
-      data.append("insurancePolicyNumber", insurancePolicyNumber.trim());
       data.append("emergencyContact", emergencyDigits);
       data.append("referralPhone", referralDigits);
-      data.append("coverLetter", coverLetter.trim());
       data.append("message", message.trim());
       data.append("idProof", idProofItem.file);
       data.append("headshot", headshotItem.file);
-      data.append("resume", resumeItem.file);
 
       const res = await fetch("/api/career", {
         method: "POST",
@@ -971,22 +937,6 @@ export default function CareerForm() {
           onClose={() => setActiveInput(null)}
         />
 
-        <CareerLabel htmlFor={`${formId}-insurance`}>
-          Insurance Policy Number
-        </CareerLabel>
-        <input
-          id={`${formId}-insurance`}
-          className={inputClass("policy")}
-          placeholder="Enter the insurance policy number"
-          value={insurancePolicyNumber}
-          inputMode="numeric"
-          onFocus={() => setActiveInput("policy")}
-          onBlur={() => setActiveInput(null)}
-          onChange={(e) =>
-            setInsurancePolicyNumber(onlyDigits(e.target.value))
-          }
-        />
-
         <CareerLabel htmlFor={`${formId}-emergency`}>
           Emergency Contact Number
         </CareerLabel>
@@ -1011,40 +961,6 @@ export default function CareerForm() {
           active={activeInput === "referralPhone"}
           onFocus={() => setActiveInput("referralPhone")}
           onBlur={() => setActiveInput(null)}
-        />
-
-        <CareerFileUpload
-          id={`${formId}-resume`}
-          label="CV/Resume"
-          accept={RESUME_ACCEPT}
-          file={resumeItem}
-          onBrowse={(files) =>
-            setSingleFile(files, setResumeItem, resumeInputRef)
-          }
-          onRemove={() => {
-            setResumeItem((prev) => {
-              revokeFileItem(prev);
-              return null;
-            });
-            if (resumeInputRef.current) resumeInputRef.current.value = "";
-          }}
-          inputRef={resumeInputRef}
-          active={activeInput === "resume"}
-          onFocus={() => setActiveInput("resume")}
-          onBlur={() => setActiveInput(null)}
-        />
-
-        <CareerLabel htmlFor={`${formId}-cover`}>Cover Letter</CareerLabel>
-        <textarea
-          id={`${formId}-cover`}
-          rows={5}
-          className={`${INPUT_BASE} mb-5 min-h-[120px] resize-y py-3 ${
-            activeInput === "coverLetter" ? INPUT_ACTIVE : ""
-          }`}
-          value={coverLetter}
-          onFocus={() => setActiveInput("coverLetter")}
-          onBlur={() => setActiveInput(null)}
-          onChange={(e) => setCoverLetter(e.target.value)}
         />
 
         <CareerLabel htmlFor={`${formId}-message`}>Message</CareerLabel>

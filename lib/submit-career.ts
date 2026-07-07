@@ -39,14 +39,11 @@ export type JoinProfessionalPayload = {
   yearsExperience: string;
   preferredCity: string;
   preferredAreas: string[];
-  insurancePolicyNumber: string;
   emergencyContact: string;
   referralPhone: string;
-  coverLetter: string;
   message: string;
   idProof: File | null;
   headshot: File | null;
-  resume: File | null;
 };
 
 /** @deprecated Use JoinProfessionalPayload */
@@ -58,7 +55,6 @@ async function parseMultipart(
   const form = await request.formData();
   const idRaw = form.get("idProof");
   const headshotRaw = form.get("headshot");
-  const resumeRaw = form.get("resume");
 
   return {
     fullName: String(form.get("fullName") ?? "").trim(),
@@ -69,17 +65,12 @@ async function parseMultipart(
     yearsExperience: String(form.get("yearsExperience") ?? "").trim(),
     preferredCity: String(form.get("preferredCity") ?? "").trim(),
     preferredAreas: parseStringArray(form.get("preferredAreas")),
-    insurancePolicyNumber: String(
-      form.get("insurancePolicyNumber") ?? "",
-    ).trim(),
     emergencyContact: String(form.get("emergencyContact") ?? "").trim(),
     referralPhone: String(form.get("referralPhone") ?? "").trim(),
-    coverLetter: String(form.get("coverLetter") ?? "").trim(),
     message: String(form.get("message") ?? "").trim(),
     idProof: idRaw instanceof File && idRaw.size > 0 ? idRaw : null,
     headshot:
       headshotRaw instanceof File && headshotRaw.size > 0 ? headshotRaw : null,
-    resume: resumeRaw instanceof File && resumeRaw.size > 0 ? resumeRaw : null,
   };
 }
 
@@ -169,20 +160,6 @@ export async function handleJoinProfessionalSubmission(
     }
   }
 
-  let resumeUrl: string | null = null;
-  let resumeFilename: string | null = null;
-  if (payload.resume) {
-    try {
-      resumeUrl = await uploadFormFile("join/resume", payload.resume);
-      resumeFilename = payload.resume.name;
-    } catch (err) {
-      const msg = err instanceof Error ? err.message : "Upload failed";
-      warnings.push(
-        `Resume could not be uploaded: ${payload.resume.name}: ${msg}.`,
-      );
-    }
-  }
-
   const { firstName, middleName, lastName } = splitFullName(payload.fullName);
   const expertise = [...new Set(payload.expertise.map((s) => s.trim()).filter(Boolean))];
   const now = new Date().toISOString();
@@ -205,15 +182,11 @@ export async function handleJoinProfessionalSubmission(
         preferred_city: payload.preferredCity || null,
         working_areas:
           payload.preferredAreas.length > 0 ? payload.preferredAreas : [],
-        insurance_policy_number: payload.insurancePolicyNumber || null,
         emergency_contact: payload.emergencyContact || null,
         referral_phone: payload.referralPhone || null,
-        cover_letter: payload.coverLetter || null,
         issues: payload.message || null,
         government_issued_id_filename: idProofFilename,
         government_issued_id_url: idProofUrl,
-        resume_filename: resumeFilename,
-        resume_url: resumeUrl,
         profile_status: WORKFORCE_STATUS.waiting,
         created_date: now,
         submitted_at: now,
