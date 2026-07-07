@@ -205,7 +205,7 @@ export default function ServicesExplorer() {
       {/* Locator / filter bar */}
       <div
         ref={toolbarRef}
-        className={`services-toolbar sticky z-50 mx-auto mb-10 w-full max-w-4xl rounded-2xl border border-teal-100 bg-white px-4 py-4 sm:px-5 ${
+        className={`services-toolbar sticky z-30 mx-auto mb-10 w-full max-w-4xl rounded-2xl border border-teal-100 bg-white px-4 py-4 sm:px-5 ${
           isStuck ? "shadow-lg ring-1 ring-teal-100/80 max-lg:py-3" : ""
         }`}
         style={{ top: stickyTop }}

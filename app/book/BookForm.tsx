@@ -17,32 +17,18 @@ import {
   getBookingToday,
 } from "@/lib/booking-datetime";
 import { resolveBookingService } from "@/lib/service-booking-map";
-
-const onlyDigits = (v: string) => v.replace(/[^0-9]/g, "");
-
-const INPUT_BASE =
-  "w-full rounded-xl border-[1.5px] border-[#E2E8F0] bg-white px-3.5 text-[15px] font-medium text-[#1A1A1A] outline-none transition-colors placeholder:text-[#4B4B4B]";
-const INPUT_ACTIVE = "border-[hsl(142,71%,45%)] bg-[#F4F7FF]";
-const LABEL_CLASS =
-  "mb-1.5 pl-1 text-[14px] font-semibold text-[#4A4A4A]";
-
-function formatPhoneDisplay(value: string): string {
-  const cleaned = onlyDigits(value).slice(0, 10);
-  if (cleaned.length > 6) {
-    return `${cleaned.slice(0, 3)} ${cleaned.slice(3, 6)} ${cleaned.slice(6)}`;
-  }
-  if (cleaned.length > 3) {
-    return `${cleaned.slice(0, 3)} ${cleaned.slice(3)}`;
-  }
-  return cleaned;
-}
+import {
+  ClearFormDialog,
+  FormLabel,
+  FormPhoneInput,
+  INPUT_ACTIVE,
+  INPUT_BASE,
+  LABEL_CLASS,
+  RequiredMark,
+} from "@/components/form-controls";
 
 function stripPhoneSpaces(value: string): string {
   return value.replace(/\s/g, "");
-}
-
-function RequiredMark() {
-  return <span className="text-red-600">*</span>;
 }
 
 function ChevronDown() {
@@ -63,65 +49,6 @@ function ChevronDown() {
         strokeLinejoin="round"
       />
     </svg>
-  );
-}
-
-function FormLabel({
-  htmlFor,
-  children,
-  required,
-}: {
-  htmlFor?: string;
-  children: React.ReactNode;
-  required?: boolean;
-}) {
-  return (
-    <label htmlFor={htmlFor} className={LABEL_CLASS}>
-      {children}
-      {required ? <RequiredMark /> : null}
-    </label>
-  );
-}
-
-function PhoneInput({
-  id,
-  value,
-  onChange,
-  placeholder,
-  active,
-  onFocus,
-  onBlur,
-}: {
-  id: string;
-  value: string;
-  onChange: (v: string) => void;
-  placeholder: string;
-  active: boolean;
-  onFocus: () => void;
-  onBlur: () => void;
-}) {
-  return (
-    <div className="relative mb-5">
-      <span
-        className="pointer-events-none absolute left-3.5 top-1/2 z-10 -translate-y-1/2 text-lg"
-        aria-hidden
-      >
-        🇳🇵
-      </span>
-      <input
-        id={id}
-        type="tel"
-        inputMode="numeric"
-        maxLength={12}
-        className={`${INPUT_BASE} h-11 pl-12 pr-2.5 ${active ? INPUT_ACTIVE : ""}`}
-        placeholder={placeholder}
-        value={value}
-        onFocus={onFocus}
-        onBlur={onBlur}
-        onChange={(e) => onChange(formatPhoneDisplay(e.target.value))}
-        autoComplete="tel"
-      />
-    </div>
   );
 }
 
@@ -184,7 +111,7 @@ function SingleSelect({
           onClick={toggle}
           className={`flex min-h-11 w-full items-center justify-between gap-2 rounded-xl border-[1.5px] px-3.5 py-2.5 text-left text-[15px] font-medium outline-none transition-colors ${
             active || open
-              ? "border-[hsl(142,71%,45%)] bg-[#F4F7FF]"
+              ? "border-[#295C59] bg-[#EFF8F7]"
               : "border-[#E2E8F0] bg-white"
           }`}
         >
@@ -202,7 +129,7 @@ function SingleSelect({
               <li key={opt} role="option" aria-selected={value === opt}>
                 <button
                   type="button"
-                  className="w-full px-3.5 py-2.5 text-left text-[15px] text-[#1A1A1A] hover:bg-[#F4F7FF]"
+                  className="w-full px-3.5 py-2.5 text-left text-[15px] text-[#1A1A1A] hover:bg-[#EFF8F7]"
                   onClick={() => {
                     onChange(opt);
                     setOpen(false);
@@ -215,82 +142,6 @@ function SingleSelect({
             ))}
           </ul>
         ) : null}
-      </div>
-    </div>
-  );
-}
-
-function ClearFormDialog({
-  open,
-  onCancel,
-  onConfirm,
-}: {
-  open: boolean;
-  onCancel: () => void;
-  onConfirm: () => void;
-}) {
-  useEffect(() => {
-    if (!open) return;
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onCancel();
-    };
-    document.addEventListener("keydown", onKey);
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.removeEventListener("keydown", onKey);
-      document.body.style.overflow = prev;
-    };
-  }, [open, onCancel]);
-
-  if (!open) return null;
-
-  return (
-    <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4"
-      role="presentation"
-      onMouseDown={(e) => {
-        if (e.target === e.currentTarget) onCancel();
-      }}
-    >
-      <div
-        role="alertdialog"
-        aria-modal="true"
-        aria-labelledby="clear-form-title"
-        aria-describedby="clear-form-desc"
-        className="w-full max-w-[320px] overflow-hidden rounded-2xl bg-white shadow-xl"
-      >
-        <div className="px-5 pb-4 pt-5 text-center">
-          <h3
-            id="clear-form-title"
-            className="text-[17px] font-semibold text-[#1A1A1A]"
-          >
-            Clear Form
-          </h3>
-          <p
-            id="clear-form-desc"
-            className="mt-2 text-[14px] leading-relaxed text-[#4A4A4A]"
-          >
-            Are you sure you want to clear all fields?
-          </p>
-        </div>
-        <div className="flex border-t border-[#E2E8F0]">
-          <button
-            type="button"
-            onClick={onCancel}
-            className="flex-1 py-3.5 text-[16px] font-medium text-[#0a7de1] transition-colors hover:bg-[#F0FDF4]"
-          >
-            Cancel
-          </button>
-          <div className="w-px bg-[#E2E8F0]" aria-hidden />
-          <button
-            type="button"
-            onClick={onConfirm}
-            className="flex-1 py-3.5 text-[16px] font-semibold text-red-600 transition-colors hover:bg-red-50"
-          >
-            Yes, Clear
-          </button>
-        </div>
       </div>
     </div>
   );
@@ -504,7 +355,7 @@ export default function BookForm() {
         <FormLabel htmlFor={`${formId}-phone`} required>
           Phone Number
         </FormLabel>
-        <PhoneInput
+        <FormPhoneInput
           id={`${formId}-phone`}
           value={phone}
           onChange={setPhone}

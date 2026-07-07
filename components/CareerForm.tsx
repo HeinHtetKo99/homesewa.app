@@ -22,7 +22,7 @@ const RESUME_ACCEPT =
 
 const INPUT_BASE =
   "w-full rounded-xl border-[1.5px] border-[#E2E8F0] bg-white px-3.5 text-[15px] font-medium text-[#1A1A1A] outline-none transition-colors placeholder:text-[#4B4B4B]";
-const INPUT_ACTIVE = "border-[hsl(142,71%,45%)] bg-[#F4F7FF]";
+const INPUT_ACTIVE = "border-[#295C59] bg-[#EFF8F7]";
 const LABEL_CLASS =
   "mb-1.5 pl-1 text-[14px] font-semibold text-[#4A4A4A]";
 
@@ -216,7 +216,7 @@ function CareerDropdown({
           onClick={toggle}
           className={`flex min-h-11 w-full items-center justify-between gap-2 rounded-xl border-[1.5px] px-3.5 py-2.5 text-left text-[15px] font-medium outline-none transition-colors ${
             active || open
-              ? "border-[hsl(142,71%,45%)] bg-[#F4F7FF]"
+              ? "border-[#295C59] bg-[#EFF8F7]"
               : "border-[#E2E8F0] bg-white"
           }`}
         >
@@ -238,7 +238,7 @@ function CareerDropdown({
               <li key={opt} role="option">
                 <button
                   type="button"
-                  className="w-full px-3.5 py-2.5 text-left text-[15px] text-[#1A1A1A] hover:bg-[#F4F7FF]"
+                  className="w-full px-3.5 py-2.5 text-left text-[15px] text-[#1A1A1A] hover:bg-[#EFF8F7]"
                   onClick={() => {
                     onChange([...values, opt]);
                     if (maxSelections != null && values.length + 1 >= maxSelections) {
@@ -264,7 +264,7 @@ function CareerDropdown({
           {values.map((v) => (
             <span
               key={v}
-              className="inline-flex max-w-full items-center gap-1 rounded-lg bg-[#F4F7FF] px-2.5 py-1 text-[13px] text-[#1A1A1A]"
+              className="inline-flex max-w-full items-center gap-1 rounded-lg bg-[#EFF8F7] px-2.5 py-1 text-[13px] text-[#1A1A1A]"
             >
               <span className="truncate">{v}</span>
               <button
@@ -318,7 +318,7 @@ function CareerFileUpload({
         onBlur={onBlur}
         className={`flex min-h-[100px] cursor-pointer flex-col items-center justify-center rounded-xl border-[1.5px] px-4 py-6 text-center transition-colors ${
           active
-            ? "border-[hsl(142,71%,45%)] bg-[#F4F7FF]"
+            ? "border-[#295C59] bg-[#EFF8F7]"
             : "border-[#E2E8F0] bg-white hover:border-[#cbd5e1]"
         }`}
       >
@@ -352,7 +352,7 @@ function CareerFileUpload({
         />
       </label>
       {file ? (
-        <div className="mt-2 flex items-start gap-3 rounded-xl border border-[#E2E8F0] bg-[#F4F7FF] p-3">
+        <div className="mt-2 flex items-start gap-3 rounded-xl border border-[#E2E8F0] bg-[#EFF8F7] p-3">
           {file.previewUrl ? (
             <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-lg border border-[#E2E8F0] bg-white">
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -440,7 +440,7 @@ function ClearFormDialog({
           <button
             type="button"
             onClick={onCancel}
-            className="flex-1 py-3.5 text-[16px] font-medium text-[#0a7de1] transition-colors hover:bg-[#F4F7FF]"
+            className="flex-1 py-3.5 text-[16px] font-medium text-[#0a7de1] transition-colors hover:bg-[#EFF8F7]"
           >
             Cancel
           </button>
