@@ -9,7 +9,7 @@ const sections = {
   },
   goals: {
     title: "Our Goals",
-    desc: "Home Sewa aims to provide fast, reliable, and hassle-free home services across Nepal by building a nationwide network of verified and skilled service professionals. Through the use of AI and automation, the platform seeks to optimize service matching and enhance customer satisfaction.",
+    desc: "HomeSewa aims to provide fast, reliable, and hassle-free home services across Nepal by building a nationwide network of verified and skilled service professionals. Through the use of AI and automation, the platform seeks to optimize service matching and enhance customer satisfaction.",
   },
   vision: {
     title: "Our Vision",
@@ -65,7 +65,7 @@ export default function About() {
         <div className="text-center mb-14">
           <h1 className="text-4xl sm:text-5xl font-extrabold text-teal-900 mb-4 tracking-wide">About Us</h1>
           <p className="text-gray-700 max-w-3xl mx-auto text-lg leading-relaxed">
-            Home Sewa is Nepal’s superfast, on-demand home service platform, designed to instantly connect customers with trusted, verified professionals nearby. Powered by advanced AI-driven matching, Home Sewa ensures that service requests are matched with the right professionals quickly and efficiently.
+            HomeSewa is Nepal’s superfast, on-demand home service platform, designed to instantly connect customers with trusted, verified professionals nearby. Powered by advanced AI-driven matching, HomeSewa ensures that service requests are matched with the right professionals quickly and efficiently.
           </p>
         </div>
 

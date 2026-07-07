@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { pageMetadata } from "../../lib/seo";
+import JsonLd from "../../components/JsonLd";
+import { pageMetadata, SITE_URL } from "../../lib/seo";
 
 export const metadata: Metadata = pageMetadata({
   title: "Customer Testimonials",
@@ -20,9 +21,26 @@ const testimonials = [
   { name: "Sameer Basnet", feedback: "HomeSewa exceeded expectations. Arrived on time, used eco-friendly products, and cleaned every area meticulously. Home feels fresh and organized.", image: "/testimonials/9.png" },
 ];
 
+const reviewsJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "HomeSewa Customer Testimonials",
+  itemListElement: testimonials.map((testimonial, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    item: {
+      "@type": "Review",
+      author: { "@type": "Person", name: testimonial.name },
+      reviewBody: testimonial.feedback,
+      itemReviewed: { "@id": `${SITE_URL}/#organization` },
+    },
+  })),
+};
+
 export default function Testimonials() {
   return (
     <section className="py-20 px-6 bg-gradient-to-r from-teal-50 via-white to-teal-50">
+      <JsonLd data={reviewsJsonLd} />
       <div className="text-center mb-14">
         <h1 className="text-4xl font-extrabold text-teal-900 mb-4">What Our Clients Say</h1>
         <p className="text-gray-700 max-w-2xl mx-auto">

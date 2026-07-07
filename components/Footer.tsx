@@ -59,15 +59,15 @@ const Footer = () => {
             </div>
 
             <p className="text-[15px] leading-relaxed mb-4">
-              Home Sewa is Nepal’s superfast, on-demand home service platform, designed to instantly connect customers with trusted, verified professionals nearby.
+              HomeSewa is Nepal’s superfast, on-demand home service platform, designed to instantly connect customers with trusted, verified professionals nearby.
             </p>
             <p className="text-[15px] leading-relaxed mb-4">
-              Powered by advanced AI-driven technology, Home Sewa ensures that service requests are matched with the right professionals quickly and efficiently.
+              Powered by advanced AI-driven technology, HomeSewa ensures that service requests are matched with the right professionals quickly and efficiently.
 
             </p>
             
             <p className="text-[15px] leading-relaxed mb-4">
-              By leveraging artificial intelligence Home Sewa offers real-time push notifications, automated voice calls, SMS and WhatsApp alerts, location-based technology & few other technologies to automate.
+              By leveraging artificial intelligence, HomeSewa offers real-time push notifications, automated voice calls, SMS and WhatsApp alerts, location-based technology, and other tools to automate booking.
             </p>
           
           </div>

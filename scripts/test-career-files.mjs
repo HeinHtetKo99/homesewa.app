@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { createClient } from "@supabase/supabase-js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(__dirname, "..");
@@ -14,10 +15,14 @@ if (!fs.existsSync(pngPath)) {
 
 const png = fs.readFileSync(pngPath);
 const fd = new FormData();
-fd.append("fullName", "Career file upload test");
+fd.append("fullName", "Join professional file upload test");
 fd.append("phone", "9876543211");
-fd.append("email", "career-test@example.com");
-fd.append("positions", JSON.stringify(["Deep Cleaner"]));
+fd.append("email", "join-test@example.com");
+fd.append("expertise", JSON.stringify(["Salon at Home"]));
+fd.append("preferredAreas", JSON.stringify(["Baneshwor"]));
+fd.append("emergencyContact", "9800000000");
+fd.append("coverLetter", "Test cover letter");
+fd.append("message", "Test message");
 fd.append("idProof", new Blob([png], { type: "image/png" }), "id-proof.png");
 fd.append("resume", new Blob([png], { type: "image/png" }), "resume.png");
 
@@ -42,7 +47,7 @@ if (json.warning) {
 
 const envPath = path.join(root, ".env.local");
 if (!fs.existsSync(envPath)) {
-  console.log("\nOK: career record created (no .env.local to verify Airtable)");
+  console.log("\nOK: workforce row created (no .env.local to verify Supabase)");
   process.exit(0);
 }
 
@@ -57,26 +62,51 @@ const env = Object.fromEntries(
     }),
 );
 
-const tableId = env.AIRTABLE_CAREER_TABLE_ID ?? "workForce";
-const recRes = await fetch(
-  `https://api.airtable.com/v0/${env.AIRTABLE_BASE_ID}/${tableId}/${json.id}`,
-  { headers: { Authorization: `Bearer ${env.AIRTABLE_TOKEN}` } },
-);
-const rec = await recRes.json();
-const idProof = rec.fields?.["ID Proof"];
-const resume = rec.fields?.["Resume/CV"];
+const url = env.NEXT_PUBLIC_SUPABASE_URL ?? env.SUPABASE_URL;
+const key = env.SUPABASE_SERVICE_ROLE_KEY ?? env.SUPABASE_SERVICE_KEY;
 
-const okId = Array.isArray(idProof) && idProof.length > 0;
-const okResume = Array.isArray(resume) && resume.length > 0;
-
-if (okId && okResume) {
-  console.log("\nPASS: ID Proof and Resume/CV on Airtable workForce");
-  console.log("ID Proof:", idProof.map((p) => p.filename ?? p.url).join(", "));
-  console.log("Resume/CV:", resume.map((p) => p.filename ?? p.url).join(", "));
+if (!url || !key) {
+  console.log("\nOK: submission accepted (Supabase env missing for verification)");
   process.exit(0);
 }
 
-console.log("\nFAIL: record saved but attachments missing on Airtable");
-console.log("ID Proof:", okId ? "ok" : "empty");
-console.log("Resume/CV:", okResume ? "ok" : "empty");
+const supabase = createClient(url, key, {
+  auth: { persistSession: false, autoRefreshToken: false },
+});
+
+const uin = json.uin ?? Number(json.id);
+const { data, error } = await supabase
+  .from("workforce")
+  .select(
+    "uin, profile_status, government_issued_id_url, resume_url, services, working_areas",
+  )
+  .eq("uin", uin)
+  .maybeSingle();
+
+if (error) {
+  console.error("\nFAIL: could not read workforce row:", error.message);
+  process.exit(1);
+}
+
+if (!data) {
+  console.error("\nFAIL: workforce row not found for uin", uin);
+  process.exit(1);
+}
+
+const okStatus = data.profile_status === "Waiting for Verification";
+const okId = Boolean(data.government_issued_id_url);
+const okResume = Boolean(data.resume_url);
+
+if (okStatus && okId && okResume) {
+  console.log("\nPASS: workforce row with attachments and Waiting for Verification");
+  console.log("UIN:", data.uin);
+  console.log("Services:", data.services);
+  console.log("Working areas:", data.working_areas);
+  process.exit(0);
+}
+
+console.log("\nFAIL: workforce row saved but verification failed");
+console.log("Status:", okStatus ? "ok" : data.profile_status);
+console.log("ID proof:", okId ? "ok" : "missing");
+console.log("Resume:", okResume ? "ok" : "missing");
 process.exit(1);

@@ -1,6 +1,7 @@
 'use client';
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { Moon, Phone, Sun } from "lucide-react";
 import BrandLogo from "./BrandLogo";
@@ -9,7 +10,23 @@ import { initThemeFromStorage, toggleTheme } from "@/lib/theme";
 
 const PHONE_HREF = "tel:+9779852024365";
 
+const navLinks = [
+  { href: "/", label: "Home", isActive: (path: string) => path === "/" },
+  { href: "/about", label: "About", isActive: (path: string) => path === "/about" || path.startsWith("/about/") },
+  { href: "/services", label: "Services", isActive: (path: string) => path.startsWith("/services") },
+  { href: "/projects", label: "Projects", isActive: (path: string) => path === "/projects" || path.startsWith("/projects/") },
+  { href: "/contact", label: "Contact", isActive: (path: string) => path === "/contact" || path.startsWith("/contact/") },
+] as const;
+
+const navLinkClass = (active: boolean) =>
+  `text-[16px] rounded-md px-2 py-0.5 transition-colors ${
+    active
+      ? "bg-teal-100 text-teal-900 font-semibold"
+      : "text-gray-700 hover:bg-teal-50 hover:text-teal-700"
+  }`;
+
 const Header = () => {
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [darkIcon, setDarkIcon] = useState(true);
   const [scrolled, setScrolled] = useState(false);
@@ -43,17 +60,26 @@ const Header = () => {
         </div>
 
         <nav className="flex items-center gap-1 sm:gap-2">
-          <div className="hidden lg:flex items-center space-x-6">
-            <Link href="/" className="text-[16px] hover:text-teal-700">Home</Link>
-            <Link href="/about" className="text-[16px] hover:text-teal-700">About</Link>
-            <Link href="/services" className="text-[16px] hover:text-teal-700">Services</Link>
-            <Link href="/projects" className="text-[16px] hover:text-teal-700">Projects</Link>
-            <Link href="/contact" className="text-[16px] hover:text-teal-700">Contact</Link>
-
-            
+          <div className="hidden lg:flex items-center space-x-4">
+            {navLinks.map(({ href, label, isActive }) => (
+              <Link
+                key={href}
+                href={href}
+                className={navLinkClass(isActive(pathname))}
+                aria-current={isActive(pathname) ? "page" : undefined}
+              >
+                {label}
+              </Link>
+            ))}
 
             <Link href="/book">
-              <button className="bg-teal-900 cursor-pointer text-[16px] border border-teal-900 text-white px-4 py-1 rounded hover:bg-teal-800">
+              <button
+                className={`cursor-pointer text-[16px] border px-4 py-1 rounded transition-colors ${
+                  pathname === "/book"
+                    ? "bg-teal-800 border-teal-800 text-white"
+                    : "bg-teal-900 border-teal-900 text-white hover:bg-teal-800"
+                }`}
+              >
                 Book a Service
               </button>
             </Link>

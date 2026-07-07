@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { bookingScheduleValidationError } from "@/lib/booking-datetime";
 import { emailValidationError } from "@/lib/form-validation";
+import { isWebsiteServiceTitle } from "@/lib/website-services";
 import { getSupabaseAdmin } from "@/lib/supabase";
 import {
   formatSupabaseEnvError,
@@ -166,6 +167,10 @@ function validatePayload(payload: BookingPayload): string | null {
     shift: payload.shift,
   });
   if (scheduleErr) return scheduleErr;
+
+  if (!payload.services.every((title) => isWebsiteServiceTitle(title))) {
+    return "Please select valid services from the services page.";
+  }
 
   return null;
 }

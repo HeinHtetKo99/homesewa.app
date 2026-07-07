@@ -2,7 +2,8 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import {
   BookOpen,
   Briefcase,
@@ -59,6 +60,11 @@ const socialLinks = [
 
 const SideNavDrawer: React.FC<SideNavDrawerProps> = ({ isOpen, setIsOpen }) => {
   const pathname = usePathname();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     document.body.style.overflow = isOpen ? 'hidden' : '';
@@ -98,20 +104,22 @@ const SideNavDrawer: React.FC<SideNavDrawerProps> = ({ isOpen, setIsOpen }) => {
         <span className="text-[15px] font-medium">Menu</span>
       </button>
 
-      <div
-        className={`fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm transition-opacity duration-300 ${
-          isOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'
-        }`}
-        onClick={closeDrawer}
-        aria-hidden={!isOpen}
-      >
-        <aside
-          className={`side-nav-drawer absolute top-0 right-0 flex h-dvh max-h-dvh w-[min(85vw,320px)] flex-col bg-white shadow-2xl transition-transform duration-300 ${
-            isOpen ? 'translate-x-0' : 'translate-x-full'
-          }`}
-          onClick={(e) => e.stopPropagation()}
-          aria-label="Site menu"
-        >
+      {mounted &&
+        createPortal(
+          <div
+            className={`fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm transition-opacity duration-300 ${
+              isOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'
+            }`}
+            onClick={closeDrawer}
+            aria-hidden={!isOpen}
+          >
+            <aside
+              className={`side-nav-drawer absolute top-0 right-0 flex h-dvh max-h-dvh w-[min(85vw,320px)] flex-col bg-white shadow-2xl transition-transform duration-300 ${
+                isOpen ? 'translate-x-0' : 'translate-x-full'
+              }`}
+              onClick={(e) => e.stopPropagation()}
+              aria-label="Site menu"
+            >
           <div className="side-nav-drawer__header flex shrink-0 items-center justify-between border-b border-gray-100 px-4 py-3 md:py-4">
             <BrandLogo
               onClick={closeDrawer}
@@ -177,7 +185,7 @@ const SideNavDrawer: React.FC<SideNavDrawerProps> = ({ isOpen, setIsOpen }) => {
               className="side-nav-drawer__action flex w-full items-center justify-center gap-2 rounded-xl border border-teal-900 px-4 py-2.5 text-[15px] font-medium text-teal-900 hover:bg-teal-50 transition"
             >
               <Briefcase size={18} className="text-teal-700" />
-              Career
+              Join as a Professional
             </Link>
             <Link
               href="/book"
@@ -206,8 +214,10 @@ const SideNavDrawer: React.FC<SideNavDrawerProps> = ({ isOpen, setIsOpen }) => {
               ))}
             </div>
           </div>
-        </aside>
-      </div>
+            </aside>
+          </div>,
+          document.body
+        )}
     </>
   );
 };

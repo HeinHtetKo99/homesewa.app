@@ -1,20 +1,25 @@
 "use client";
 
 import { useCallback, useEffect, useId, useRef, useState } from "react";
-import { BOOKING_SERVICES } from "@/lib/book-form-options";
 import {
-  CAREER_POSITIONS,
+  MAX_JOIN_EXPERTISE_SELECTIONS,
+  WEBSITE_SERVICE_TITLES,
+} from "@/lib/website-services";
+import {
+  GENDER_OPTIONS,
   MAX_CAREER_FILE_MB,
+  PREFERRED_CITIES,
   PREFERRED_WORKING_AREAS,
 } from "@/lib/career-form-options";
 import { emailValidationError } from "@/lib/form-validation";
+
+const JOIN_EXPERTISE_OPTIONS = WEBSITE_SERVICE_TITLES;
 
 const onlyDigits = (v: string) => v.replace(/[^0-9]/g, "");
 
 const DOCUMENT_ACCEPT =
   "image/*,.heic,.heif,.pdf,application/pdf";
-const RESUME_ACCEPT =
-  ".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+const HEADSHOT_ACCEPT = "image/*,.heic,.heif";
 
 const INPUT_BASE =
   "w-full rounded-xl border-[1.5px] border-[#E2E8F0] bg-white px-3.5 text-[15px] font-medium text-[#1A1A1A] outline-none transition-colors placeholder:text-[#4B4B4B]";
@@ -143,9 +148,103 @@ function CareerPhoneInput({
   );
 }
 
+function CareerSingleSelect({
+  id,
+  label,
+  options,
+  value,
+  onChange,
+  placeholder,
+  active,
+  onOpen,
+  onClose,
+}: {
+  id: string;
+  label: string;
+  options: readonly string[];
+  value: string;
+  onChange: (v: string) => void;
+  placeholder: string;
+  active: boolean;
+  onOpen: () => void;
+  onClose: () => void;
+}) {
+  const [open, setOpen] = useState(false);
+  const rootRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const onDoc = (e: MouseEvent) => {
+      if (!rootRef.current?.contains(e.target as Node)) {
+        setOpen(false);
+        onClose();
+      }
+    };
+    document.addEventListener("mousedown", onDoc);
+    return () => document.removeEventListener("mousedown", onDoc);
+  }, [onClose]);
+
+  const toggle = () => {
+    const next = !open;
+    setOpen(next);
+    if (next) onOpen();
+    else onClose();
+  };
+
+  return (
+    <div ref={rootRef} className="mb-5">
+      <span id={`${id}-label`} className={LABEL_CLASS}>
+        {label}
+        <RequiredMark />
+      </span>
+      <div className="relative">
+        <button
+          id={id}
+          type="button"
+          aria-expanded={open}
+          aria-labelledby={`${id}-label`}
+          onClick={toggle}
+          className={`flex min-h-11 w-full items-center justify-between gap-2 rounded-xl border-[1.5px] px-3.5 py-2.5 text-left text-[15px] font-medium outline-none transition-colors ${
+            active || open
+              ? "border-[hsl(142,71%,45%)] bg-[#F4F7FF]"
+              : "border-[#E2E8F0] bg-white"
+          }`}
+        >
+          <span className={value ? "text-[#1A1A1A]" : "text-[#4B4B4B]"}>
+            {value || placeholder}
+          </span>
+          <ChevronDown />
+        </button>
+        {open ? (
+          <ul
+            role="listbox"
+            className="absolute z-40 mt-1 max-h-56 w-full overflow-auto rounded-xl border border-[#E2E8F0] bg-white py-1 shadow-lg"
+          >
+            {options.map((opt) => (
+              <li key={opt} role="option" aria-selected={value === opt}>
+                <button
+                  type="button"
+                  className="w-full px-3.5 py-2.5 text-left text-[15px] text-[#1A1A1A] hover:bg-[#F4F7FF]"
+                  onClick={() => {
+                    onChange(opt);
+                    setOpen(false);
+                    onClose();
+                  }}
+                >
+                  {opt}
+                </button>
+              </li>
+            ))}
+          </ul>
+        ) : null}
+      </div>
+    </div>
+  );
+}
+
 function CareerDropdown({
   id,
   label,
+  hint,
   options,
   values,
   onChange,
@@ -157,6 +256,7 @@ function CareerDropdown({
 }: {
   id: string;
   label: string;
+  hint?: string;
   options: readonly string[];
   values: string[];
   onChange: (values: string[]) => void;
@@ -196,6 +296,11 @@ function CareerDropdown({
         {label}
         <RequiredMark />
       </span>
+      {hint ? (
+        <p className="mb-1.5 pl-1 text-[13px] font-medium text-[#4B4B4B]">
+          {hint}
+        </p>
+      ) : null}
       <div className="relative">
         <button
           id={id}
@@ -450,32 +555,32 @@ function ClearFormDialog({
 export default function CareerForm() {
   const formId = useId();
   const idProofInputRef = useRef<HTMLInputElement>(null);
-  const resumeInputRef = useRef<HTMLInputElement>(null);
+  const headshotInputRef = useRef<HTMLInputElement>(null);
 
   const [fullName, setFullName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
-  const [positions, setPositions] = useState<string[]>([]);
+  const [gender, setGender] = useState("");
   const [expertise, setExpertise] = useState<string[]>([]);
   const [yearsExperience, setYearsExperience] = useState("");
+  const [preferredCity, setPreferredCity] = useState("");
   const [preferredAreas, setPreferredAreas] = useState<string[]>([]);
-  const [insurancePolicyNumber, setInsurancePolicyNumber] = useState("");
   const [emergencyContact, setEmergencyContact] = useState("");
-  const [coverLetter, setCoverLetter] = useState("");
+  const [referralPhone, setReferralPhone] = useState("");
   const [message, setMessage] = useState("");
   const [idProofItem, setIdProofItem] = useState<FileItem | null>(null);
-  const [resumeItem, setResumeItem] = useState<FileItem | null>(null);
+  const [headshotItem, setHeadshotItem] = useState<FileItem | null>(null);
   const [activeInput, setActiveInput] = useState<string | null>(null);
 
   const idProofRef = useRef<FileItem | null>(null);
-  const resumeRef = useRef<FileItem | null>(null);
+  const headshotRef = useRef<FileItem | null>(null);
   idProofRef.current = idProofItem;
-  resumeRef.current = resumeItem;
+  headshotRef.current = headshotItem;
 
   useEffect(() => {
     return () => {
       revokeFileItem(idProofRef.current);
-      revokeFileItem(resumeRef.current);
+      revokeFileItem(headshotRef.current);
     };
   }, []);
 
@@ -489,26 +594,26 @@ export default function CareerForm() {
     setFullName("");
     setPhone("");
     setEmail("");
-    setPositions([]);
+    setGender("");
     setExpertise([]);
     setYearsExperience("");
+    setPreferredCity("");
     setPreferredAreas([]);
-    setInsurancePolicyNumber("");
     setEmergencyContact("");
-    setCoverLetter("");
+    setReferralPhone("");
     setMessage("");
     setIdProofItem((prev) => {
       revokeFileItem(prev);
       return null;
     });
-    setResumeItem((prev) => {
+    setHeadshotItem((prev) => {
       revokeFileItem(prev);
       return null;
     });
     setActiveInput(null);
     setSubmitError(null);
     if (idProofInputRef.current) idProofInputRef.current.value = "";
-    if (resumeInputRef.current) resumeInputRef.current.value = "";
+    if (headshotInputRef.current) headshotInputRef.current.value = "";
   }, []);
 
   const handleClearForm = () => {
@@ -548,6 +653,7 @@ export default function CareerForm() {
 
     const phoneDigits = stripPhoneSpaces(phone);
     const emergencyDigits = stripPhoneSpaces(emergencyContact);
+    const referralDigits = stripPhoneSpaces(referralPhone);
 
     if (!fullName.trim()) {
       setSubmitError("Full Name is required.");
@@ -570,13 +676,20 @@ export default function CareerForm() {
       return;
     }
 
-    if (positions.length === 0) {
-      setSubmitError("Please select at least one position.");
+    if (!gender.trim()) {
+      setSubmitError("Please select your gender.");
       return;
     }
 
     if (expertise.length === 0) {
-      setSubmitError("Please select at least one expertise.");
+      setSubmitError("Please select at least one area of expertise.");
+      return;
+    }
+
+    if (expertise.length > MAX_JOIN_EXPERTISE_SELECTIONS) {
+      setSubmitError(
+        `Please select at most ${MAX_JOIN_EXPERTISE_SELECTIONS} areas of expertise.`,
+      );
       return;
     }
 
@@ -585,8 +698,18 @@ export default function CareerForm() {
       return;
     }
 
+    if (!headshotItem?.file) {
+      setSubmitError("Please upload your headshot.");
+      return;
+    }
+
     if (!idProofItem?.file) {
       setSubmitError("Please upload your ID.");
+      return;
+    }
+
+    if (!preferredCity.trim()) {
+      setSubmitError("Please select your preferred city.");
       return;
     }
 
@@ -595,23 +718,13 @@ export default function CareerForm() {
       return;
     }
 
-    if (!insurancePolicyNumber.trim()) {
-      setSubmitError("Policy number is required.");
-      return;
-    }
-
     if (!emergencyDigits || emergencyDigits.length !== 10) {
       setSubmitError("Enter a valid emergency contact number.");
       return;
     }
 
-    if (!resumeItem?.file) {
-      setSubmitError("Please upload your CV.");
-      return;
-    }
-
-    if (!coverLetter.trim()) {
-      setSubmitError("Cover message is required.");
+    if (referralDigits && referralDigits.length !== 10) {
+      setSubmitError("Enter a valid 10-digit referral phone number.");
       return;
     }
 
@@ -626,16 +739,16 @@ export default function CareerForm() {
       data.append("fullName", fullName.trim());
       data.append("phone", phoneDigits);
       data.append("email", email.trim());
-      data.append("positions", JSON.stringify(positions));
+      data.append("gender", gender);
       data.append("expertise", JSON.stringify(expertise));
       data.append("yearsExperience", yearsExperience);
+      data.append("preferredCity", preferredCity);
       data.append("preferredAreas", JSON.stringify(preferredAreas));
-      data.append("insurancePolicyNumber", insurancePolicyNumber.trim());
       data.append("emergencyContact", emergencyDigits);
-      data.append("coverLetter", coverLetter.trim());
+      data.append("referralPhone", referralDigits);
       data.append("message", message.trim());
       data.append("idProof", idProofItem.file);
-      data.append("resume", resumeItem.file);
+      data.append("headshot", headshotItem.file);
 
       const res = await fetch("/api/career", {
         method: "POST",
@@ -677,7 +790,7 @@ export default function CareerForm() {
       />
       <form id={formId} onSubmit={onSubmit} className="mx-auto max-w-2xl" noValidate>
         <h2 className="pl-0.5 text-[22px] font-bold text-[#1A1A1A] sm:text-[26px]">
-          HomeSewa - Join Now
+          Join as a Professional
         </h2>
 
         <div className="my-5" />
@@ -719,26 +832,27 @@ export default function CareerForm() {
           autoComplete="email"
         />
 
-        <CareerDropdown
-          id={`${formId}-position`}
-          label="Position Applied For"
-          options={CAREER_POSITIONS}
-          values={positions}
-          onChange={setPositions}
-          placeholder="Select the position you are applying for"
-          active={activeInput === "position"}
-          onOpen={() => setActiveInput("position")}
+        <CareerSingleSelect
+          id={`${formId}-gender`}
+          label="Gender"
+          options={GENDER_OPTIONS}
+          value={gender}
+          onChange={setGender}
+          placeholder="Select your gender"
+          active={activeInput === "gender"}
+          onOpen={() => setActiveInput("gender")}
           onClose={() => setActiveInput(null)}
         />
 
         <CareerDropdown
           id={`${formId}-expertise`}
           label="Area of Expertise"
-          options={BOOKING_SERVICES}
+          hint={`Select ${MAX_JOIN_EXPERTISE_SELECTIONS} max`}
+          options={JOIN_EXPERTISE_OPTIONS}
           values={expertise}
           onChange={setExpertise}
-          placeholder="Select the area of expertise"
-          maxSelections={3}
+          placeholder="Select your areas of expertise"
+          maxSelections={MAX_JOIN_EXPERTISE_SELECTIONS}
           active={activeInput === "expertise"}
           onOpen={() => setActiveInput("expertise")}
           onClose={() => setActiveInput(null)}
@@ -754,6 +868,27 @@ export default function CareerForm() {
           onFocus={() => setActiveInput("experience")}
           onBlur={() => setActiveInput(null)}
           onChange={(e) => setYearsExperience(onlyDigits(e.target.value))}
+        />
+
+        <CareerFileUpload
+          id={`${formId}-headshot`}
+          label="Headshot"
+          accept={HEADSHOT_ACCEPT}
+          file={headshotItem}
+          onBrowse={(files) =>
+            setSingleFile(files, setHeadshotItem, headshotInputRef)
+          }
+          onRemove={() => {
+            setHeadshotItem((prev) => {
+              revokeFileItem(prev);
+              return null;
+            });
+            if (headshotInputRef.current) headshotInputRef.current.value = "";
+          }}
+          inputRef={headshotInputRef}
+          active={activeInput === "headshot"}
+          onFocus={() => setActiveInput("headshot")}
+          onBlur={() => setActiveInput(null)}
         />
 
         <CareerFileUpload
@@ -777,6 +912,18 @@ export default function CareerForm() {
           onBlur={() => setActiveInput(null)}
         />
 
+        <CareerSingleSelect
+          id={`${formId}-city`}
+          label="Preferred City"
+          options={PREFERRED_CITIES}
+          value={preferredCity}
+          onChange={setPreferredCity}
+          placeholder="Select your preferred city"
+          active={activeInput === "preferredCity"}
+          onOpen={() => setActiveInput("preferredCity")}
+          onClose={() => setActiveInput(null)}
+        />
+
         <CareerDropdown
           id={`${formId}-areas`}
           label="Preferred Working Area"
@@ -788,22 +935,6 @@ export default function CareerForm() {
           active={activeInput === "workingArea"}
           onOpen={() => setActiveInput("workingArea")}
           onClose={() => setActiveInput(null)}
-        />
-
-        <CareerLabel htmlFor={`${formId}-insurance`}>
-          Insurance Policy Number
-        </CareerLabel>
-        <input
-          id={`${formId}-insurance`}
-          className={inputClass("policy")}
-          placeholder="Enter the insurance policy number"
-          value={insurancePolicyNumber}
-          inputMode="numeric"
-          onFocus={() => setActiveInput("policy")}
-          onBlur={() => setActiveInput(null)}
-          onChange={(e) =>
-            setInsurancePolicyNumber(onlyDigits(e.target.value))
-          }
         />
 
         <CareerLabel htmlFor={`${formId}-emergency`}>
@@ -819,38 +950,17 @@ export default function CareerForm() {
           onBlur={() => setActiveInput(null)}
         />
 
-        <CareerFileUpload
-          id={`${formId}-resume`}
-          label="CV/Resume"
-          accept={RESUME_ACCEPT}
-          file={resumeItem}
-          onBrowse={(files) =>
-            setSingleFile(files, setResumeItem, resumeInputRef)
-          }
-          onRemove={() => {
-            setResumeItem((prev) => {
-              revokeFileItem(prev);
-              return null;
-            });
-            if (resumeInputRef.current) resumeInputRef.current.value = "";
-          }}
-          inputRef={resumeInputRef}
-          active={activeInput === "resume"}
-          onFocus={() => setActiveInput("resume")}
+        <CareerLabel htmlFor={`${formId}-referral`}>
+          Referral Phone Number
+        </CareerLabel>
+        <CareerPhoneInput
+          id={`${formId}-referral`}
+          value={referralPhone}
+          onChange={setReferralPhone}
+          placeholder="Enter referral phone number (optional)"
+          active={activeInput === "referralPhone"}
+          onFocus={() => setActiveInput("referralPhone")}
           onBlur={() => setActiveInput(null)}
-        />
-
-        <CareerLabel htmlFor={`${formId}-cover`}>Cover Letter</CareerLabel>
-        <textarea
-          id={`${formId}-cover`}
-          rows={5}
-          className={`${INPUT_BASE} mb-5 min-h-[120px] resize-y py-3 ${
-            activeInput === "coverLetter" ? INPUT_ACTIVE : ""
-          }`}
-          value={coverLetter}
-          onFocus={() => setActiveInput("coverLetter")}
-          onBlur={() => setActiveInput(null)}
-          onChange={(e) => setCoverLetter(e.target.value)}
         />
 
         <CareerLabel htmlFor={`${formId}-message`}>Message</CareerLabel>
@@ -878,8 +988,8 @@ export default function CareerForm() {
         {submitSuccess ? (
           <div role="status" className="mb-4 space-y-2">
             <p className="rounded-xl border border-green-200 bg-green-50 px-3 py-2 text-[13px] text-green-800">
-              Thank you! Your application has been submitted. Our team will
-              contact you shortly.
+              Thank you! Your profile has been submitted and is waiting for
+              verification. We will contact you once you are activated.
             </p>
             {submitWarning ? (
               <p className="rounded-xl border border-amber-200 bg-amber-50 px-3 py-2 text-[13px] text-amber-900">

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import JsonLd from "../../components/JsonLd";
 import ServicesExplorer from "./ServicesExplorer";
-import { pageMetadata } from "../../lib/seo";
+import { getAllServices } from "../data/servicesCatalog";
+import { buildItemListJsonLd, pageMetadata } from "../../lib/seo";
 
 export const metadata: Metadata = pageMetadata({
   title: "All Home Services in Kathmandu, Nepal",
@@ -15,9 +17,19 @@ export const metadata: Metadata = pageMetadata({
   ],
 });
 
+const servicesListJsonLd = buildItemListJsonLd(
+  "HomeSewa Services",
+  getAllServices().map((service) => ({
+    name: service.title,
+    url: `/services/${service.slug}`,
+    description: service.desc,
+  })),
+);
+
 export default function ServicesPage() {
   return (
     <div className="min-h-screen bg-gray-50 text-gray-800">
+      <JsonLd data={servicesListJsonLd} />
       <section className="bg-gradient-to-b from-white via-teal-50 to-white pt-20 pb-8 px-4 sm:px-6 lg:px-0">
         <div className="max-w-6xl mx-auto w-full">
           <div className="text-center mb-12">

@@ -97,28 +97,28 @@ const Search: React.FC = () => {
         url: "/team",
       },
 
-      // Career
+      // Join as a Professional
       {
         id: 8,
-        title: "Careers - Join Our Team",
+        title: "Join as a Professional",
         content:
-          "Join our team and grow your career. Job openings, internship opportunities, employee benefits, work culture, career growth, training programs. We offer exciting opportunities and great benefits.",
+          "Join HomeSewa as a verified home service professional in Kathmandu. Submit your profile, services, and working areas for verification.",
         category: "Page",
         url: "/career",
       },
       {
         id: 9,
-        title: "Job Openings - Full Stack Developer",
+        title: "Professional Opportunities - Home Services",
         content:
-          "Looking for experienced Full Stack Developer. Required skills: React, Node.js, MongoDB, JavaScript, TypeScript. Competitive salary and benefits.",
+          "Cleaning, plumbing, electrical, handyman, and other home service professionals can join HomeSewa. Flexible work across Kathmandu areas.",
         category: "Job",
         url: "/career",
       },
       {
         id: 10,
-        title: "Job Openings - UI/UX Designer",
+        title: "Join HomeSewa - Service Professional",
         content:
-          "Seeking creative UI/UX Designer. Skills needed: Figma, Adobe XD, user research, wireframing, prototyping. Portfolio required.",
+          "Apply to join as a professional. Upload ID proof and resume. Status starts as Waiting for Verification until approved as Active.",
         category: "Job",
         url: "/career",
       },

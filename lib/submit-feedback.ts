@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { emailValidationError } from "@/lib/form-validation";
+import { isWebsiteServiceTitle } from "@/lib/website-services";
 import { getSupabaseAdmin } from "@/lib/supabase";
 import {
   formatSupabaseEnvError,
@@ -71,6 +72,10 @@ function validatePayload(payload: FeedbackPayload): string | null {
   const emailErr = emailValidationError(payload.email);
   if (emailErr) return emailErr;
   if (!payload.email.trim()) return "Email is required.";
+
+  if (!isWebsiteServiceTitle(payload.service)) {
+    return "Please select a valid service from the services page.";
+  }
 
   return null;
 }

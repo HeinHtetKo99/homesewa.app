@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { emailValidationError } from "@/lib/form-validation";
+import { isWebsiteServiceTitle } from "@/lib/website-services";
 import { getSupabaseAdmin } from "@/lib/supabase";
 import {
   formatSupabaseEnvError,
@@ -79,6 +80,12 @@ function validatePayload(payload: PartnershipPayload): string | null {
   }
   const emailErr = emailValidationError(payload.email);
   if (emailErr) return emailErr;
+  if (
+    payload.services.length > 0 &&
+    !payload.services.every((title) => isWebsiteServiceTitle(title))
+  ) {
+    return "Please select valid services from the services page.";
+  }
   return null;
 }
 

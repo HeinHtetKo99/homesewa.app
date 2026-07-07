@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Ribbon from "../../components/Ribbon";
-import { pageMetadata } from "../../lib/seo";
+import JsonLd from "../../components/JsonLd";
+import { pageMetadata, SITE_NAME, SITE_URL } from "../../lib/seo";
 
 export const metadata: Metadata = pageMetadata({
   title: "Videos",
@@ -49,15 +50,47 @@ const videos = [
   },
 ];
 
-function VideoPage() {
-const featuredVideo = "https://www.youtube.com/embed/DBCGoFwTy4E?rel=0";
-  const breadcrumbItems = [
-    { label: "Home", path: "/" },
-    { label: "Videos", path: "/videos" },
-  ];
+function youtubeWatchUrl(embedUrl: string) {
+  const match = embedUrl.match(/embed\/([^?]+)/);
+  return match ? `https://www.youtube.com/watch?v=${match[1]}` : embedUrl;
+}
 
+const featuredVideo = "https://www.youtube.com/embed/DBCGoFwTy4E?rel=0";
+
+const videoGalleryJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "HomeSewa Videos",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      item: {
+        "@type": "VideoObject",
+        name: "Featured HomeSewa Video",
+        embedUrl: featuredVideo,
+        contentUrl: youtubeWatchUrl(featuredVideo),
+        publisher: { "@id": `${SITE_URL}/#organization` },
+      },
+    },
+    ...videos.map((video, index) => ({
+      "@type": "ListItem",
+      position: index + 2,
+      item: {
+        "@type": "VideoObject",
+        name: video.title,
+        embedUrl: video.embedUrl,
+        contentUrl: youtubeWatchUrl(video.embedUrl),
+        publisher: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
+      },
+    })),
+  ],
+};
+
+function VideoPage() {
   return (
     <div className=" min-h-screen font-sans">
+      <JsonLd data={videoGalleryJsonLd} />
       {/* Header */}
       <Ribbon name="Vidoes" showfont={false}/>
 

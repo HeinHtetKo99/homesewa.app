@@ -1,39 +1,6 @@
-import { BOOKING_SERVICES } from "@/lib/book-form-options";
+import { getCatalogServiceTitles, getServiceBySlug } from "@/app/data/servicesCatalog";
 
-export type BookingService = (typeof BOOKING_SERVICES)[number];
-
-const SERVICE_SLUG_TO_BOOKING: Record<string, BookingService> = {
-  "salon-at-home": "Other",
-  "bridal-makeup": "Other",
-  "chef-at-home": "Other",
-  "massage-therapy": "Other",
-  "spa-at-home": "Other",
-  physiotherapy: "Other",
-  handyman: "Handyman / Small Repairs",
-  carpentry: "Carpentry",
-  plumbing: "Plumbing",
-  "electrical-repairs": "Electrical Repairs",
-  tiling: "Tile Installation & Repair",
-  "washing-machine-repair": "Other",
-  "home-automation": "Smart Home & Fixture Installations",
-  "ev-charger-installation": "EV Charger Installation",
-  "ac-services": "AC Maintenance & Servicing",
-  painting: "Painting & Decorating",
-  "indoor-planting": "Planting and Transplanting",
-  "cctv-services": "Smart Home & Fixture Installations",
-  "drywall-repair": "Drywall Repair & Installation",
-  "modular-kitchen": "Other",
-  parqueting: "Flooring & Surface Fixes",
-  "home-renovation": "Other",
-  "ro-water-purifying": "Other",
-  "garden-care": "Garden Maintenance",
-  "pest-control": "Pest Control",
-  "masonry-repair": "Other",
-  "deep-cleaning": "Deep Cleaning",
-  "packing-and-moving": "Moving & Furniture Assembly",
-  "airbnb-maintenance": "Airbnb Property Maintenance",
-  "refrigerator-repair": "Other",
-};
+export type BookingService = string;
 
 export function resolveBookingService(
   param: string | null | undefined,
@@ -41,13 +8,12 @@ export function resolveBookingService(
   if (!param) return null;
 
   const slug = param.trim().toLowerCase();
-  if (SERVICE_SLUG_TO_BOOKING[slug]) {
-    return SERVICE_SLUG_TO_BOOKING[slug];
-  }
+  const fromSlug = getServiceBySlug(slug);
+  if (fromSlug) return fromSlug.title.trim();
 
   const decoded = decodeURIComponent(param).trim();
-  if ((BOOKING_SERVICES as readonly string[]).includes(decoded)) {
-    return decoded as BookingService;
+  if (getCatalogServiceTitles().includes(decoded)) {
+    return decoded;
   }
 
   return null;

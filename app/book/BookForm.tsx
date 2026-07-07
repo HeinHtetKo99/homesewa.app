@@ -4,11 +4,13 @@ import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import {
   BOOKING_CITY,
+  BOOKING_PHOTO_FIELD,
   BOOKING_PRIORITIES,
   BOOKING_SERVICES,
   BOOKING_SHIFTS,
   BUDGET_OPTIONS,
   Kathmandu_AREAS,
+  MAX_PHOTOS,
   PROPERTY_TYPES,
 } from "@/lib/book-form-options";
 import {
@@ -19,6 +21,47 @@ import {
 import { resolveBookingService } from "@/lib/service-booking-map";
 
 const onlyDigits = (v: string) => v.replace(/[^0-9]/g, "");
+
+const IMAGE_EXTENSIONS = new Set([
+  "jpg",
+  "jpeg",
+  "png",
+  "gif",
+  "webp",
+  "heic",
+  "heif",
+  "bmp",
+]);
+
+type PhotoItem = {
+  id: string;
+  file: File;
+  previewUrl: string;
+};
+
+function isImageFile(file: File): boolean {
+  if (file.type.startsWith("image/")) return true;
+  const ext = file.name.split(".").pop()?.toLowerCase() ?? "";
+  return IMAGE_EXTENSIONS.has(ext);
+}
+
+function createPhotoItem(file: File): PhotoItem {
+  const id =
+    typeof crypto !== "undefined" && "randomUUID" in crypto
+      ? crypto.randomUUID()
+      : `${file.name}-${file.size}-${file.lastModified}-${Math.random().toString(36).slice(2)}`;
+  return {
+    id,
+    file,
+    previewUrl: URL.createObjectURL(file),
+  };
+}
+
+function revokePhotoItems(items: PhotoItem[]) {
+  for (const item of items) {
+    URL.revokeObjectURL(item.previewUrl);
+  }
+}
 
 const INPUT_BASE =
   "w-full rounded-xl border-[1.5px] border-[#E2E8F0] bg-white px-3.5 text-[15px] font-medium text-[#1A1A1A] outline-none transition-colors placeholder:text-[#4B4B4B]";
@@ -220,6 +263,104 @@ function SingleSelect({
   );
 }
 
+function PhotoUpload({
+  id,
+  label,
+  items,
+  maxFiles,
+  onBrowse,
+  onRemove,
+  inputRef,
+  active,
+  onFocus,
+  onBlur,
+  disabled,
+}: {
+  id: string;
+  label: string;
+  items: { id: string; name: string; previewUrl: string }[];
+  maxFiles: number;
+  onBrowse: (files: FileList | null) => void;
+  onRemove: (id: string) => void;
+  inputRef: React.RefObject<HTMLInputElement | null>;
+  active: boolean;
+  onFocus: () => void;
+  onBlur: () => void;
+  disabled?: boolean;
+}) {
+  return (
+    <div className="mb-5">
+      <span className={LABEL_CLASS}>{label}</span>
+      <label
+        htmlFor={id}
+        onFocus={onFocus}
+        onBlur={onBlur}
+        className={`flex min-h-[100px] cursor-pointer flex-col items-center justify-center rounded-xl border-[1.5px] px-4 py-6 text-center transition-colors ${
+          active
+            ? "border-[hsl(142,71%,45%)] bg-[#F4F7FF]"
+            : "border-[#E2E8F0] bg-white hover:border-[#cbd5e1]"
+        } ${disabled ? "pointer-events-none opacity-60" : ""}`}
+      >
+        <svg
+          className="mb-2 h-7 w-7 text-[#4B4B4B]"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          aria-hidden
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={1.5}
+            d="M12 16v-8m0 0l-3 3m3-3l3 3M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1"
+          />
+        </svg>
+        <span className="text-[14px] font-medium text-[#4A4A4A]">
+          Tap to upload or browse
+        </span>
+        <span className="mt-1 text-[12px] text-[#4B4B4B]">
+          {items.length}/{maxFiles} photos · max 5 MB each
+        </span>
+        <input
+          ref={inputRef}
+          id={id}
+          type="file"
+          accept="image/*,.heic,.heif"
+          multiple
+          className="sr-only"
+          disabled={disabled}
+          onChange={(e) => onBrowse(e.target.files)}
+        />
+      </label>
+      {items.length > 0 ? (
+        <ul className="mt-2 flex flex-wrap gap-2">
+          {items.map((item) => (
+            <li
+              key={item.id}
+              className="relative h-20 w-20 shrink-0 overflow-hidden rounded-lg border border-[#E2E8F0] bg-[#F4F7FF]"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={item.previewUrl}
+                alt={item.name}
+                className="h-full w-full object-cover"
+              />
+              <button
+                type="button"
+                className="absolute right-1 top-1 flex h-5 w-5 items-center justify-center rounded-full bg-black/70 text-xs text-white hover:bg-red-600"
+                aria-label={`Remove ${item.name}`}
+                onClick={() => onRemove(item.id)}
+              >
+                ×
+              </button>
+            </li>
+          ))}
+        </ul>
+      ) : null}
+    </div>
+  );
+}
+
 function ClearFormDialog({
   open,
   onCancel,
@@ -298,6 +439,7 @@ function ClearFormDialog({
 
 export default function BookForm() {
   const formId = useId();
+  const photoInputRef = useRef<HTMLInputElement>(null);
   const searchParams = useSearchParams();
   const serviceParam = searchParams.get("service");
 
@@ -305,12 +447,21 @@ export default function BookForm() {
   const [phone, setPhone] = useState("");
   const [selectedService, setSelectedService] = useState("");
   const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
   const [shift, setShift] = useState("");
   const [area, setArea] = useState("");
   const [priority, setPriority] = useState("");
   const [budget, setBudget] = useState("");
   const [message, setMessage] = useState("");
+  const [photoItems, setPhotoItems] = useState<PhotoItem[]>([]);
   const [activeInput, setActiveInput] = useState<string | null>(null);
+
+  const photoItemsRef = useRef<PhotoItem[]>([]);
+  photoItemsRef.current = photoItems;
+
+  useEffect(() => {
+    return () => revokePhotoItems(photoItemsRef.current);
+  }, []);
 
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
@@ -341,14 +492,57 @@ export default function BookForm() {
     setPhone("");
     setSelectedService("");
     setStartDate("");
+    setEndDate("");
     setShift("");
     setArea("");
     setPriority("");
     setBudget("");
     setMessage("");
+    setPhotoItems((prev) => {
+      revokePhotoItems(prev);
+      return [];
+    });
     setActiveInput(null);
     setSubmitError(null);
+    if (photoInputRef.current) photoInputRef.current.value = "";
   }, []);
+
+  const addPhotos = (files: FileList | null) => {
+    if (!files?.length) return;
+    const incoming = Array.from(files).filter(isImageFile);
+    if (incoming.length === 0) {
+      setSubmitError("Please choose image files (JPG, PNG, WEBP, etc.).");
+      return;
+    }
+
+    const maxBytes = 5 * 1024 * 1024;
+    const valid = incoming.filter((f) => f.size <= maxBytes);
+    const slotsLeft = MAX_PHOTOS - photoItems.length;
+
+    if (slotsLeft <= 0) {
+      setSubmitError(`You can upload up to ${MAX_PHOTOS} photos.`);
+      return;
+    }
+    if (valid.length === 0) {
+      setSubmitError("Each photo must be 5 MB or smaller.");
+      return;
+    }
+
+    setSubmitError(null);
+    setPhotoItems((prev) => [
+      ...prev,
+      ...valid.slice(0, slotsLeft).map(createPhotoItem),
+    ]);
+    if (photoInputRef.current) photoInputRef.current.value = "";
+  };
+
+  const removePhoto = (id: string) => {
+    setPhotoItems((prev) => {
+      const target = prev.find((p) => p.id === id);
+      if (target) URL.revokeObjectURL(target.previewUrl);
+      return prev.filter((p) => p.id !== id);
+    });
+  };
 
   const confirmClearForm = () => {
     resetFields();
@@ -391,7 +585,7 @@ export default function BookForm() {
     }
 
     if (!area) {
-      setSubmitError("Please select your location.");
+      setSubmitError("Please select your area.");
       return;
     }
 
@@ -407,6 +601,7 @@ export default function BookForm() {
 
     const scheduleErr = bookingScheduleValidationError({
       startDate,
+      deadlineDate: endDate,
       shift,
     });
     if (scheduleErr) {
@@ -428,13 +623,16 @@ export default function BookForm() {
       data.append("propertyType", PROPERTY_TYPES[0]);
       data.append("services", JSON.stringify([selectedService]));
       data.append("startDate", startDate);
-      data.append("deadlineDate", "");
+      data.append("deadlineDate", endDate);
       data.append("deadlineTime", "");
       data.append("shift", shift);
       data.append("budget", budget);
       data.append("priority", priority);
       data.append("workDescription", message.trim());
       data.append("referralSource", "");
+      for (const item of photoItems) {
+        data.append("photos", item.file);
+      }
 
       const res = await fetch("/api/bookings", {
         method: "POST",
@@ -528,7 +726,7 @@ export default function BookForm() {
         />
 
         <FormLabel htmlFor={`${formId}-date`} required>
-          Choose Date
+          Service Starting Date
         </FormLabel>
         <input
           id={`${formId}-date`}
@@ -539,6 +737,18 @@ export default function BookForm() {
           onFocus={() => setActiveInput("date")}
           onBlur={() => setActiveInput(null)}
           onChange={(e) => setStartDate(e.target.value)}
+        />
+
+        <FormLabel htmlFor={`${formId}-end-date`}>Service Ending Date</FormLabel>
+        <input
+          id={`${formId}-end-date`}
+          type="date"
+          min={startDate || minDate}
+          className={inputClass("endDate")}
+          value={endDate}
+          onFocus={() => setActiveInput("endDate")}
+          onBlur={() => setActiveInput(null)}
+          onChange={(e) => setEndDate(e.target.value)}
         />
 
         <SingleSelect
@@ -556,13 +766,24 @@ export default function BookForm() {
           onClose={() => setActiveInput(null)}
         />
 
+        <FormLabel htmlFor={`${formId}-city`} required>
+          City
+        </FormLabel>
+        <input
+          id={`${formId}-city`}
+          className={`${INPUT_BASE} mb-5 h-11 cursor-not-allowed bg-[#F8FAFC] text-[#4A4A4A]`}
+          value={BOOKING_CITY}
+          readOnly
+          tabIndex={-1}
+        />
+
         <SingleSelect
           id={`${formId}-area`}
-          label="Your Location"
+          label="Area"
           options={Kathmandu_AREAS}
           value={area}
           onChange={setArea}
-          placeholder="Select your Location"
+          placeholder="Select your Area"
           required
           active={activeInput === "location"}
           onOpen={() => setActiveInput("location")}
@@ -593,6 +814,24 @@ export default function BookForm() {
           active={activeInput === "budget"}
           onOpen={() => setActiveInput("budget")}
           onClose={() => setActiveInput(null)}
+        />
+
+        <PhotoUpload
+          id={`${formId}-photos`}
+          label={BOOKING_PHOTO_FIELD}
+          items={photoItems.map((item) => ({
+            id: item.id,
+            name: item.file.name,
+            previewUrl: item.previewUrl,
+          }))}
+          maxFiles={MAX_PHOTOS}
+          onBrowse={addPhotos}
+          onRemove={removePhoto}
+          inputRef={photoInputRef}
+          active={activeInput === "photos"}
+          onFocus={() => setActiveInput("photos")}
+          onBlur={() => setActiveInput(null)}
+          disabled={photoItems.length >= MAX_PHOTOS}
         />
 
         <FormLabel htmlFor={`${formId}-message`}>Message</FormLabel>
