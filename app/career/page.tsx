@@ -1,5 +1,5 @@
 import FormPageLayout from "../../components/FormPageLayout";
-import CareerForm from "../../components/CareerForm";
+import CareerForm from "./CareerForm";
 import { pageMetadata } from "../../lib/seo";
 
 export const metadata = pageMetadata({

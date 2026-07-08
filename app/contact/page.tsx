@@ -1,5 +1,5 @@
 import Link from "next/link";
-import ContactForm from "../../components/ContactForm";
+import ContactForm from "./ContactForm";
 import { FormPageTitle } from "../../components/FormPageLayout";
 import JsonLd from "../../components/JsonLd";
 import {

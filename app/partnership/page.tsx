@@ -1,5 +1,5 @@
 import FormPageLayout from "../../components/FormPageLayout";
-import PartnershipForm from "../../components/PartnershipForm";
+import PartnershipForm from "./PartnershipForm";
 import { pageMetadata } from "../../lib/seo";
 
 export const metadata = pageMetadata({
