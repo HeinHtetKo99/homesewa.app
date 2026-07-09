@@ -143,6 +143,64 @@ html.dark .prose :where(h1, h2, h3, h4, strong) {
   color: #5eead4;
 }
 
+/* Blog article content */
+.blog-content {
+  color: #4b5563;
+  font-size: 1.0625rem;
+  line-height: 1.8;
+}
+
+.blog-content .blog-lead {
+  margin: 0 0 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 1.125rem;
+  line-height: 1.85;
+  color: #374151;
+}
+
+.blog-content .blog-section {
+  margin-bottom: 2rem;
+}
+
+.blog-content .blog-section:last-child {
+  margin-bottom: 0;
+}
+
+.blog-content .blog-section h2 {
+  margin: 0 0 0.875rem;
+  padding-left: 1rem;
+  border-left: 4px solid #0d9488;
+  font-size: 1.375rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: #134e4a;
+}
+
+.blog-content .blog-section p {
+  margin: 0;
+  color: #4b5563;
+  line-height: 1.85;
+}
+
+html.dark .blog-content {
+  color: var(--text2);
+}
+
+html.dark .blog-content .blog-lead {
+  color: var(--text);
+  border-bottom-color: var(--border);
+}
+
+html.dark .blog-content .blog-section h2 {
+  color: #5eead4;
+  border-left-color: #14b8a6;
+}
+
+html.dark .blog-content .blog-section p {
+  color: var(--text2);
+}
+
 html.dark input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="color"]),
 html.dark select,
 html.dark textarea {

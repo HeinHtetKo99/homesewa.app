@@ -11,441 +11,264 @@ export type BlogPost = {
 
 function postContent(intro: string, sections: { heading: string; body: string }[]): string {
   const extra = sections
-    .map((s) => `<h2>${s.heading}</h2><p>${s.body}</p>`)
+    .map(
+      (s) =>
+        `<section class="blog-section"><h2>${s.heading}</h2><p>${s.body}</p></section>`
+    )
     .join("");
-  return `<p>${intro}</p>${extra}`;
+  return `<p class="blog-lead">${intro}</p>${extra}`;
 }
 
 export const blogPosts: BlogPost[] = [
   {
-    slug: "bathroom-cleaning",
-    title: "Expert Bathroom Cleaning Services in Nepal",
+    slug: "spa-at-home",
+    title: "Spa at Home: Wellness Delivered to Your Doorstep",
     description:
-      "Bathrooms are one of the most frequently used areas in any home. HomeSewa specializes in professional bathroom cleaning services across Nepal, ensuring sparkling, sanitized spaces every time.",
-    image: "/blog/bathroom-cleaning.jpg",
-    category: "Residential",
-    date: "January 15, 2026",
+      "Enjoy massages, body treatments, and skincare without visiting a spa. HomeSewa connects you with verified therapists who bring professional wellness services to your home in Kathmandu.",
+    image: "/home/blog/spa-at-home.jpg",
+    category: "Health & Wellness",
+    date: "March 15, 2026",
     readTime: "4 min read",
     content: postContent(
-      "Bathrooms are one of the most frequently used areas in any home. HomeSewa specializes in professional bathroom cleaning services across Nepal, ensuring sparkling, sanitized spaces every time. Our deep cleaning removes soap scum, grime, and harmful bacteria, even in difficult areas like behind toilets and tile grout.",
+      "Modern life in Kathmandu is busy, and finding time for self-care can be difficult. HomeSewa's spa at home service brings trained therapists to your doorstep for massages, body treatments, skincare, and relaxation therapies — so you can unwind without traffic or waiting rooms.",
       [
-        { heading: "Why Professional Bathroom Cleaning Matters", body: "Regular bathroom cleaning prevents mold, mildew, and bacteria buildup that can affect your family's health. Our trained professionals use eco-friendly products safe for children and pets." },
-        { heading: "What We Clean", body: "We deep clean tiles, sinks, toilets, showers, mirrors, faucets, and grout lines. Hard water stains and soap scum are removed using specialized techniques and equipment." },
-        { heading: "Book Your Service", body: "Schedule a bathroom cleaning service in Kathmandu, Bengaluru, or Mumbai through our website or mobile app. Same-day appointments may be available depending on availability." },
+        { heading: "What Spa at Home Includes", body: "Our professionals offer Swedish and deep tissue massages, aromatherapy sessions, body scrubs, and facial treatments using quality products. Every session is tailored to your preferences and comfort level in the privacy of your own home." },
+        { heading: "Why Choose Home-Based Spa Services", body: "You save travel time, enjoy a familiar environment, and can schedule sessions around your routine. HomeSewa therapists are background-checked, rated by customers, and equipped with portable tools for a salon-quality experience." },
+        { heading: "Book Your Session", body: "Select spa at home on our booking page, choose a date and time, and a verified therapist will arrive at your location. Same-day appointments may be available depending on availability in Kathmandu and nearby areas." },
       ]
     ),
   },
   {
-    slug: "kitchen-cleaning",
-    title: "Professional Kitchen Cleaning Services in Nepal",
+    slug: "bridal-makeup",
+    title: "Bridal Makeup at Home: Look Perfect on Your Special Day",
     description:
-      "A clean kitchen is essential for a healthy home. HomeSewa offers expert kitchen cleaning, including countertops, sinks, stovetops, ovens, and floors.",
-    image: "/blog/kitchen-cleaning.jpg",
-    category: "Residential",
-    date: "January 12, 2026",
-    readTime: "4 min read",
-    content: postContent(
-      "A clean kitchen is essential for a healthy home. HomeSewa offers expert kitchen cleaning across Kathmandu, Mumbai, and Bengaluru, sanitizing surfaces and removing grease and stubborn stains.",
-      [
-        { heading: "Deep Kitchen Sanitization", body: "We clean countertops, cabinets, sinks, stovetops, ovens, and floors. Our professionals prevent food contamination and maintain a hygienic cooking environment." },
-        { heading: "Eco-Friendly Products", body: "We use environmentally safe cleaning solutions that are effective against grease and bacteria without leaving harmful residues on food preparation surfaces." },
-        { heading: "Flexible Scheduling", body: "Book one-time deep cleaning or recurring maintenance weekly or monthly to keep your kitchen spotless year-round." },
-      ]
-    ),
-  },
-  {
-    slug: "home-cleaning",
-    title: "Reliable Home Cleaning Services in Nepal",
-    description:
-      "Maintaining a clean home can be challenging. HomeSewa provides complete home cleaning services across Nepal, covering bedrooms, living areas, kitchens, bathrooms, floors, windows, and furniture.",
-    image: "/blog/home-cleaning.jpg",
-    category: "Residential",
-    date: "January 10, 2026",
+      "Professional bridal makeup artists visit your home or venue to create a customized look that complements your dress, skin tone, and wedding style — booked easily through HomeSewa.",
+    image: "/home/blog/bridal-makeup.jpg",
+    category: "Home Services",
+    date: "March 12, 2026",
     readTime: "5 min read",
     content: postContent(
-      "HomeSewa provides complete home cleaning services across Nepal with trained professionals and eco-friendly solutions for a hygienic, fresh, and comfortable home.",
+      "Your wedding day deserves a flawless look that lasts from the ceremony through every celebration. HomeSewa's bridal makeup service sends experienced artists to your location with premium products and techniques suited to Nepali weddings and diverse skin tones.",
       [
-        { heading: "Comprehensive Coverage", body: "Our home cleaning includes bedrooms, living areas, kitchens, bathrooms, floors, windows, and furniture. We tailor services to apartments, houses, and villas." },
-        { heading: "Deep vs Regular Cleaning", body: "Regular cleaning maintains daily tidiness while deep cleaning targets hidden grime, allergens, and hard-to-reach areas for a thorough refresh." },
-        { heading: "Trusted Professionals", body: "All staff undergo training and background verification. We bring our own equipment and eco-friendly products to every job." },
+        { heading: "Preparing for Bridal Makeup", body: "Schedule a trial session if possible, share reference photos with your artist, and ensure good lighting at your getting-ready location. Hydrated skin and a simple skincare routine in the days before help makeup apply smoothly and last longer." },
+        { heading: "What to Expect on the Day", body: "Your artist typically arrives early to prep skin, apply long-wear foundation and eye makeup, and finish with setting spray. Many artists also style hair or coordinate with your salon team for a complete bridal look." },
+        { heading: "Book Through HomeSewa", body: "Browse bridal makeup on our platform, check artist profiles and ratings, and confirm your wedding date and venue. Transparent pricing and verified professionals give you peace of mind on one of the most important days of your life." },
       ]
     ),
   },
   {
-    slug: "carpet-cleaning",
-    title: "Top Carpet Cleaning Services in Nepal",
+    slug: "salon-at-home",
+    title: "Salon at Home: Hair, Skin & Beauty Without the Salon Visit",
     description:
-      "Carpets can harbor dust, dirt, and allergens. HomeSewa offers professional carpet cleaning in Nepal using vacuuming, stain treatment, steam cleaning, and quick drying methods.",
-    image: "/blog/carpet-cleaning.jpg",
-    category: "Residential",
-    date: "January 8, 2026",
+      "Get haircuts, styling, skincare, and makeup from verified beauty professionals who visit your home — convenient, private, and professional salon services on demand.",
+    image: "/home/blog/salon-at-home.jpg",
+    category: "Home Services",
+    date: "March 10, 2026",
     readTime: "4 min read",
     content: postContent(
-      "Professional carpet cleaning removes allergens, extends carpet life, and keeps your home healthy and fresh with vacuuming, stain treatment, steam cleaning, and quick drying.",
+      "Salon at home is one of HomeSewa's most popular services in Kathmandu. A skilled beauty professional comes to you with tools and products for haircuts, blow-drys, facials, threading, and everyday makeup — ideal for busy families, new parents, and anyone who values convenience.",
       [
-        { heading: "Steam Cleaning Benefits", body: "Steam cleaning penetrates deep into carpet fibers to remove embedded dirt, dust mites, and allergens that regular vacuuming cannot reach." },
-        { heading: "Stain Removal", body: "Our technicians treat stubborn stains from spills, pets, and foot traffic using fabric-safe solutions that restore your carpet's appearance." },
-        { heading: "Improved Air Quality", body: "Clean carpets reduce airborne allergens and improve indoor air quality, especially important for families with allergies or asthma." },
+        { heading: "Services You Can Book", body: "From basic trims and hair coloring to party makeup and skincare treatments, our professionals cover a wide range of beauty needs. Specify your requirements when booking so the right specialist is assigned." },
+        { heading: "Safe & Hygienic Practices", body: "HomeSewa professionals use sanitized tools and follow hygiene standards. You can request a specific gender preference or product type when booking for added comfort." },
+        { heading: "Perfect for Regular Maintenance", body: "Set up recurring appointments for monthly haircuts or seasonal skincare. Booking through the HomeSewa app makes rescheduling and tracking your service history simple." },
       ]
     ),
   },
   {
-    slug: "sofa-upholstery-cleaning",
-    title: "Professional Sofa & Upholstery Cleaning",
+    slug: "chef-at-home",
+    title: "Chef at Home: Custom Meals Cooked in Your Kitchen",
     description:
-      "Your sofas and upholstered furniture accumulate dust, stains, and odors. HomeSewa provides professional sofa and upholstery cleaning in Nepal using deep steam cleaning and fabric-safe solutions.",
-    image: "/blog/sofa-upholstery-cleaning.jpg",
-    category: "Residential",
-    date: "January 5, 2026",
+      "Hire a professional chef to prepare meals at your home based on your taste, dietary needs, and occasion — from everyday family dinners to special gatherings.",
+    image: "/home/blog/chef-at-home.jpg",
+    category: "Home Services",
+    date: "March 8, 2026",
     readTime: "4 min read",
     content: postContent(
-      "Restore furniture hygiene, protect its lifespan, and maintain a fresh home environment with our professional sofa and upholstery cleaning services across Nepal.",
+      "Whether you need help with daily cooking, want to impress guests at a dinner party, or require meals tailored to dietary restrictions, HomeSewa's chef at home service brings experienced cooks to your kitchen with fresh ingredients and proven recipes.",
       [
-        { heading: "Fabric-Safe Methods", body: "We use appropriate cleaning methods for fabric, leather, and microfiber upholstery to avoid damage while achieving deep cleanliness." },
-        { heading: "Odor and Stain Removal", body: "Deep steam cleaning removes embedded odors, pet stains, and everyday spills that accumulate over time." },
-        { heading: "Extend Furniture Life", body: "Regular professional cleaning protects upholstery fibers and keeps your furniture looking and feeling new for years." },
+        { heading: "How Chef at Home Works", body: "Share your menu preferences, number of guests, and any allergies when booking. Your assigned chef shops for ingredients (or uses yours), prepares meals on-site, and can leave your kitchen tidy after service." },
+        { heading: "Ideal Occasions", body: "Chef at home is popular for festival feasts, birthday parties, small corporate lunches, and busy households that want home-cooked food without the daily effort. Many families book weekly meal-prep sessions." },
+        { heading: "Book a Chef Today", body: "Select chef at home on HomeSewa, describe your requirements, and pick a date. Verified chefs across Kathmandu are ready to deliver restaurant-quality food in the comfort of your dining room." },
       ]
     ),
   },
   {
-    slug: "move-in-out-cleaning",
-    title: "Move-In & Move-Out Cleaning Services in Nepal",
+    slug: "massage-therapy",
+    title: "Massage Therapy at Home: Relief for Body and Mind",
     description:
-      "Moving can be stressful. HomeSewa ensures every corner of your home is spotless with move-in and move-out cleaning services across Nepal.",
-    image: "/blog/move-in-move-out-cleaning.jpg",
-    category: "Residential",
-    date: "January 3, 2026",
+      "Professional massage therapy at home helps reduce stress, ease muscle tension, and support recovery — delivered by trained therapists through HomeSewa.",
+    image: "/home/blog/massage-therapy.jpg",
+    category: "Health & Wellness",
+    date: "March 5, 2026",
+    readTime: "4 min read",
+    content: postContent(
+      "Long hours at a desk, physical labor, or post-workout soreness can take a toll on your body. HomeSewa's massage therapy service connects you with therapists who offer relaxation, deep tissue, and therapeutic massages in your own space.",
+      [
+        { heading: "Types of Massage Available", body: "Choose from relaxation massages for stress relief, deep tissue work for chronic tension, and sports-focused therapy for active individuals. Discuss your needs with your therapist before the session begins." },
+        { heading: "Health Benefits", body: "Regular massage can improve circulation, reduce anxiety, support better sleep, and help manage back and neck pain. Home-based sessions let you rest immediately afterward without commuting." },
+        { heading: "Scheduling Made Easy", body: "Book a single session or a package through HomeSewa. Evening and weekend slots are available for professionals who need recovery time after work." },
+      ]
+    ),
+  },
+  {
+    slug: "physiotherapy",
+    title: "Physiotherapy at Home: Recovery Without the Clinic Wait",
+    description:
+      "Get professional rehabilitation and mobility support at home — ideal after injury, surgery, or for ongoing pain management with HomeSewa's verified physiotherapists.",
+    image: "/home/blog/physiotherapy.jpg",
+    category: "Health & Wellness",
+    date: "March 3, 2026",
     readTime: "5 min read",
     content: postContent(
-      "Deep cleaning, bathroom and kitchen sanitization, and debris removal make relocation seamless and hygienic with HomeSewa's move-in and move-out services.",
+      "Recovering from an injury or managing chronic pain often requires consistent physiotherapy. HomeSewa brings licensed physiotherapists to your home for assessments, exercises, and treatment plans tailored to your condition and living environment.",
       [
-        { heading: "Move-Out Cleaning", body: "Leave your previous property in excellent condition for landlords and new tenants. We clean every room, appliance, and fixture thoroughly." },
-        { heading: "Move-In Cleaning", body: "Start fresh in your new home with sanitized bathrooms, kitchens, floors, and closets ready for your belongings." },
-        { heading: "Post-Renovation Ready", body: "We remove construction dust and debris so your newly renovated space is safe and comfortable from day one." },
+        { heading: "Who Benefits from Home Physiotherapy", body: "Post-surgery patients, seniors with mobility challenges, athletes in recovery, and anyone with back, knee, or shoulder issues can benefit. Home visits are especially helpful when travel to a clinic is difficult." },
+        { heading: "What Sessions Include", body: "Your physiotherapist evaluates movement, prescribes exercises, may use manual therapy techniques, and teaches you a home routine to maintain progress between visits." },
+        { heading: "Start Your Recovery", body: "Book physiotherapy through HomeSewa and describe your condition briefly. We'll match you with a qualified professional and help you schedule regular sessions for the best outcomes." },
       ]
     ),
   },
   {
-    slug: "sanitization",
-    title: "Trusted Disinfection and Sanitization Services",
+    slug: "handyman",
+    title: "Handyman Services: Fix It All in One Visit",
     description:
-      "Maintain a germ-free environment with HomeSewa's professional disinfection services for homes, offices, and commercial spaces.",
-    image: "/blog/disinfection-sanitization-services.jpg",
-    category: "Commercial",
-    date: "December 28, 2025",
+      "From furniture assembly to minor repairs and installations, HomeSewa's handyman service handles multiple small jobs around your home efficiently in a single appointment.",
+    image: "/home/blog/handyman.jpg",
+    category: "Home Repair & Maintenance",
+    date: "February 28, 2026",
     readTime: "4 min read",
     content: postContent(
-      "Surface disinfection, high-touch area sanitization, and eco-friendly disinfectants keep homes, offices, and commercial spaces healthier and safer.",
+      "That loose door handle, wobbly shelf, and dripping tap don't need three different contractors. HomeSewa's handyman service covers a wide range of repair and maintenance tasks so you can clear your to-do list in one visit.",
       [
-        { heading: "High-Touch Surfaces", body: "We focus on door handles, switches, desks, restrooms, and shared equipment where germs spread most easily." },
-        { heading: "Healthcare Standards", body: "Our protocols meet strict hygiene requirements for hospitals, clinics, offices, and hospitality venues across Nepal." },
-        { heading: "Eco-Friendly Disinfectants", body: "We use effective yet safe disinfectants that protect people and the environment without harsh chemical residues." },
+        { heading: "Common Handyman Jobs", body: "Our professionals handle furniture assembly, curtain rod installation, door and window adjustments, minor wall repairs, picture hanging, and general fix-it tasks that keep your home running smoothly." },
+        { heading: "Why Use a Verified Handyman", body: "HomeSewa handymen are skill-assessed and customer-rated. You get transparent pricing upfront and the convenience of booking online instead of searching for reliable help through word of mouth." },
+        { heading: "Book Multiple Tasks at Once", body: "List all the jobs you need done when booking. Your handyman will bring the right tools and allocate enough time to complete everything in one efficient visit." },
       ]
     ),
   },
   {
-    slug: "ac-cleaning",
-    title: "Air Conditioner Cleaning Services in Nepal",
+    slug: "plumbing",
+    title: "Plumbing Services: Leaks, Clogs & Installations Fixed Fast",
     description:
-      "Dirty AC units circulate dust and reduce efficiency. HomeSewa provides AC cleaning services in Nepal to remove dust, allergens, and bacteria.",
-    image: "/blog/ac-cleaning.jpg",
-    category: "Residential",
-    date: "December 25, 2025",
+      "Expert plumbers for dripping faucets, clogged drains, pipe repairs, and bathroom installations — available on demand through HomeSewa in Kathmandu.",
+    image: "/home/blog/plumbing.jpg",
+    category: "Home Repair & Maintenance",
+    date: "February 25, 2026",
     readTime: "4 min read",
     content: postContent(
-      "Improve air quality and cooling efficiency with professional AC cleaning that removes dust, allergens, and bacteria from filters, coils, and ducts.",
+      "Plumbing problems worsen quickly if ignored. A small leak can damage walls and raise water bills, while blocked drains disrupt daily life. HomeSewa connects you with experienced plumbers for fast, reliable repairs across Kathmandu.",
       [
-        { heading: "Filter and Coil Cleaning", body: "Clean filters and coils improve airflow and reduce energy consumption by up to 15%, lowering your electricity bills." },
-        { heading: "Better Indoor Air", body: "Regular AC maintenance prevents mold and bacteria from circulating through your home or office ventilation system." },
-        { heading: "Extend AC Lifespan", body: "Professional servicing twice a year can extend your unit's life by years and prevent costly breakdowns during peak summer months." },
+        { heading: "Services Our Plumbers Provide", body: "We handle leak detection and repair, drain unclogging, faucet and fixture replacement, toilet repairs, geyser connections, and new bathroom or kitchen plumbing installations." },
+        { heading: "Prevent Costly Water Damage", body: "Schedule regular plumbing checks for older homes. Early detection of worn pipes and slow leaks saves money and prevents mold and structural damage over time." },
+        { heading: "Emergency & Scheduled Visits", body: "Book a plumber through HomeSewa for planned installations or urgent issues. Same-day service may be available for emergencies depending on technician availability in your area." },
       ]
     ),
   },
   {
-    slug: "laptop-cleaning",
-    title: "Laptop Cleaning Services in Nepal",
+    slug: "electrical-repairs",
+    title: "Electrical Repair Services: Safe Wiring & Power Solutions",
     description:
-      "Protect your devices with HomeSewa's professional laptop cleaning services across Nepal.",
-    image: "/blog/laptop-cleaning.jpg",
-    category: "Office",
-    date: "December 20, 2025",
-    readTime: "3 min read",
+      "Trained electricians for faulty switches, power outages, wiring issues, and safe electrical installations — protecting your home from hazards with HomeSewa.",
+    image: "/home/blog/electrical-repairs.jpg",
+    category: "Home Repair & Maintenance",
+    date: "February 22, 2026",
+    readTime: "4 min read",
     content: postContent(
-      "We remove dust from vents, clean screens, and safely sanitize components to prevent overheating and hardware issues.",
+      "Electrical issues should never be DIY experiments. Flickering lights, tripping breakers, and dead outlets signal problems that need a qualified electrician. HomeSewa sends verified professionals to diagnose and fix electrical concerns safely.",
       [
-        { heading: "Vent and Fan Cleaning", body: "Dust buildup in vents causes overheating and performance issues. Our technicians safely clean internal components without damaging hardware." },
-        { heading: "Screen and Keyboard", body: "Professional screen and keyboard cleaning removes fingerprints, bacteria, and debris for a hygienic workspace." },
-        { heading: "Office Packages", body: "We offer bulk laptop cleaning for offices, schools, and co-working spaces across Kathmandu and nearby regions." },
+        { heading: "When to Call an Electrician", body: "Contact a professional for burning smells, warm outlets, frequent breaker trips, new appliance wiring, ceiling fan installation, and any work involving your main panel or outdoor connections." },
+        { heading: "Safety First", body: "Our electricians follow safety codes and use proper equipment. Never ignore warning signs — faulty wiring is a leading cause of home fires and can damage expensive appliances." },
+        { heading: "Book an Electrician", body: "Describe your issue on the HomeSewa booking page and select electrical repairs. A skilled technician will arrive with tools to resolve the problem and advise on preventive maintenance." },
       ]
     ),
   },
   {
-    slug: "desktop-cleaning",
-    title: "Professional Desktop Cleaning Services in Nepal",
+    slug: "home-automation",
+    title: "Home Automation: Smarter, Safer Living in Kathmandu",
     description:
-      "Clean workstations improve productivity and hygiene. HomeSewa provides desktop cleaning services across Nepal for offices and home workstations.",
-    image: "/blog/desktop-cleaning.jpg",
-    category: "Office",
-    date: "December 18, 2025",
-    readTime: "3 min read",
-    content: postContent(
-      "Dusting, sanitizing, and organizing cables keep your desktop and workstation clean, productive, and hygienic.",
-      [
-        { heading: "Complete Workstation Care", body: "We clean monitors, keyboards, mice, desks, and CPU units using safe methods that protect electronics." },
-        { heading: "Office Hygiene", body: "Regular desktop cleaning reduces germ spread in shared offices and improves employee health and productivity." },
-        { heading: "Scheduled Maintenance", body: "Weekly or monthly desktop cleaning packages are available for corporate clients across Nepal." },
-      ]
-    ),
-  },
-  {
-    slug: "aircraft-cleaning",
-    title: "Aeroplane & Helicopter Cleaning Services in Nepal",
-    description:
-      "Aircraft interiors require professional cleaning for hygiene and passenger comfort. HomeSewa provides thorough aeroplane and helicopter cleaning services across Nepal.",
-    image: "/blog/helicopter-cleaning.jpg",
-    category: "Specialized",
-    date: "December 15, 2025",
+      "Integrate smart lighting, CCTV, and automation systems into your home with professional installation and setup through HomeSewa's smart home experts.",
+    image: "/home/blog/home-automation.jpg",
+    category: "Smart Home Services",
+    date: "February 18, 2026",
     readTime: "5 min read",
     content: postContent(
-      "Cabin sanitization and upholstery care for aircraft interiors meet strict aviation hygiene and safety standards.",
+      "Smart home technology is becoming more accessible in Nepal. HomeSewa's home automation service helps you install and configure systems that improve security, convenience, and energy efficiency — from smart switches to integrated surveillance.",
       [
-        { heading: "Cabin Sanitization", body: "We deep clean seats, overhead bins, galleys, and lavatories using aviation-approved products and procedures." },
-        { heading: "Upholstery Care", body: "Fabric and leather seat cleaning restores appearance and removes allergens for passenger comfort." },
-        { heading: "Safety Compliance", body: "Our team follows strict safety protocols for aircraft cleaning operations across Nepal's aviation sector." },
+        { heading: "What You Can Automate", body: "Popular options include smart lighting controls, automated curtains, voice-assisted devices, security cameras with remote monitoring, and unified control panels for your entire home." },
+        { heading: "Professional Installation Matters", body: "Proper wiring, network setup, and device placement ensure reliable performance. Our technicians configure systems, test connectivity, and walk you through mobile app controls before leaving." },
+        { heading: "Upgrade Your Home", body: "Start with a consultation through HomeSewa. Whether you want a single-room setup or whole-home automation, our experts design a solution that fits your budget and lifestyle." },
       ]
     ),
   },
   {
-    slug: "reserve-tank",
-    title: "Safe Reserve Tank Cleaning Services in Nepal",
+    slug: "deep-cleaning",
+    title: "Deep Cleaning: A Thorough Refresh for Your Home",
     description:
-      "Water storage tanks can accumulate dirt and bacteria. HomeSewa provides professional reserve tank cleaning services across Nepal.",
-    image: "/blog/reserve-tank-cleaning.jpg",
-    category: "Residential",
-    date: "December 12, 2025",
+      "Go beyond daily tidying with HomeSewa's deep cleaning service — scrubbing kitchens, sanitizing bathrooms, dusting hard-to-reach areas, and refreshing your entire home.",
+    image: "/home/blog/deep-cleaning.jpg",
+    category: "Home Enhancement",
+    date: "February 15, 2026",
     readTime: "4 min read",
     content: postContent(
-      "Scrubbing, sediment removal, and sanitization ensure safe, clean water for homes and offices.",
+      "Regular cleaning keeps surfaces tidy, but deep cleaning targets the grime, allergens, and bacteria that build up over time. HomeSewa's deep cleaning crews use eco-friendly products and a room-by-room checklist for a complete home reset.",
       [
-        { heading: "Sediment Removal", body: "Over time, tanks accumulate sludge and sediment that contaminate water supply. Professional cleaning removes these deposits completely." },
-        { heading: "Sanitization", body: "After physical cleaning, we sanitize tank interiors to eliminate bacteria and ensure water safety for your household." },
-        { heading: "Preventive Maintenance", body: "We recommend tank cleaning every 6–12 months depending on usage and water quality in your area." },
+        { heading: "When to Schedule Deep Cleaning", body: "Ideal before festivals like Dashain and Tihar, after renovations, when moving in or out, or every few months for families with pets and children. A deep clean improves air quality and creates a healthier living environment." },
+        { heading: "What's Included", body: "Our team cleans behind appliances, scrubs tile grout, sanitizes bathrooms and kitchens, dusts ceiling fans and vents, wipes baseboards, and refreshes upholstery and floors throughout your home." },
+        { heading: "Book Your Deep Clean", body: "Select deep cleaning on HomeSewa, specify your home size, and choose a date. Trained crews arrive with equipment and supplies for a thorough, satisfaction-guaranteed service." },
       ]
     ),
   },
   {
-    slug: "marble-tile",
-    title: "Marble & Tile Cleaning Services in Nepal",
+    slug: "home-renovation",
+    title: "Home Renovation: Transform Your Living Space",
     description:
-      "Marble and tiles enhance a home's beauty but require regular maintenance. HomeSewa offers professional cleaning for sparkling floors and grout.",
-    image: "/blog/marble-tile-cleaning.jpg",
-    category: "Residential",
-    date: "December 10, 2025",
-    readTime: "4 min read",
-    content: postContent(
-      "Stain removal, grout cleaning, and polishing using eco-friendly products restore the beauty of marble and tile surfaces.",
-      [
-        { heading: "Grout Deep Cleaning", body: "Grout lines trap dirt and discolor over time. Our specialized cleaning restores original color and prevents mold growth." },
-        { heading: "Marble Polishing", body: "Professional polishing removes scratches and restores shine without damaging delicate marble surfaces." },
-        { heading: "Long-Term Protection", body: "We apply protective treatments where appropriate to help floors resist stains and maintain their finish longer." },
-      ]
-    ),
-  },
-  {
-    slug: "post-construction",
-    title: "Post-Construction Cleaning Services in Nepal",
-    description:
-      "After construction or renovation, spaces are left dusty and messy. HomeSewa provides post-construction cleaning across Nepal.",
-    image: "/blog/post-construction-cleaning.jpg",
-    category: "Commercial",
-    date: "December 8, 2025",
+      "From kitchen and bathroom makeovers to complete interior updates, HomeSewa connects you with renovation professionals who deliver quality results on time and on budget.",
+    image: "/home/blog/home-renovation.jpg",
+    category: "Home Enhancement",
+    date: "February 12, 2026",
     readTime: "5 min read",
     content: postContent(
-      "Floor cleaning, surface wiping, and bathroom/kitchen sanitization ensure your property is ready for use after construction.",
+      "Renovating your home is a major investment that should improve both comfort and property value. HomeSewa's home renovation service brings together skilled contractors for kitchen upgrades, bathroom remodels, flooring, and full interior redesigns.",
       [
-        { heading: "Dust and Debris Removal", body: "Construction leaves fine dust on every surface. We remove debris from floors, walls, windows, and fixtures systematically." },
-        { heading: "Final Touch Cleaning", body: "Before handover or move-in, we deliver a spotless finish including polished floors, clean windows, and sanitized wet areas." },
-        { heading: "Commercial Projects", body: "We handle post-construction cleaning for hotels, offices, schools, and residential complexes across Nepal." },
+        { heading: "Planning Your Renovation", body: "Start with a clear scope and budget. Our professionals assess your space, recommend materials suited to Kathmandu's climate, and provide transparent timelines before work begins." },
+        { heading: "Quality Workmanship", body: "From demolition to finishing touches, HomeSewa renovation teams coordinate plumbing, electrical, tiling, and painting work so you have a single point of contact throughout the project." },
+        { heading: "Get a Consultation", body: "Book a home renovation consultation through HomeSewa. Share photos and ideas, and our team will help you plan a transformation that matches your vision and lifestyle." },
       ]
     ),
   },
   {
-    slug: "garden-cleaning",
-    title: "Garden Cleaning Services in Nepal",
+    slug: "pest-control",
+    title: "Pest Control: Protect Your Home from Unwanted Guests",
     description:
-      "A well-maintained garden enhances your home's appeal. HomeSewa offers expert garden cleaning services across Nepal.",
-    image: "/blog/garden-cleaning.jpg",
-    category: "Outdoor",
-    date: "December 5, 2025",
+      "Professional pest inspection, treatment, and prevention for insects and rodents — keeping your Kathmandu home safe and comfortable with HomeSewa.",
+    image: "/home/blog/pest-control.jpg",
+    category: "Home Enhancement",
+    date: "February 8, 2026",
     readTime: "4 min read",
     content: postContent(
-      "Trimming, sweeping, leaf removal, and pathway sanitization keep outdoor spaces neat and beautiful.",
+      "Cockroaches, termites, mosquitoes, and rodents are common challenges in urban Nepal. HomeSewa's pest control service provides thorough inspection, targeted treatment, and follow-up prevention to protect your family and property.",
       [
-        { heading: "Seasonal Maintenance", body: "Regular garden cleaning prevents overgrowth, pest habitats, and unsightly debris accumulation throughout the year." },
-        { heading: "Pathway and Patio Care", body: "We clean walkways, patios, and outdoor seating areas for safe and inviting outdoor living spaces." },
-        { heading: "Eco-Friendly Approach", body: "Our garden cleaning uses environmentally responsible methods that protect plants and local ecosystems." },
+        { heading: "Our Treatment Approach", body: "Technicians identify pest types and entry points, apply safe and effective treatments, and recommend sealing gaps and improving sanitation to prevent recurrence. We use methods appropriate for homes with children and pets." },
+        { heading: "Seasonal Prevention", body: "Monsoon season increases mosquito and termite activity. Schedule preventive treatments before peak seasons and after discovering early signs of infestation to avoid costly structural damage." },
+        { heading: "Book Pest Control", body: "Select pest control on HomeSewa, describe the issue, and schedule an inspection. Fast response helps contain infestations before they spread throughout your home." },
       ]
     ),
   },
   {
-    slug: "garage-cleaning",
-    title: "Garage Cleaning Services in Nepal",
+    slug: "packing-and-moving",
+    title: "Packing & Moving: Stress-Free Relocation in Nepal",
     description:
-      "Garages can quickly become cluttered. HomeSewa organizes, sweeps, and removes oil stains and debris.",
-    image: "/blog/garage-cleaning.jpg",
-    category: "Residential",
-    date: "December 3, 2025",
-    readTime: "3 min read",
-    content: postContent(
-      "Keep your garage clean, safe, and efficient for storage or vehicle use with professional garage cleaning services.",
-      [
-        { heading: "Decluttering Support", body: "We help organize tools, equipment, and stored items while cleaning floors and surfaces thoroughly." },
-        { heading: "Oil Stain Treatment", body: "Specialized cleaning removes oil and grease stains from garage floors for a safer, cleaner environment." },
-        { heading: "Pest Prevention", body: "A clean garage reduces pest attraction and makes your home's storage areas more hygienic." },
-      ]
-    ),
-  },
-  {
-    slug: "air-duct",
-    title: "Air Duct & Vent Cleaning Services in Nepal",
-    description:
-      "Air ducts and vents collect dust and allergens over time. HomeSewa improves indoor air quality with professional HVAC cleaning.",
-    image: "/blog/air-duct-vent-cleaning.jpg",
-    category: "Commercial",
-    date: "November 30, 2025",
+      "Professional packing, transport, and unloading for home relocations — HomeSewa helps you move safely and efficiently across Kathmandu and beyond.",
+    image: "/home/blog/packing-and-moving.jpg",
+    category: "Additional Services",
+    date: "February 5, 2026",
     readTime: "4 min read",
     content: postContent(
-      "Professional duct cleaning, sanitization, and HVAC inspection keep homes and offices healthy.",
+      "Moving to a new home is exciting but exhausting. HomeSewa's packing and moving service handles the heavy lifting — literally — with trained crews who pack fragile items carefully, transport belongings securely, and unload at your new address.",
       [
-        { heading: "Allergen Reduction", body: "Clean ducts reduce dust, pollen, and allergens circulating through your ventilation system." },
-        { heading: "Energy Efficiency", body: "Unobstructed airflow improves HVAC efficiency and can lower heating and cooling costs." },
-        { heading: "Regular Inspection", body: "We recommend duct inspection and cleaning every 2–3 years or after renovations." },
-      ]
-    ),
-  },
-  {
-    slug: "event-cleaning",
-    title: "Event Cleaning Services in Nepal",
-    description:
-      "HomeSewa ensures stress-free post-event cleanup across Nepal including trash removal and restroom sanitization.",
-    image: "/blog/post-event-cleaning.jpg",
-    category: "Commercial",
-    date: "November 28, 2025",
-    readTime: "4 min read",
-    content: postContent(
-      "Post-event cleanup leaves your venue spotless and ready for the next use with trash removal, surface cleaning, and restroom sanitization.",
-      [
-        { heading: "Wedding and Banquet Cleanup", body: "We handle large-scale post-event cleaning for wedding venues, banquet halls, and reception spaces across Kathmandu." },
-        { heading: "Corporate Events", body: "Conference and seminar cleanup includes seating areas, catering zones, and restroom facilities." },
-        { heading: "Fast Turnaround", body: "Our teams work efficiently to restore venues overnight or within hours of event completion." },
-      ]
-    ),
-  },
-  {
-    slug: "car-cleaning",
-    title: "Professional Car Cleaning Services in Nepal",
-    description:
-      "A clean car enhances both appearance and hygiene. HomeSewa provides exterior washing, polishing, and interior vacuuming across Nepal.",
-    image: "/blog/car-interior-cleaning.jpg",
-    category: "Automotive",
-    date: "November 25, 2025",
-    readTime: "4 min read",
-    content: postContent(
-      "Interior vacuuming, upholstery cleaning, and exterior polishing keep your vehicle gleaming and hygienic.",
-      [
-        { heading: "Interior Deep Clean", body: "We vacuum seats, carpets, and mats; clean dashboards, vents, and windows for a fresh cabin environment." },
-        { heading: "Exterior Care", body: "Professional washing and polishing protect paint and restore your vehicle's showroom appearance." },
-        { heading: "Luxury Vehicles", body: "We specialize in detailed cleaning for luxury and premium vehicles with fabric-safe products." },
-      ]
-    ),
-  },
-  {
-    slug: "facade-cleaning",
-    title: "Facade Cleaning Services in Nepal",
-    description:
-      "Building facades are exposed to dust and pollution. HomeSewa offers professional facade cleaning across Nepal.",
-    image: "/blog/facade-cleaning.jpg",
-    category: "Commercial",
-    date: "November 22, 2025",
-    readTime: "5 min read",
-    content: postContent(
-      "Pressure washing, window cleaning, and exterior polishing maintain your property's aesthetics and value.",
-      [
-        { heading: "Pressure Washing", body: "High-pressure cleaning removes accumulated pollution, algae, and grime from building exteriors safely." },
-        { heading: "Window Cleaning", body: "Professional window cleaning for multi-story buildings improves appearance and natural light." },
-        { heading: "Property Value", body: "Regular facade maintenance protects building materials and enhances curb appeal for commercial and residential properties." },
-      ]
-    ),
-  },
-  {
-    slug: "parquet-chair",
-    title: "Parquet & Chair Cleaning Services in Nepal",
-    description:
-      "Wooden floors and chairs require regular care. HomeSewa provides parquet and chair cleaning using eco-friendly products.",
-    image: "/blog/parquet-cleaning.jpg",
-    category: "Commercial",
-    date: "November 20, 2025",
-    readTime: "4 min read",
-    content: postContent(
-      "Deep cleaning, polishing, and eco-friendly products restore shine and hygiene to wooden floors and office chairs.",
-      [
-        { heading: "Parquet Floor Care", body: "Specialized cleaning and polishing protect wooden floors from scratches and maintain their natural beauty." },
-        { heading: "Office Chair Cleaning", body: "Fabric and leather chair cleaning removes stains, odors, and allergens from high-use office seating." },
-        { heading: "Corporate Packages", body: "Monthly maintenance packages available for offices, schools, and institutions across Nepal." },
-      ]
-    ),
-  },
-  {
-    slug: "septic-cleaning",
-    title: "Drainage & Septic Tank Cleaning Services in Nepal",
-    description:
-      "Clogged drains and dirty septic tanks pose health hazards. HomeSewa provides professional drainage and septic tank cleaning.",
-    image: "/blog/drainage-cleaning.jpg",
-    category: "Residential",
-    date: "November 18, 2025",
-    readTime: "4 min read",
-    content: postContent(
-      "Unclogging, sanitization, and preventive maintenance keep drainage systems and septic tanks functioning safely.",
-      [
-        { heading: "Drain Unclogging", body: "Professional equipment clears blockages in kitchen, bathroom, and main drainage lines efficiently." },
-        { heading: "Septic Tank Maintenance", body: "Regular septic cleaning prevents overflows, odors, and contamination of surrounding soil and water." },
-        { heading: "Emergency Service", body: "Same-day drainage and septic services may be available for urgent situations in Kathmandu and nearby areas." },
-      ]
-    ),
-  },
-  {
-    slug: "lift-cleaning",
-    title: "Lift & Elevator Cleaning Services in Nepal",
-    description:
-      "Elevators are high-touch areas. HomeSewa ensures safe and sanitized rides with professional lift cleaning across Nepal.",
-    image: "/blog/lift-elevator-cleaning.jpg",
-    category: "Commercial",
-    date: "November 15, 2025",
-    readTime: "3 min read",
-    content: postContent(
-      "Handrail sanitization and regular maintenance keep elevators clean and safe for daily use in offices and residential buildings.",
-      [
-        { heading: "High-Touch Sanitization", body: "Buttons, handrails, and door panels are disinfected to reduce germ transmission in shared elevators." },
-        { heading: "Floor and Mirror Cleaning", body: "Interior floors and mirrors are cleaned and polished for a professional appearance." },
-        { heading: "Building Maintenance Contracts", body: "Weekly or monthly elevator cleaning packages available for apartment complexes and commercial towers." },
-      ]
-    ),
-  },
-  {
-    slug: "corporate-cleaning",
-    title: "Corporate & Monthly Cleaning Services in Nepal",
-    description:
-      "Maintaining clean corporate spaces is vital. HomeSewa offers regular office cleaning and monthly deep cleaning packages.",
-    image: "/blog/monthly-cleaning.jpg",
-    category: "Commercial",
-    date: "November 12, 2025",
-    readTime: "5 min read",
-    content: postContent(
-      "Regular office cleaning, common area sanitization, and monthly deep cleaning packages keep commercial spaces spotless and professional.",
-      [
-        { heading: "Daily Office Cleaning", body: "Desk sanitization, floor maintenance, restroom cleaning, and trash removal for productive workspaces." },
-        { heading: "Monthly Deep Cleaning", body: "Comprehensive deep cleaning of carpets, windows, air ducts, and hard-to-reach areas on a scheduled basis." },
-        { heading: "Custom Contracts", body: "Flexible weekly, bi-weekly, or monthly contracts tailored to your office size and requirements." },
+        { heading: "Full-Service Moving", body: "Our teams provide boxes and packing materials, disassemble furniture when needed, load trucks efficiently, and place items in designated rooms at your destination. You focus on settling in while we handle the logistics." },
+        { heading: "Tips for a Smooth Move", body: "Book at least a week in advance during peak seasons. Label boxes by room, keep essentials in a separate bag, and inform building management about elevator access and parking for the moving truck." },
+        { heading: "Get a Moving Quote", body: "Enter your current and new addresses, home size, and move date on HomeSewa. You'll receive transparent pricing and can schedule a team that fits your timeline." },
       ]
     ),
   },

@@ -5,9 +5,9 @@ import { blogPosts } from "../data/blogPosts";
 import { absoluteUrl, pageMetadata, SITE_NAME, SITE_URL } from "../../lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Blog — Cleaning Tips & Home Care Advice",
+  title: "Blog — Home Service Tips & Guides",
   description:
-    "Expert cleaning tips, professional service guides, and home & office hygiene advice from HomeSewa — Nepal's on-demand home services platform.",
+    "Expert guides on salon, spa, repairs, renovation, and on-demand home services from HomeSewa — Nepal's trusted hyperlocal service platform.",
   path: "/blog",
 });
 
@@ -17,7 +17,7 @@ const blogListJsonLd = {
   "@id": `${SITE_URL}/blog#blog`,
   name: `${SITE_NAME} Blog`,
   description:
-    "Expert cleaning tips, professional service guides, and home care advice from HomeSewa.",
+    "Expert guides on salon, spa, repairs, renovation, and on-demand home services from HomeSewa.",
   url: absoluteUrl("/blog"),
   publisher: { "@id": `${SITE_URL}/#organization` },
   blogPost: blogPosts.map((post) => ({
@@ -36,7 +36,7 @@ export default function BlogPage() {
       <section className="text-center mb-16">
         <h1 className="text-4xl md:text-5xl font-bold mb-4">HomeSewa Blog</h1>
         <p className="text-lg md:text-xl max-w-2xl mx-auto">
-          Stay updated with expert cleaning tips, professional services, and home & office hygiene advice from HomeSewa.
+          Guides and tips on beauty, wellness, home repairs, smart home setup, renovation, and more from HomeSewa.
         </p>
       </section>
 

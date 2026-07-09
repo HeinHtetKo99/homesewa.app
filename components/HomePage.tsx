@@ -75,9 +75,9 @@ const testimonials = [
 ];
 
 const featuredBlogs = [
-  { title: "AC Cleaning Tips", desc: "Simple tricks to keep your air conditioner clean and efficient.", image: "/home/blog/1.jpg", slug: "ac-cleaning" },
-  { title: "Bathroom Cleaning Tips", desc: "Expert bathroom sanitization for a hygienic home.", image: "/home/blog/2.jpg", slug: "bathroom-cleaning" },
-  { title: "Garden Cleaning Tips", desc: "Tips for keeping your garden clean and well-maintained.", image: "/home/blog/3.jpg", slug: "garden-cleaning" },
+  { title: "Spa at Home: Wellness on Your Schedule", desc: "Massages and relaxation therapies delivered by verified therapists at your doorstep.", image: "/home/blog/spa-at-home.jpg", slug: "spa-at-home" },
+  { title: "Bridal Makeup for Your Wedding Day", desc: "How to book a professional bridal artist and prepare for a flawless wedding look.", image: "/home/blog/bridal-makeup.jpg", slug: "bridal-makeup" },
+  { title: "Salon at Home: Beauty Without the Trip", desc: "Haircuts, styling, and skincare from trusted professionals who come to you.", image: "/home/blog/salon-at-home.jpg", slug: "salon-at-home" },
 ];
 
 export default function Home() {

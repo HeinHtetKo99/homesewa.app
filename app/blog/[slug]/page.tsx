@@ -52,9 +52,9 @@ export default async function BlogPostPage({ params }: PageProps) {
   };
 
   return (
-    <section className="min-h-screen bg-white py-20 px-6 sm:px-12 lg:px-20">
+    <section className="min-h-screen bg-gray-50 py-12 sm:py-16 px-6 sm:px-12 lg:px-20">
       <JsonLd data={blogPostingJsonLd} />
-      <div className="max-w-3xl mx-auto">
+      <article className="max-w-3xl mx-auto">
         <Link
           href="/blog"
           className="inline-flex items-center gap-2 text-[#0D5D59] hover:text-teal-900 font-medium mb-8 transition-colors"
@@ -62,31 +62,38 @@ export default async function BlogPostPage({ params }: PageProps) {
           ← Back to Blog
         </Link>
 
-        <div className="rounded-2xl overflow-hidden mb-8 shadow-lg">
-          <img src={post.image} alt={post.title} className="w-full h-64 sm:h-80 object-cover" />
-        </div>
+        <header className="mb-8">
+          <div className="flex flex-wrap items-center gap-3 mb-5">
+            <span className="bg-teal-100 text-teal-800 text-xs font-semibold px-3 py-1 rounded-full">
+              {post.category}
+            </span>
+            <span className="text-sm text-gray-500">{post.date}</span>
+            <span className="text-sm text-gray-400">·</span>
+            <span className="text-sm text-gray-500">{post.readTime}</span>
+          </div>
 
-        <div className="flex flex-wrap items-center gap-4 mb-4">
-          <span className="bg-teal-100 text-teal-800 text-xs font-semibold px-3 py-1 rounded-full">
-            {post.category}
-          </span>
-          <span className="text-sm text-gray-400">{post.date}</span>
-          <span className="text-sm text-gray-400">{post.readTime}</span>
-        </div>
+          <h1 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-extrabold text-teal-900 mb-4 leading-tight">
+            {post.title}
+          </h1>
 
-        <h1 className="text-3xl sm:text-4xl font-extrabold text-teal-900 mb-8 leading-tight">
-          {post.title}
-        </h1>
+          <p className="text-lg sm:text-xl text-gray-600 leading-relaxed">
+            {post.description}
+          </p>
+        </header>
+
+        <div className="rounded-2xl overflow-hidden mb-10 shadow-md border border-gray-100">
+          <img src={post.image} alt={post.title} className="w-full h-56 sm:h-72 lg:h-80 object-cover" />
+        </div>
 
         <div
-          className="prose prose-teal max-w-none prose-h2:text-xl prose-h2:font-bold prose-h2:text-teal-800 prose-h2:mt-8 prose-h2:mb-3 prose-p:text-gray-700 prose-p:leading-relaxed prose-p:mb-4"
+          className="blog-content bg-white rounded-2xl border border-gray-100 shadow-sm px-6 sm:px-10 py-8 sm:py-10"
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
 
-        <div className="mt-12 bg-teal-50 border border-teal-200 rounded-2xl p-8 text-center">
-          <h3 className="text-xl font-bold text-teal-900 mb-3">Need Professional Help?</h3>
-          <p className="text-gray-600 mb-6">
-            Book a trusted HomeSewa professional for any cleaning service in Kathmandu and across Nepal.
+        <div className="mt-10 bg-teal-50 border border-teal-200 rounded-2xl p-8 sm:p-10 text-center">
+          <h2 className="text-xl sm:text-2xl font-bold text-teal-900 mb-3">Need Professional Help?</h2>
+          <p className="text-gray-600 mb-6 max-w-lg mx-auto leading-relaxed">
+            Book a trusted HomeSewa professional for salon, spa, repairs, renovation, and more in Kathmandu and nearby areas.
           </p>
           <Link
             href="/book"
@@ -95,7 +102,7 @@ export default async function BlogPostPage({ params }: PageProps) {
             Book a Service
           </Link>
         </div>
-      </div>
+      </article>
     </section>
   );
 }
