@@ -25,7 +25,7 @@ export const blogPosts: BlogPost[] = [
     title: "Spa at Home: Wellness Delivered to Your Doorstep",
     description:
       "Enjoy massages, body treatments, and skincare without visiting a spa. HomeSewa connects you with verified therapists who bring professional wellness services to your home in Kathmandu.",
-    image: "/home/blog/spa-at-home.jpg",
+    image: "/blog/spa-at-home.jpg",
     category: "Health & Wellness",
     date: "March 15, 2026",
     readTime: "4 min read",
@@ -43,7 +43,7 @@ export const blogPosts: BlogPost[] = [
     title: "Bridal Makeup at Home: Look Perfect on Your Special Day",
     description:
       "Professional bridal makeup artists visit your home or venue to create a customized look that complements your dress, skin tone, and wedding style — booked easily through HomeSewa.",
-    image: "/home/blog/bridal-makeup.jpg",
+    image: "/blog/bridal-makeup.jpg",
     category: "Home Services",
     date: "March 12, 2026",
     readTime: "5 min read",
@@ -61,7 +61,7 @@ export const blogPosts: BlogPost[] = [
     title: "Salon at Home: Hair, Skin & Beauty Without the Salon Visit",
     description:
       "Get haircuts, styling, skincare, and makeup from verified beauty professionals who visit your home — convenient, private, and professional salon services on demand.",
-    image: "/home/blog/salon-at-home.jpg",
+    image: "/blog/salon-at-home.jpg",
     category: "Home Services",
     date: "March 10, 2026",
     readTime: "4 min read",
@@ -79,7 +79,7 @@ export const blogPosts: BlogPost[] = [
     title: "Chef at Home: Custom Meals Cooked in Your Kitchen",
     description:
       "Hire a professional chef to prepare meals at your home based on your taste, dietary needs, and occasion — from everyday family dinners to special gatherings.",
-    image: "/home/blog/chef-at-home.jpg",
+    image: "/blog/chef-at-home.jpg",
     category: "Home Services",
     date: "March 8, 2026",
     readTime: "4 min read",
@@ -97,7 +97,7 @@ export const blogPosts: BlogPost[] = [
     title: "Massage Therapy at Home: Relief for Body and Mind",
     description:
       "Professional massage therapy at home helps reduce stress, ease muscle tension, and support recovery — delivered by trained therapists through HomeSewa.",
-    image: "/home/blog/massage-therapy.jpg",
+    image: "/blog/massage-therapy.jpg",
     category: "Health & Wellness",
     date: "March 5, 2026",
     readTime: "4 min read",
@@ -115,7 +115,7 @@ export const blogPosts: BlogPost[] = [
     title: "Physiotherapy at Home: Recovery Without the Clinic Wait",
     description:
       "Get professional rehabilitation and mobility support at home — ideal after injury, surgery, or for ongoing pain management with HomeSewa's verified physiotherapists.",
-    image: "/home/blog/physiotherapy.jpg",
+    image: "/blog/physiotherapy.jpg",
     category: "Health & Wellness",
     date: "March 3, 2026",
     readTime: "5 min read",
@@ -133,7 +133,7 @@ export const blogPosts: BlogPost[] = [
     title: "Handyman Services: Fix It All in One Visit",
     description:
       "From furniture assembly to minor repairs and installations, HomeSewa's handyman service handles multiple small jobs around your home efficiently in a single appointment.",
-    image: "/home/blog/handyman.jpg",
+    image: "/blog/handyman.jpg",
     category: "Home Repair & Maintenance",
     date: "February 28, 2026",
     readTime: "4 min read",
@@ -151,7 +151,7 @@ export const blogPosts: BlogPost[] = [
     title: "Plumbing Services: Leaks, Clogs & Installations Fixed Fast",
     description:
       "Expert plumbers for dripping faucets, clogged drains, pipe repairs, and bathroom installations — available on demand through HomeSewa in Kathmandu.",
-    image: "/home/blog/plumbing.jpg",
+    image: "/blog/plumbing.jpg",
     category: "Home Repair & Maintenance",
     date: "February 25, 2026",
     readTime: "4 min read",
@@ -169,7 +169,7 @@ export const blogPosts: BlogPost[] = [
     title: "Electrical Repair Services: Safe Wiring & Power Solutions",
     description:
       "Trained electricians for faulty switches, power outages, wiring issues, and safe electrical installations — protecting your home from hazards with HomeSewa.",
-    image: "/home/blog/electrical-repairs.jpg",
+    image: "/blog/electrical-repairs.jpg",
     category: "Home Repair & Maintenance",
     date: "February 22, 2026",
     readTime: "4 min read",
@@ -187,7 +187,7 @@ export const blogPosts: BlogPost[] = [
     title: "Home Automation: Smarter, Safer Living in Kathmandu",
     description:
       "Integrate smart lighting, CCTV, and automation systems into your home with professional installation and setup through HomeSewa's smart home experts.",
-    image: "/home/blog/home-automation.jpg",
+    image: "/blog/home-automation.jpg",
     category: "Smart Home Services",
     date: "February 18, 2026",
     readTime: "5 min read",
@@ -205,7 +205,7 @@ export const blogPosts: BlogPost[] = [
     title: "Deep Cleaning: A Thorough Refresh for Your Home",
     description:
       "Go beyond daily tidying with HomeSewa's deep cleaning service — scrubbing kitchens, sanitizing bathrooms, dusting hard-to-reach areas, and refreshing your entire home.",
-    image: "/home/blog/deep-cleaning.jpg",
+    image: "/blog/deep-cleaning.jpg",
     category: "Home Enhancement",
     date: "February 15, 2026",
     readTime: "4 min read",
@@ -223,7 +223,7 @@ export const blogPosts: BlogPost[] = [
     title: "Home Renovation: Transform Your Living Space",
     description:
       "From kitchen and bathroom makeovers to complete interior updates, HomeSewa connects you with renovation professionals who deliver quality results on time and on budget.",
-    image: "/home/blog/home-renovation.jpg",
+    image: "/blog/home-renovation.jpg",
     category: "Home Enhancement",
     date: "February 12, 2026",
     readTime: "5 min read",
@@ -241,7 +241,7 @@ export const blogPosts: BlogPost[] = [
     title: "Pest Control: Protect Your Home from Unwanted Guests",
     description:
       "Professional pest inspection, treatment, and prevention for insects and rodents — keeping your Kathmandu home safe and comfortable with HomeSewa.",
-    image: "/home/blog/pest-control.jpg",
+    image: "/blog/pest-control.jpg",
     category: "Home Enhancement",
     date: "February 8, 2026",
     readTime: "4 min read",
@@ -259,7 +259,7 @@ export const blogPosts: BlogPost[] = [
     title: "Packing & Moving: Stress-Free Relocation in Nepal",
     description:
       "Professional packing, transport, and unloading for home relocations — HomeSewa helps you move safely and efficiently across Kathmandu and beyond.",
-    image: "/home/blog/packing-and-moving.jpg",
+    image: "/blog/packing-and-moving.jpg",
     category: "Additional Services",
     date: "February 5, 2026",
     readTime: "4 min read",

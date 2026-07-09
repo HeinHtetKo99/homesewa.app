@@ -75,9 +75,9 @@ const testimonials = [
 ];
 
 const featuredBlogs = [
-  { title: "Spa at Home: Wellness on Your Schedule", desc: "Massages and relaxation therapies delivered by verified therapists at your doorstep.", image: "/home/blog/spa-at-home.jpg", slug: "spa-at-home" },
-  { title: "Bridal Makeup for Your Wedding Day", desc: "How to book a professional bridal artist and prepare for a flawless wedding look.", image: "/home/blog/bridal-makeup.jpg", slug: "bridal-makeup" },
-  { title: "Salon at Home: Beauty Without the Trip", desc: "Haircuts, styling, and skincare from trusted professionals who come to you.", image: "/home/blog/salon-at-home.jpg", slug: "salon-at-home" },
+  { title: "Spa at Home: Wellness on Your Schedule", desc: "Massages and relaxation therapies delivered by verified therapists at your doorstep.", image: "/blog/spa-at-home.jpg", slug: "spa-at-home" },
+  { title: "Bridal Makeup for Your Wedding Day", desc: "How to book a professional bridal artist and prepare for a flawless wedding look.", image: "/blog/bridal-makeup.jpg", slug: "bridal-makeup" },
+  { title: "Salon at Home: Beauty Without the Trip", desc: "Haircuts, styling, and skincare from trusted professionals who come to you.", image: "/blog/salon-at-home.jpg", slug: "salon-at-home" },
 ];
 
 export default function Home() {
