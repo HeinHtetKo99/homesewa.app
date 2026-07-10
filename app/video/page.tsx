@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Ribbon from "../../components/Ribbon";
 import JsonLd from "../../components/JsonLd";
+import YouTubeEmbed from "../../components/YouTubeEmbed";
+import { youtubeEmbedUrl, youtubeWatchUrl } from "../../lib/youtube";
 import { pageMetadata, SITE_NAME, SITE_URL } from "../../lib/seo";
 
 export const metadata: Metadata = pageMetadata({
@@ -10,52 +12,46 @@ export const metadata: Metadata = pageMetadata({
   path: "/video",
 });
 
+const featuredVideoId = "DBCGoFwTy4E";
+
 const videos = [
   {
+    id: "tbXpYAApZok",
     title: "Uncover Expert Cleaning Secrets",
-    embedUrl: "https://www.youtube.com/embed/tbXpYAApZok?rel=0",
   },
   {
+    id: "lDiqkZEu1rs",
     title: "Unlock Your Cleaning Motivation",
-    embedUrl: "https://www.youtube.com/embed/lDiqkZEu1rs?rel=0" ,
   },
   {
-    title: "My Full Home Cleaning Routune",
-    embedUrl: "https://www.youtube.com/embed/osFxHW-iAf8?rel=0",
+    id: "osFxHW-iAf8",
+    title: "My Full Home Cleaning Routine",
   },
   {
+    id: "aFnXFXJWjgc",
     title: "Home Cleaning Guide",
-    embedUrl: "https://www.youtube.com/embed/aFnXFXJWjgc?rel=0",
   },
   {
+    id: "gLNbjA0x5qQ",
     title: "Deep Cleaning Hacks",
-    embedUrl: "https://www.youtube.com/embed/gLNbjA0x5qQ?rel=0",
   },
   {
+    id: "uQMWOc8Z2eM",
     title: "Whole House Clean",
-    embedUrl: "https://www.youtube.com/embed/uQMWOc8Z2eM?rel=0",
   },
   {
+    id: "hE_6O96wVmw",
     title: "How to Clean Everything",
-    embedUrl: "https://www.youtube.com/embed/wHBQNIkwWYQ?rel=0",
   },
   {
+    id: "M1O_MjMRkPg",
     title: "How to do laundry when you're depressed",
-    embedUrl: "https://www.youtube.com/embed/M1O_MjMRkPg?rel=0",
-    
   },
   {
-    title: "21 Whays to make your Home Sparkle",
-    embedUrl: "https://www.youtube.com/embed/f_jxPhnH-hk?rel=0",
+    id: "8OKyJZUn0UA",
+    title: "21 Ways to Make Your Home Sparkle",
   },
 ];
-
-function youtubeWatchUrl(embedUrl: string) {
-  const match = embedUrl.match(/embed\/([^?]+)/);
-  return match ? `https://www.youtube.com/watch?v=${match[1]}` : embedUrl;
-}
-
-const featuredVideo = "https://www.youtube.com/embed/DBCGoFwTy4E?rel=0";
 
 const videoGalleryJsonLd = {
   "@context": "https://schema.org",
@@ -68,8 +64,8 @@ const videoGalleryJsonLd = {
       item: {
         "@type": "VideoObject",
         name: "Featured HomeSewa Video",
-        embedUrl: featuredVideo,
-        contentUrl: youtubeWatchUrl(featuredVideo),
+        embedUrl: youtubeEmbedUrl(featuredVideoId),
+        contentUrl: youtubeWatchUrl(featuredVideoId),
         publisher: { "@id": `${SITE_URL}/#organization` },
       },
     },
@@ -79,8 +75,8 @@ const videoGalleryJsonLd = {
       item: {
         "@type": "VideoObject",
         name: video.title,
-        embedUrl: video.embedUrl,
-        contentUrl: youtubeWatchUrl(video.embedUrl),
+        embedUrl: youtubeEmbedUrl(video.id),
+        contentUrl: youtubeWatchUrl(video.id),
         publisher: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
       },
     })),
@@ -91,10 +87,8 @@ function VideoPage() {
   return (
     <div className=" min-h-screen font-sans">
       <JsonLd data={videoGalleryJsonLd} />
-      {/* Header */}
-      <Ribbon name="Vidoes" showfont={false}/>
+      <Ribbon name="Videos" showfont={false} />
 
-      {/* Featured Video Section */}
       <section className="max-w-7xl mx-auto  rounded-md px-4 sm:px-6 py-10 sm:py-12 md:py-10">
         <div className="text-center">
           <h2 className=" text-2xl sm:text-3xl md:text-4xl font-semibold mb-8">
@@ -103,42 +97,34 @@ function VideoPage() {
 
           <div className="flex justify-center">
             <div className="w-full max-w-7xl aspect-video rounded-lg overflow-hidden shadow-2xl">
-              <iframe
-                src={featuredVideo}
+              <YouTubeEmbed
+                videoId={featuredVideoId}
                 title="Featured HomeSewa Video"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerPolicy="strict-origin-when-cross-origin"
-                allowFullScreen
-                className="w-full h-full"
-              ></iframe>
+                autoPlay
+                className="rounded-lg"
+              />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Video Gallery Section */}
       <section className="max-w-7xl mx-auto py-14 px-4 sm:px-6 md:px-8">
         <h2 className="card2 text-xl sm:text-2xl md:text-3xl font-semibold text-center mb-10">
           HomeSewa Videos
         </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
-          {videos.map((video, index) => (
+          {videos.map((video) => (
             <div
-              key={index}
+              key={video.id}
               className="text-center bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
             >
               <div className="aspect-video w-full">
-                <iframe
-                  className="w-full h-full rounded-t-md"
-                  src={video.embedUrl}
+                <YouTubeEmbed
+                  videoId={video.id}
                   title={video.title}
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  referrerPolicy="strict-origin-when-cross-origin"
-                  allowFullScreen
-                ></iframe>
+                  className="rounded-t-md"
+                />
               </div>
               <p className="text-[#0D5D59] text-sm sm:text-base mt-3 px-2 pb-4 font-medium">
                 {video.title}
