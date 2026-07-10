@@ -23,8 +23,6 @@ export default function Faq() {
     { id: 16, question: "Does HomeSewa offer ongoing maintenance contracts?", answer: "Yes, businesses can opt for weekly, bi-weekly, or monthly maintenance packages." },
     { id: 17, question: "What are the charges for cleaning services?", answer: "Pricing depends on service type, area, and frequency. Contact us for a detailed quote." },
     { id: 18, question: "Who are some of HomeSewa’s notable clients?", answer: "Clients include hospitals, hotels, offices, schools, and residential societies across Kathmandu." },
-    { id: 19, question: "Does HomeSewa offer training or internships?", answer: "Yes, internships are available for students and professionals from June-May with guided training." },
-    { id: 20, question: "How do I apply for an internship?", answer: "Fill the online application form in the Internship section of our website." },
     { id: 21, question: "Are cleaning products provided by HomeSewa?", answer: "Yes, we supply all necessary eco-friendly cleaning products and equipment." },
     { id: 22, question: "Is HomeSewa insured?", answer: "Yes, we maintain comprehensive insurance coverage for staff and property during service." },
     { id: 23, question: "Can HomeSewa handle large commercial projects?", answer: "Yes, our team is equipped for large-scale office complexes, hotels, and event venues." },
