@@ -216,7 +216,7 @@ const Footer = () => {
             <span>|</span>
             <Link href="/disclaimer" className="cursor-pointer">Disclaimer</Link>
             <span>|</span>
-            <Link href="/tos" className="cursor-pointer">Terms of Service</Link>
+            <Link href="/terms" className="cursor-pointer">Terms of Service</Link>
           </div>
         </div>
 

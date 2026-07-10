@@ -31,7 +31,7 @@ interface GalleryItem {
 
 const cleaningProjects: GalleryItem[] = Array.from({ length: 30 }, (_, i) => ({
   id: i + 1,
-  imageUrl: `/projects/${i + 1}.jpg`,
+  imageUrl: `/gallery/${i + 1}.jpg`,
   altText: `Cleaning project ${i + 1}`,
   caption: captionTemplates[i % captionTemplates.length],
 }));
@@ -81,7 +81,7 @@ export default function GalleryPage() {
       )}
 
       <div className="relative h-[300px] flex items-center justify-center text-white">
-        <Image src="/projects/1.jpg" alt="Cleaning background" fill className="object-cover" />
+        <Image src="/gallery/1.jpg" alt="Cleaning background" fill className="object-cover" />
         <div className="absolute inset-0 bg-black/50"></div>
         <div className="relative z-10 text-center px-6">
           <h2 className="text-3xl font-bold mb-4">Have Questions?</h2>

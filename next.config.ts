@@ -9,6 +9,11 @@ const nextConfig: NextConfig = {
         destination: "https://www.homesewa.app/:path*",
         permanent: true,
       },
+      {
+        source: "/tos",
+        destination: "/terms",
+        permanent: true,
+      },
     ];
   },
   async rewrites() {

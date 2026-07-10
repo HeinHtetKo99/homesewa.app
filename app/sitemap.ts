@@ -29,7 +29,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/calendar", priority: 0.4, changeFrequency: "monthly" },
     { path: "/d", priority: 0.5, changeFrequency: "yearly" },
     { path: "/privacy", priority: 0.3, changeFrequency: "yearly" },
-    { path: "/tos", priority: 0.3, changeFrequency: "yearly" },
+    { path: "/terms", priority: 0.3, changeFrequency: "yearly" },
     { path: "/refund", priority: 0.3, changeFrequency: "yearly" },
     { path: "/cookie", priority: 0.3, changeFrequency: "yearly" },
     { path: "/disclaimer", priority: 0.3, changeFrequency: "yearly" },
