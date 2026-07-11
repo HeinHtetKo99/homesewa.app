@@ -211,12 +211,14 @@ const Footer = () => {
             <span>Built With : <a href="https://broadpress.org" target="_blank" className="hover:border-b hover:border-black text-gray-500">BroadPress</a></span>
           </p>
 
-          <div className="flex gap-4 justify-center md:justify-end font-semibold mt-2 lg:mt-0">
+          <div className="flex flex-wrap gap-x-4 gap-y-2 justify-center md:justify-end font-semibold mt-2 lg:mt-0">
             <Link href="/privacy" className="cursor-pointer">Privacy Policy</Link>
             <span>|</span>
             <Link href="/disclaimer" className="cursor-pointer">Disclaimer</Link>
             <span>|</span>
             <Link href="/terms" className="cursor-pointer">Terms of Service</Link>
+            <span>|</span>
+            <Link href="/aipolicy" className="cursor-pointer">AI Policy</Link>
           </div>
         </div>
 

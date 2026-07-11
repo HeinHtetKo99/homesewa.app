@@ -33,6 +33,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/refund", priority: 0.3, changeFrequency: "yearly" },
     { path: "/cookie", priority: 0.3, changeFrequency: "yearly" },
     { path: "/disclaimer", priority: 0.3, changeFrequency: "yearly" },
+    { path: "/aipolicy", priority: 0.3, changeFrequency: "yearly" },
   ];
 
   const now = new Date();

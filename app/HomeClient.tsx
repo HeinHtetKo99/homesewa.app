@@ -95,6 +95,9 @@ export default function HomeClient() {
             <p className="text-sm sm:text-base text-gray-900 max-w-md">
             HomeSewa (homesewa.app) connects homeowners with verified professionals for cleaning, salon, spa, repairs, and 50+ on-demand services across Nepal.
             </p>
+            <Link href="/aipolicy" className="inline-block text-sm text-teal-700 font-medium hover:underline">
+              AI Policy →
+            </Link>
             <div className="hidden md:flex flex-wrap items-center gap-3 pt-3">
               <Link href="/book" className="bg-[#0E4541] text-white font-semibold px-6 sm:px-8 py-2.5 rounded-full shadow-lg hover:bg-teal-900 transition-all duration-300 animate-pulse-soft">
                 Book a Service
