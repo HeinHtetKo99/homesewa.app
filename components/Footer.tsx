@@ -207,8 +207,8 @@ const Footer = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 lg:mt-12 flex flex-col lg:flex-row justify-center items-center lg:justify-between text-[13px] gap-3 text-center md:text-left font-semibold">
           <p className="flex flex-col md:flex-row gap-4 md:gap-1 items-center">
             <span>All Rights Reserved. © 2018-{currentYear}</span>
-            <span>HomeSewa</span>
-            <span>Built With : <a href="https://broadpress.org" target="_blank" className="hover:border-b hover:border-black text-gray-500">BroadPress</a></span>
+            <span>HomeSewa</span> <span>| सिद्धिर्भवति कर्मजा</span> 
+            {/* <span>Built With : <a href="https://broadpress.org" target="_blank" className="hover:border-b hover:border-black text-gray-500">BroadPress</a></span> */}
           </p>
 
           <div className="flex flex-wrap gap-x-4 gap-y-2 justify-center md:justify-end font-semibold mt-2 lg:mt-0">
