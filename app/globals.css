@@ -28,6 +28,61 @@ html.dark {
   --overflow : hidden;
 }
 
+/* Early roadblock overlay (before React) — covers page while image loads */
+html.hs-roadblock-active {
+  overflow: hidden !important;
+}
+
+html.hs-roadblock-active body {
+  overflow: hidden !important;
+}
+
+#homesewa-roadblock {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #d0d0d0;
+}
+
+.hs-roadblock__inner {
+  position: relative;
+}
+
+.hs-roadblock__close {
+  position: absolute;
+  top: -0.625rem;
+  right: -0.625rem;
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 50%;
+  background: #055d59;
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: not-allowed;
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .hs-roadblock__close {
+    top: 2.5rem;
+    right: 0;
+  }
+}
+
+.hs-roadblock__img {
+  display: block;
+  width: min(550px, 92vw);
+  height: min(550px, 80vh);
+  object-fit: contain;
+  border-radius: 3%;
+}
+
 body{
   background: var(--background);
   color: var(--text);

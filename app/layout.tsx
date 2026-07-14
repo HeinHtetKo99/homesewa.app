@@ -6,6 +6,7 @@ import GoogleAnalytics from '../components/GoogleAnalytics';
 import JsonLd from '../components/JsonLd';
 import { OneSignalInit } from './OneSignal';
 import { THEME_STORAGE_KEY } from '../lib/theme';
+import { ROADBLOCK_BOOT_SCRIPT } from '../lib/roadblock-boot-script';
 import {
   DEFAULT_DESCRIPTION,
   DEFAULT_OG_IMAGE,
@@ -96,6 +97,11 @@ export default function RootLayout({ children }:Readonly<{
             __html: `(function(){try{var t=localStorage.getItem("${THEME_STORAGE_KEY}");if(t==="dark"){document.documentElement.classList.add("dark")}}catch(e){}})();`,
           }}
         />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var c=document.cookie.match(/(?:^|; )homesewa_roadblock=([^;]*)/);var d=new Date();var key=d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");if(!c||decodeURIComponent(c[1])!==key){document.documentElement.classList.add("hs-roadblock-active");var s=document.createElement("style");s.id="hs-roadblock-lock";s.textContent="html.hs-roadblock-active{overflow:hidden!important}html.hs-roadblock-active body{overflow:hidden!important;visibility:hidden}#homesewa-roadblock,html.hs-roadblock-active body>#homesewa-roadblock{visibility:visible!important}";document.documentElement.appendChild(s)}}catch(e){}})();`,
+          }}
+        />
         <link rel="manifest" href="/manifest.json" />
 
         <OneSignalInit />
@@ -128,6 +134,11 @@ export default function RootLayout({ children }:Readonly<{
         </Script>
       </head>
       <body>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: ROADBLOCK_BOOT_SCRIPT,
+          }}
+        />
         <JsonLd data={organizationJsonLd} />
         <JsonLd data={brandJsonLd} />
         <JsonLd data={webSiteJsonLd} />
