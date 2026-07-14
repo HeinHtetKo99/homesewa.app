@@ -1,136 +1,156 @@
 'use client';
 
 import { useEffect, useState, useCallback } from "react";
+import {
+  hasSeenRoadblockToday,
+  markRoadblockSeenToday,
+  notifyRoadblockDone,
+} from "../lib/roadblock";
+
+const DEFAULT_SRC = "/roadblock/default/default.jpg";
+const DISPLAY_MS = 6_000;
+const CLOSE_BUTTON_DELAY_MS = 3_000;
+
+function loadImage(src: string): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => resolve(src);
+    img.onerror = () => reject(new Error(`Failed to load ${src}`));
+    img.src = src;
+  });
+}
 
 const RoadBlock = () => {
   const today = new Date();
   const day = today.getDate();
   const monthNames = [
-    "january","february","march","april","may","june",
-    "july","august","september","october","november","december","default"
+    "january",
+    "february",
+    "march",
+    "april",
+    "may",
+    "june",
+    "july",
+    "august",
+    "september",
+    "october",
+    "november",
+    "december",
   ];
   const month = monthNames[today.getMonth()];
+  const daySrc = `/roadblock/${month}/${day}.jpg`;
+  const monthDefaultSrc = `/roadblock/${month}/default.jpg`;
 
-  // --- STATES ---
   const [showRoadBlock, setShowRoadBlock] = useState(false);
-  const [imageLoaded, setImageLoaded] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(15); // total display time
-  const [displayTimeLeft, setDisplayTimeLeft] = useState(3); // X button timer
+  const [imageSrc, setImageSrc] = useState(daySrc);
+  const [canClose, setCanClose] = useState(false);
+  const [closeCountdown, setCloseCountdown] = useState(3);
 
-  // --- Close Function ---
   const onClose = useCallback(() => {
-    document.body.classList.remove('hideScroll');
-    document.body.classList.add('showScroll');
+    document.body.classList.remove("hideScroll");
+    document.body.classList.add("showScroll");
     setShowRoadBlock(false);
+    notifyRoadblockDone();
   }, []);
 
-  // --- Preload image and show roadblock after it's loaded ---
+  // Show once per day (cookie). Preload image fully before opening.
   useEffect(() => {
-    const hasSeen = sessionStorage.getItem("roadblock_seen");
-    if (hasSeen) return; // already seen in session
+    if (hasSeenRoadblockToday()) {
+      notifyRoadblockDone();
+      return;
+    }
 
-    const img = new Image();
-    img.src = `/roadblock/${month}/${day}.jpg`;
-    img.onload = () => {
-      setImageLoaded(true);
+    let cancelled = false;
+
+    (async () => {
+      let src: string;
+      try {
+        src = await loadImage(daySrc);
+      } catch {
+        try {
+          src = await loadImage(monthDefaultSrc);
+        } catch {
+          try {
+            src = await loadImage(DEFAULT_SRC);
+          } catch {
+            if (!cancelled) notifyRoadblockDone();
+            return;
+          }
+        }
+      }
+
+      if (cancelled) return;
+
+      markRoadblockSeenToday();
+      document.body.classList.add("hideScroll");
+      setImageSrc(src);
       setShowRoadBlock(true);
-      sessionStorage.setItem("roadblock_seen", "true");
-      document.body.classList.add('hideScroll'); // hide scroll immediately
-    };
-    img.onerror = () => {
-      // fallback to default image
-      const defaultImg = new Image();
-      defaultImg.src = "/roadblock/default/default.jpg";
-      defaultImg.onload = () => {
-        setImageLoaded(true);
-        setShowRoadBlock(true);
-        sessionStorage.setItem("roadblock_seen", "true");
-        document.body.classList.add('hideScroll');
-      };
-      defaultImg.onerror = onClose; // if default image fails, just close
-    };
-  }, [month, day, onClose]);
+    })();
 
-  // --- Force-close timer ---
+    return () => {
+      cancelled = true;
+    };
+  }, [daySrc, monthDefaultSrc]);
+
   useEffect(() => {
     if (!showRoadBlock) return;
-    const timer = setInterval(() => {
-      setTimeLeft(prev => {
-        if (prev <= 1) {
-          onClose();
-          return 0;
-        }
-        return prev - 1;
-      });
+
+    const autoClose = window.setTimeout(onClose, DISPLAY_MS);
+    const enableClose = window.setTimeout(() => setCanClose(true), CLOSE_BUTTON_DELAY_MS);
+    const countdown = window.setInterval(() => {
+      setCloseCountdown((prev) => (prev <= 1 ? 0 : prev - 1));
     }, 1000);
-    return () => clearInterval(timer);
+
+    return () => {
+      window.clearTimeout(autoClose);
+      window.clearTimeout(enableClose);
+      window.clearInterval(countdown);
+    };
   }, [showRoadBlock, onClose]);
 
-  // --- Close button display timer ---
-  useEffect(() => {
-    if (!showRoadBlock) return;
-    const timer = setInterval(() => {
-      setDisplayTimeLeft(prev => (prev <= 1 ? 0 : prev - 1));
-    }, 1000);
-    return () => clearInterval(timer);
-  }, [showRoadBlock]);
-
-  // --- Image Error Handler ---
-  const handleImageError = () => onClose();
+  if (!showRoadBlock) return null;
 
   return (
-    <>
-      {showRoadBlock && imageLoaded && (
-        <div className="fixed inset-0 bg-[#D0D0D0] z-9999 flex items-center justify-center">
-          <div className="relative">
-            {/* Close Button */}
-            <button
-              onClick={displayTimeLeft <= 0 ? onClose : undefined}
-              className={`sm:-top-2.5 sm:-right-2.5 ${window.innerWidth < 550 ? "top-10 right-0" : "-top-2.5 -right-2.5"}`}
-              style={{
-                backgroundColor: "#055d59",
-                borderRadius: "50%",
-                border: "0px",
-                width: "40px",
-                height: "40px",
-                textAlign: "center",
-                position: "absolute",
-                color: "white",
-                fontSize: "20px",
-                fontWeight: "bold",
-                cursor: displayTimeLeft <= 0 ? "pointer" : "not-allowed",
-              }}
-            >
-              {displayTimeLeft <= 0 ? "X" : displayTimeLeft}
-            </button>
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-[#D0D0D0]">
+      <div className="relative">
+        <button
+          type="button"
+          onClick={canClose ? onClose : undefined}
+          aria-label={canClose ? "Close advertisement" : undefined}
+          className="absolute top-10 right-0 z-10 sm:-top-2.5 sm:-right-2.5"
+          style={{
+            backgroundColor: "#055d59",
+            borderRadius: "50%",
+            border: "0px",
+            width: "40px",
+            height: "40px",
+            textAlign: "center",
+            color: "white",
+            fontSize: "20px",
+            fontWeight: "bold",
+            cursor: canClose ? "pointer" : "not-allowed",
+          }}
+        >
+          {canClose ? "X" : closeCountdown}
+        </button>
 
-            {/* Roadblock Image */}
-            <a href="#" target="_blank" rel="noopener noreferrer">
-              <img
-                src={`/roadblock/${month}/${day}.jpg`}
-                onError={(e) => {
-                  const originalSrc = e.currentTarget.src;
-                  e.currentTarget.onerror = null;
-                  if (!originalSrc.includes("default/default.jpg")) {
-                    e.currentTarget.src = "/roadblock/default/default.jpg";
-                  } else {
-                    handleImageError();
-                  }
-                }}
-                className="img-fluid rounded"
-                style={{
-                  borderRadius: "3%",
-                  objectFit: "contain",
-                  height: "550px",
-                  width: "550px",
-                }}
-                alt="Advertisement"
-              />
-            </a>
-          </div>
-        </div>
-      )}
-    </>
+        <a href="#" target="_blank" rel="noopener noreferrer">
+          <img
+            src={imageSrc}
+            className="img-fluid rounded"
+            style={{
+              borderRadius: "3%",
+              objectFit: "contain",
+              height: "550px",
+              width: "550px",
+              maxWidth: "92vw",
+              maxHeight: "80vh",
+            }}
+            alt="Advertisement"
+          />
+        </a>
+      </div>
+    </div>
   );
 };
 

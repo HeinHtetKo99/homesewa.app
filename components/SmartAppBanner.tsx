@@ -4,6 +4,11 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 import { PLAY_STORE_URL } from "../lib/app-links";
+import {
+  whenDocumentFullyLoaded,
+  whenRoadblockDone,
+} from "../lib/roadblock";
+
 const AUTO_HIDE_MS = 30_000;
 const SCROLL_THRESHOLD = 8;
 
@@ -29,11 +34,10 @@ export default function SmartAppBanner() {
     if (isStandaloneApp()) return;
     if (!isMobileBrowser()) return;
 
-    setHostname(window.location.hostname.replace(/^www\./, ""));
-    setVisible(true);
-    document.documentElement.dataset.smartBanner = "visible";
-
+    let cancelled = false;
     let hidden = false;
+    let timer = 0;
+
     const hide = () => {
       if (hidden) return;
       hidden = true;
@@ -45,10 +49,21 @@ export default function SmartAppBanner() {
       if (window.scrollY > SCROLL_THRESHOLD) hide();
     };
 
-    const timer = window.setTimeout(hide, AUTO_HIDE_MS);
-    window.addEventListener("scroll", onScroll, { passive: true });
+    (async () => {
+      // Wait for full page load and roadblock (or skip if already shown today).
+      await Promise.all([whenDocumentFullyLoaded(), whenRoadblockDone()]);
+      if (cancelled) return;
+
+      setHostname(window.location.hostname.replace(/^www\./, ""));
+      setVisible(true);
+      document.documentElement.dataset.smartBanner = "visible";
+
+      timer = window.setTimeout(hide, AUTO_HIDE_MS);
+      window.addEventListener("scroll", onScroll, { passive: true });
+    })();
 
     return () => {
+      cancelled = true;
       window.clearTimeout(timer);
       window.removeEventListener("scroll", onScroll);
       delete document.documentElement.dataset.smartBanner;
